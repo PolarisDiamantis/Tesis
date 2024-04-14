@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     {
         get
         {
-            return (_agent.rb.mass / 10f) * responsiveness;
+            return (_agent._rb.mass / 10f) * responsiveness;
         }
     }
 
@@ -38,8 +38,18 @@ public class PlayerController : MonoBehaviour
         HandleInputs();
     }
 
+    private void FixedUpdate()
+    {
+        _agent.AddForce(transform.forward * maxThrust * _throttle); // Move forward
+        _agent.AddTorque(transform.up * _yaw * responseModifier); // Y rotation.
+        _agent.AddTorque(transform.right * _pitch * responseModifier); // Z rotation.
+        _agent.AddTorque(-transform.forward * _roll * responseModifier); // X rotation.
+    }
+
     private void HandleInputs()
     {
+        Debug.Log("Throttle Up" + _throttleUp);
+        Debug.Log("Throttle Down" + _throttleDown);
         if (_throttleUp) _throttle += throttleIncrement;
         if (_throttleDown) _throttle -= throttleIncrement;
         _throttle = Mathf.Clamp(_throttle, 0f, 100f);
@@ -76,7 +86,7 @@ public class PlayerController : MonoBehaviour
     {
         if (context.performed)
         {
-            _throttleUp = true;
+            _throttleDown = true;
         }else if (context.canceled)
         {
             _throttleDown = false;

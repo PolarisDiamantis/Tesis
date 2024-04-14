@@ -5,15 +5,20 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerModel : MonoBehaviour
 {
-    public Rigidbody rb;
+    public Rigidbody _rb { get; private set;}
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>();
     }
 
-    private void Start()
+    public void AddForce(Vector3 dir)
     {
-        Debug.Log("Hello World!");
+        _rb.AddForce(dir);
+    }
+
+    public void AddTorque(Vector3 dir)
+    {
+        _rb.AddTorque(dir);
     }
 }
