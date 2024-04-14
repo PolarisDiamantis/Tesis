@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _agent.AddForce(transform.forward * maxThrust * _throttle); // Move forward
+        _agent.AddForce(transform.forward * maxThrust * _throttle); // Move forward.
         _agent.AddTorque(transform.up * _yaw * responseModifier); // Y rotation.
         _agent.AddTorque(transform.right * _pitch * responseModifier); // Z rotation.
         _agent.AddTorque(-transform.forward * _roll * responseModifier); // X rotation.
@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void OnPitch(InputAction.CallbackContext context)
+    /*public void OnPitch(InputAction.CallbackContext context)
     {
         _pitch = context.ReadValue<float>();
     }
@@ -69,6 +69,13 @@ public class PlayerController : MonoBehaviour
     public void OnYaw(InputAction.CallbackContext context)
     {
         _yaw = context.ReadValue<float>();
+    }*/
+
+    public void OnYawPitch(InputAction.CallbackContext context)
+    {
+        Vector2 dir = context.ReadValue<Vector2>();
+        _yaw = dir.x;
+        _pitch = -dir.y;
     }
 
     public void OnThrottleUp(InputAction.CallbackContext context)
