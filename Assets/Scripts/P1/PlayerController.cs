@@ -43,7 +43,18 @@ public class PlayerController : MonoBehaviour
         _agent.AddForce(transform.forward * maxThrust * _throttle); // Move forward.
         _agent.AddTorque(transform.up * _yaw * responseModifier); // Y rotation.
         _agent.AddTorque(transform.right * _pitch * responseModifier); // Z rotation.
-        _agent.AddTorque(-transform.forward * _roll * responseModifier); // X rotation.
+        //_agent.AddTorque(-transform.forward * _roll /** responseModifier*/); // X rotation.
+        /*if(transform.rotation.eulerAngles.z != 0)
+        {
+            if(transform.rotation.eulerAngles.z > 0)
+            {
+                _agent.AddTorque(-transform.forward * 0.5f);
+            }
+            if (transform.rotation.eulerAngles.z < 0)
+            {
+                _agent.AddTorque(-transform.forward * -0.5f);
+            }
+        }*/
     }
 
     private void HandleInputs()
@@ -57,25 +68,16 @@ public class PlayerController : MonoBehaviour
 
     public void OnRoll(InputAction.CallbackContext context)
     {
-        _roll = context.ReadValue<float>();
+        //_roll = context.ReadValue<float>();
 
     }
-
-    /*public void OnPitch(InputAction.CallbackContext context)
-    {
-        _pitch = context.ReadValue<float>();
-    }
-
-    public void OnYaw(InputAction.CallbackContext context)
-    {
-        _yaw = context.ReadValue<float>();
-    }*/
 
     public void OnYawPitch(InputAction.CallbackContext context)
     {
         Vector2 dir = context.ReadValue<Vector2>();
         _yaw = dir.x;
         _pitch = -dir.y;
+        _roll = dir.x;
     }
 
     public void OnThrottleUp(InputAction.CallbackContext context)
