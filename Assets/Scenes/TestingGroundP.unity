@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 111420306}
   - component: {fileID: 111420305}
   - component: {fileID: 111420304}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 750678753}
   - component: {fileID: 750678752}
   - component: {fileID: 750678751}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,7 +354,7 @@ GameObject:
   - component: {fileID: 768654056}
   - component: {fileID: 768654055}
   - component: {fileID: 768654054}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 780909349}
   - component: {fileID: 780909348}
   - component: {fileID: 780909347}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -564,7 +564,7 @@ GameObject:
   - component: {fileID: 973868203}
   - component: {fileID: 973868202}
   - component: {fileID: 973868201}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -669,7 +669,7 @@ GameObject:
   - component: {fileID: 1008186169}
   - component: {fileID: 1008186168}
   - component: {fileID: 1008186167}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1029,7 +1029,7 @@ GameObject:
   - component: {fileID: 1663525652}
   - component: {fileID: 1663525651}
   - component: {fileID: 1663525650}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1134,7 +1134,7 @@ GameObject:
   - component: {fileID: 1986820387}
   - component: {fileID: 1986820386}
   - component: {fileID: 1986820385}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1239,7 +1239,7 @@ GameObject:
   - component: {fileID: 2011427537}
   - component: {fileID: 2011427536}
   - component: {fileID: 2011427535}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1465,6 +1465,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efc61a7441d866641b439537e8684e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collisionSphere: 1.7
+  _collisionMask:
+    serializedVersion: 2
+    m_Bits: 64
+  _impulseStreght: 50
 --- !u!54 &2125749010
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1487,7 +1492,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0

@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private bool _throttleUp = false;
     private bool _throttleDown = false;
 
-    private float responseModifier
+    public float responseModifier
     {
         get
         {
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         _agent.AddForce(transform.forward * maxThrust * _throttle); // Move forward.
         _agent.AddTorque(transform.up * _yaw * responseModifier); // Y rotation.
         _agent.AddTorque(transform.right * _pitch * responseModifier); // Z rotation.
-        //_agent.AddTorque(-transform.forward * _roll /** responseModifier*/); // X rotation.
+        _agent.AddTorque(-transform.forward * _roll * responseModifier); // X rotation.
         /*if(transform.rotation.eulerAngles.z != 0)
         {
             if(transform.rotation.eulerAngles.z > 0)
@@ -64,13 +64,14 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Throttle Up" + _throttleUp);
         Debug.Log("Throttle Down" + _throttleDown);
         if (_throttleUp) _throttle += throttleIncrement;
-        if (_throttleDown) _throttle -= throttleIncrement;
+        if (!_throttleUp) _throttle -= throttleIncrement;
+        if (_throttleDown) _throttle -= throttleIncrement * 2;
         _throttle = Mathf.Clamp(_throttle, 0f, 100f);
     }
 
     public void OnRoll(InputAction.CallbackContext context)
     {
-        //_roll = context.ReadValue<float>();
+        _roll = context.ReadValue<float>();
 
     }
 
@@ -79,7 +80,7 @@ public class PlayerController : MonoBehaviour
         Vector2 dir = context.ReadValue<Vector2>();
         _yaw = dir.x;
         _pitch = -dir.y;
-        _roll = dir.x;
+        //_roll = dir.x;
     }
 
     public void OnThrottleUp(InputAction.CallbackContext context)
