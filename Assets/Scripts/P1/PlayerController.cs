@@ -9,8 +9,10 @@ public class PlayerController : MonoBehaviour
     private PlayerModel _agent;
 
     public float throttleIncrement = 0.1f;
-    public float maxThrust = 200F;
-    public float responsiveness = 10f;
+    public float maxThrust = 180f;
+    public float responsiveness = 120f;
+
+    public float maxRot = 45f;
 
     private float _throttle;
     private float _roll;
@@ -20,13 +22,10 @@ public class PlayerController : MonoBehaviour
     private bool _throttleUp = false;
     private bool _throttleDown = false;
 
-    public float responseModifier
-    {
-        get
-        {
-            return (_agent._rb.mass / 10f) * responsiveness;
-        }
-    }
+    float _horizontalInput;
+    float _verticalInput;
+
+    [SerializeField] float _controlSnap = 1;
 
     private void Start()
     {
@@ -42,21 +41,14 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _agent.AddForce(transform.forward * maxThrust * _throttle); // Move forward.
-        _agent.AddTorque(transform.up * _yaw * responseModifier); // Y rotation.
-        _agent.AddTorque(transform.right * _pitch * responseModifier); // Z rotation.
-        _agent.AddTorque(-transform.forward * _roll * responseModifier); // X rotation.
-        /*if(transform.rotation.eulerAngles.z != 0)
-        {
-            if(transform.rotation.eulerAngles.z > 0)
-            {
-                _agent.AddTorque(-transform.forward * 0.5f);
-            }
-            if (transform.rotation.eulerAngles.z < 0)
-            {
-                _agent.AddTorque(-transform.forward * -0.5f);
-            }
-        }*/
+        _agent.AddForce(transform.forward * maxThrust * _throttle);
+        _yaw += _horizontalInput * responsiveness * Time.fixedDeltaTime;
+        _pitch += _verticalInput * responsiveness * Time.fixedDeltaTime;
+        Debug.Log(_horizontalInput);
+        _roll = Mathf.Lerp(0, 30, Mathf.Abs(_horizontalInput)) * -Mathf.Sign(_horizontalInput);
+        transform.localRotation = Quaternion.Euler(Vector3.up * _yaw + Vector3.right * _pitch + Vector3.forward * _roll);
+        //_yaw = Mathf.Lerp(_yaw, 0, Time.fixedDeltaTime);
+        //_pitch = Mathf.Lerp(_pitch, 0, Time.fixedDeltaTime);
     }
 
     private void HandleInputs()
@@ -71,15 +63,23 @@ public class PlayerController : MonoBehaviour
 
     public void OnRoll(InputAction.CallbackContext context)
     {
-        _roll = context.ReadValue<float>();
+        //_roll = context.ReadValue<float>();
 
     }
 
     public void OnYawPitch(InputAction.CallbackContext context)
     {
         Vector2 dir = context.ReadValue<Vector2>();
-        _yaw = dir.x;
-        _pitch = -dir.y;
+        if(dir.x != 0)
+        {
+            dir.x = Mathf.Clamp(dir.x, -1, 1);
+        }
+        if (dir.y != 0)
+        {
+            dir.y = Mathf.Clamp(dir.y, -1, 1);
+        }
+        _horizontalInput = Mathf.Lerp(_horizontalInput, dir.x, _controlSnap * Time.deltaTime);
+        _verticalInput = Mathf.Lerp(_verticalInput, -dir.y, _controlSnap * Time.deltaTime);
         //_roll = dir.x;
     }
 

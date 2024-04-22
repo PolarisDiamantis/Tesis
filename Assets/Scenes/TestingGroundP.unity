@@ -1452,7 +1452,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   throttleIncrement: 0.1
   maxThrust: 200
-  responsiveness: 5
+  responsiveness: 240
+  maxRot: 45
+  _controlSnap: 2
 --- !u!114 &2125749009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1492,7 +1494,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
