@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
         _agent.AddForce(transform.forward * maxThrust * _throttle);
         _yaw += _horizontalInput * responsiveness * Time.fixedDeltaTime;
         _pitch += _verticalInput * responsiveness * Time.fixedDeltaTime;
-        Debug.Log(_horizontalInput);
+
         _roll = Mathf.Lerp(0, 30, Mathf.Abs(_horizontalInput)) * -Mathf.Sign(_horizontalInput);
         transform.localRotation = Quaternion.Euler(Vector3.up * _yaw + Vector3.right * _pitch + Vector3.forward * _roll);
         //_yaw = Mathf.Lerp(_yaw, 0, Time.fixedDeltaTime);
