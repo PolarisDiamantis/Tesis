@@ -19,12 +19,15 @@ public class PlayerController : MonoBehaviour
     private float _roll;
     private float _pitch;
     private float _yaw;
+    private float _drift;
+    [SerializeField] private float _driftModifier = 1f;
 
     private bool _throttleUp = false;
     private bool _throttleDown = false;
 
     float _horizontalInput;
     float _verticalInput;
+    float _driftInput;
 
     [SerializeField] float _controlSnap = 1;
 
@@ -50,7 +53,8 @@ public class PlayerController : MonoBehaviour
         _yaw += _horizontalInput * responsiveness * _responseModifier * Time.fixedDeltaTime;
         _pitch += _verticalInput * responsiveness * _responseModifier * Time.fixedDeltaTime;
         _roll = Mathf.Lerp(0, 30, Mathf.Abs(_horizontalInput)) * -Mathf.Sign(_horizontalInput);
-        transform.localRotation = Quaternion.Euler(Vector3.up * _yaw + Vector3.right * _pitch + Vector3.forward * _roll);
+        _drift += _driftInput * responsiveness * _driftModifier * Time.fixedDeltaTime;
+        transform.localRotation = Quaternion.Euler(Vector3.up * _yaw + Vector3.up * _drift  + Vector3.right * _pitch + Vector3.forward * _roll);
     }
 
     private void HandleInputs()
@@ -126,6 +130,12 @@ public class PlayerController : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
+    }
+
+    public void OnDrift(InputAction.CallbackContext context)
+    {
+        Debug.Log(_driftInput);
+        _driftInput = context.ReadValue<float>();
     }
 
     public void OnResponseChange(float value)

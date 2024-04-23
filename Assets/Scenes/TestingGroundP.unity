@@ -9634,8 +9634,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   throttleIncrement: 0.3
   maxThrust: 250
-  responsiveness: 240
+  responsiveness: 300
   maxRot: 45
+  _driftModifier: 0.25
   _controlSnap: 2
 --- !u!114 &2125749009
 MonoBehaviour:
@@ -9874,6 +9875,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 073a6c65-a8cc-443f-8a18-c1a94cba2d14
     m_ActionName: Base/LockInputs[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2125749008}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnDrift
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a2f99991-88e7-4773-b428-24ab846b226a
+    m_ActionName: Base/Drift[/Keyboard/a,/Keyboard/d]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Base
