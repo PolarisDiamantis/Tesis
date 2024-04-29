@@ -17,6 +17,8 @@ public class PlayerModel : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Debug.Log(_rb.velocity.magnitude);
+        // When about to collision with an obstacles, impulses the player in the opposite direction of said collision.
         RaycastHit hit;
         if(Physics.SphereCast(transform.position, _collisionSphere, transform.forward, out hit, _collisionSphere, _collisionMask))
         {
@@ -26,7 +28,8 @@ public class PlayerModel : MonoBehaviour
             AddImpulse(imp.normalized * _impulseStreght);
         }
     }
-
+    
+    #region Physics Methods
     public void AddForce(Vector3 dir)
     {
         _rb.AddForce(dir);
@@ -41,10 +44,13 @@ public class PlayerModel : MonoBehaviour
     {
         _rb.AddForce(dir, ForceMode.VelocityChange);
     }
+    #endregion
 
+    #region Gizmos
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, _collisionSphere);
     }
+    #endregion
 }

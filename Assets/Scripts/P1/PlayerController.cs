@@ -11,9 +11,8 @@ public class PlayerController : MonoBehaviour
     public float throttleIncrement = 0.1f;
     public float maxThrust = 180f;
     public float responsiveness = 120f;
+    // Allows player to modify responsiveness.
     private float _responseModifier = 1f;
-
-    public float maxRot = 45f;
 
     private float _throttle;
     private float _roll;
@@ -42,23 +41,31 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (_lockInputs) return;
-        HandleInputs();
+        HandleThrottleInputs();
     }
 
     private void FixedUpdate()
     {
         if (_lockInputs) return;
+
+        // Throttle
         _agent.AddForce(transform.forward * maxThrust * _throttle);
+
+        // Yaw Pitch
         _yaw += _horizontalInput * responsiveness * _responseModifier * Time.fixedDeltaTime;
         _pitch += _verticalInput * responsiveness * _responseModifier * Time.fixedDeltaTime;
+
+        // Roll
         _roll = Mathf.Lerp(0, 30, Mathf.Abs(_horizontalInput)) * -Mathf.Sign(_horizontalInput);
         _drift += _driftInput * responsiveness * _driftModifier * Time.fixedDeltaTime;
+
+        // Final rotation
         transform.localRotation = Quaternion.Euler(Vector3.up * _yaw + Vector3.up * _drift  + Vector3.right * _pitch + Vector3.forward * _roll);
     }
 
-    private void HandleInputs()
+    private void HandleThrottleInputs()
     {
+        if (_lockInputs) return;
         if (_throttleUp) _throttle += throttleIncrement;
         if (!_throttleUp && _throttle > 50f && !_throttleDown) _throttle -= throttleIncrement;
         if (_throttleDown) _throttle -= throttleIncrement * 2;
@@ -70,12 +77,6 @@ public class PlayerController : MonoBehaviour
         {
             _throttle = Mathf.Clamp(_throttle, 0f, 100f);
         }
-    }
-
-    public void OnRoll(InputAction.CallbackContext context)
-    {
-        //_roll = context.ReadValue<float>();
-
     }
 
     public void OnYawPitch(InputAction.CallbackContext context)
@@ -116,6 +117,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void OnDrift(InputAction.CallbackContext context)
+    {
+        _driftInput = context.ReadValue<float>();
+    }
+
+    #region Debug Methods
     public void OnLockInputs(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -132,14 +139,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnDrift(InputAction.CallbackContext context)
-    {
-        Debug.Log(_driftInput);
-        _driftInput = context.ReadValue<float>();
-    }
-
     public void OnResponseChange(float value)
     {
         _responseModifier = value;
     }
+    #endregion
+
+    #region Unused Methods
+    public void OnRoll(InputAction.CallbackContext context)
+    {
+        //_roll = context.ReadValue<float>();
+
+    }
+    #endregion
 }
