@@ -32,6 +32,10 @@ public class PlayerController : MonoBehaviour
 
     private bool _lockInputs = false;
 
+    private bool _isBoost = false;
+    private bool _canBoost = true;
+    private float _mana = 100f;
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -42,6 +46,24 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         HandleThrottleInputs();
+        if (_isBoost && _canBoost) _mana -= Time.deltaTime * 10;
+        if (!_isBoost) _mana += Time.deltaTime * 10;
+        _mana = Mathf.Clamp(_mana, 0, 100f);
+        if (_canBoost)
+        {
+            if(_mana <= 0f)
+            {
+                _canBoost = false;
+            }
+        }
+        else
+        {
+            if(_mana >= 50f)
+            {
+                _canBoost = true;
+            }
+        }
+        Debug.Log(_mana);
     }
 
     private void FixedUpdate()
@@ -49,46 +71,72 @@ public class PlayerController : MonoBehaviour
         if (_lockInputs) return;
 
         // Throttle
-        _agent.AddForce(transform.forward * maxThrust * _throttle);
+        if (_isBoost && _canBoost)
+        {
+            _agent.AddForce(transform.forward * maxThrust * 2 * _throttle);
+        }
+        else
+        {
+            _agent.AddForce(transform.forward * maxThrust * _throttle);
+
+        }
 
         // Yaw Pitch
         _yaw += _horizontalInput * responsiveness * _responseModifier * Time.fixedDeltaTime;
         _pitch += _verticalInput * responsiveness * _responseModifier * Time.fixedDeltaTime;
 
         // Roll
-        _roll = Mathf.Lerp(0, 30, Mathf.Abs(_horizontalInput)) * -Mathf.Sign(_horizontalInput);
-        _drift += _driftInput * responsiveness * _driftModifier * Time.fixedDeltaTime;
+        //_roll += Mathf.Lerp(0, 30, Mathf.Abs(_horizontalInput)) * -Mathf.Sign(_horizontalInput);
+        _roll -= _horizontalInput * 50 * Time.fixedDeltaTime;
+        _roll = Mathf.Clamp(_roll, -30, 30);
+        _roll = Mathf.Lerp(_roll, 0, Time.fixedDeltaTime * 2);
+        _drift += _driftInput * _driftModifier * Time.fixedDeltaTime;
 
         // Final rotation
         transform.localRotation = Quaternion.Euler(Vector3.up * _yaw + Vector3.up * _drift  + Vector3.right * _pitch + Vector3.forward * _roll);
     }
 
+    /*private void Boost()
+    {
+        if (_isBoost) return;
+
+    }*/
+
     private void HandleThrottleInputs()
     {
         if (_lockInputs) return;
         if (_throttleUp) _throttle += throttleIncrement;
-        if (!_throttleUp && _throttle > 50f && !_throttleDown) _throttle -= throttleIncrement;
+        if (!_throttleUp && /*_throttle > 50f &&*/ !_throttleDown) _throttle -= throttleIncrement;
         if (_throttleDown) _throttle -= throttleIncrement * 2;
-        if(_throttle >= 50f)
+        /*if(_throttle >= 50f)
         {
             _throttle = Mathf.Clamp(_throttle, 50f, 100f);
         }
         else
         {
             _throttle = Mathf.Clamp(_throttle, 0f, 100f);
-        }
+        }*/
+
+        _throttle = Mathf.Clamp(_throttle, 0f, 100f);
     }
 
     public void OnYawPitch(InputAction.CallbackContext context)
     {
         Vector2 dir = context.ReadValue<Vector2>();
+        Debug.Log(dir);
         if(dir.x != 0)
         {
-            dir.x = Mathf.Clamp(dir.x, -1, 1);
+            dir.x = Mathf.Clamp(dir.x, -3, 3);
         }
         if (dir.y != 0)
         {
-            dir.y = Mathf.Clamp(dir.y, -1, 1);
+            dir.y = Mathf.Clamp(dir.y, -3, 3);
+        }
+        if(Vector3.Distance(dir, Vector3.zero) < 2)
+        {
+            _horizontalInput = Mathf.Lerp(_horizontalInput, 0, _controlSnap * Time.deltaTime);
+            _verticalInput = Mathf.Lerp(_verticalInput, 0, _controlSnap * Time.deltaTime);
+            return;
         }
         // Prevents inputs from snapping.
         _horizontalInput = Mathf.Lerp(_horizontalInput, dir.x, _controlSnap * Time.deltaTime);
@@ -122,6 +170,18 @@ public class PlayerController : MonoBehaviour
         _driftInput = context.ReadValue<float>();
     }
 
+    public void OnBoost(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            _isBoost = true;
+        }
+        else if (context.canceled)
+        {
+            _isBoost = false;
+        }
+    }
+
     #region Debug Methods
     public void OnLockInputs(InputAction.CallbackContext context)
     {
@@ -152,4 +212,11 @@ public class PlayerController : MonoBehaviour
 
     }
     #endregion
+
+    /*IEnumerator BoostAction()
+    {
+        _isBoost = true;
+        yield return new WaitForSeconds(5f);
+        _isBoost = false;
+    }*/
 }

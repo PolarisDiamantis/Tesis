@@ -17,7 +17,7 @@ public class PlayerModel : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(_rb.velocity.magnitude);
+        //Debug.Log(_rb.velocity.magnitude);
         // When about to collision with an obstacles, impulses the player in the opposite direction of said collision.
         RaycastHit hit;
         if(Physics.SphereCast(transform.position, _collisionSphere, transform.forward, out hit, _collisionSphere, _collisionMask))
