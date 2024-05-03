@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wind : Weather
+public class Wind : WeatherZone
 {
-    List<PlayerModel> _collisions = new List<PlayerModel>();
     public Vector3 windDirection;
     public float strenght = 100f;
 
