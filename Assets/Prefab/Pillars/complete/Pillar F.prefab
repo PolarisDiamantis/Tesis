@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4358547465453030950}
   - component: {fileID: 6591206818046688470}
+  - component: {fileID: 3555777336089141848}
   m_Layer: 0
   m_Name: Pillar F
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 719.8504, y: 20, z: 312.72858}
-  m_LocalScale: {x: 75, y: 75, z: 75}
+  m_LocalScale: {x: 150, y: 150, z: 150}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8344630098865944682}
@@ -61,6 +62,27 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers: []
   m_Enabled: 1
+--- !u!65 &3555777336089141848
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4077184984455676971}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.33768496, y: 3.0955281, z: 0.29666263}
+  m_Center: {x: 0.01680715, y: 1.0477617, z: -0.09453165}
 --- !u!1 &8245714362882108742
 GameObject:
   m_ObjectHideFlags: 0

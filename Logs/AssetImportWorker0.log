@@ -15,7 +15,7 @@ E:/GitHub/TESIS/Tesis Enchanted Skylands
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-56465
+61260
 Successfully changed project path to: E:/GitHub/TESIS/Tesis Enchanted Skylands
 E:/GitHub/TESIS/Tesis Enchanted Skylands
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -49,11 +49,11 @@ E:/GitHub/TESIS/Tesis Enchanted Skylands
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [4120] Host "[IP] 192.168.0.102 [Port] 0 [Flags] 2 [Guid] 2168944428 [EditorId] 2168944428 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-IOH5AP5) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [23380] Host "[IP] 192.168.0.102 [Port] 0 [Flags] 2 [Guid] 2269070886 [EditorId] 2269070886 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-IOH5AP5) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [4120] Host "[IP] 192.168.0.102 [Port] 0 [Flags] 2 [Guid] 2168944428 [EditorId] 2168944428 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-IOH5AP5) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [23380] Host "[IP] 192.168.0.102 [Port] 0 [Flags] 2 [Guid] 2269070886 [EditorId] 2269070886 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-IOH5AP5) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
-Refreshing native plugins compatible for Editor in 11.12 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 8.46 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2022.3.5f1 (9674261d40ee)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity 2022.3.5f1/Editor/Data/Resources/UnitySubsystems
@@ -69,44 +69,44 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity 2022.3.5f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity 2022.3.5f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity 2022.3.5f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56808
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56776
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity 2022.3.5f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.009456 seconds.
-- Loaded All Assemblies, in  0.385 seconds
+Registered in 0.009213 seconds.
+- Loaded All Assemblies, in  0.381 seconds
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.296 seconds
-Domain Reload Profiling: 678ms
-	BeginReloadAssembly (99ms)
+- Finished resetting the current domain, in  0.331 seconds
+Domain Reload Profiling: 710ms
+	BeginReloadAssembly (102ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (39ms)
-	RebuildNativeTypeToScriptingClass (13ms)
-	initialDomainReloadingComplete (74ms)
-	LoadAllAssembliesAndSetupDomain (157ms)
-		LoadAssemblies (96ms)
+	RebuildCommonClasses (40ms)
+	RebuildNativeTypeToScriptingClass (12ms)
+	initialDomainReloadingComplete (71ms)
+	LoadAllAssembliesAndSetupDomain (153ms)
+		LoadAssemblies (99ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (149ms)
-			TypeCache.Refresh (148ms)
-				TypeCache.ScanAssembly (136ms)
+		AnalyzeDomain (144ms)
+			TypeCache.Refresh (143ms)
+				TypeCache.ScanAssembly (132ms)
 			ScanForSourceGeneratedMonoScriptInfo (0ms)
 			ResolveRequiredComponents (0ms)
-	FinalizeReload (296ms)
+	FinalizeReload (332ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (231ms)
+		SetupLoadedEditorAssemblies (262ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (11ms)
+			InitializePlatformSupportModulesInManaged (13ms)
 			SetLoadedEditorAssemblies (8ms)
 			RefreshPlugins (0ms)
 			BeforeProcessingInitializeOnLoad (2ms)
-			ProcessInitializeOnLoadAttributes (154ms)
-			ProcessInitializeOnLoadMethodAttributes (56ms)
+			ProcessInitializeOnLoadAttributes (177ms)
+			ProcessInitializeOnLoadMethodAttributes (60ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -116,55 +116,55 @@ Worker process is ready to serve import requests
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image E:\GitHub\TESIS\Tesis Enchanted Skylands\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Symbol file LoadedFromMemory doesn't match image E:\GitHub\TESIS\Tesis Enchanted Skylands\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-- Loaded All Assemblies, in  0.813 seconds
-Refreshing native plugins compatible for Editor in 3.05 ms, found 3 plugins.
+- Loaded All Assemblies, in  0.826 seconds
+Refreshing native plugins compatible for Editor in 2.65 ms, found 3 plugins.
 Native extension for WindowsStandalone target not found
 Package Manager log level set to [2]
 [Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
 [Package Manager] Cannot connect to Unity Package Manager local server
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.765 seconds
-Domain Reload Profiling: 1576ms
-	BeginReloadAssembly (147ms)
+- Finished resetting the current domain, in  0.797 seconds
+Domain Reload Profiling: 1620ms
+	BeginReloadAssembly (135ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (6ms)
+		DisableScriptedObjects (7ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (19ms)
-	RebuildCommonClasses (37ms)
+		CreateAndSetChildDomain (21ms)
+	RebuildCommonClasses (38ms)
 	RebuildNativeTypeToScriptingClass (12ms)
-	initialDomainReloadingComplete (51ms)
-	LoadAllAssembliesAndSetupDomain (563ms)
-		LoadAssemblies (279ms)
+	initialDomainReloadingComplete (53ms)
+	LoadAllAssembliesAndSetupDomain (584ms)
+		LoadAssemblies (293ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (353ms)
-			TypeCache.Refresh (315ms)
-				TypeCache.ScanAssembly (302ms)
-			ScanForSourceGeneratedMonoScriptInfo (26ms)
+		AnalyzeDomain (350ms)
+			TypeCache.Refresh (313ms)
+				TypeCache.ScanAssembly (300ms)
+			ScanForSourceGeneratedMonoScriptInfo (24ms)
 			ResolveRequiredComponents (13ms)
-	FinalizeReload (766ms)
+	FinalizeReload (797ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (585ms)
+		SetupLoadedEditorAssemblies (608ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (8ms)
 			SetLoadedEditorAssemblies (3ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (75ms)
-			ProcessInitializeOnLoadAttributes (417ms)
-			ProcessInitializeOnLoadMethodAttributes (71ms)
+			BeforeProcessingInitializeOnLoad (78ms)
+			ProcessInitializeOnLoadAttributes (431ms)
+			ProcessInitializeOnLoadMethodAttributes (77ms)
 			AfterProcessingInitializeOnLoad (11ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (7ms)
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
-Refreshing native plugins compatible for Editor in 1.66 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 3.22 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 5463 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 84 unused Assets / (423.3 KB). Loaded Objects now: 5929.
-Memory consumption went from 211.2 MB to 210.8 MB.
-Total: 3.171100 ms (FindLiveObjects: 0.278800 ms CreateObjectMapping: 0.175800 ms MarkObjects: 2.550200 ms  DeleteObjects: 0.165400 ms)
+Unloading 5510 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 84 unused Assets / (422.7 KB). Loaded Objects now: 5976.
+Memory consumption went from 216.4 MB to 216.0 MB.
+Total: 4.140200 ms (FindLiveObjects: 0.696500 ms CreateObjectMapping: 0.242700 ms MarkObjects: 2.980500 ms  DeleteObjects: 0.218700 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
@@ -179,50 +179,65 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 240961.105054 seconds.
-  path: Assets/New Terrain.asset
-  artifactKey: Guid(d64b1816d3e01854abcb0d33b08c5b63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/New Terrain.asset using Guid(d64b1816d3e01854abcb0d33b08c5b63) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Tree prefab at index 0 is missing.
-Tree prefab at index 1 is missing.
-Tree prefab at index 2 is missing.
-Tree prefab at index 3 is missing.
-Tree prefab at index 4 is missing.
-Tree prefab at index 5 is missing.
- -> (artifact id: '26413078449ba118858c7f656dbbfc1f') in 0.023530 seconds
+  Time since last request: 319304.055004 seconds.
+  path: Assets/New Terrain 2.asset
+  artifactKey: Guid(9d1dce60fc9bf2449ad773d54fba59b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/New Terrain 2.asset using Guid(9d1dce60fc9bf2449ad773d54fba59b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) The tree Pillar J couldn't be instanced because one of its LODs contains renderer of type other than MeshRenderer and BillboardRenderer.
+ -> (artifact id: '0c160bdc55c721c2635e060cedf35d91') in 0.024087 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 1
-========================================================================
-Received Import Request.
-  Time since last request: 13.860292 seconds.
-  path: Assets/Scenes/TestingGroundP.unity
-  artifactKey: Guid(8f282e0f15e89694d808de08ee0d95a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/TestingGroundP.unity using Guid(8f282e0f15e89694d808de08ee0d95a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '73e4e0047039bab9bc4e97b6c1d25f00') in 0.000480 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 11.543990 seconds.
-  path: Assets/Scenes/Map.unity
-  artifactKey: Guid(4c5530793a80d1b408cd477531e4eb43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Map.unity using Guid(4c5530793a80d1b408cd477531e4eb43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '60c0d07b3f45a74257954aa4efa19e2c') in 0.000500 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 26.556621 seconds.
-  path: Assets/Prefab/TestingCube.prefab
-  artifactKey: Guid(1cd27265762b33042b21d448127e01d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefab/TestingCube.prefab using Guid(1cd27265762b33042b21d448127e01d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '02a829e0a3d4f0da092a53af26799931') in 0.003166 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 7
+Number of asset objects unloaded after import = 182
 ========================================================================
 Received Prepare
-Refreshing native plugins compatible for Editor in 3.23 ms, found 3 plugins.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image E:\GitHub\TESIS\Tesis Enchanted Skylands\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image E:\GitHub\TESIS\Tesis Enchanted Skylands\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  0.783 seconds
+Refreshing native plugins compatible for Editor in 3.89 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.258 seconds
+Domain Reload Profiling: 2038ms
+	BeginReloadAssembly (151ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (5ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (34ms)
+	RebuildCommonClasses (35ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (36ms)
+	LoadAllAssembliesAndSetupDomain (545ms)
+		LoadAssemblies (270ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (344ms)
+			TypeCache.Refresh (330ms)
+				TypeCache.ScanAssembly (317ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (15ms)
+	FinalizeReload (1259ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (603ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (8ms)
+			SetLoadedEditorAssemblies (4ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (88ms)
+			ProcessInitializeOnLoadAttributes (416ms)
+			ProcessInitializeOnLoadMethodAttributes (74ms)
+			AfterProcessingInitializeOnLoad (13ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (20ms)
+Refreshing native plugins compatible for Editor in 3.60 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 3 unused Assets / (364.1 KB). Loaded Objects now: 5931.
-Memory consumption went from 102.7 MB to 102.3 MB.
-Total: 3.688400 ms (FindLiveObjects: 0.667000 ms CreateObjectMapping: 0.197400 ms MarkObjects: 2.760500 ms  DeleteObjects: 0.062500 ms)
+Unloading 5343 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 41 unused Assets / (389.9 KB). Loaded Objects now: 5993.
+Memory consumption went from 186.9 MB to 186.5 MB.
+Total: 4.203500 ms (FindLiveObjects: 0.664300 ms CreateObjectMapping: 0.179200 ms MarkObjects: 3.247100 ms  DeleteObjects: 0.111500 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 AssetImportParameters requested are different than current active one (requested -> active):
@@ -239,82 +254,58 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 29.848713 seconds.
+  Time since last request: 355.897487 seconds.
   path: Assets/Prefab/Pillars/complete/Pillar A.prefab
-  artifactKey: Guid(005314eddb69b7d4a95ab42c0343651c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefab/Pillars/complete/Pillar A.prefab using Guid(005314eddb69b7d4a95ab42c0343651c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cbba65bcb9e0a9f4cddb234d37274487') in 0.007067 seconds
+  artifactKey: Guid(688db03abb7fcd94cb92c57ecf12d7b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Pillars/complete/Pillar A.prefab using Guid(688db03abb7fcd94cb92c57ecf12d7b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '17d372f006cf4b4dc462a6e403ec843c') in 0.016447 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 14
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Prefab/Pillars/complete/Pillar H.prefab
+  artifactKey: Guid(d373c2d23eaa0e642aee3b9ab6669ece) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Pillars/complete/Pillar H.prefab using Guid(d373c2d23eaa0e642aee3b9ab6669ece) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '313235c0b42c969863b972a3739fad1b') in 0.001443 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 14
 ========================================================================
 Received Import Request.
   Time since last request: 0.000017 seconds.
-  path: Assets/Prefab/Pillars/complete/Pillar G.prefab
-  artifactKey: Guid(03ff3c28a86174a4ea999410c29a53e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefab/Pillars/complete/Pillar G.prefab using Guid(03ff3c28a86174a4ea999410c29a53e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7817318e89360d0ca22cb6544ae57da9') in 0.001469 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 14
-========================================================================
-Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/Prefab/Pillars/complete/Pillar J.prefab
-  artifactKey: Guid(61a825eb8db0d814b95e3feb6931d6bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefab/Pillars/complete/Pillar J.prefab using Guid(61a825eb8db0d814b95e3feb6931d6bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ee4002e29cba2cf2e27a51aa39ec6d2') in 0.001507 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 14
-========================================================================
-Received Import Request.
-  Time since last request: 0.000014 seconds.
-  path: Assets/Prefab/Pillars/complete/Pillar P.prefab
-  artifactKey: Guid(5254334f44359a942ad4a4250abd1c6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefab/Pillars/complete/Pillar P.prefab using Guid(5254334f44359a942ad4a4250abd1c6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '76187330931b99436ce48b76e052aa83') in 0.001596 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 14
-========================================================================
-Received Import Request.
-  Time since last request: 0.000016 seconds.
   path: Assets/Prefab/Pillars/complete/Pillar D.prefab
-  artifactKey: Guid(e6b628ab75e4c8944862a872e916f4d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefab/Pillars/complete/Pillar D.prefab using Guid(e6b628ab75e4c8944862a872e916f4d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8befd407150e0e76b32c60bf63726603') in 0.001559 seconds
+  artifactKey: Guid(597a38698586fe746a48f54d3c3a8556) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Pillars/complete/Pillar D.prefab using Guid(597a38698586fe746a48f54d3c3a8556) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '60ebb6e6d9182c26ebfc484717ff4ca8') in 0.001603 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 14
 ========================================================================
 Received Import Request.
   Time since last request: 0.000015 seconds.
-  path: Assets/Prefab/Pillars/complete/Pillar T.prefab
-  artifactKey: Guid(d3fa36b9a85fb9c47b5e535f22a4d1f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefab/Pillars/complete/Pillar T.prefab using Guid(d3fa36b9a85fb9c47b5e535f22a4d1f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b22534d085331b6ad8e6c36eb740e38') in 0.001496 seconds
+  path: Assets/Prefab/Pillars/complete/Pillar L.prefab
+  artifactKey: Guid(34fcccaa8e019c94586319578f2b73ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Pillars/complete/Pillar L.prefab using Guid(34fcccaa8e019c94586319578f2b73ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '97fee31cf13eec89b4496bfb58dd0869') in 0.001516 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 14
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000016 seconds.
-  path: Assets/Prefab/Pillars/complete/Pillar E.prefab
-  artifactKey: Guid(c9303caddc9d6954b8caa4de743720ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefab/Pillars/complete/Pillar E.prefab using Guid(c9303caddc9d6954b8caa4de743720ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2653e14c5dd91e785eb24c93f9a350ca') in 0.001393 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 14
-========================================================================
-Received Import Request.
-  Time since last request: 0.000015 seconds.
-  path: Assets/Prefab/Pillars/complete/Pillar O.prefab
-  artifactKey: Guid(9f7ed49423f985a4ab944b653152955a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefab/Pillars/complete/Pillar O.prefab using Guid(9f7ed49423f985a4ab944b653152955a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54bcd361603c18cad37ae881b03b2227') in 0.001436 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 14
-========================================================================
-Received Import Request.
-  Time since last request: 0.000016 seconds.
-  path: Assets/Prefab/Pillars/complete/Pillar N.prefab
-  artifactKey: Guid(6766e35f7404e9747acc0e5329604c62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefab/Pillars/complete/Pillar N.prefab using Guid(6766e35f7404e9747acc0e5329604c62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78af64c8a4467c2757595353fb8b72d5') in 0.001474 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 14
-========================================================================
-Received Import Request.
-  Time since last request: 0.000014 seconds.
+  Time since last request: 0.000017 seconds.
   path: Assets/Prefab/Pillars/complete/Pillar I.prefab
-  artifactKey: Guid(16ff7b28e30e2174c91600ad897ef92c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefab/Pillars/complete/Pillar I.prefab using Guid(16ff7b28e30e2174c91600ad897ef92c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f9f4fdade6d2413c04e145ca37aa0593') in 0.001545 seconds
+  artifactKey: Guid(5238d4f1224697d4ba0322b92a077ebf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Pillars/complete/Pillar I.prefab using Guid(5238d4f1224697d4ba0322b92a077ebf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ac9a50778e689a1332538820c53bb16') in 0.001551 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 14
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Prefab/Pillars/complete/Pillar N.prefab
+  artifactKey: Guid(90d73cbafb6c1fb44b7f423a04278ba2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Pillars/complete/Pillar N.prefab using Guid(90d73cbafb6c1fb44b7f423a04278ba2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d108de53331c3daa932a055dca2636f') in 0.001565 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 14
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Prefab/Pillars/complete/Pillar E.prefab
+  artifactKey: Guid(2ae3f9e163867344288f790766940935) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Pillars/complete/Pillar E.prefab using Guid(2ae3f9e163867344288f790766940935) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7fcedc0224770aff5b5826ac570f8b09') in 0.001613 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 14
 Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
