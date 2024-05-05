@@ -14,8 +14,14 @@ public class Tornado : MonoBehaviour
     [Header("Intance")]
     [SerializeField] GameObject _instance;
 
+    private void Start()
+    {
+        StartCoroutine(ThrowDebri(Random.Range(_minInterval, _maxInterval)));
+    }
+
     IEnumerator ThrowDebri(float time)
     {
+
         yield return new WaitForSeconds(time);
     }
 }
