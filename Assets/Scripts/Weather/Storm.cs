@@ -11,8 +11,10 @@ public class Storm : WeatherZone
     [SerializeField] float _maxY;
 
     [Header("Intervals")]
-    [SerializeField] float _minInterval, _maxInterval;
-    [Header("Intance")]
+    [SerializeField] float _minInterval;
+    [SerializeField] float _maxInterval;
+
+    [Header("Instance")]
     [SerializeField] GameObject _instance;
     private bool _isBusy = false;
 

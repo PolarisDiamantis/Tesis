@@ -17,7 +17,13 @@ public class Lightning : MonoBehaviour
     private void Activate()
     {
         Debug.Log("Activated");
-        //_mat.color = Color.red;
+        _isActive = true;
         Destroy(gameObject, 0.5f);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<PlayerModel>() == null || !_isActive) return;
+        // Reducir velocidad?
     }
 }

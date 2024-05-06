@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class Debri : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    Rigidbody _rb;
+    [SerializeField] float _force = 500f;
+    private void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _rb = GetComponent<Rigidbody>();
+        _rb.AddForce(_force * transform.forward, ForceMode.VelocityChange);
+        Destroy(gameObject, 5f);
     }
 }

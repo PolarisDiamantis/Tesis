@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
     {
         if (direction.x == 0 && direction.y == 0)
         {
-            Debug.Log("B");
+            //Debug.Log("B");
             _horizontalInput = Mathf.Lerp(_horizontalInput, 0, _controlSnap * Time.deltaTime * 0.5f);
             _verticalInput = Mathf.Lerp(_verticalInput, 0, _controlSnap * Time.deltaTime * 0.5f);
         }
@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
                 _canBoost = true;
             }
         }
-        Debug.Log(_mana);
+        //Debug.Log(_mana);
     }
 
     private void FixedUpdate()
