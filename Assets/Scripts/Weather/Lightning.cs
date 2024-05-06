@@ -24,6 +24,6 @@ public class Lightning : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<PlayerModel>() == null || !_isActive) return;
-        // Reducir velocidad?
+        GameManager.Instance.ReturnToLastCheckPoint();
     }
 }

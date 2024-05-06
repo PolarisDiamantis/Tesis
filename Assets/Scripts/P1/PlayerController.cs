@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 [RequireComponent(typeof(PlayerModel))]
 public class PlayerController : MonoBehaviour
@@ -38,20 +39,31 @@ public class PlayerController : MonoBehaviour
 
     Vector2 direction;
 
+    public TextMeshProUGUI manaUI;
+
+    [Header("Particles")]
+    public ParticleSystem normalSpeed, boostSpeed;
+
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         _agent = GetComponent<PlayerModel>();
+        //normalSpeed.Stop();
+        //boostSpeed.Stop();
+        //normalSpeed.Clear();
+        //boostSpeed.Clear();
     }
 
     private void Update()
     {
+        manaUI.text ="Mana: " + _mana;
         if (direction.x == 0 && direction.y == 0)
         {
             //Debug.Log("B");
-            _horizontalInput = Mathf.Lerp(_horizontalInput, 0, _controlSnap * Time.deltaTime * 0.5f);
-            _verticalInput = Mathf.Lerp(_verticalInput, 0, _controlSnap * Time.deltaTime * 0.5f);
+            _horizontalInput = Mathf.Lerp(_horizontalInput, 0, _controlSnap * Time.deltaTime * 0.7f);
+            _verticalInput = Mathf.Lerp(_verticalInput, 0, _controlSnap * Time.deltaTime * 0.7f);
         }
         HandleThrottleInputs();
         if (_isBoost && _canBoost) _mana -= Time.deltaTime * 10;
@@ -91,8 +103,6 @@ public class PlayerController : MonoBehaviour
         // Yaw Pitch
         _yaw += _horizontalInput * responsiveness * _responseModifier * Time.fixedDeltaTime;
         _pitch += _verticalInput * responsiveness * _responseModifier * Time.fixedDeltaTime;
-        //_yaw = Mathf.Lerp(_yaw, 0, 0.02f);
-        //_pitch = Mathf.Lerp(_pitch, 0,0.02f);
         // Roll
         _roll -= _horizontalInput * 50 * Time.fixedDeltaTime;
         _roll -= _driftInput * 50 * Time.fixedDeltaTime;
@@ -143,9 +153,11 @@ public class PlayerController : MonoBehaviour
         if (context.performed)
         {
             _throttleUp = true;
+            //normalSpeed.Play();
         }else if (context.canceled)
         {
             _throttleUp = false;
+            //normalSpeed.Stop();
         }
     }
 
@@ -170,10 +182,12 @@ public class PlayerController : MonoBehaviour
         if (context.performed)
         {
             _isBoost = true;
+            //boostSpeed.Play();
         }
         else if (context.canceled)
         {
             _isBoost = false;
+            //boostSpeed.Stop();
         }
     }
 
@@ -200,11 +214,15 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-    #region Unused Methods
-    public void OnRoll(InputAction.CallbackContext context)
+    public void TakeSpeedReduction(float speed)
     {
-        //_roll = context.ReadValue<float>();
-
+        _throttle -= speed;
     }
-    #endregion
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<Catapult>() == null) return;
+        if (!_isBoost) return;
+        other.GetComponent<Catapult>().Die();
+    }
 }

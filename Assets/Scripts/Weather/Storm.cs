@@ -48,4 +48,14 @@ public class Storm : WeatherZone
         Instantiate(_instance, GetRNGPosition(), transform.rotation);
         _isBusy = false;
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, 15f);
+        Gizmos.DrawRay(transform.position, transform.right * _maxX);
+        Gizmos.DrawRay(transform.position, transform.right * _minX);
+        Gizmos.DrawRay(transform.position, transform.forward * _maxY);
+        Gizmos.DrawRay(transform.position, transform.forward * _minY);
+    }
 }

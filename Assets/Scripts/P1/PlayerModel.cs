@@ -15,6 +15,11 @@ public class PlayerModel : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
     }
 
+    private void Start()
+    {
+        GameManager.Instance.player = this;
+    }
+
     private void FixedUpdate()
     {
         //Debug.Log(_rb.velocity.magnitude);

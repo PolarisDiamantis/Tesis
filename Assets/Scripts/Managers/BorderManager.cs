@@ -46,6 +46,6 @@ public class BorderManager : MonoBehaviour
     {
         _isCounting = true;
         yield return new WaitForSeconds(t);
-        Debug.Log("GameOver");
+        GameManager.Instance.ReturnToLastCheckPoint();
     }
 }
