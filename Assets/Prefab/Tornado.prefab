@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5838527363260129418}
   - component: {fileID: 8711464633238862098}
   - component: {fileID: 6185256978960432167}
-  - component: {fileID: 8324627927783993045}
+  - component: {fileID: 5884505115999759033}
   - component: {fileID: 934289821030203114}
   m_Layer: 0
   m_Name: Tornado
@@ -32,7 +32,8 @@ Transform:
   m_LocalPosition: {x: 101.2, y: 90, z: 123}
   m_LocalScale: {x: 60, y: 150, z: 60}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8069175313422069044}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8711464633238862098
@@ -50,7 +51,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5523923512619367627}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -85,7 +86,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8324627927783993045
+--- !u!65 &5884505115999759033
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -104,7 +105,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 0.99999994, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &934289821030203114
 MonoBehaviour:
@@ -129,3 +130,92 @@ MonoBehaviour:
   strenght: 18000
   _path: []
   speed: 90
+--- !u!1001 &2886997096329040047
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5838527363260129418}
+    m_Modifications:
+    - target: {fileID: 5182469587674430875, guid: 7051f2291b2063c488349a7652bd8b60,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.57574
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182469587674430875, guid: 7051f2291b2063c488349a7652bd8b60,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2573202
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182469587674430875, guid: 7051f2291b2063c488349a7652bd8b60,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.57574
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182469587674430875, guid: 7051f2291b2063c488349a7652bd8b60,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182469587674430875, guid: 7051f2291b2063c488349a7652bd8b60,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.472
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182469587674430875, guid: 7051f2291b2063c488349a7652bd8b60,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182469587674430875, guid: 7051f2291b2063c488349a7652bd8b60,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182469587674430875, guid: 7051f2291b2063c488349a7652bd8b60,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182469587674430875, guid: 7051f2291b2063c488349a7652bd8b60,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182469587674430875, guid: 7051f2291b2063c488349a7652bd8b60,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182469587674430875, guid: 7051f2291b2063c488349a7652bd8b60,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182469587674430875, guid: 7051f2291b2063c488349a7652bd8b60,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182469587674430875, guid: 7051f2291b2063c488349a7652bd8b60,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6348456095531307711, guid: 7051f2291b2063c488349a7652bd8b60,
+        type: 3}
+      propertyPath: m_Name
+      value: Tornado 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7051f2291b2063c488349a7652bd8b60, type: 3}
+--- !u!4 &8069175313422069044 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5182469587674430875, guid: 7051f2291b2063c488349a7652bd8b60,
+    type: 3}
+  m_PrefabInstance: {fileID: 2886997096329040047}
+  m_PrefabAsset: {fileID: 0}
