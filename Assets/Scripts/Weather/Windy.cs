@@ -5,7 +5,10 @@ using UnityEngine;
 public class Windy : WeatherZone
 {
     private Vector3 _windDirection;
-    public float strenght = 1500f;
+    public float minstrenght = 1500f;
+    public float maxstrenght = 1500f;
+
+    private float actualsTrenght;
 
     [Header("Intervals")]
     [SerializeField] float _minInterval = 1f;
@@ -27,7 +30,7 @@ public class Windy : WeatherZone
     {
         foreach (PlayerModel item in _collisions)
         {
-            item.AddForce(_windDirection.normalized * strenght);
+            item.AddForce(_windDirection.normalized * actualsTrenght);
         }
     }
 
@@ -51,7 +54,8 @@ public class Windy : WeatherZone
     {
         _isBusy = true;
         yield return new WaitForSeconds(time);
-        float x = Random.Range(-175, 175);
+        actualsTrenght = Random.Range(minstrenght, maxstrenght);
+        float x = Random.Range(-125, 125);
         float y = Random.Range(0, 360);
         _windDirection = Quaternion.Euler(x, y, 0) * Vector3.forward;
         _isBusy = false;
