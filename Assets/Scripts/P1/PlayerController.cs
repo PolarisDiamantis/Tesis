@@ -50,10 +50,10 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         _agent = GetComponent<PlayerModel>();
-        //normalSpeed.Stop();
-        //boostSpeed.Stop();
-        //normalSpeed.Clear();
-        //boostSpeed.Clear();
+        normalSpeed.Stop();
+        boostSpeed.Stop();
+        normalSpeed.Clear();
+        boostSpeed.Clear();
     }
 
     private void Update()
@@ -153,11 +153,11 @@ public class PlayerController : MonoBehaviour
         if (context.performed)
         {
             _throttleUp = true;
-            //normalSpeed.Play();
+            normalSpeed.Play();
         }else if (context.canceled)
         {
             _throttleUp = false;
-            //normalSpeed.Stop();
+            normalSpeed.Stop();
         }
     }
 
@@ -182,12 +182,12 @@ public class PlayerController : MonoBehaviour
         if (context.performed)
         {
             _isBoost = true;
-            //boostSpeed.Play();
+            boostSpeed.Play();
         }
         else if (context.canceled)
         {
             _isBoost = false;
-            //boostSpeed.Stop();
+            boostSpeed.Stop();
         }
     }
 
