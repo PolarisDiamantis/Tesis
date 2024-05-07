@@ -12,10 +12,6 @@ public class Timer : MonoBehaviour
     [SerializeField] string _currentLevelKey = "lvl1BestTime";
     bool _isActive = false;
 
-    private void Start()
-    {
-        PlayerPrefs.DeleteAll();
-    }
     private void Update()
     {
         if (!_isActive) return;
