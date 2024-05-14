@@ -12700,6 +12700,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3399382364173413947, guid: 6227959bbce8c014586a9e641911101a,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399382364173413947, guid: 6227959bbce8c014586a9e641911101a,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4597374451278870202, guid: 6227959bbce8c014586a9e641911101a,
         type: 3}
       propertyPath: m_Name
@@ -12713,7 +12723,12 @@ PrefabInstance:
     - target: {fileID: 4761548030024115317, guid: 6227959bbce8c014586a9e641911101a,
         type: 3}
       propertyPath: maxThrust
-      value: 300
+      value: 450
+      objectReference: {fileID: 0}
+    - target: {fileID: 4761548030024115317, guid: 6227959bbce8c014586a9e641911101a,
+        type: 3}
+      propertyPath: throttleIncrement
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -30634,7 +30649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 813861137}
-  smoothSpeed: 80
+  smoothSpeed: 49
   locationOffset: {x: 0, y: 3, z: -5}
   rotationOffset: {x: 15, y: 0, z: 0}
 --- !u!4 &1929878547 stripped

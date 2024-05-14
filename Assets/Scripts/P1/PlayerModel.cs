@@ -8,11 +8,11 @@ public class PlayerModel : MonoBehaviour
     [SerializeField] private float _collisionSphere;
     [SerializeField] private LayerMask _collisionMask;
     [SerializeField] private float _impulseStreght = 10f;
-    public Rigidbody _rb { get; private set;}
+    public Rigidbody rb { get; private set;}
 
     private void Awake()
     {
-        _rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Start()
@@ -29,7 +29,7 @@ public class PlayerModel : MonoBehaviour
         {
             Debug.Log("HIT");
             Vector3 imp = transform.position - hit.point;
-            _rb.velocity = Vector3.zero;
+            rb.velocity = Vector3.zero;
             AddImpulse(imp.normalized * _impulseStreght);
         }
     }
@@ -37,17 +37,17 @@ public class PlayerModel : MonoBehaviour
     #region Physics Methods
     public void AddForce(Vector3 dir)
     {
-        _rb.AddForce(dir);
+        rb.AddForce(dir);
     }
 
     public void AddTorque(Vector3 dir)
     {
-        _rb.AddTorque(dir);
+        rb.AddTorque(dir);
     }
 
     public void AddImpulse(Vector3 dir)
     {
-        _rb.AddForce(dir, ForceMode.VelocityChange);
+        rb.AddForce(dir, ForceMode.VelocityChange);
     }
     #endregion
 
