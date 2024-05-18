@@ -412,7 +412,7 @@ Shader "S_Clouds"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = ( objToWorld29 + ( ( simplePerlin2D10 * v.ase_normal ) * _CloudIntensity ) );
+				float3 vertexValue = ( objToWorld29.y + ( ( simplePerlin2D10 * v.ase_normal ) * _CloudIntensity ) );
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					v.vertex.xyz = vertexValue;
@@ -1062,7 +1062,7 @@ Shader "S_Clouds"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = ( objToWorld29 + ( ( simplePerlin2D10 * v.ase_normal ) * _CloudIntensity ) );
+				float3 vertexValue = ( objToWorld29.y + ( ( simplePerlin2D10 * v.ase_normal ) * _CloudIntensity ) );
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					v.vertex.xyz = vertexValue;
 				#else
@@ -1445,7 +1445,7 @@ Shader "S_Clouds"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = ( objToWorld29 + ( ( simplePerlin2D10 * v.ase_normal ) * _CloudIntensity ) );
+				float3 vertexValue = ( objToWorld29.y + ( ( simplePerlin2D10 * v.ase_normal ) * _CloudIntensity ) );
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					v.vertex.xyz = vertexValue;
@@ -1816,7 +1816,7 @@ Shader "S_Clouds"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = ( objToWorld29 + ( ( simplePerlin2D10 * v.ase_normal ) * _CloudIntensity ) );
+				float3 vertexValue = ( objToWorld29.y + ( ( simplePerlin2D10 * v.ase_normal ) * _CloudIntensity ) );
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					v.vertex.xyz = vertexValue;
@@ -2194,7 +2194,7 @@ Shader "S_Clouds"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = ( objToWorld29 + ( ( simplePerlin2D10 * v.ase_normal ) * _CloudIntensity ) );
+				float3 vertexValue = ( objToWorld29.y + ( ( simplePerlin2D10 * v.ase_normal ) * _CloudIntensity ) );
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					v.vertex.xyz = vertexValue;
@@ -2551,7 +2551,7 @@ Shader "S_Clouds"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = ( objToWorld29 + ( ( simplePerlin2D10 * v.ase_normal ) * _CloudIntensity ) );
+				float3 vertexValue = ( objToWorld29.y + ( ( simplePerlin2D10 * v.ase_normal ) * _CloudIntensity ) );
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					v.vertex.xyz = vertexValue;
@@ -2983,7 +2983,7 @@ Shader "S_Clouds"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = ( objToWorld29 + ( ( simplePerlin2D10 * v.ase_normal ) * _CloudIntensity ) );
+				float3 vertexValue = ( objToWorld29.y + ( ( simplePerlin2D10 * v.ase_normal ) * _CloudIntensity ) );
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					v.vertex.xyz = vertexValue;
@@ -3499,7 +3499,7 @@ Shader "S_Clouds"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = ( objToWorld29 + ( ( simplePerlin2D10 * v.ase_normal ) * _CloudIntensity ) );
+				float3 vertexValue = ( objToWorld29.y + ( ( simplePerlin2D10 * v.ase_normal ) * _CloudIntensity ) );
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					v.vertex.xyz = vertexValue;
@@ -3824,7 +3824,7 @@ Shader "S_Clouds"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = ( objToWorld29 + ( ( simplePerlin2D10 * v.ase_normal ) * _CloudIntensity ) );
+				float3 vertexValue = ( objToWorld29.y + ( ( simplePerlin2D10 * v.ase_normal ) * _CloudIntensity ) );
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					v.vertex.xyz = vertexValue;
@@ -3979,7 +3979,7 @@ Node;AmplifyShaderEditor.RangedFloatNode;23;-1797.363,-207.1544;Inherit;False;Pr
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;32;81.76321,913.1122;Inherit;True;2;2;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;34;380.2662,996.8648;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;1;FLOAT3;0
 Node;AmplifyShaderEditor.TransformPositionNode;29;207.3442,743.4148;Inherit;False;Object;World;False;Fast;True;1;0;FLOAT3;0,0,0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
-Node;AmplifyShaderEditor.SimpleAddOpNode;33;479.4555,773.1804;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0
+Node;AmplifyShaderEditor.SimpleAddOpNode;33;479.4555,773.1804;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0
 Node;AmplifyShaderEditor.NormalVertexDataNode;30;-236.4356,897.5311;Inherit;True;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.RangedFloatNode;35;141.0992,1146.093;Inherit;True;Property;_CloudIntensity;Cloud Intensity;3;0;Create;True;0;0;0;False;0;False;80;80;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;21;-574.4872,254.9988;Inherit;False;Property;_NoiseScale;Noise Scale;1;0;Create;True;0;0;0;False;0;False;0;0.007;0;0;0;1;FLOAT;0
@@ -4018,7 +4018,7 @@ WireConnection;32;0;10;0
 WireConnection;32;1;30;0
 WireConnection;34;0;32;0
 WireConnection;34;1;35;0
-WireConnection;33;0;29;0
+WireConnection;33;0;29;2
 WireConnection;33;1;34;0
 WireConnection;47;0;45;0
 WireConnection;47;1;43;0
@@ -4034,4 +4034,4 @@ WireConnection;88;0;47;0
 WireConnection;88;6;100;0
 WireConnection;88;8;33;0
 ASEEND*/
-//CHKSM=C2BB4E735AAAD14C22CB3C0243151DAB567BA0CF
+//CHKSM=FD57DDBFFB8ABC36A5353F06BE5300817FB7D5C7
