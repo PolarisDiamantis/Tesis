@@ -6,19 +6,23 @@ public class Lightning : MonoBehaviour
 {
     private bool _isActive = false;
     [SerializeField] float _time = 2f;
+    [SerializeField] float _destroyTime = 0.5f;
     Material _mat;
+    [SerializeField] ParticleSystem _particles;
+    MeshRenderer _mesh;
+
     private void Start()
     {
-        if (GetComponent<Material>() != null) _mat = GetComponent<Material>();
-        //_mat.color = Color.white;
+        if (GetComponent<MeshRenderer>() != null) _mesh = GetComponent<MeshRenderer>();
         Invoke("Activate", _time);
     }
 
     private void Activate()
     {
-        Debug.Log("Activated");
+        _mesh.enabled = false;
+        _particles.Play();
         _isActive = true;
-        Destroy(gameObject, 0.5f);
+        Destroy(gameObject, _destroyTime);
     }
 
     private void OnTriggerEnter(Collider other)
