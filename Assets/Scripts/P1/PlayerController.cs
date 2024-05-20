@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using System;
 
 [RequireComponent(typeof(PlayerModel))]
 public class PlayerController : MonoBehaviour
@@ -41,19 +42,12 @@ public class PlayerController : MonoBehaviour
 
     public TextMeshProUGUI manaUI;
 
-    [Header("Particles")]
-    public ParticleSystem normalSpeed, boostSpeed;
-
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         _agent = GetComponent<PlayerModel>();
-        normalSpeed.Stop();
-        boostSpeed.Stop();
-        normalSpeed.Clear();
-        boostSpeed.Clear();
     }
 
     private void Update()
@@ -83,7 +77,6 @@ public class PlayerController : MonoBehaviour
                 _canBoost = true;
             }
         }
-        //Debug.Log(_mana);
     }
 
     private void FixedUpdate()
@@ -100,9 +93,11 @@ public class PlayerController : MonoBehaviour
             _agent.AddForce(transform.forward * maxThrust * _throttle);
 
         }
+
         // Yaw Pitch
         _yaw += _horizontalInput * responsiveness * _responseModifier * Time.fixedDeltaTime;
         _pitch += _verticalInput * responsiveness * _responseModifier * Time.fixedDeltaTime;
+
         // Roll
         _roll -= _horizontalInput * 50 * Time.fixedDeltaTime;
         _roll -= _driftInput * 50 * Time.fixedDeltaTime;
@@ -120,7 +115,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_lockInputs) return;
         if (_throttleUp) _throttle += throttleIncrement;
-        if (!_throttleUp && /*_throttle > 50f &&*/ !_throttleDown) _throttle -= throttleIncrement;
+        if (!_throttleUp && !_throttleDown) _throttle -= throttleIncrement;
         if (_throttleDown) _throttle -= throttleIncrement * 2;
         _throttle = Mathf.Clamp(_throttle, 0f, 100f);
     }
@@ -153,11 +148,11 @@ public class PlayerController : MonoBehaviour
         if (context.performed)
         {
             _throttleUp = true;
-            normalSpeed.Play();
+            _agent.OnThrottle();
         }else if (context.canceled)
         {
             _throttleUp = false;
-            normalSpeed.Stop();
+            _agent.OnThrottle();
         }
     }
 
@@ -182,12 +177,12 @@ public class PlayerController : MonoBehaviour
         if (context.performed)
         {
             _isBoost = true;
-            boostSpeed.Play();
+            _agent.OnBoost();
         }
         else if (context.canceled)
         {
             _isBoost = false;
-            boostSpeed.Stop();
+            _agent.OnBoost();
         }
     }
 

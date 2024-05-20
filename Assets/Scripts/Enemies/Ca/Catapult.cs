@@ -7,15 +7,22 @@ public class Catapult : MonoBehaviour
     [SerializeField] int stonesPerThrow = 15;
     [Header("Instance")]
     [SerializeField] GameObject _instance;
-    private bool _isBusy = false;
     [SerializeField] float _interval = 5f;
     [SerializeField] Transform _throwPoint;
-    private bool _isOnRange = false;
     [SerializeField] private float _range = 20f;
+
+    private GameManager _gm;
+    private bool _isBusy = false;
+    private bool _isOnRange = false;
+    private void Start()
+    {
+        if (GameManager.Instance == null) return;
+        _gm = GameManager.Instance;
+    }
 
     private void Update()
     {
-        if(Vector3.Distance(transform.position , GameManager.Instance.player.transform.position) < _range)
+        if(Vector3.Distance(transform.position , _gm.player.transform.position) < _range)
         {
             _isOnRange = true;
         }

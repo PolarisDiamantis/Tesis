@@ -1,18 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using Cinemachine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerModel : MonoBehaviour
 {
+    [Header("Impulse Settings")]
     [SerializeField] private float _collisionSphere;
     [SerializeField] private LayerMask _collisionMask;
     [SerializeField] private float _impulseStreght = 10f;
+
     public Rigidbody rb { get; private set;}
+
+    public Action OnThrottle = delegate { };
+    public Action OnBoost = delegate { };
+
+    private PlayerView _view;
+
+    [Header("Particles")]
+    public ParticleSystem normalSpeed;
+    public ParticleSystem boostSpeed;
+    public CinemachineVirtualCamera cam;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        _view = new PlayerView(this);
     }
 
     private void Start()
@@ -33,7 +48,12 @@ public class PlayerModel : MonoBehaviour
             AddImpulse(imp.normalized * _impulseStreght);
         }
     }
-    
+
+    private void Update()
+    {
+        _view.VirtualUpdate();
+    }
+
     #region Physics Methods
     public void AddForce(Vector3 dir)
     {

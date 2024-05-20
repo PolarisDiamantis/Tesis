@@ -6334,6 +6334,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 581074123}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &397656476 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8866758554457993618, guid: 6227959bbce8c014586a9e641911101a,
+    type: 3}
+  m_PrefabInstance: {fileID: 813861135}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &401212829
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12723,13 +12729,23 @@ PrefabInstance:
     - target: {fileID: 4761548030024115317, guid: 6227959bbce8c014586a9e641911101a,
         type: 3}
       propertyPath: maxThrust
-      value: 800
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 4761548030024115317, guid: 6227959bbce8c014586a9e641911101a,
         type: 3}
       propertyPath: throttleIncrement
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 6761802725117173813, guid: 6227959bbce8c014586a9e641911101a,
+        type: 3}
+      propertyPath: boostSpeed
+      value: 
+      objectReference: {fileID: 1894680602}
+    - target: {fileID: 6761802725117173813, guid: 6227959bbce8c014586a9e641911101a,
+        type: 3}
+      propertyPath: normalSpeed
+      value: 
+      objectReference: {fileID: 397656476}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18813,7 +18829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd6043bde05a7fc4cba197d06915c1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damping: {x: 0.1, y: 0.03, z: 0.1}
+  Damping: {x: 0.075, y: 0.03, z: 0.075}
   ShoulderOffset: {x: 0, y: 1, z: 0}
   VerticalArmLength: 0.4
   CameraSide: 0.5
@@ -30056,6 +30072,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!198 &1894680602 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3844584954382238023, guid: 6227959bbce8c014586a9e641911101a,
+    type: 3}
+  m_PrefabInstance: {fileID: 813861135}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1896473257 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4458202823115147733, guid: c4b9e1793aab55c4c82385bb5f6caf6e,

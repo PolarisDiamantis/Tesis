@@ -12,6 +12,7 @@ public class Border : MonoBehaviour
         BorderManager.Instance.borderList.Add(this);
     }
 
+    #region Collision Logic Methods
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<PlayerModel>() != null)
@@ -31,4 +32,5 @@ public class Border : MonoBehaviour
             BorderManager.Instance.StatusCheck();
         }
     }
+    #endregion
 }
