@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
         // Throttle
         if (_isBoost)
         {
-            _agent.AddForce(transform.forward * maxThrust * 1.4f * _throttle);
+            _agent.AddForce(transform.forward * maxThrust * 1.2f * _throttle);
         }
         else
         {
