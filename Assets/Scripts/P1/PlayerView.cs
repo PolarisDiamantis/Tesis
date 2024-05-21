@@ -5,20 +5,19 @@ using Cinemachine;
 
 public class PlayerView
 {
-    private ParticleSystem _normalSpeed, _boostSpeed;
+    private ParticleSystem _normalSpeed, _boostSpeed, _boostForceField;
     bool _isOnThrottleActive = false;
     bool _isOnBoostActive = false;
 
     // Camera
-    CinemachineVirtualCamera _cam;
-    float _minFOV;
-    float _maxFOV;
+    Animator _camAnim;
 
     public PlayerView(PlayerModel c)
     {
-        _cam = c.cam;
+        _camAnim = c.camAnim;
         _normalSpeed = c.normalSpeed;
         _boostSpeed = c.boostSpeed;
+        _boostForceField = c.boostForceField;
 
         // Action Assignments
         c.OnThrottle += OnThrottle;
@@ -27,7 +26,7 @@ public class PlayerView
 
     public void VirtualUpdate()
     {
-        _cam.m_Lens.FieldOfView = 120f;
+
     }
 
     private void OnThrottle()
@@ -50,11 +49,15 @@ public class PlayerView
         {
             _isOnBoostActive = true;
             _boostSpeed.Play();
+            _boostForceField.Play();
+            _camAnim.Play("Boost");
         }
         else
         {
             _isOnBoostActive = false;
             _boostSpeed.Stop();
+            _boostForceField.Stop();
+            _camAnim.Play("Normal");
         }
     }
 }

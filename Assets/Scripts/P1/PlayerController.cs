@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 using System;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(PlayerModel))]
 public class PlayerController : MonoBehaviour
@@ -33,10 +34,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _controlSnap = 1;
 
     private bool _lockInputs = false;
-
+    [Header("Boost Settings")]
     private bool _isBoost = false;
     private bool _canBoost = true;
-    private float _mana = 100f;
+    [SerializeField] float _boostTime = 4f;
+    [SerializeField] float _boostCoolDown = 8f;
+    [SerializeField] float _boostCoolDownTimer = 0f;
+
+    [SerializeField] Image _boostBar;
 
     Vector2 direction;
 
@@ -52,7 +57,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        manaUI.text ="Mana: " + _mana;
+        if(!_canBoost)
+        {
+            _boostCoolDownTimer += Time.deltaTime;
+            _boostBar.fillAmount = _boostCoolDownTimer / (_boostCoolDown + _boostTime);
+        }
         if (direction.x == 0 && direction.y == 0)
         {
             //Debug.Log("B");
@@ -60,23 +69,6 @@ public class PlayerController : MonoBehaviour
             _verticalInput = Mathf.Lerp(_verticalInput, 0, _controlSnap * Time.deltaTime * 0.7f);
         }
         HandleThrottleInputs();
-        if (_isBoost && _canBoost) _mana -= Time.deltaTime * 10;
-        if (!_isBoost) _mana += Time.deltaTime * 10;
-        _mana = Mathf.Clamp(_mana, 0, 100f);
-        if (_canBoost)
-        {
-            if(_mana <= 0f)
-            {
-                _canBoost = false;
-            }
-        }
-        else
-        {
-            if(_mana >= 50f)
-            {
-                _canBoost = true;
-            }
-        }
     }
 
     private void FixedUpdate()
@@ -84,9 +76,9 @@ public class PlayerController : MonoBehaviour
         if (_lockInputs) return;
 
         // Throttle
-        if (_isBoost && _canBoost)
+        if (_isBoost)
         {
-            _agent.AddForce(transform.forward * maxThrust * 2 * _throttle);
+            _agent.AddForce(transform.forward * maxThrust * 1.4f * _throttle);
         }
         else
         {
@@ -174,16 +166,16 @@ public class PlayerController : MonoBehaviour
 
     public void OnBoost(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && _canBoost)
         {
-            _isBoost = true;
-            _agent.OnBoost();
+            StartCoroutine(BoostSequence(_boostTime, _boostCoolDown));
+            //_agent.OnBoost();
         }
-        else if (context.canceled)
+        /*else if (context.canceled)
         {
             _isBoost = false;
             _agent.OnBoost();
-        }
+        }*/
     }
 
     #region Debug Methods
@@ -212,6 +204,19 @@ public class PlayerController : MonoBehaviour
     public void TakeSpeedReduction(float speed)
     {
         _throttle -= speed;
+    }
+
+    IEnumerator BoostSequence(float d, float cd)
+    {
+        _boostCoolDownTimer = 0f;
+        _isBoost = true;
+        _canBoost = false;
+        _agent.OnBoost();
+        yield return new WaitForSeconds(d);
+        _isBoost = false;
+        _agent.OnBoost();
+        yield return new WaitForSeconds(cd);
+        _canBoost = true;
     }
 
     private void OnTriggerEnter(Collider other)

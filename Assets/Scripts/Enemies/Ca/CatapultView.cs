@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatapultView : MonoBehaviour
+public class CatapultView
 {
-    // Start is called before the first frame update
-    void Start()
+    Animator _anim;
+
+    public CatapultView(Catapult a)
     {
-        
+        _anim = a.anim;
+        a.OnFire += OnFire;
+        a.OnReload += OnReload;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnReload()
     {
-        
+        _anim.Play("Recarga");
+    }
+
+    private void OnFire()
+    {
+        _anim.Play("Disparo");
     }
 }

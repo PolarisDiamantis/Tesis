@@ -17,12 +17,12 @@ public class CanvasManager : MonoBehaviour
         if (PlayerPrefs.HasKey("lvl1BestTime"))
         {
             TimeSpan time = TimeSpan.Parse(PlayerPrefs.GetString("lvl1BestTime"));
-            lvl1R.text = time.TotalHours.ToString("00") + " : " + time.TotalMinutes.ToString("00") + " : " + time.TotalSeconds.ToString("00");
+            lvl1R.text = time.Hours.ToString("00") + " : " + time.Minutes.ToString("00") + " : " + time.Seconds.ToString("00");
         }
         if (PlayerPrefs.HasKey("lvl2BestTime"))
         {
             TimeSpan time = TimeSpan.Parse(PlayerPrefs.GetString("lvl2BestTime"));
-            lvl2R.text = time.TotalHours.ToString("00") + " : " + time.TotalMinutes.ToString("00") + " : " + time.TotalSeconds.ToString("00");
+            lvl2R.text = time.Hours.ToString("00") + " : " + time.Minutes.ToString("00") + " : " + time.Seconds.ToString("00");
         }
     }
 

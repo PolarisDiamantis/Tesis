@@ -18,6 +18,7 @@ public class Debri : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<PlayerController>() == null) return;
-        other.GetComponent<PlayerController>().TakeSpeedReduction(_speedReduction);
+        GameManager.Instance.ReturnToLastCheckPoint();
+        //other.GetComponent<PlayerController>().TakeSpeedReduction(_speedReduction);
     }
 }

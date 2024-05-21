@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Catapult : MonoBehaviour
 {
@@ -14,6 +15,19 @@ public class Catapult : MonoBehaviour
     private GameManager _gm;
     private bool _isBusy = false;
     private bool _isOnRange = false;
+
+    // Anim
+    private CatapultView _view;
+    public Animator anim;
+    public Action OnFire = delegate { };
+    public Action OnReload = delegate { };
+
+
+    private void Awake()
+    {
+        _view = new CatapultView(this);
+    }
+
     private void Start()
     {
         if (GameManager.Instance == null) return;
@@ -30,6 +44,11 @@ public class Catapult : MonoBehaviour
         {
             _isOnRange = false;
         }
+        if (_isOnRange)
+        {
+            transform.LookAt(GameManager.Instance.player.transform, Vector3.up);
+            transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+        }
         if (_isBusy || !_isOnRange) return;
         StartCoroutine(TriggerCatapult(_interval));
     }
@@ -43,15 +62,18 @@ public class Catapult : MonoBehaviour
     IEnumerator TriggerCatapult(float time)
     {
         _isBusy = true;
+        OnReload();
         yield return new WaitForSeconds(time);
         for(int i = 0; i < stonesPerThrow; i++)
         {
-            float x = Random.Range(-40, 40);
-            float y = Random.Range(-25, 25);
+            float x = UnityEngine.Random.Range(-40, 40);
+            float y = UnityEngine.Random.Range(-25, 25);
             _throwPoint.LookAt(GameManager.Instance.player.transform.position);
             Quaternion rot =_throwPoint.rotation * Quaternion.Euler(x, y, 0);
             Instantiate(_instance, _throwPoint.position, rot);
         }
+        OnFire();
+        yield return new WaitForSeconds(time / 2);
         _isBusy = false;
     }
 

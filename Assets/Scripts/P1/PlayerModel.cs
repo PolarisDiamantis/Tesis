@@ -22,7 +22,11 @@ public class PlayerModel : MonoBehaviour
     [Header("Particles")]
     public ParticleSystem normalSpeed;
     public ParticleSystem boostSpeed;
-    public CinemachineVirtualCamera cam;
+    public ParticleSystem boostForceField;
+    //public CinemachineVirtualCamera cam;
+
+    [Header("Animations")]
+    public Animator camAnim;
 
     private void Awake()
     {
