@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     private bool _canBoost = true;
     [SerializeField] float _boostTime = 4f;
     [SerializeField] float _boostCoolDown = 8f;
-    [SerializeField] float _boostCoolDownTimer = 0f;
+    float _boostCoolDownTimer = 0f;
 
     [SerializeField] Image _boostBar;
 

@@ -11,6 +11,9 @@ public class Catapult : MonoBehaviour
     [SerializeField] float _interval = 5f;
     [SerializeField] Transform _throwPoint;
     [SerializeField] private float _range = 20f;
+    [SerializeField] float _viewAngle;
+    [SerializeField] Transform _playerRot;
+    [SerializeField] float _rotationSpeed = 1.5f;
 
     private GameManager _gm;
     private bool _isBusy = false;
@@ -44,13 +47,23 @@ public class Catapult : MonoBehaviour
         {
             _isOnRange = false;
         }
+
         if (_isOnRange)
         {
-            transform.LookAt(GameManager.Instance.player.transform, Vector3.up);
-            transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+            //transform.LookAt(GameManager.Instance.player.transform, Vector3.up);
+            Quaternion goalRot = Quaternion.Euler(0, _playerRot.rotation.eulerAngles.y, 0);
+            transform.rotation = Quaternion.Lerp(transform.rotation, goalRot, Time.deltaTime * _rotationSpeed);
         }
-        if (_isBusy || !_isOnRange) return;
+        if (_isBusy || !_isOnRange || !InFieldOfView(GameManager.Instance.player.transform.position)) return;
         StartCoroutine(TriggerCatapult(_interval));
+    }
+
+    public bool InFieldOfView(Vector3 target)
+    {
+        Vector3 dist = new Vector3(target.x, transform.position.y, target.z) - transform.position;
+        //if (dist.magnitude > _viewRadius) return false;
+        //if (!InLineOfSight(target, dist, dist.magnitude)) return false;
+        return Vector3.Angle(transform.forward, dist) <= _viewAngle / 2;
     }
 
     public void Die()
@@ -81,5 +94,13 @@ public class Catapult : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, _range);
+        Gizmos.DrawLine(transform.position, transform.position + GetDirFromAngle(_viewAngle / 2).normalized * _range);
+        Gizmos.DrawLine(transform.position, transform.position + GetDirFromAngle(-_viewAngle / 2).normalized * _range);
+    }
+
+    public Vector3 GetDirFromAngle(float angleInDegrees)
+    {
+        angleInDegrees += transform.eulerAngles.y;
+        return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
     }
 }
