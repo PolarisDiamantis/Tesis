@@ -5,9 +5,10 @@ using Cinemachine;
 
 public class PlayerView
 {
-    private ParticleSystem _normalSpeed, _boostSpeed, _boostForceField;
+    private ParticleSystem _normalSpeed, _boostSpeed, _boostForceField, _shield;
     bool _isOnThrottleActive = false;
     bool _isOnBoostActive = false;
+    bool _isShieldActive = false;
 
     // Camera
     Animator _camAnim;
@@ -18,10 +19,12 @@ public class PlayerView
         _normalSpeed = c.normalSpeed;
         _boostSpeed = c.boostSpeed;
         _boostForceField = c.boostForceField;
+        _shield = c.shield;
 
         // Action Assignments
         c.OnThrottle += OnThrottle;
         c.OnBoost += OnBoost;
+        c.OnShield += OnShield;
     }
 
     public void VirtualUpdate()
@@ -58,6 +61,20 @@ public class PlayerView
             _boostSpeed.Stop();
             _boostForceField.Stop();
             _camAnim.Play("Normal");
+        }
+    }
+
+    private void OnShield()
+    {
+        if (!_isShieldActive)
+        {
+            _isShieldActive = true;
+            _shield.Play();
+        }
+        else
+        {
+            _isShieldActive = false;
+            _shield.Stop();
         }
     }
 }

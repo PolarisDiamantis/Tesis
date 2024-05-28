@@ -1191,7 +1191,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 13
+    type: 14
     angle: 25
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
@@ -1261,7 +1261,7 @@ ParticleSystem:
           m_RotationOrder: 4
     m_Mesh: {fileID: 0}
     m_MeshRenderer: {fileID: 0}
-    m_SkinnedMeshRenderer: {fileID: 0}
+    m_SkinnedMeshRenderer: {fileID: 8688981910115461287}
     m_Sprite: {fileID: 0}
     m_SpriteRenderer: {fileID: 0}
     m_UseMeshMaterialIndex: 0
@@ -5443,7 +5443,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &6761802725117173813
 MonoBehaviour:
@@ -5464,7 +5464,8 @@ MonoBehaviour:
   _impulseStreght: 50
   normalSpeed: {fileID: 8866758554457993618}
   boostSpeed: {fileID: 3844584954382238023}
-  boostForceField: {fileID: 3982388090518165735}
+  boostForceField: {fileID: 1175901408572152746}
+  shield: {fileID: 3982388090518165735}
   camAnim: {fileID: 0}
 --- !u!114 &4761548030024115317
 MonoBehaviour:
@@ -5625,6 +5626,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5c99bf1d-45ff-433f-b48f-385f41e7c9dc
     m_ActionName: Base/Boost[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4761548030024115317}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnShield
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 3356f79e-0639-4566-93d0-b7560919066e
+    m_ActionName: Base/Shield[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Base
@@ -10580,32 +10597,32 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 418cd5cbe84a5094cb9854fe32e9ecb1,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9983993
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 418cd5cbe84a5094cb9854fe32e9ecb1,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.022590853
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 418cd5cbe84a5094cb9854fe32e9ecb1,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.051837873
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 418cd5cbe84a5094cb9854fe32e9ecb1,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0011748839
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 418cd5cbe84a5094cb9854fe32e9ecb1,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -2.592
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 418cd5cbe84a5094cb9854fe32e9ecb1,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -5.944
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 418cd5cbe84a5094cb9854fe32e9ecb1,
         type: 3}
@@ -10624,6 +10641,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3722493397958403832, guid: 418cd5cbe84a5094cb9854fe32e9ecb1,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3722493397958403832, guid: 418cd5cbe84a5094cb9854fe32e9ecb1,
+        type: 3}
+      propertyPath: m_AABB.m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3722493397958403832, guid: 418cd5cbe84a5094cb9854fe32e9ecb1,
+        type: 3}
+      propertyPath: m_AABB.m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3722493397958403832, guid: 418cd5cbe84a5094cb9854fe32e9ecb1,
+        type: 3}
+      propertyPath: m_AABB.m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3722493397958403832, guid: 418cd5cbe84a5094cb9854fe32e9ecb1,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 67cebbaec38d9a24795e19a2dbb106ac, type: 2}
@@ -10635,6 +10672,12 @@ PrefabInstance:
 --- !u!4 &5527951365202733492 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 418cd5cbe84a5094cb9854fe32e9ecb1,
+    type: 3}
+  m_PrefabInstance: {fileID: 5421633592716824159}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &8688981910115461287 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3722493397958403832, guid: 418cd5cbe84a5094cb9854fe32e9ecb1,
     type: 3}
   m_PrefabInstance: {fileID: 5421633592716824159}
   m_PrefabAsset: {fileID: 0}

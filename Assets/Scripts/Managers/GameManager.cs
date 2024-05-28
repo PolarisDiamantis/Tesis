@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
 
     public void ReturnToLastCheckPoint()
     {
-        player.transform.position = lastCheckPoint.spawnPoint.position;
+        Rigidbody p = player.GetComponent<Rigidbody>();
+        p.position = lastCheckPoint.spawnPoint.position;
+        //player.transform.position = lastCheckPoint.spawnPoint.position;
     }
 }

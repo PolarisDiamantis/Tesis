@@ -15,6 +15,12 @@ public class Catapult : MonoBehaviour
     [SerializeField] Transform _playerRot;
     [SerializeField] float _rotationSpeed = 1.5f;
 
+    [Header("Fragmentation Range")]
+    [SerializeField] float _minXRot = -20f;
+    [SerializeField] float _maxXRot = 20f;
+    [SerializeField] float _minYRot = -10f;
+    [SerializeField] float _maxYRot = 10f;
+
     private GameManager _gm;
     private bool _isBusy = false;
     private bool _isOnRange = false;
@@ -24,6 +30,7 @@ public class Catapult : MonoBehaviour
     public Animator anim;
     public Action OnFire = delegate { };
     public Action OnReload = delegate { };
+
 
 
     private void Awake()
@@ -79,8 +86,8 @@ public class Catapult : MonoBehaviour
         yield return new WaitForSeconds(time);
         for(int i = 0; i < stonesPerThrow; i++)
         {
-            float x = UnityEngine.Random.Range(-40, 40);
-            float y = UnityEngine.Random.Range(-25, 25);
+            float x = UnityEngine.Random.Range(_minXRot, _maxXRot);
+            float y = UnityEngine.Random.Range(_minYRot, _maxYRot);
             _throwPoint.LookAt(GameManager.Instance.player.transform.position);
             Quaternion rot =_throwPoint.rotation * Quaternion.Euler(x, y, 0);
             Instantiate(_instance, _throwPoint.position, rot);

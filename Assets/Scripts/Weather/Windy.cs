@@ -55,7 +55,7 @@ public class Windy : WeatherZone
         _isBusy = true;
         yield return new WaitForSeconds(time);
         actualsTrenght = Random.Range(minstrenght, maxstrenght);
-        float x = Random.Range(-125, 125);
+        float x = Random.Range(-45, 45);
         float y = Random.Range(0, 360);
         _windDirection = Quaternion.Euler(x, y, 0) * Vector3.forward;
         _isBusy = false;

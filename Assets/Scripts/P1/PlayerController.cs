@@ -36,9 +36,12 @@ public class PlayerController : MonoBehaviour
     private bool _lockInputs = false;
     [Header("Boost Settings")]
     private bool _isBoost = false;
+
     private bool _canBoost = true;
+    private bool _canShield = true;
+
     [SerializeField] float _boostTime = 4f;
-    [SerializeField] float _boostCoolDown = 8f;
+    [SerializeField] float _boostCoolDown = 4f;
     float _boostCoolDownTimer = 0f;
 
     [SerializeField] Image _boostBar;
@@ -57,10 +60,15 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if(!_canBoost)
+        if (_isBoost)
+        {
+            _boostCoolDownTimer -= Time.deltaTime;
+            _boostBar.fillAmount = _boostCoolDownTimer / (_boostTime);
+        }
+        if (!_canBoost && !_isBoost)
         {
             _boostCoolDownTimer += Time.deltaTime;
-            _boostBar.fillAmount = _boostCoolDownTimer / (_boostCoolDown + _boostTime);
+            _boostBar.fillAmount = _boostCoolDownTimer / (_boostCoolDown);
         }
         if (direction.x == 0 && direction.y == 0)
         {
@@ -169,13 +177,15 @@ public class PlayerController : MonoBehaviour
         if (context.performed && _canBoost)
         {
             StartCoroutine(BoostSequence(_boostTime, _boostCoolDown));
-            //_agent.OnBoost();
         }
-        /*else if (context.canceled)
+    }
+
+    public void OnShield(InputAction.CallbackContext context)
+    {
+        if(context.performed && _canShield)
         {
-            _isBoost = false;
-            _agent.OnBoost();
-        }*/
+            StartCoroutine(ShieldSequence(0.25f, 0.25f));
+        }
     }
 
     #region Debug Methods
@@ -208,15 +218,26 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator BoostSequence(float d, float cd)
     {
-        _boostCoolDownTimer = 0f;
+        _boostCoolDownTimer = _boostTime;
         _isBoost = true;
         _canBoost = false;
         _agent.OnBoost();
         yield return new WaitForSeconds(d);
+        _boostCoolDownTimer = 0f;
         _isBoost = false;
         _agent.OnBoost();
         yield return new WaitForSeconds(cd);
         _canBoost = true;
+    }
+
+    IEnumerator ShieldSequence(float d, float cd)
+    {
+        _canShield = false;
+        _agent.OnShield();
+        yield return new WaitForSeconds(d);
+        _agent.OnShield();
+        yield return new WaitForSeconds(cd);
+        _canShield = true;
     }
 
     private void OnTriggerEnter(Collider other)
