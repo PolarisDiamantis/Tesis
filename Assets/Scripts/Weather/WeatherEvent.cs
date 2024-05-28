@@ -5,6 +5,7 @@ using UnityEngine;
 public class WeatherEvent : MonoBehaviour
 {
     [SerializeField] private Storm _weather;
+    [SerializeField] private GameObject _weatherVisual;
     [SerializeField] private List<ParticleSystem> _particlesEffects;
 
     private void OnTriggerEnter(Collider other)
@@ -16,6 +17,7 @@ public class WeatherEvent : MonoBehaviour
                 par.Play();
             }
             _weather.isActive = true;
+            _weatherVisual.SetActive(true);
         }
     }
 
@@ -28,6 +30,7 @@ public class WeatherEvent : MonoBehaviour
                 par.Stop();
             }
             _weather.isActive = false;
+            _weatherVisual.SetActive(false);
         }
     }
 }
