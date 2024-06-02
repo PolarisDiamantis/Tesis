@@ -20,6 +20,6 @@ public class CatapultView
 
     private void OnFire()
     {
-        _anim.Play("Disparo");
+        _anim.Play("Disparo nuevo");
     }
 }
