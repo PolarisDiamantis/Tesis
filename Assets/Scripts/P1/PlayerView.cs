@@ -5,11 +5,13 @@ using Cinemachine;
 
 public class PlayerView
 {
-    private ParticleSystem _normalSpeed, _boostSpeed, _boostForceField, _shield;
+    private ParticleSystem _normalSpeed, _boostSpeed, _boostForceField, _shield
+        , _boostLoadUp, _boostReady;
     bool _isOnThrottleActive = false;
     bool _isOnBoostActive = false;
     bool _isShieldActive = false;
 
+    private float _bLoadUpMultiplier = 1.0f;
     // Camera
     Animator _camAnim;
 
@@ -18,13 +20,17 @@ public class PlayerView
         _camAnim = c.camAnim;
         _normalSpeed = c.normalSpeed;
         _boostSpeed = c.boostSpeed;
-        _boostForceField = c.boostForceField;
+        _boostForceField = c.boostParticles;
         _shield = c.shield;
+        _boostLoadUp = c.boostLoadUp;
+        _boostReady = c.boostReady;
 
         // Action Assignments
         c.OnThrottle += OnThrottle;
         c.OnBoost += OnBoost;
         c.OnShield += OnShield;
+        c.OnBoostLoadUp += OnBoostLoadUp;
+        c.OnBoostReady += OnBoostReady;
     }
 
     public void VirtualUpdate()
@@ -64,6 +70,17 @@ public class PlayerView
         }
     }
 
+    private void OnBoostLoadUp()
+    {
+        _boostReady.Stop();
+        _boostLoadUp.Play();
+    }
+
+    private void OnBoostReady()
+    {
+        _boostReady.Play();
+    }
+
     private void OnShield()
     {
         if (!_isShieldActive)
@@ -74,6 +91,7 @@ public class PlayerView
         else
         {
             _isShieldActive = false;
+            _shield.Clear();
             _shield.Stop();
         }
     }

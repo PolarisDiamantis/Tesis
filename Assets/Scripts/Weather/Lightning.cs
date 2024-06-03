@@ -28,6 +28,14 @@ public class Lightning : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<PlayerModel>() == null || !_isActive) return;
-        GameManager.Instance.ReturnToLastCheckPoint();
+        if (other.GetComponent<PlayerController>().isShield)
+        {
+            Debug.Log("Triggered Shield");
+            other.GetComponent<PlayerModel>().AddImpulse(150f * other.transform.forward);
+        }
+        else
+        {
+            GameManager.Instance.ReturnToLastCheckPoint();
+        }
     }
 }

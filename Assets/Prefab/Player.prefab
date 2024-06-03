@@ -539,7 +539,7 @@ GameObject:
   - component: {fileID: 1175901408572152746}
   - component: {fileID: 6177458433662432801}
   m_Layer: 0
-  m_Name: atack
+  m_Name: ParticulasBoost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5367,7 +5367,7 @@ GameObject:
   - component: {fileID: 278878102343594535}
   - component: {fileID: 4626641717817962764}
   m_Layer: 0
-  m_Name: Particulas Mana cargando
+  m_Name: ParticulasBoostReady
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5405,7 +5405,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -10296,8 +10296,10 @@ MonoBehaviour:
   _impulseStreght: 50
   normalSpeed: {fileID: 8866758554457993618}
   boostSpeed: {fileID: 3844584954382238023}
-  boostForceField: {fileID: 1175901408572152746}
+  boostParticles: {fileID: 1175901408572152746}
   shield: {fileID: 3982388090518165735}
+  boostLoadUp: {fileID: 278878102343594535}
+  boostReady: {fileID: 5879246963292268439}
   camAnim: {fileID: 0}
 --- !u!114 &4761548030024115317
 MonoBehaviour:
@@ -15319,7 +15321,7 @@ GameObject:
   - component: {fileID: 5879246963292268439}
   - component: {fileID: 996548378113557368}
   m_Layer: 0
-  m_Name: Particulas Mana cargado
+  m_Name: ParticulasBoostCharge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15348,16 +15350,16 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5737743045184815554}
   serializedVersion: 8
-  lengthInSec: 5
+  lengthInSec: 4
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -16176,7 +16178,7 @@ ParticleSystem:
     serializedVersion: 4
     rateOverTime:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 1
       scalar: 500
       minScalar: 10
       maxCurve:
@@ -16184,22 +16186,22 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 1
+          value: 0
           inSlope: 0
           outSlope: 0
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
+          inWeight: 0
+          outWeight: 0
         - serializedVersion: 3
           time: 1
           value: 1
-          inSlope: 0
-          outSlope: 0
+          inSlope: 2
+          outSlope: 2
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
+          inWeight: 0
+          outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
@@ -20147,7 +20149,7 @@ GameObject:
   - component: {fileID: 3982388090518165735}
   - component: {fileID: 6397014818596143655}
   m_Layer: 0
-  m_Name: Intento 2
+  m_Name: ParticlasForceField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25025,7 +25027,7 @@ PrefabInstance:
     - target: {fileID: 2756145539239662659, guid: 5985b8bf25d535249bdd70977a3c9b9b,
         type: 3}
       propertyPath: m_Name
-      value: ParticualsPoweSpeed
+      value: ParticulasPowerSpeed
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -25335,7 +25337,7 @@ PrefabInstance:
     - target: {fileID: 905963536786801861, guid: c9c89bdd7c0ec854faaa79757d0bd8ef,
         type: 3}
       propertyPath: m_Name
-      value: Particuals dePeed
+      value: ParticulasSpeed
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

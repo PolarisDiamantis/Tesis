@@ -17,14 +17,18 @@ public class PlayerModel : MonoBehaviour
     public Action OnThrottle = delegate { };
     public Action OnBoost = delegate { };
     public Action OnShield = delegate { };
+    public Action OnBoostLoadUp = delegate { };
+    public Action OnBoostReady = delegate { };
 
     private PlayerView _view;
 
     [Header("Particles")]
     public ParticleSystem normalSpeed;
     public ParticleSystem boostSpeed;
-    public ParticleSystem boostForceField;
+    public ParticleSystem boostParticles;
     public ParticleSystem shield;
+    public ParticleSystem boostLoadUp;
+    public ParticleSystem boostReady;
     //public CinemachineVirtualCamera cam;
 
     [Header("Animations")]

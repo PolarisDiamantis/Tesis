@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     private bool _lockInputs = false;
     [Header("Boost Settings")]
     private bool _isBoost = false;
+    public bool isShield = false;
 
     private bool _canBoost = true;
     private bool _canShield = true;
@@ -120,6 +121,7 @@ public class PlayerController : MonoBehaviour
         _throttle = Mathf.Clamp(_throttle, 0f, 100f);
     }
 
+    #region Input System Methods
     public void OnYawPitch(InputAction.CallbackContext context)
     {
         Vector2 dir = context.ReadValue<Vector2>();
@@ -184,9 +186,10 @@ public class PlayerController : MonoBehaviour
     {
         if(context.performed && _canShield)
         {
-            StartCoroutine(ShieldSequence(0.25f, 0.25f));
+            StartCoroutine(ShieldSequence(3f, 0.25f));
         }
     }
+    #endregion
 
     #region Debug Methods
     public void OnLockInputs(InputAction.CallbackContext context)
@@ -226,7 +229,9 @@ public class PlayerController : MonoBehaviour
         _boostCoolDownTimer = 0f;
         _isBoost = false;
         _agent.OnBoost();
+        _agent.OnBoostLoadUp();
         yield return new WaitForSeconds(cd);
+        _agent.OnBoostReady();
         _canBoost = true;
     }
 
@@ -234,8 +239,10 @@ public class PlayerController : MonoBehaviour
     {
         _canShield = false;
         _agent.OnShield();
+        isShield = true;
         yield return new WaitForSeconds(d);
         _agent.OnShield();
+        isShield = false;
         yield return new WaitForSeconds(cd);
         _canShield = true;
     }
