@@ -5,7 +5,7 @@ using Cinemachine;
 
 public class PlayerView
 {
-    private ParticleSystem _normalSpeed, _boostSpeed, _boostForceField, _shield, _boostDechard
+    private ParticleSystem _normalSpeed, _boostSpeed, _boostForceField, _shield, _boostDecharge
         , _boostLoadUp, _boostReady;
     bool _isOnThrottleActive = false;
     bool _isOnBoostActive = false;
@@ -24,6 +24,7 @@ public class PlayerView
         _shield = c.shield;
         _boostLoadUp = c.boostLoadUp;
         _boostReady = c.boostReady;
+        _boostDecharge = c.boostDecharge;
 
         // Action Assignments
         c.OnThrottle += OnThrottle;
@@ -57,8 +58,10 @@ public class PlayerView
         if (!_isOnBoostActive)
         {
             _isOnBoostActive = true;
+            _boostReady.Stop();
             _boostSpeed.Play();
             _boostForceField.Play();
+            _boostDecharge.Play();
             _camAnim.Play("Boost");
         }
         else
@@ -72,7 +75,6 @@ public class PlayerView
 
     private void OnBoostLoadUp()
     {
-        _boostReady.Stop();
         _boostLoadUp.Play();
     }
 

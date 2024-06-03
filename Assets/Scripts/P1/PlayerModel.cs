@@ -29,6 +29,7 @@ public class PlayerModel : MonoBehaviour
     public ParticleSystem shield;
     public ParticleSystem boostLoadUp;
     public ParticleSystem boostReady;
+    public ParticleSystem boostDecharge;
     //public CinemachineVirtualCamera cam;
 
     [Header("Animations")]
