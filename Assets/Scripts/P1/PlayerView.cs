@@ -5,7 +5,7 @@ using Cinemachine;
 
 public class PlayerView
 {
-    private ParticleSystem _normalSpeed, _boostSpeed, _boostForceField, _shield
+    private ParticleSystem _normalSpeed, _boostSpeed, _boostForceField, _shield, _boostDechard
         , _boostLoadUp, _boostReady;
     bool _isOnThrottleActive = false;
     bool _isOnBoostActive = false;
