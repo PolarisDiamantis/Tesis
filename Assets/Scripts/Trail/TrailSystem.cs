@@ -10,6 +10,11 @@ public class TrailSystem : MonoBehaviour
     private bool _isBusy = false;
 
 
+    private void Start()
+    {
+        SpawnNewParticle(_particles);
+    }
+
     private void Update()
     {
         if (_isBusy) return;
