@@ -31,7 +31,7 @@ public class Lightning : MonoBehaviour
         if (other.GetComponent<PlayerController>().isShield)
         {
             Debug.Log("Triggered Shield");
-            other.GetComponent<PlayerModel>().AddImpulse(150f * other.transform.forward);
+            other.GetComponent<PlayerModel>().AddImpulse(500f * other.transform.forward);
         }
         else
         {

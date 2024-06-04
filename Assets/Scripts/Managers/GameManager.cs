@@ -5,8 +5,22 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    [SerializeField] private UIManager _ui;
     public PlayerModel player;
     public CheckPoint lastCheckPoint;
+    private int _collectedCrystals = 0;
+    public int Crystals
+    {
+        get
+        {
+            return _collectedCrystals;
+        }
+        set
+        {
+            _collectedCrystals = value;
+            UpdateCrystalCountUI(_collectedCrystals);
+        }
+    }
 
     private void Awake()
     {
@@ -18,6 +32,11 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void UpdateCrystalCountUI(int val)
+    {
+        _ui.UpdateCrystalCount(val);
     }
 
     public void ReturnToLastCheckPoint()
