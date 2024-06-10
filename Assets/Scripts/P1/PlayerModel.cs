@@ -19,6 +19,7 @@ public class PlayerModel : MonoBehaviour
     public Action OnShield = delegate { };
     public Action OnBoostLoadUp = delegate { };
     public Action OnBoostReady = delegate { };
+    public Action OnCrystalCollected = delegate { };
 
     private PlayerView _view;
 
@@ -30,10 +31,17 @@ public class PlayerModel : MonoBehaviour
     public ParticleSystem boostLoadUp;
     public ParticleSystem boostReady;
     public ParticleSystem boostDecharge;
+    public ParticleSystem crystalParticle;
     //public CinemachineVirtualCamera cam;
 
     [Header("Animations")]
     public Animator camAnim;
+
+    [Header("Audios")]
+    public AudioClip pickUpSound;
+
+    [SerializeField] private float _magnetSphere; 
+    [SerializeField] private LayerMask _magnetMask;
 
     private void Awake()
     {
@@ -53,16 +61,26 @@ public class PlayerModel : MonoBehaviour
         RaycastHit hit;
         if(Physics.SphereCast(transform.position, _collisionSphere, transform.forward, out hit, _collisionSphere, _collisionMask))
         {
-            Debug.Log("HIT");
             Vector3 imp = transform.position - hit.point;
             rb.velocity = Vector3.zero;
             AddImpulse(imp.normalized * _impulseStreght);
+        }
+
+        if(Physics.SphereCast(rb.position, _magnetSphere, transform.forward, out hit, _magnetSphere, _magnetMask))
+        {
+            Debug.Log("HIT");
+            hit.transform.GetComponent<Crystal>().isPicked = true;
         }
     }
 
     private void Update()
     {
         _view.VirtualUpdate();
+    }
+
+    public void CrystalCollected()
+    {
+        OnCrystalCollected();
     }
 
     #region Physics Methods
@@ -87,6 +105,8 @@ public class PlayerModel : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, _collisionSphere);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, _magnetSphere);
     }
     #endregion
 }

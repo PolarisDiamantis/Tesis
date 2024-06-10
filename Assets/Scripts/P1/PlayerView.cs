@@ -6,10 +6,12 @@ using Cinemachine;
 public class PlayerView
 {
     private ParticleSystem _normalSpeed, _boostSpeed, _boostForceField, _shield, _boostDecharge
-        , _boostLoadUp, _boostReady;
+        , _boostLoadUp, _boostReady, _crystalParticle;
     bool _isOnThrottleActive = false;
     bool _isOnBoostActive = false;
     bool _isShieldActive = false;
+
+    AudioClip _pickUpSound;
 
     private float _bLoadUpMultiplier = 1.0f;
     // Camera
@@ -25,6 +27,7 @@ public class PlayerView
         _boostLoadUp = c.boostLoadUp;
         _boostReady = c.boostReady;
         _boostDecharge = c.boostDecharge;
+        _crystalParticle = c.crystalParticle;
 
         // Action Assignments
         c.OnThrottle += OnThrottle;
@@ -32,6 +35,10 @@ public class PlayerView
         c.OnShield += OnShield;
         c.OnBoostLoadUp += OnBoostLoadUp;
         c.OnBoostReady += OnBoostReady;
+        c.OnCrystalCollected += OnCrystalCollected;
+
+        // Audios
+        _pickUpSound = c.pickUpSound;
     }
 
     public void VirtualUpdate()
@@ -96,5 +103,11 @@ public class PlayerView
             _shield.Clear();
             _shield.Stop();
         }
+    }
+
+    private void OnCrystalCollected()
+    {
+        _crystalParticle.Play();
+        AudioManager.instance.PlaySound(_pickUpSound);
     }
 }

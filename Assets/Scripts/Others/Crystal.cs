@@ -2,18 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Crystal : MonoBehaviour
+public class Crystal : SteeringAgent
 {
 
     public GameObject Particles;
     [SerializeField] AudioClip PickupSound;
+    public bool isPicked = false;
+
+    private void FixedUpdate()
+    {
+        if (!isPicked) return;
+        SetVelocity(GameManager.Instance.player.transform.position, _maxVelocity);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.GetComponent<PlayerModel>() != null)
         {
             GameManager.Instance.Crystals++;
-            AudioManager.instance.PlaySound(PickupSound);
-            Instantiate(Particles, transform.position, Quaternion.identity);
+            other.GetComponent<PlayerModel>().CrystalCollected();
+            //Instantiate(Particles, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

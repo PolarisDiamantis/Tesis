@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6050335811645176236}
   - component: {fileID: 6679925955929554666}
   - component: {fileID: 786233694546852233}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4840,7 +4840,7 @@ GameObject:
   - component: {fileID: 7408260074186881257}
   - component: {fileID: 6889585278057356709}
   - component: {fileID: 8540790175998743954}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Crystal3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4942,9 +4942,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4449035999571335438}
-  - component: {fileID: 1721014421450437686}
+  - component: {fileID: 2573437424265211358}
   - component: {fileID: 1251661103417683643}
-  m_Layer: 0
+  - component: {fileID: 6204576952641776806}
+  m_Layer: 7
   m_Name: Crystal 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4968,8 +4969,8 @@ Transform:
   - {fileID: 6050335811645176236}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 53.631, z: 0}
---- !u!65 &1721014421450437686
-BoxCollider:
+--- !u!135 &2573437424265211358
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -4987,7 +4988,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.06971916, y: 0.08161821, z: 0.06979569}
+  m_Radius: 0.02
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1251661103417683643
 MonoBehaviour:
@@ -5001,6 +5002,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac832e51ff53fb54ca0eb063f1d19e9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _force: 5000
+  _maxVelocity: 600
+  _viewRadius: 50
   Particles: {fileID: 6003450948481553087, guid: 9e37b9ab45eb22043a2f288e5cd2c643,
     type: 3}
   PickupSound: {fileID: 8300000, guid: 32c98d9920575f94b96c0af76a2ff1f6, type: 3}
+  isPicked: 0
+--- !u!54 &6204576952641776806
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7044928146397933082}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
