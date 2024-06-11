@@ -78,6 +78,8 @@ public class PlayerController : MonoBehaviour
             _verticalInput = Mathf.Lerp(_verticalInput, 0, _controlSnap * Time.deltaTime * 0.7f);
         }
         HandleThrottleInputs();
+
+        _agent.OnMovement(_horizontalInput, _throttle);
     }
 
     private void FixedUpdate()
@@ -98,7 +100,7 @@ public class PlayerController : MonoBehaviour
         // Yaw Pitch
         _yaw += _horizontalInput * responsiveness * _responseModifier * Time.fixedDeltaTime;
         _pitch += _verticalInput * responsiveness * _responseModifier * Time.fixedDeltaTime;
-
+        Debug.Log(_horizontalInput);
         // Roll
         _roll -= _horizontalInput * 50 * Time.fixedDeltaTime;
         _roll -= _driftInput * 50 * Time.fixedDeltaTime;

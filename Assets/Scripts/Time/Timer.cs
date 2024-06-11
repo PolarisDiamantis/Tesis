@@ -16,7 +16,7 @@ public class Timer : MonoBehaviour
     {
         if (!_isActive) return;
         _currentTime = DateTime.Now - _startingTime;
-       Debug.Log(_currentTime.Hours.ToString("00") + " : " + _currentTime.Minutes.ToString("00") + " : " + _currentTime.Seconds.ToString("00"));
+       //Debug.Log(_currentTime.Hours.ToString("00") + " : " + _currentTime.Minutes.ToString("00") + " : " + _currentTime.Seconds.ToString("00"));
         _timer.text = _currentTime.Hours.ToString("00") + " : " + _currentTime.Minutes.ToString("00") + " : " + _currentTime.Seconds.ToString("00");
     }
 

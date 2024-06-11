@@ -75,10 +75,11 @@ public class PlayerModel : MonoBehaviour
 
 
         //blend tree params
-        float x = Input.GetAxis("Horizontal");
-        float speed = rb.velocity.magnitude;
-        anim.SetFloat("x",x);
-        anim.SetFloat("Speed",speed);
+        //float x = Input.GetAxis("Mouse X");
+        //Debug.Log(x);
+        //float y = Input.GetAxis("Vertical");
+        //anim.SetFloat("x",x);
+        //anim.SetFloat("y",y);
 
     }
 
@@ -108,6 +109,12 @@ public class PlayerModel : MonoBehaviour
         rb.AddForce(dir, ForceMode.VelocityChange);
     }
     #endregion
+
+    public void OnMovement(float x, float y)
+    {
+        anim.SetFloat("x", x * 50);
+        anim.SetFloat("y", y);
+    }
 
     #region Gizmos
     private void OnDrawGizmos()
