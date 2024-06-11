@@ -16,7 +16,7 @@ public class WeatherEvent : MonoBehaviour
             {
                 par.Play();
             }
-            _weather.isActive = true;
+            if (_weather != null) _weather.isActive = true;
             _weatherVisual.SetActive(true);
         }
     }
@@ -29,7 +29,7 @@ public class WeatherEvent : MonoBehaviour
             {
                 par.Stop();
             }
-            _weather.isActive = false;
+            if (_weather != null) _weather.isActive = false;
             _weatherVisual.SetActive(false);
         }
     }
