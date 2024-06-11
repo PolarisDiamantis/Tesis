@@ -36,6 +36,7 @@ public class PlayerModel : MonoBehaviour
 
     [Header("Animations")]
     public Animator camAnim;
+    public Animator anim;
 
     [Header("Audios")]
     public AudioClip pickUpSound;
@@ -71,6 +72,14 @@ public class PlayerModel : MonoBehaviour
             Debug.Log("HIT");
             hit.transform.GetComponent<Crystal>().isPicked = true;
         }
+
+
+        //blend tree params
+        float x = Input.GetAxis("Horizontal");
+        float speed = rb.velocity.magnitude;
+        anim.SetFloat("x",x);
+        anim.SetFloat("Speed",speed);
+
     }
 
     private void Update()
