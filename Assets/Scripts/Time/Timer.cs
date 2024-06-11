@@ -32,6 +32,7 @@ public class Timer : MonoBehaviour
         Debug.Log("Finished");
         _isActive = false;
         CheckTimer();
+        GameManager.Instance.finalTime = _currentTime;
     }
 
     public void CheckTimer()

@@ -186,7 +186,7 @@ public class PlayerController : MonoBehaviour
     {
         if(context.performed && _canShield)
         {
-            StartCoroutine(ShieldSequence(3f, 0.25f));
+            StartCoroutine(ShieldSequence(0.75f, 0.5f));
         }
     }
     #endregion

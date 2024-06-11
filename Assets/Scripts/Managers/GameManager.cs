@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class GameManager : MonoBehaviour
     public PlayerModel player;
     public CheckPoint lastCheckPoint;
     private int _collectedCrystals = 0;
+    public TimeSpan finalTime;
+
     public int Crystals
     {
         get
@@ -44,5 +47,12 @@ public class GameManager : MonoBehaviour
         Rigidbody p = player.GetComponent<Rigidbody>();
         p.position = lastCheckPoint.spawnPoint.position;
         //player.transform.position = lastCheckPoint.spawnPoint.position;
+    }
+
+    public void FinalResults()
+    {
+        string finalScore = ScoreManager.Instance.DetermineFinalScore(finalTime, Crystals);
+        _ui.UpdateResults(finalTime, finalScore);
+        _ui.ShowResults();
     }
 }

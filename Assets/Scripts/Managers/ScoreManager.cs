@@ -5,6 +5,20 @@ using System;
 
 public class ScoreManager : MonoBehaviour
 {
+    public static ScoreManager Instance;
+
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     [Header("S Conditions")]
     public float sTime;
     public int sCrystal;
@@ -37,27 +51,27 @@ public class ScoreManager : MonoBehaviour
     {
         // Time of 75
         // 30 crystals
-        if(time > TimeSpan.FromSeconds(fTime) || fCrystal > crystals) // Not F
+        if(time > TimeSpan.FromSeconds(fTime) || fCrystal > crystals)
         {
             return "F";
         }
-        if (time >= TimeSpan.FromSeconds(eTime) || eCrystal >= crystals) // Not E
+        if (time >= TimeSpan.FromSeconds(eTime) || eCrystal >= crystals)
         {
             return "E";
         }
-        if (time >= TimeSpan.FromSeconds(dTime) || dCrystal >= crystals) // Not D
+        if (time >= TimeSpan.FromSeconds(dTime) || dCrystal >= crystals)
         {
             return "D";
         }
-        if (time >= TimeSpan.FromSeconds(cTime) || cCrystal >= crystals) // Not C
+        if (time >= TimeSpan.FromSeconds(cTime) || cCrystal >= crystals)
         {
             return "C";
         }
-        if (time >= TimeSpan.FromSeconds(bTime) || bCrystal >= crystals) // Not B
+        if (time >= TimeSpan.FromSeconds(bTime) || bCrystal >= crystals)
         {
             return "B";
         }
-        if (time >= TimeSpan.FromSeconds(aTime) || aCrystal >= crystals) // A
+        if (time >= TimeSpan.FromSeconds(aTime) || aCrystal >= crystals) 
         {
             return "A";
         }

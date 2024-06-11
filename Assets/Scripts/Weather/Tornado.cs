@@ -23,6 +23,9 @@ public class Tornado : WeatherZone
     private int step = 0;
     [SerializeField] private float speed = 50;
 
+    public PathSystem settings = PathSystem.Stardard;
+    public float playerAimRng = 20f;
+
     private void Start()
     {
         StartCoroutine(ThrowDebri(Random.Range(_minInterval, _maxInterval)));
@@ -33,20 +36,28 @@ public class Tornado : WeatherZone
         transform.position += (_path[step].position - transform.position).normalized * speed * Time.fixedDeltaTime;
         if(Vector3.Distance(transform.position, _path[step].position) < 1)
         {
-            if(step + 1 >= _path.Length)
+            switch (settings)
             {
-                step = 0;
-            }
-            else
-            {
-                step++;
+                case PathSystem.Stardard:
+                    if (step + 1 >= _path.Length)
+                    {
+                        step = 0;
+                    }
+                    else
+                    {
+                        step++;
+                    }
+                    break;
+                case PathSystem.Alternate:
+                    step = Random.Range(0, _path.Length);
+                    break;
             }
         }
         foreach (PlayerModel item in _collisions)
         {
             Vector3 dir = item.transform.position - new Vector3(transform.position.x, item.transform.position.y, transform.position.z);
             dir = dir.normalized;
-            item.AddForce(dir * strenght);
+            item.AddForce(-dir * strenght);
         }
     }
 
@@ -70,7 +81,11 @@ public class Tornado : WeatherZone
         float x = Random.Range(-30, 65);
         float y = Random.Range(0, 360);
         Quaternion rot = Quaternion.Euler(x, y, 0);
-        Instantiate(_instance, GetRNGPosition(), rot);
+        GameObject inst = Instantiate(_instance, GetRNGPosition(), rot);
+        if(Random.Range(0, 101) <= playerAimRng)
+        {
+            inst.transform.LookAt(GameManager.Instance.player.transform.position);
+        }
         _isBusy = false;
     }
 
@@ -88,4 +103,10 @@ public class Tornado : WeatherZone
             _collisions.Remove(other.GetComponent<PlayerModel>());
         }
     }
+}
+
+public enum PathSystem
+{
+    Stardard,
+    Alternate
 }

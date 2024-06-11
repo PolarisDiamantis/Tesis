@@ -14,6 +14,7 @@ public class FinishP : MonoBehaviour
         if (other.GetComponent<PlayerModel>() == null || _triggered) return;
         _triggered = true;
         _time.FinishTimer();
-        _scene.ChangeEscene("MainMenu");
+        GameManager.Instance.FinalResults();
+        //_scene.ChangeEscene("MainMenu");
     }
 }
