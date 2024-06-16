@@ -8,11 +8,23 @@ public class Crystal : SteeringAgent
     public GameObject Particles;
     [SerializeField] AudioClip PickupSound;
     public bool isPicked = false;
+    public string isActive; 
 
+    public Animator Anim;
+
+    private void Start()
+    {
+        Anim = GetComponent<Animator>();
+    }
     private void FixedUpdate()
     {
         if (!isPicked) return;
-        SetVelocity(GameManager.Instance.player.transform.position, _maxVelocity);
+        {
+            SetVelocity(GameManager.Instance.player.transform.position, _maxVelocity);
+            Anim.Play(isActive);
+        }
+
+      
     }
 
     private void OnTriggerEnter(Collider other)
