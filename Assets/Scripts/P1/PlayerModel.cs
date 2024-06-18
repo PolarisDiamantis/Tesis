@@ -67,10 +67,10 @@ public class PlayerModel : MonoBehaviour
         RaycastHit hit;
         if(Physics.SphereCast(transform.position, _collisionSphere, transform.forward, out hit, _collisionSphere, _collisionMask))
         {
+            OnDamage();
             Vector3 imp = transform.position - hit.point;
             rb.velocity = Vector3.zero;
             AddImpulse(imp.normalized * _impulseStreght);
-            OnDamage();
         }
 
         if(Physics.SphereCast(rb.position, _magnetSphere, transform.forward, out hit, _magnetSphere, _magnetMask))
