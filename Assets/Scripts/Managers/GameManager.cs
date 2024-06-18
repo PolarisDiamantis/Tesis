@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     {
         Rigidbody p = player.GetComponent<Rigidbody>();
         p.position = lastCheckPoint.spawnPoint.position;
+        player.GetComponent<PlayerController>().ModifyRotation(lastCheckPoint.spawnPoint.rotation.eulerAngles.y, lastCheckPoint.spawnPoint.rotation.eulerAngles.x);
         //player.transform.position = lastCheckPoint.spawnPoint.position;
     }
 
@@ -54,5 +55,18 @@ public class GameManager : MonoBehaviour
         string finalScore = ScoreManager.Instance.DetermineFinalScore(finalTime, Crystals);
         _ui.UpdateResults(finalTime, finalScore);
         _ui.ShowResults();
+
+        if (!PlayerPrefs.HasKey("totalCrystals"))
+        {
+            PlayerPrefs.SetInt("totalCrystals", Crystals);
+        }
+        else
+        {
+            int newVal = PlayerPrefs.GetInt("totalCrystals") + Crystals;
+            PlayerPrefs.SetInt("totalCrystals", newVal);
+        }
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

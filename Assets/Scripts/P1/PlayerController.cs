@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour
         // Yaw Pitch
         _yaw += _horizontalInput * responsiveness * _responseModifier * Time.fixedDeltaTime;
         _pitch += _verticalInput * responsiveness * _responseModifier * Time.fixedDeltaTime;
-        Debug.Log(_horizontalInput);
+        //Debug.Log(_yaw);
         // Roll
         _roll -= _horizontalInput * 50 * Time.fixedDeltaTime;
         _roll -= _driftInput * 50 * Time.fixedDeltaTime;
@@ -112,6 +112,13 @@ public class PlayerController : MonoBehaviour
 
         // Final rotation
         transform.localRotation = Quaternion.Euler(Vector3.up * _yaw + Vector3.up * _drift  + Vector3.right * _pitch + Vector3.forward * _roll);
+    }
+
+    public void ModifyRotation(float yaw, float pitch)
+    {
+        _yaw = yaw;
+        _pitch = pitch;
+        Debug.Log(_yaw + " " + _pitch);
     }
 
     private void HandleThrottleInputs()

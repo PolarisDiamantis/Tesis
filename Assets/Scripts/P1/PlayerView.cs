@@ -12,13 +12,16 @@ public class PlayerView
     bool _isShieldActive = false;
 
     AudioClip _pickUpSound;
-
-    private float _bLoadUpMultiplier = 1.0f;
     // Camera
     Animator _camAnim;
 
+    // Skins
+    private WitchSkin[] _witchSkins;
+    private SkinnedMeshRenderer _witchModel;
+
     public PlayerView(PlayerModel c)
     {
+        
         _camAnim = c.camAnim;
         _normalSpeed = c.normalSpeed;
         _boostSpeed = c.boostSpeed;
@@ -39,6 +42,29 @@ public class PlayerView
 
         // Audios
         _pickUpSound = c.pickUpSound;
+
+        // Skin Load Up
+
+        _witchSkins = c.witchSkins;
+        _witchModel = c.witchModel;
+
+        if (PlayerPrefs.HasKey("equippedSkinID"))
+        {
+            string equippedID = PlayerPrefs.GetString("equippedSkinID");
+            foreach(WitchSkin i in _witchSkins)
+            {
+                if(i.skinKey == equippedID)
+                {
+                    _witchModel.material = i.skin;
+                    break;
+                }
+            }
+        }
+        else
+        {
+            _witchModel.material = _witchSkins[0].skin;
+            PlayerPrefs.SetString("equippedSkinID", _witchSkins[0].skinKey);
+        }
     }
 
     public void VirtualUpdate()

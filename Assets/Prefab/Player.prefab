@@ -15179,6 +15179,11 @@ MonoBehaviour:
   _magnetMask:
     serializedVersion: 2
     m_Bits: 128
+  witchSkins:
+  - {fileID: 11400000, guid: 1954da4130944d84c82704b2b95a90c9, type: 2}
+  - {fileID: 11400000, guid: b68075b7d90e75545b5ad02824801df5, type: 2}
+  - {fileID: 11400000, guid: aa8795e0cbf635240aefeb4082615820, type: 2}
+  witchModel: {fileID: 9081391526929720703}
 --- !u!114 &4761548030024115317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36875,7 +36880,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 67cebbaec38d9a24795e19a2dbb106ac, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 3785945230275951943, guid: 1155f8b8b41499e49be8acc0fe005bb5,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -37706,6 +37711,12 @@ SkinnedMeshRenderer:
 --- !u!4 &8611604078181627088 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4192272050145818455, guid: 1155f8b8b41499e49be8acc0fe005bb5,
+    type: 3}
+  m_PrefabInstance: {fileID: 5597800062700700551}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &9081391526929720703 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3722493397958403832, guid: 1155f8b8b41499e49be8acc0fe005bb5,
     type: 3}
   m_PrefabInstance: {fileID: 5597800062700700551}
   m_PrefabAsset: {fileID: 0}

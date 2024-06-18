@@ -16,6 +16,8 @@ public class StoreManager : MonoBehaviour // Should probably make singleton fath
     [SerializeField] private GameObject _equipButton;
     [SerializeField] private GameObject _buyButton;
 
+    [SerializeField] private TextMeshProUGUI _crystalsUI;
+
     //public Material mat;
 
     private void Awake()
@@ -32,11 +34,25 @@ public class StoreManager : MonoBehaviour // Should probably make singleton fath
 
     private void Start()
     {
+        if (!PlayerPrefs.HasKey("equippedSkinID"))
+        {
+            PlayerPrefs.SetString("equippedSkinID", _witchSkins[0].skinKey);
+        }
+        if (PlayerPrefs.HasKey("totalCrystals"))
+        {
+            _crystalsUI.text = PlayerPrefs.GetInt("totalCrystals").ToString();
+        }
+        else
+        {
+            _crystalsUI.text = "0";
+            PlayerPrefs.SetInt("totalCrystals", 0);
+        }
         LoadSkinInfo(_witchSkins[step]);
     }
 
     public void BuySelectedSkin()
     {
+        if (!PlayerPrefs.HasKey("totalCrystals")) return;
         int currentCrystals = PlayerPrefs.GetInt("totalCrystals");
         if (currentCrystals >= _witchSkins[step].price)
         {
@@ -48,7 +64,8 @@ public class StoreManager : MonoBehaviour // Should probably make singleton fath
 
     private void LoadSkinInfo(WitchSkin info)
     {
-        if(PlayerPrefs.GetInt(info.skinKey) != 0)
+        _crystalsUI.text = PlayerPrefs.GetInt("totalCrystals").ToString();
+        if (PlayerPrefs.GetInt(info.skinKey) != 0)
         {
             if(PlayerPrefs.GetString("equippedSkinID") != info.skinKey)
             {

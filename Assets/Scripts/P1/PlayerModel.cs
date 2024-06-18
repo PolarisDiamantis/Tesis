@@ -44,6 +44,11 @@ public class PlayerModel : MonoBehaviour
     [SerializeField] private float _magnetSphere; 
     [SerializeField] private LayerMask _magnetMask;
 
+    [Header("Skins")]
+    public WitchSkin[] witchSkins;
+    public SkinnedMeshRenderer witchModel;
+
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
