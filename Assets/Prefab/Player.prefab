@@ -34789,17 +34789,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0e6e6ef1f447f1349b1ee338ab7bafc6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0016291097
+      value: -0.003
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0e6e6ef1f447f1349b1ee338ab7bafc6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.05467405
+      value: -0.0559
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0e6e6ef1f447f1349b1ee338ab7bafc6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.022371098
+      value: 0.0104
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0e6e6ef1f447f1349b1ee338ab7bafc6,
         type: 3}
@@ -35019,6 +35019,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5445932420689532779}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0e6e6ef1f447f1349b1ee338ab7bafc6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2717805910501982632}
   m_SourcePrefab: {fileID: 100100000, guid: 0e6e6ef1f447f1349b1ee338ab7bafc6, type: 3}
 --- !u!4 &3861193909856889158 stripped
 Transform:
@@ -35042,7 +35046,7 @@ Animator:
   m_GameObject: {fileID: 4530172400370430972}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c356ac9ba8e81404fbff06634488a8f4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -35053,6 +35057,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2717805910501982632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4530172400370430972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1551b877373246a4c8c9f28b8e94e38a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5597800062700700551
 PrefabInstance:
   m_ObjectHideFlags: 0

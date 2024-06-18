@@ -7,8 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: S_Clouds
-  m_Shader: {fileID: 4800000, guid: 1171c70786a99c048a224559b12c9bd1, type: 3}
+  m_Name: Outlines
+  m_Shader: {fileID: -6465566751694194690, guid: 82059f0721aba4d4cb0bfad8887eb5c3,
+    type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -16,7 +17,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 1999
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
@@ -37,28 +38,22 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AlphaCutoff: 0.5
-    - _CloudIntensity: 0.0015
-    - _Contorno: 45
-    - _ContornoDistancia: -103.2
-    - _EnvironmentReflections: 1
-    - _NoiseScale: 0.006
     - _QueueControl: 0
-    - _QueueOffset: -1
-    - _ReceiveShadows: 1
-    - _SpecularHighlights: 1
-    - _Speed: 25
-    - _TessEdgeLength: 16
-    - _TessMax: 25
-    - _TessMaxDisp: 25
-    - _TessMin: 10
-    - _TessPhongStrength: 0.5
-    - _TessValue: 32
-    - _transparencia: 0.3
+    - _QueueOffset: 0
+    - _Thickness: 0.02
     m_Colors:
-    - _Color0: {r: 0.9339623, g: 0.9031239, b: 0.9031239, a: 0}
-    - _Color1: {r: 0.6091581, g: 0.764151, b: 0.7579554, a: 0}
-    - _Color2: {r: 0.8301887, g: 0.8301887, b: 0.8301887, a: 0}
-    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _RotacionValueZ: {r: 1, g: 0, b: 0, a: 90}
+    - _Color: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
+--- !u!114 &8629731774606512733
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7
