@@ -76,6 +76,8 @@ MonoBehaviour:
     type: 3}
   PickupSound: {fileID: 8300000, guid: 32c98d9920575f94b96c0af76a2ff1f6, type: 3}
   isPicked: 0
+  isActive: isActive
+  Anim: {fileID: 7775811088394604074}
 --- !u!54 &6917743595957281857
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -836,7 +838,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
     m_Mesh: {fileID: 0}
-    m_MeshRenderer: {fileID: 0}
+    m_MeshRenderer: {fileID: 344118809491639465}
     m_SkinnedMeshRenderer: {fileID: 0}
     m_Sprite: {fileID: 0}
     m_SpriteRenderer: {fileID: 0}

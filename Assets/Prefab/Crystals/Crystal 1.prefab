@@ -117,7 +117,6 @@ GameObject:
   - component: {fileID: 2957396260234479034}
   - component: {fileID: 8410692478817793263}
   - component: {fileID: 3159450392245360132}
-  - component: {fileID: 8865974994388399207}
   m_Layer: 7
   m_Name: Crystal 1
   m_TagString: Untagged
@@ -183,7 +182,7 @@ MonoBehaviour:
   PickupSound: {fileID: 8300000, guid: 32c98d9920575f94b96c0af76a2ff1f6, type: 3}
   isPicked: 0
   isActive: isActive
-  Anim: {fileID: 8865974994388399207}
+  Anim: {fileID: 4658318021529904350}
 --- !u!54 &3159450392245360132
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -211,27 +210,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!95 &8865974994388399207
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3448704202598664220}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ab2350244450c974eb1881a3f6e46d38, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7493788334619232575
 GameObject:
   m_ObjectHideFlags: 0

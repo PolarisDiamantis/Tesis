@@ -14,14 +14,14 @@ public class Crystal : SteeringAgent
 
     private void Start()
     {
-        Anim = GetComponent<Animator>();
+      //  Anim = GetComponent<Animator>();
     }
     private void FixedUpdate()
     {
         if (!isPicked) return;
         {
             SetVelocity(GameManager.Instance.player.transform.position, _maxVelocity);
-            Anim.Play(isActive);
+            Anim.SetTrigger("isActive");
         }
 
       

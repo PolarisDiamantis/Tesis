@@ -1,6 +1,6 @@
 Using pre-set license
 Built from '2022.3/release' branch; Version is '2022.3.5f1 (9674261d40ee) revision 9860134'; Using compiler version '192829333'; Build Type 'Release'
-OS: 'Windows 10  (10.0.19045) 64bit Professional' Language: 'es' Physical Memory: 16172 MB
+OS: 'Windows 11  (10.0.22631) 64bit Professional' Language: 'es' Physical Memory: 8094 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
 
 COMMAND LINE ARGUMENTS:
@@ -11,13 +11,13 @@ C:\Program Files\Unity\Hub\Editor\2022.3.5f1\Editor\Unity.exe
 -name
 AssetImportWorker2
 -projectPath
-C:/Users/Vladimir/OneDrive/Escritorio/Tesis
+C:/Aidan/Colegio/Estrategias y Tácticas/Tesis
 -logFile
 Logs/AssetImportWorker2.log
 -srvPort
-57972
-Successfully changed project path to: C:/Users/Vladimir/OneDrive/Escritorio/Tesis
-C:/Users/Vladimir/OneDrive/Escritorio/Tesis
+63233
+Successfully changed project path to: C:/Aidan/Colegio/Estrategias y Tácticas/Tesis
+C:/Aidan/Colegio/Estrategias y Tácticas/Tesis
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
@@ -49,64 +49,64 @@ C:/Users/Vladimir/OneDrive/Escritorio/Tesis
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [21408] Host "[IP] 192.168.1.102 [Port] 0 [Flags] 2 [Guid] 4079387410 [EditorId] 4079387410 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-5DNN92R) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [17336] Host "[IP] 192.168.1.37 [Port] 0 [Flags] 2 [Guid] 4050022174 [EditorId] 4050022174 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-9T3JEVK) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [21408] Host "[IP] 192.168.1.102 [Port] 0 [Flags] 2 [Guid] 4079387410 [EditorId] 4079387410 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-5DNN92R) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [17336] Host "[IP] 192.168.1.37 [Port] 0 [Flags] 2 [Guid] 4050022174 [EditorId] 4050022174 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-9T3JEVK) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
-Refreshing native plugins compatible for Editor in 8.58 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 12.20 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2022.3.5f1 (9674261d40ee)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.3.5f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Users/Vladimir/OneDrive/Escritorio/Tesis/Assets
+[Subsystems] Discovering subsystems at path C:/Aidan/Colegio/Estrategias y Tácticas/Tesis/Assets
 GfxDevice: creating device client; threaded=0; jobified=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
-    Renderer: NVIDIA GeForce GTX 1050 Ti (ID=0x1c82)
+    Renderer: NVIDIA GeForce GTX 1650 (ID=0x1f0a)
     Vendor:   NVIDIA
-    VRAM:     4017 MB
-    Driver:   31.0.15.3623
+    VRAM:     3935 MB
+    Driver:   31.0.15.5186
 Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.3.5f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.3.5f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.3.5f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56580
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56836
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.5f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.007220 seconds.
-- Loaded All Assemblies, in  0.267 seconds
+Registered in 0.010173 seconds.
+- Loaded All Assemblies, in  0.517 seconds
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.209 seconds
-Domain Reload Profiling: 475ms
-	BeginReloadAssembly (71ms)
+- Finished resetting the current domain, in  0.306 seconds
+Domain Reload Profiling: 817ms
+	BeginReloadAssembly (161ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (28ms)
-	RebuildNativeTypeToScriptingClass (9ms)
-	initialDomainReloadingComplete (50ms)
-	LoadAllAssembliesAndSetupDomain (108ms)
-		LoadAssemblies (69ms)
+		CreateAndSetChildDomain (2ms)
+	RebuildCommonClasses (56ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (93ms)
+	LoadAllAssembliesAndSetupDomain (189ms)
+		LoadAssemblies (157ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (103ms)
-			TypeCache.Refresh (102ms)
-				TypeCache.ScanAssembly (92ms)
-			ScanForSourceGeneratedMonoScriptInfo (0ms)
-			ResolveRequiredComponents (0ms)
-	FinalizeReload (209ms)
+		AnalyzeDomain (179ms)
+			TypeCache.Refresh (177ms)
+				TypeCache.ScanAssembly (158ms)
+			ScanForSourceGeneratedMonoScriptInfo (1ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (307ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (163ms)
+		SetupLoadedEditorAssemblies (238ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (8ms)
-			SetLoadedEditorAssemblies (6ms)
+			InitializePlatformSupportModulesInManaged (9ms)
+			SetLoadedEditorAssemblies (9ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (2ms)
-			ProcessInitializeOnLoadAttributes (110ms)
-			ProcessInitializeOnLoadMethodAttributes (38ms)
+			BeforeProcessingInitializeOnLoad (3ms)
+			ProcessInitializeOnLoadAttributes (152ms)
+			ProcessInitializeOnLoadMethodAttributes (64ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -114,10 +114,10 @@ Domain Reload Profiling: 475ms
 ========================================================================
 Worker process is ready to serve import requests
 Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\Vladimir\OneDrive\Escritorio\Tesis\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image C:\Users\Vladimir\OneDrive\Escritorio\Tesis\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-- Loaded All Assemblies, in  0.642 seconds
-Refreshing native plugins compatible for Editor in 3.29 ms, found 3 plugins.
+Symbol file LoadedFromMemory doesn't match image C:\Aidan\Colegio\Estrategias y Tácticas\Tesis\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Aidan\Colegio\Estrategias y Tácticas\Tesis\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  1.302 seconds
+Refreshing native plugins compatible for Editor in 6.83 ms, found 3 plugins.
 Native extension for WindowsStandalone target not found
 Package Manager log level set to [2]
 [Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
@@ -127,47 +127,47 @@ Package Manager log level set to [2]
 [Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
 [Package Manager] Cannot connect to Unity Package Manager local server
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.597 seconds
-Domain Reload Profiling: 1236ms
-	BeginReloadAssembly (107ms)
+- Finished resetting the current domain, in  0.954 seconds
+Domain Reload Profiling: 2243ms
+	BeginReloadAssembly (176ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (4ms)
+		DisableScriptedObjects (7ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (19ms)
-	RebuildCommonClasses (26ms)
-	RebuildNativeTypeToScriptingClass (8ms)
-	initialDomainReloadingComplete (38ms)
-	LoadAllAssembliesAndSetupDomain (460ms)
-		LoadAssemblies (243ms)
+		CreateAndSetChildDomain (34ms)
+	RebuildCommonClasses (47ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (57ms)
+	LoadAllAssembliesAndSetupDomain (995ms)
+		LoadAssemblies (581ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (267ms)
-			TypeCache.Refresh (239ms)
-				TypeCache.ScanAssembly (227ms)
-			ScanForSourceGeneratedMonoScriptInfo (20ms)
-			ResolveRequiredComponents (9ms)
-	FinalizeReload (597ms)
+		AnalyzeDomain (490ms)
+			TypeCache.Refresh (448ms)
+				TypeCache.ScanAssembly (430ms)
+			ScanForSourceGeneratedMonoScriptInfo (32ms)
+			ResolveRequiredComponents (10ms)
+	FinalizeReload (954ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (446ms)
+		SetupLoadedEditorAssemblies (726ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (5ms)
-			SetLoadedEditorAssemblies (3ms)
+			InitializePlatformSupportModulesInManaged (14ms)
+			SetLoadedEditorAssemblies (5ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (65ms)
-			ProcessInitializeOnLoadAttributes (313ms)
-			ProcessInitializeOnLoadMethodAttributes (53ms)
-			AfterProcessingInitializeOnLoad (6ms)
+			BeforeProcessingInitializeOnLoad (93ms)
+			ProcessInitializeOnLoadAttributes (525ms)
+			ProcessInitializeOnLoadMethodAttributes (78ms)
+			AfterProcessingInitializeOnLoad (9ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (4ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
-Refreshing native plugins compatible for Editor in 4.53 ms, found 3 plugins.
+		AwakeInstancesAfterBackupRestoration (5ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.08 seconds
+Refreshing native plugins compatible for Editor in 6.42 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 6256 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 87 unused Assets / (431.9 KB). Loaded Objects now: 6723.
-Memory consumption went from 304.2 MB to 303.8 MB.
-Total: 4.069300 ms (FindLiveObjects: 0.610600 ms CreateObjectMapping: 0.437100 ms MarkObjects: 2.718600 ms  DeleteObjects: 0.301800 ms)
+Unloading 6250 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 87 unused Assets / (432.2 KB). Loaded Objects now: 6718.
+Memory consumption went from 300.9 MB to 300.4 MB.
+Total: 6.347800 ms (FindLiveObjects: 0.740900 ms CreateObjectMapping: 0.360100 ms MarkObjects: 4.797600 ms  DeleteObjects: 0.447200 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
@@ -183,35 +183,477 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 118140.827256 seconds.
-  path: Assets/Prefab/Crystals/Cristal Animation.anim
-  artifactKey: Guid(c459c77a6648dcd4f83b04833d926cc8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefab/Crystals/Cristal Animation.anim using Guid(c459c77a6648dcd4f83b04833d926cc8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4a78c3ffeb10c6ff130da250436d377f') in 0.014094 seconds
+  Time since last request: 407429.149891 seconds.
+  path: Assets/Prefab/Crystals/Crystal 3.prefab
+  artifactKey: Guid(e8ce5a9dd039c6e4894de24bcc80df7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Crystal 3.prefab using Guid(e8ce5a9dd039c6e4894de24bcc80df7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea7dabad27c81d5f4884450fcff50d4d') in 0.046615 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 1
+Number of asset objects unloaded after import = 22
 ========================================================================
 Received Import Request.
-  Time since last request: 24.725093 seconds.
-  path: Assets/Scenes/TestingGroundP.unity
-  artifactKey: Guid(8f282e0f15e89694d808de08ee0d95a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/TestingGroundP.unity using Guid(8f282e0f15e89694d808de08ee0d95a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a332e518bd43b2f93e49f0dfa77957d') in 0.000557 seconds
+  Time since last request: 0.000029 seconds.
+  path: Assets/Prefab/Crystals/Set6.prefab
+  artifactKey: Guid(db342384b3c54d5499d6efd6630cda29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set6.prefab using Guid(db342384b3c54d5499d6efd6630cda29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd41bf13957de3a884dbdd9741da113e6') in 0.009926 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 299
+========================================================================
+Received Import Request.
+  Time since last request: 1.733058 seconds.
+  path: Assets/Prefab/Crystals/Crystal 3.prefab
+  artifactKey: Guid(e8ce5a9dd039c6e4894de24bcc80df7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Crystal 3.prefab using Guid(e8ce5a9dd039c6e4894de24bcc80df7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '495fede7a577ca16766b0a65db8afb97') in 0.003757 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 22
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Prefab/Crystals/Set5.prefab
+  artifactKey: Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set5.prefab using Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0854d8d18a3a9f034375f142a837d7f0') in 0.000991 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 0
 ========================================================================
 Received Import Request.
-  Time since last request: 0.943393 seconds.
-  path: Assets/Scenes/MainMenu.unity
-  artifactKey: Guid(d2c6de67fa11f194d982fe3c77e04153) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/MainMenu.unity using Guid(d2c6de67fa11f194d982fe3c77e04153) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd245d945094b411939c63888f275dcdf') in 0.000509 seconds
+  Time since last request: 0.331917 seconds.
+  path: Assets/Prefab/Crystals/Crystal 3.prefab
+  artifactKey: Guid(e8ce5a9dd039c6e4894de24bcc80df7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Crystal 3.prefab using Guid(e8ce5a9dd039c6e4894de24bcc80df7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd02ae144636d91c3b1febe52a2993eb2') in 0.004278 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 22
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Prefab/Crystals/Set5.prefab
+  artifactKey: Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set5.prefab using Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '808f65e91623c25e543276a7b6ad77fa') in 0.008365 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 184
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Prefab/Crystals/Set6.prefab
+  artifactKey: Guid(db342384b3c54d5499d6efd6630cda29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set6.prefab using Guid(db342384b3c54d5499d6efd6630cda29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ede3db66163b4904308400f9ea79db1') in 0.007625 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 299
+========================================================================
+Received Import Request.
+  Time since last request: 0.689937 seconds.
+  path: Assets/Prefab/Crystals/Crystal 3.prefab
+  artifactKey: Guid(e8ce5a9dd039c6e4894de24bcc80df7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Crystal 3.prefab using Guid(e8ce5a9dd039c6e4894de24bcc80df7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '13a495d8b146cbd499515a0982afc02b') in 0.004788 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 22
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Prefab/Crystals/Set5.prefab
+  artifactKey: Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set5.prefab using Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f95f524ac819c7571ee080f9e74884bf') in 0.005706 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 184
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Prefab/Crystals/Set6.prefab
+  artifactKey: Guid(db342384b3c54d5499d6efd6630cda29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set6.prefab using Guid(db342384b3c54d5499d6efd6630cda29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b0fe879be8964cf80f2604331766a8e6') in 0.007746 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 299
+========================================================================
+Received Import Request.
+  Time since last request: 0.504622 seconds.
+  path: Assets/Prefab/Crystals/Crystal 3.prefab
+  artifactKey: Guid(e8ce5a9dd039c6e4894de24bcc80df7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Crystal 3.prefab using Guid(e8ce5a9dd039c6e4894de24bcc80df7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3651f8a4b61b0e6941190c9db36ea0d4') in 0.006265 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 22
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Prefab/Crystals/Set5.prefab
+  artifactKey: Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set5.prefab using Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dde09c9cb96a274c8ef63fbde494362c') in 0.006209 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 184
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Prefab/Crystals/Set6.prefab
+  artifactKey: Guid(db342384b3c54d5499d6efd6630cda29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set6.prefab using Guid(db342384b3c54d5499d6efd6630cda29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '49adb4963075049e3715d1682e1452a1') in 0.007918 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 299
+========================================================================
+Received Import Request.
+  Time since last request: 0.474637 seconds.
+  path: Assets/Prefab/Crystals/Crystal 3.prefab
+  artifactKey: Guid(e8ce5a9dd039c6e4894de24bcc80df7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Crystal 3.prefab using Guid(e8ce5a9dd039c6e4894de24bcc80df7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '62f2f68ce66f1c604af15896b5e7f07f') in 0.005360 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 22
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Prefab/Crystals/Set5.prefab
+  artifactKey: Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set5.prefab using Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0854d8d18a3a9f034375f142a837d7f0') in 0.001437 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.342557 seconds.
+  path: Assets/Prefab/Crystals/Crystal 3.prefab
+  artifactKey: Guid(e8ce5a9dd039c6e4894de24bcc80df7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Crystal 3.prefab using Guid(e8ce5a9dd039c6e4894de24bcc80df7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.005066 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/prefab/crystals/crystal 3.prefab in SourceAssetDB has modification time of '2024-06-18T02:42:42.2093734Z' while content on disk has modification time of '2024-06-18T02:42:42.5899919Z'
+  ERROR: Build asset version error: assets/prefab/crystals/crystal 3.prefab in SourceAssetDB has modification time of '2024-06-18T02:42:42.2093734Z' while content on disk has modification time of '2024-06-18T02:42:42.5899919Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 0.000062 seconds.
+  path: Assets/Prefab/Crystals/Set5.prefab
+  artifactKey: Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set5.prefab using Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '794f8dba7d2aa39cd5d9c300f4d1525e') in 0.008970 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 184
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Prefab/Crystals/Set6.prefab
+  artifactKey: Guid(db342384b3c54d5499d6efd6630cda29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set6.prefab using Guid(db342384b3c54d5499d6efd6630cda29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0c4d48979b5f16c82d1d2a6aee7e01ae') in 0.008944 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 299
+========================================================================
+Received Import Request.
+  Time since last request: 0.047208 seconds.
+  path: Assets/Prefab/Crystals/Crystal 3.prefab
+  artifactKey: Guid(e8ce5a9dd039c6e4894de24bcc80df7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Crystal 3.prefab using Guid(e8ce5a9dd039c6e4894de24bcc80df7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fedb05413f3638a4694f3e8da3c9ab19') in 0.004574 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 22
+========================================================================
+Received Import Request.
+  Time since last request: 0.394558 seconds.
+  path: Assets/Prefab/Crystals/Crystal 3.prefab
+  artifactKey: Guid(e8ce5a9dd039c6e4894de24bcc80df7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Crystal 3.prefab using Guid(e8ce5a9dd039c6e4894de24bcc80df7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'afd647beae14bdef3722bef15a36239e') in 0.003760 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 22
+========================================================================
+Received Import Request.
+  Time since last request: 0.000045 seconds.
+  path: Assets/Prefab/Crystals/Set5.prefab
+  artifactKey: Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set5.prefab using Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0854d8d18a3a9f034375f142a837d7f0') in 0.000839 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.331416 seconds.
+  path: Assets/Prefab/Crystals/Crystal 3.prefab
+  artifactKey: Guid(e8ce5a9dd039c6e4894de24bcc80df7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Crystal 3.prefab using Guid(e8ce5a9dd039c6e4894de24bcc80df7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '603578ad4d6cd1470a18bb05b6589908') in 0.006004 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 22
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Prefab/Crystals/Set5.prefab
+  artifactKey: Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set5.prefab using Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0854d8d18a3a9f034375f142a837d7f0') in 0.001555 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.327965 seconds.
+  path: Assets/Prefab/Crystals/Crystal 3.prefab
+  artifactKey: Guid(e8ce5a9dd039c6e4894de24bcc80df7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Crystal 3.prefab using Guid(e8ce5a9dd039c6e4894de24bcc80df7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.004666 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/prefab/crystals/crystal 3.prefab in SourceAssetDB has modification time of '2024-06-18T02:42:43.5263404Z' while content on disk has modification time of '2024-06-18T02:42:43.8944682Z'
+  ERROR: Build asset version error: assets/prefab/crystals/crystal 3.prefab in SourceAssetDB has modification time of '2024-06-18T02:42:43.5263404Z' while content on disk has modification time of '2024-06-18T02:42:43.8944682Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 0.001192 seconds.
+  path: Assets/Prefab/Crystals/Set5.prefab
+  artifactKey: Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set5.prefab using Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0854d8d18a3a9f034375f142a837d7f0') in 0.001093 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.337205 seconds.
+  path: Assets/Prefab/Crystals/Crystal 3.prefab
+  artifactKey: Guid(e8ce5a9dd039c6e4894de24bcc80df7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Crystal 3.prefab using Guid(e8ce5a9dd039c6e4894de24bcc80df7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.004996 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/prefab/crystals/crystal 3.prefab in SourceAssetDB has modification time of '2024-06-18T02:42:43.8944682Z' while content on disk has modification time of '2024-06-18T02:42:44.2734053Z'
+  ERROR: Build asset version error: assets/prefab/crystals/crystal 3.prefab in SourceAssetDB has modification time of '2024-06-18T02:42:43.8944682Z' while content on disk has modification time of '2024-06-18T02:42:44.2734053Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 0.001762 seconds.
+  path: Assets/Prefab/Crystals/Set5.prefab
+  artifactKey: Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set5.prefab using Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd90622f7f2050e353863a6c20c403152') in 0.009459 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 184
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Prefab/Crystals/Set6.prefab
+  artifactKey: Guid(db342384b3c54d5499d6efd6630cda29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set6.prefab using Guid(db342384b3c54d5499d6efd6630cda29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '671fdf22a06590fe31d941a1cf5edaae') in 0.008011 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 299
+========================================================================
+Received Import Request.
+  Time since last request: 0.019917 seconds.
+  path: Assets/Prefab/Crystals/Crystal 3.prefab
+  artifactKey: Guid(e8ce5a9dd039c6e4894de24bcc80df7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Crystal 3.prefab using Guid(e8ce5a9dd039c6e4894de24bcc80df7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6729e8428d9c6df5057b47b8689bf334') in 0.004386 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 22
+========================================================================
+Received Import Request.
+  Time since last request: 27.998292 seconds.
+  path: Assets/Prefab/Crystals/Crystal 4.prefab
+  artifactKey: Guid(a14bbeca8d07c204d95d026f92e4eb72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Crystal 4.prefab using Guid(a14bbeca8d07c204d95d026f92e4eb72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd1b5f3299007cb71ae8f911cefc33d04') in 0.005176 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 22
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Prefab/Crystals/Set5.prefab
+  artifactKey: Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set5.prefab using Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '513f655053aae10ea14c24b4ce99701b') in 0.006822 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 184
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Prefab/Crystals/Set6.prefab
+  artifactKey: Guid(db342384b3c54d5499d6efd6630cda29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set6.prefab using Guid(db342384b3c54d5499d6efd6630cda29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ade912e38c2022da9d5dbf69cce1e215') in 0.007775 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 299
+========================================================================
+Received Import Request.
+  Time since last request: 1.306083 seconds.
+  path: Assets/Prefab/Crystals/Crystal 4.prefab
+  artifactKey: Guid(a14bbeca8d07c204d95d026f92e4eb72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Crystal 4.prefab using Guid(a14bbeca8d07c204d95d026f92e4eb72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a91d1c51782b6078de28501e3d62d5c2') in 0.003870 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 22
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Prefab/Crystals/Set5.prefab
+  artifactKey: Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set5.prefab using Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0854d8d18a3a9f034375f142a837d7f0') in 0.000804 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.350623 seconds.
+  path: Assets/Prefab/Crystals/Crystal 4.prefab
+  artifactKey: Guid(a14bbeca8d07c204d95d026f92e4eb72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Crystal 4.prefab using Guid(a14bbeca8d07c204d95d026f92e4eb72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c3ca062a31e4c7194e6ddae3a399895c') in 0.006831 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 22
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Prefab/Crystals/Set5.prefab
+  artifactKey: Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set5.prefab using Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a394583c40c678cf1be3ef2fe3a127c6') in 0.009218 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 184
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Prefab/Crystals/Set6.prefab
+  artifactKey: Guid(db342384b3c54d5499d6efd6630cda29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set6.prefab using Guid(db342384b3c54d5499d6efd6630cda29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '67507dc1842207cbfed2c2b09aaf9c61') in 0.006542 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 299
+========================================================================
+Received Import Request.
+  Time since last request: 0.475955 seconds.
+  path: Assets/Prefab/Crystals/Crystal 4.prefab
+  artifactKey: Guid(a14bbeca8d07c204d95d026f92e4eb72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Crystal 4.prefab using Guid(a14bbeca8d07c204d95d026f92e4eb72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '733d7098a413ee475012bfd889f707c0') in 0.005438 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 22
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Prefab/Crystals/Set5.prefab
+  artifactKey: Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set5.prefab using Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f2be65b0e37c105b77be92835b4b80c8') in 0.007026 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 184
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Prefab/Crystals/Set6.prefab
+  artifactKey: Guid(db342384b3c54d5499d6efd6630cda29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set6.prefab using Guid(db342384b3c54d5499d6efd6630cda29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3471a01071f498d6414143905c716857') in 0.007169 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 299
+========================================================================
+Received Import Request.
+  Time since last request: 0.505846 seconds.
+  path: Assets/Prefab/Crystals/Crystal 4.prefab
+  artifactKey: Guid(a14bbeca8d07c204d95d026f92e4eb72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Crystal 4.prefab using Guid(a14bbeca8d07c204d95d026f92e4eb72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c70e5ce8803763cfd619c3c816747884') in 0.003855 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 22
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Prefab/Crystals/Set5.prefab
+  artifactKey: Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set5.prefab using Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1846fe6be2ad66788f8360c44c64ee4') in 0.006410 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 184
+========================================================================
+Received Import Request.
+  Time since last request: 0.328909 seconds.
+  path: Assets/Prefab/Crystals/Crystal 4.prefab
+  artifactKey: Guid(a14bbeca8d07c204d95d026f92e4eb72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Crystal 4.prefab using Guid(a14bbeca8d07c204d95d026f92e4eb72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.005694 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/prefab/crystals/crystal 4.prefab in SourceAssetDB has modification time of '2024-06-18T02:43:15.3183788Z' while content on disk has modification time of '2024-06-18T02:43:15.6895151Z'
+  ERROR: Build asset version error: assets/prefab/crystals/crystal 4.prefab in SourceAssetDB has modification time of '2024-06-18T02:43:15.3183788Z' while content on disk has modification time of '2024-06-18T02:43:15.6895151Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Prefab/Crystals/Set5.prefab
+  artifactKey: Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set5.prefab using Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1846fe6be2ad66788f8360c44c64ee4') in 0.007793 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 184
+========================================================================
+Received Import Request.
+  Time since last request: 0.253212 seconds.
+  path: Assets/Prefab/Crystals/Set3.prefab
+  artifactKey: Guid(281a5c60cc1c6fb4ab3fb7a62ae785aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set3.prefab using Guid(281a5c60cc1c6fb4ab3fb7a62ae785aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a8f5d3986a6e1837887c5c1ba8140d0') in 0.006556 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 127
+========================================================================
+Received Import Request.
+  Time since last request: 0.575046 seconds.
+  path: Assets/Prefab/Crystals/Crystal 4.prefab
+  artifactKey: Guid(a14bbeca8d07c204d95d026f92e4eb72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Crystal 4.prefab using Guid(a14bbeca8d07c204d95d026f92e4eb72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7a525d84e5631cd8f8e905504f8187a9') in 0.005700 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 22
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Prefab/Crystals/Set5.prefab
+  artifactKey: Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set5.prefab using Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '98bf56bba6db3ccf1eac8fd11968ce52') in 0.008683 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 184
+========================================================================
+Received Import Request.
+  Time since last request: 0.533466 seconds.
+  path: Assets/Prefab/Crystals/Crystal 4.prefab
+  artifactKey: Guid(a14bbeca8d07c204d95d026f92e4eb72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Crystal 4.prefab using Guid(a14bbeca8d07c204d95d026f92e4eb72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.008005 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/prefab/crystals/crystal 4.prefab in SourceAssetDB has modification time of '2024-06-18T02:43:16.8033903Z' while content on disk has modification time of '2024-06-18T02:43:17.1909711Z'
+  ERROR: Build asset version error: assets/prefab/crystals/crystal 4.prefab in SourceAssetDB has modification time of '2024-06-18T02:43:16.8033903Z' while content on disk has modification time of '2024-06-18T02:43:17.1909711Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/Prefab/Crystals/Set5.prefab
+  artifactKey: Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set5.prefab using Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0854d8d18a3a9f034375f142a837d7f0') in 0.001367 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.360940 seconds.
+  path: Assets/Prefab/Crystals/Crystal 4.prefab
+  artifactKey: Guid(a14bbeca8d07c204d95d026f92e4eb72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Crystal 4.prefab using Guid(a14bbeca8d07c204d95d026f92e4eb72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.004293 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/prefab/crystals/crystal 4.prefab in SourceAssetDB has modification time of '2024-06-18T02:43:17.1909711Z' while content on disk has modification time of '2024-06-18T02:43:17.594682Z'
+  ERROR: Build asset version error: assets/prefab/crystals/crystal 4.prefab in SourceAssetDB has modification time of '2024-06-18T02:43:17.1909711Z' while content on disk has modification time of '2024-06-18T02:43:17.594682Z'
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 0.000348 seconds.
+  path: Assets/Prefab/Crystals/Set5.prefab
+  artifactKey: Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set5.prefab using Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08c4faf463c1993d1e4a7fd3ee5e8efa') in 0.009996 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 184
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Prefab/Crystals/Set6.prefab
+  artifactKey: Guid(db342384b3c54d5499d6efd6630cda29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set6.prefab using Guid(db342384b3c54d5499d6efd6630cda29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a04aa3b8e4fb9be46d8b862947d0af3') in 0.007687 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 299
+========================================================================
+Received Import Request.
+  Time since last request: 0.013107 seconds.
+  path: Assets/Prefab/Crystals/Crystal 4.prefab
+  artifactKey: Guid(a14bbeca8d07c204d95d026f92e4eb72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Crystal 4.prefab using Guid(a14bbeca8d07c204d95d026f92e4eb72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cda55f6c645fbd84023f7626bbe00488') in 0.003613 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 22
+========================================================================
+Received Import Request.
+  Time since last request: 0.863233 seconds.
+  path: Assets/Prefab/Crystals/Crystal 4.prefab
+  artifactKey: Guid(a14bbeca8d07c204d95d026f92e4eb72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Crystal 4.prefab using Guid(a14bbeca8d07c204d95d026f92e4eb72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d0d5dbf4fdf87d2967d5aae2e126e70') in 0.007133 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 22
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Prefab/Crystals/Set5.prefab
+  artifactKey: Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set5.prefab using Guid(199e52c2d2d6e3d488a673c0986a3fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b5888f183abceb8950ade761b04e7be0') in 0.005646 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 184
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Prefab/Crystals/Set6.prefab
+  artifactKey: Guid(db342384b3c54d5499d6efd6630cda29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Crystals/Set6.prefab using Guid(db342384b3c54d5499d6efd6630cda29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a3771b0f7dd1dd1bb161daeb7a387b8') in 0.007233 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 299
 ========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\Vladimir\OneDrive\Escritorio\Tesis\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image C:\Users\Vladimir\OneDrive\Escritorio\Tesis\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-- Loaded All Assemblies, in  0.633 seconds
-Refreshing native plugins compatible for Editor in 3.47 ms, found 3 plugins.
+Symbol file LoadedFromMemory doesn't match image C:\Aidan\Colegio\Estrategias y Tácticas\Tesis\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Aidan\Colegio\Estrategias y Tácticas\Tesis\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  1.570 seconds
+Refreshing native plugins compatible for Editor in 12.99 ms, found 3 plugins.
 Native extension for WindowsStandalone target not found
 [Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
@@ -220,46 +662,46 @@ Native extension for WindowsStandalone target not found
 [Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
 [Package Manager] Cannot connect to Unity Package Manager local server
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.136 seconds
-Domain Reload Profiling: 1766ms
-	BeginReloadAssembly (136ms)
+- Finished resetting the current domain, in  5.399 seconds
+Domain Reload Profiling: 6966ms
+	BeginReloadAssembly (181ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (5ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (41ms)
-	RebuildCommonClasses (26ms)
-	RebuildNativeTypeToScriptingClass (9ms)
-	initialDomainReloadingComplete (29ms)
-	LoadAllAssembliesAndSetupDomain (430ms)
-		LoadAssemblies (240ms)
+		CreateAndSetChildDomain (56ms)
+	RebuildCommonClasses (39ms)
+	RebuildNativeTypeToScriptingClass (12ms)
+	initialDomainReloadingComplete (40ms)
+	LoadAllAssembliesAndSetupDomain (1293ms)
+		LoadAssemblies (433ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (243ms)
-			TypeCache.Refresh (234ms)
-				TypeCache.ScanAssembly (222ms)
+		AnalyzeDomain (932ms)
+			TypeCache.Refresh (918ms)
+				TypeCache.ScanAssembly (699ms)
 			ScanForSourceGeneratedMonoScriptInfo (0ms)
-			ResolveRequiredComponents (9ms)
-	FinalizeReload (1136ms)
+			ResolveRequiredComponents (14ms)
+	FinalizeReload (5402ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (479ms)
+		SetupLoadedEditorAssemblies (1687ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (6ms)
-			SetLoadedEditorAssemblies (3ms)
+			InitializePlatformSupportModulesInManaged (81ms)
+			SetLoadedEditorAssemblies (55ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (77ms)
-			ProcessInitializeOnLoadAttributes (326ms)
-			ProcessInitializeOnLoadMethodAttributes (60ms)
-			AfterProcessingInitializeOnLoad (7ms)
-			EditorAssembliesLoaded (0ms)
+			BeforeProcessingInitializeOnLoad (469ms)
+			ProcessInitializeOnLoadAttributes (925ms)
+			ProcessInitializeOnLoadMethodAttributes (140ms)
+			AfterProcessingInitializeOnLoad (16ms)
+			EditorAssembliesLoaded (1ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (16ms)
-Refreshing native plugins compatible for Editor in 5.52 ms, found 3 plugins.
+		AwakeInstancesAfterBackupRestoration (32ms)
+Refreshing native plugins compatible for Editor in 18.15 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 5866 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 44 unused Assets / (389.9 KB). Loaded Objects now: 6740.
-Memory consumption went from 222.2 MB to 221.8 MB.
-Total: 3.982800 ms (FindLiveObjects: 0.557300 ms CreateObjectMapping: 0.280100 ms MarkObjects: 2.978900 ms  DeleteObjects: 0.165100 ms)
+Unloading 44 unused Assets / (389.7 KB). Loaded Objects now: 6736.
+Memory consumption went from 220.3 MB to 219.9 MB.
+Total: 18.273700 ms (FindLiveObjects: 2.395000 ms CreateObjectMapping: 0.926300 ms MarkObjects: 13.866200 ms  DeleteObjects: 1.084300 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 AssetImportParameters requested are different than current active one (requested -> active):
@@ -277,10 +719,10 @@ AssetImportParameters requested are different than current active one (requested
 ========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\Vladimir\OneDrive\Escritorio\Tesis\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image C:\Users\Vladimir\OneDrive\Escritorio\Tesis\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-- Loaded All Assemblies, in  0.656 seconds
-Refreshing native plugins compatible for Editor in 3.05 ms, found 3 plugins.
+Symbol file LoadedFromMemory doesn't match image C:\Aidan\Colegio\Estrategias y Tácticas\Tesis\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Aidan\Colegio\Estrategias y Tácticas\Tesis\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  2.220 seconds
+Refreshing native plugins compatible for Editor in 8.38 ms, found 3 plugins.
 Native extension for WindowsStandalone target not found
 [Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
@@ -289,115 +731,46 @@ Native extension for WindowsStandalone target not found
 [Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
 [Package Manager] Cannot connect to Unity Package Manager local server
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.105 seconds
-Domain Reload Profiling: 1759ms
-	BeginReloadAssembly (140ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (3ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (46ms)
-	RebuildCommonClasses (27ms)
-	RebuildNativeTypeToScriptingClass (9ms)
-	initialDomainReloadingComplete (35ms)
-	LoadAllAssembliesAndSetupDomain (442ms)
-		LoadAssemblies (243ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (254ms)
-			TypeCache.Refresh (241ms)
-				TypeCache.ScanAssembly (227ms)
-			ScanForSourceGeneratedMonoScriptInfo (0ms)
-			ResolveRequiredComponents (12ms)
-	FinalizeReload (1106ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (441ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (6ms)
-			SetLoadedEditorAssemblies (3ms)
-			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (75ms)
-			ProcessInitializeOnLoadAttributes (295ms)
-			ProcessInitializeOnLoadMethodAttributes (54ms)
-			AfterProcessingInitializeOnLoad (7ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (13ms)
-Refreshing native plugins compatible for Editor in 3.38 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 5866 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 44 unused Assets / (390.1 KB). Loaded Objects now: 6756.
-Memory consumption went from 222.2 MB to 221.8 MB.
-Total: 4.894200 ms (FindLiveObjects: 0.941100 ms CreateObjectMapping: 0.373300 ms MarkObjects: 3.402100 ms  DeleteObjects: 0.176300 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:CustomObjectIndexerAttribute: a3ef5dd2817f97addfee359851a9dba5 -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\Vladimir\OneDrive\Escritorio\Tesis\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image C:\Users\Vladimir\OneDrive\Escritorio\Tesis\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-- Loaded All Assemblies, in  0.642 seconds
-Refreshing native plugins compatible for Editor in 3.30 ms, found 3 plugins.
-Native extension for WindowsStandalone target not found
-[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.201 seconds
-Domain Reload Profiling: 1840ms
-	BeginReloadAssembly (140ms)
+- Finished resetting the current domain, in  3.078 seconds
+Domain Reload Profiling: 5295ms
+	BeginReloadAssembly (276ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (4ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (46ms)
-	RebuildCommonClasses (29ms)
-	RebuildNativeTypeToScriptingClass (10ms)
-	initialDomainReloadingComplete (27ms)
-	LoadAllAssembliesAndSetupDomain (432ms)
-		LoadAssemblies (242ms)
+		CreateAndSetChildDomain (72ms)
+	RebuildCommonClasses (48ms)
+	RebuildNativeTypeToScriptingClass (35ms)
+	initialDomainReloadingComplete (46ms)
+	LoadAllAssembliesAndSetupDomain (1811ms)
+		LoadAssemblies (958ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (245ms)
-			TypeCache.Refresh (234ms)
-				TypeCache.ScanAssembly (219ms)
+		AnalyzeDomain (996ms)
+			TypeCache.Refresh (976ms)
+				TypeCache.ScanAssembly (880ms)
 			ScanForSourceGeneratedMonoScriptInfo (0ms)
-			ResolveRequiredComponents (11ms)
-	FinalizeReload (1202ms)
+			ResolveRequiredComponents (20ms)
+	FinalizeReload (3079ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (557ms)
+		SetupLoadedEditorAssemblies (995ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (7ms)
-			SetLoadedEditorAssemblies (4ms)
+			InitializePlatformSupportModulesInManaged (10ms)
+			SetLoadedEditorAssemblies (6ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (82ms)
-			ProcessInitializeOnLoadAttributes (384ms)
-			ProcessInitializeOnLoadMethodAttributes (72ms)
-			AfterProcessingInitializeOnLoad (8ms)
+			BeforeProcessingInitializeOnLoad (178ms)
+			ProcessInitializeOnLoadAttributes (676ms)
+			ProcessInitializeOnLoadMethodAttributes (107ms)
+			AfterProcessingInitializeOnLoad (17ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (18ms)
-Refreshing native plugins compatible for Editor in 4.01 ms, found 3 plugins.
+		AwakeInstancesAfterBackupRestoration (29ms)
+Refreshing native plugins compatible for Editor in 10.02 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 5866 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 44 unused Assets / (390.1 KB). Loaded Objects now: 6772.
-Memory consumption went from 222.2 MB to 221.8 MB.
-Total: 4.863600 ms (FindLiveObjects: 0.938800 ms CreateObjectMapping: 0.346800 ms MarkObjects: 3.422600 ms  DeleteObjects: 0.153500 ms)
+Unloading 44 unused Assets / (390.2 KB). Loaded Objects now: 6752.
+Memory consumption went from 220.3 MB to 220.0 MB.
+Total: 348.833900 ms (FindLiveObjects: 1.353100 ms CreateObjectMapping: 0.272600 ms MarkObjects: 339.082200 ms  DeleteObjects: 8.123800 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 AssetImportParameters requested are different than current active one (requested -> active):
@@ -412,72 +785,9 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\Vladimir\OneDrive\Escritorio\Tesis\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image C:\Users\Vladimir\OneDrive\Escritorio\Tesis\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-- Loaded All Assemblies, in  0.674 seconds
-Refreshing native plugins compatible for Editor in 3.32 ms, found 3 plugins.
-Native extension for WindowsStandalone target not found
-[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.039 seconds
-Domain Reload Profiling: 1710ms
-	BeginReloadAssembly (136ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (3ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (43ms)
-	RebuildCommonClasses (27ms)
-	RebuildNativeTypeToScriptingClass (11ms)
-	initialDomainReloadingComplete (27ms)
-	LoadAllAssembliesAndSetupDomain (469ms)
-		LoadAssemblies (247ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (273ms)
-			TypeCache.Refresh (258ms)
-				TypeCache.ScanAssembly (244ms)
-			ScanForSourceGeneratedMonoScriptInfo (5ms)
-			ResolveRequiredComponents (10ms)
-	FinalizeReload (1039ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (406ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (5ms)
-			SetLoadedEditorAssemblies (3ms)
-			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (68ms)
-			ProcessInitializeOnLoadAttributes (274ms)
-			ProcessInitializeOnLoadMethodAttributes (50ms)
-			AfterProcessingInitializeOnLoad (7ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (13ms)
-Refreshing native plugins compatible for Editor in 3.42 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 5866 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 44 unused Assets / (390.1 KB). Loaded Objects now: 6788.
-Memory consumption went from 222.2 MB to 221.9 MB.
-Total: 3.611900 ms (FindLiveObjects: 0.499100 ms CreateObjectMapping: 0.189100 ms MarkObjects: 2.786700 ms  DeleteObjects: 0.136300 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:CustomObjectIndexerAttribute: a3ef5dd2817f97addfee359851a9dba5 -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+TcpMessagingSession - receive error
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
