@@ -70,6 +70,7 @@ public class PlayerModel : MonoBehaviour
             Vector3 imp = transform.position - hit.point;
             rb.velocity = Vector3.zero;
             AddImpulse(imp.normalized * _impulseStreght);
+            OnDamage();
         }
 
         if(Physics.SphereCast(rb.position, _magnetSphere, transform.forward, out hit, _magnetSphere, _magnetMask))
@@ -119,6 +120,30 @@ public class PlayerModel : MonoBehaviour
     {
         anim.SetFloat("x", x * 50);
         anim.SetFloat("y", y);
+    }
+
+    public void OnDeath()
+    {
+        anim.SetTrigger("Death");
+    }
+
+    public void OnDamage()
+    {
+        anim.SetTrigger("Damage");
+    }
+
+    public void LastCheckPoint(CheckPoint check)
+    {
+        StartCoroutine(DeathSequence(2, check));
+    }
+
+    IEnumerator DeathSequence(float duration, CheckPoint check)
+    {
+        OnDeath();
+        yield return new WaitForSeconds(duration);
+        rb.position = check.spawnPoint.position;
+        GetComponent<PlayerController>().ModifyRotation(check.spawnPoint.rotation.eulerAngles.y, check.spawnPoint.rotation.eulerAngles.x);
+        anim.Play("Movimiento");
     }
 
     #region Gizmos

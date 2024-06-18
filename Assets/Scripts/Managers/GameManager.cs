@@ -44,10 +44,7 @@ public class GameManager : MonoBehaviour
 
     public void ReturnToLastCheckPoint()
     {
-        Rigidbody p = player.GetComponent<Rigidbody>();
-        p.position = lastCheckPoint.spawnPoint.position;
-        player.GetComponent<PlayerController>().ModifyRotation(lastCheckPoint.spawnPoint.rotation.eulerAngles.y, lastCheckPoint.spawnPoint.rotation.eulerAngles.x);
-        //player.transform.position = lastCheckPoint.spawnPoint.position;
+        player.LastCheckPoint(lastCheckPoint);
     }
 
     public void FinalResults()
@@ -69,4 +66,5 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
+
 }
