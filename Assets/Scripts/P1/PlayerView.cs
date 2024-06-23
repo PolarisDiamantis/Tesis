@@ -92,7 +92,7 @@ public class PlayerView
         {
             _isOnBoostActive = true;
             _boostReady.Stop();
-            _boostSpeed.Play();
+            //_boostSpeed.Play();
             _boostForceField.Play();
             _boostDecharge.Play();
             _camAnim.Play("Boost");
@@ -100,7 +100,7 @@ public class PlayerView
         else
         {
             _isOnBoostActive = false;
-            _boostSpeed.Stop();
+            //_boostSpeed.Stop();
             _boostForceField.Stop();
             _camAnim.Play("Normal");
         }
