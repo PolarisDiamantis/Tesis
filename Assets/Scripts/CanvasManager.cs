@@ -8,6 +8,7 @@ public class CanvasManager : MonoBehaviour
 {
     public TextMeshProUGUI lvl1R;
     public TextMeshProUGUI lvl2R;
+    public TextMeshProUGUI lvl3R;
 
     void Start()
     {
@@ -23,6 +24,11 @@ public class CanvasManager : MonoBehaviour
         {
             TimeSpan time = TimeSpan.Parse(PlayerPrefs.GetString("lvl2BestTime"));
             lvl2R.text = time.Hours.ToString("00") + " : " + time.Minutes.ToString("00") + " : " + time.Seconds.ToString("00");
+        }
+        if (PlayerPrefs.HasKey("lvl3BestTime"))
+        {
+            TimeSpan time = TimeSpan.Parse(PlayerPrefs.GetString("lvl3BestTime"));
+            lvl3R.text = time.Hours.ToString("00") + " : " + time.Minutes.ToString("00") + " : " + time.Seconds.ToString("00");
         }
     }
 

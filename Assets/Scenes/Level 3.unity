@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.25119212, g: 0.47104976, b: 0.47418886, a: 1}
+  m_IndirectSpecularColor: {r: 0.2511921, g: 0.47104976, b: 0.47418886, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1373,7 +1373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timer: {fileID: 1022803123}
-  _currentLevelKey: lvl2BestTime
+  _currentLevelKey: lvl3BestTime
 --- !u!4 &175638937
 Transform:
   m_ObjectHideFlags: 0
@@ -2478,7 +2478,7 @@ PrefabInstance:
     - target: {fileID: 8371448214961151179, guid: c526663d8af9ea6419e8f82a6cb34422,
         type: 3}
       propertyPath: strenght
-      value: 50000
+      value: 45000
       objectReference: {fileID: 0}
     - target: {fileID: 8371448214961151179, guid: c526663d8af9ea6419e8f82a6cb34422,
         type: 3}
@@ -2488,7 +2488,7 @@ PrefabInstance:
     - target: {fileID: 8371448214961151179, guid: c526663d8af9ea6419e8f82a6cb34422,
         type: 3}
       propertyPath: windDirection.y
-      value: -5.75
+      value: -3.3
       objectReference: {fileID: 0}
     - target: {fileID: 8371448214961151179, guid: c526663d8af9ea6419e8f82a6cb34422,
         type: 3}
@@ -4112,6 +4112,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2212542873628741507, guid: c110bda965d757f4c80a8bf35033a800,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1757618877}
+    - target: {fileID: 2212542873628741507, guid: c110bda965d757f4c80a8bf35033a800,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeEscene
+      objectReference: {fileID: 0}
     - target: {fileID: 3232258216346278111, guid: c110bda965d757f4c80a8bf35033a800,
         type: 3}
       propertyPath: m_Pivot.x
@@ -5243,6 +5253,11 @@ PrefabInstance:
       propertyPath: camAnim
       value: 
       objectReference: {fileID: 1467378054}
+    - target: {fileID: 6761802725117173813, guid: 6227959bbce8c014586a9e641911101a,
+        type: 3}
+      propertyPath: _collisionSphere
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6633,7 +6648,7 @@ GameObject:
   - component: {fileID: 989260853}
   - component: {fileID: 989260852}
   - component: {fileID: 989260851}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain_(-1933.00, 0.00, 6849.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8990,7 +9005,7 @@ PrefabInstance:
     - target: {fileID: 8371448214961151179, guid: c526663d8af9ea6419e8f82a6cb34422,
         type: 3}
       propertyPath: strenght
-      value: 50000
+      value: 45000
       objectReference: {fileID: 0}
     - target: {fileID: 8371448214961151179, guid: c526663d8af9ea6419e8f82a6cb34422,
         type: 3}
@@ -9923,7 +9938,7 @@ GameObject:
   - component: {fileID: 1475425728}
   - component: {fileID: 1475425727}
   - component: {fileID: 1475425726}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain_(-1933.00, 0.00, -5151.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10742,7 +10757,7 @@ Transform:
   m_GameObject: {fileID: 1499702333}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 752.2903, y: 233.789, z: -4410.785}
+  m_LocalPosition: {x: 750.73846, y: 233.789, z: -4418.259}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11216,7 +11231,7 @@ GameObject:
   - component: {fileID: 1596697592}
   - component: {fileID: 1596697591}
   - component: {fileID: 1596697590}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain_(-1933.00, 0.00, 849.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11928,7 +11943,7 @@ PrefabInstance:
     - target: {fileID: 8371448214961151179, guid: c526663d8af9ea6419e8f82a6cb34422,
         type: 3}
       propertyPath: strenght
-      value: 55000
+      value: 45000
       objectReference: {fileID: 0}
     - target: {fileID: 8371448214961151179, guid: c526663d8af9ea6419e8f82a6cb34422,
         type: 3}
@@ -11938,7 +11953,7 @@ PrefabInstance:
     - target: {fileID: 8371448214961151179, guid: c526663d8af9ea6419e8f82a6cb34422,
         type: 3}
       propertyPath: windDirection.y
-      value: 7.33
+      value: -1.06
       objectReference: {fileID: 0}
     - target: {fileID: 8371448214961151179, guid: c526663d8af9ea6419e8f82a6cb34422,
         type: 3}
@@ -13177,8 +13192,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1924983957}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.92164147, z: 0, w: 0.38804263}
-  m_LocalPosition: {x: 752.2903, y: 235.4, z: -4410.785}
+  m_LocalRotation: {x: 0, y: -0.19256535, z: 0, w: 0.98128414}
+  m_LocalPosition: {x: 750.73846, y: 235.4, z: -4418.259}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

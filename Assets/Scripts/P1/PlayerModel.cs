@@ -65,9 +65,22 @@ public class PlayerModel : MonoBehaviour
         //Debug.Log(_rb.velocity.magnitude);
         // When about to collision with an obstacles, impulses the player in the opposite direction of said collision.
         RaycastHit hit;
-        if(Physics.SphereCast(transform.position, _collisionSphere, transform.forward, out hit, _collisionSphere, _collisionMask))
+
+        /*if (Physics.SphereCast(rb.position, _collisionSphere, transform.forward, out hit, _collisionSphere, _collisionMask))
         {
             OnDamage();
+            Vector3 imp = transform.position - hit.point;
+            rb.velocity = Vector3.zero;
+            AddImpulse(imp.normalized * _impulseStreght);
+        }*/
+
+        if(Physics.Raycast(rb.position, transform.forward, out hit,_collisionSphere, _collisionMask))
+        {
+            Debug.Log("Col");
+            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Damage"))
+            {
+                OnDamage();
+            }
             Vector3 imp = transform.position - hit.point;
             rb.velocity = Vector3.zero;
             AddImpulse(imp.normalized * _impulseStreght);
@@ -78,15 +91,6 @@ public class PlayerModel : MonoBehaviour
             Debug.Log("HIT");
             hit.transform.GetComponent<Crystal>().isPicked = true;
         }
-
-
-        //blend tree params
-        //float x = Input.GetAxis("Mouse X");
-        //Debug.Log(x);
-        //float y = Input.GetAxis("Vertical");
-        //anim.SetFloat("x",x);
-        //anim.SetFloat("y",y);
-
     }
 
     private void Update()

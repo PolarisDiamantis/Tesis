@@ -22,8 +22,8 @@ public class UIManager : MonoBehaviour
 
     public void UpdateResults(TimeSpan time, string score)
     {
-        finalTimeUI.text = "Time: " + time.Minutes.ToString("00") + " : " + time.Seconds.ToString("00");
-        finalCrystalsUI.text = "Crystals: " + crystalsUI.text;
+        finalTimeUI.text = time.Minutes.ToString("00") + " : " + time.Seconds.ToString("00");
+        finalCrystalsUI.text = crystalsUI.text;
         Debug.Log(score);
         switch (score)
         {
