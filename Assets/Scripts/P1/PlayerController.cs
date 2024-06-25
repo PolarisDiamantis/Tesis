@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
 
     public TextMeshProUGUI manaUI;
 
+    public bool isSlowed = false;
 
     private void Start()
     {
@@ -127,7 +128,14 @@ public class PlayerController : MonoBehaviour
         if (_throttleUp) _throttle += throttleIncrement;
         if (!_throttleUp && !_throttleDown) _throttle -= throttleIncrement;
         if (_throttleDown) _throttle -= throttleIncrement * 2;
-        _throttle = Mathf.Clamp(_throttle, 0f, 100f);
+        if (isSlowed)
+        {
+            _throttle = Mathf.Clamp(_throttle, 0f, 25f);
+        }
+        else
+        {
+            _throttle = Mathf.Clamp(_throttle, 0f, 100f);
+        }
         // Reduce if inside a cloud...
     }
 

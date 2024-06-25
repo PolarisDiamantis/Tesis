@@ -18,7 +18,14 @@ public class Debri : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<PlayerController>() == null) return;
-        GameManager.Instance.ReturnToLastCheckPoint();
-        //other.GetComponent<PlayerController>().TakeSpeedReduction(_speedReduction);
+        if (other.GetComponent<PlayerController>().isShield)
+        {
+            Debug.Log("Triggered Shield");
+            other.GetComponent<PlayerModel>().AddImpulse(750f * other.transform.forward);
+        }
+        else
+        {
+            GameManager.Instance.ReturnToLastCheckPoint();
+        }
     }
 }
