@@ -122,7 +122,7 @@ public class PlayerModel : MonoBehaviour
 
     public void OnMovement(float x, float y)
     {
-        anim.SetFloat("x", x * 50);
+        anim.SetFloat("x", x * 75);
         anim.SetFloat("y", y);
     }
 

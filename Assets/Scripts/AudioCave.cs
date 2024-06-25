@@ -1,25 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.UI.Image;
 
 public class AudioCave : MonoBehaviour
 {
-    [SerializeField] private AudioSource audioSource1;
-    [SerializeField] private AudioSource audioSource2;
-    [SerializeField] private GameObject trigger1;
-    [SerializeField] private GameObject trigger2;
+    [SerializeField] private AudioSource audioOff;
+    [SerializeField] private AudioSource AudioOn;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject original;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == trigger1)
+        if (other.gameObject == player)
         {
-            audioSource2.Play();
-            audioSource1.Stop();
-        }
-        else if (other.gameObject == trigger2)
-        {
-            audioSource2.Stop();
-            audioSource1.Play();
+            if(original != null) original.SetActive(false);
+
+            AudioOn.Play();
+            if(audioOff != null) audioOff.Stop();
         }
     }
 }
