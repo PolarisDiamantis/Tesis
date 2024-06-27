@@ -3297,7 +3297,7 @@ GameObject:
   - component: {fileID: 936757646}
   - component: {fileID: 936757645}
   - component: {fileID: 936757644}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Particylas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3460,7 +3460,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 1
-      minScalar: 5
+      minScalar: 6
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -9876,6 +9876,7 @@ GameObject:
   - component: {fileID: 1986010684}
   - component: {fileID: 1986010686}
   - component: {fileID: 1986010685}
+  - component: {fileID: 1986010687}
   m_Layer: 5
   m_Name: Logo
   m_TagString: Untagged
@@ -9940,6 +9941,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1986010683}
   m_CullTransparentMesh: 1
+--- !u!95 &1986010687
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986010683}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6ce10253f1016d7458f84ddcb89511a1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1986138594
 GameObject:
   m_ObjectHideFlags: 0
@@ -10162,6 +10184,7 @@ GameObject:
   - component: {fileID: 2059853996}
   - component: {fileID: 2059853995}
   - component: {fileID: 2059853994}
+  - component: {fileID: 2059853997}
   m_Layer: 0
   m_Name: cloud
   m_TagString: Untagged
@@ -10179,7 +10202,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5592422, y: 0.5592422, z: 0.5592422}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 413691509}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10239,6 +10262,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2059853992}
   m_CullTransparentMesh: 1
+--- !u!95 &2059853997
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059853992}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2c3da27c06390c8478d30d6c6f75b4b8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2072009017
 GameObject:
   m_ObjectHideFlags: 0
