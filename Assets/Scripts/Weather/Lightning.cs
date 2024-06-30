@@ -35,7 +35,7 @@ public class Lightning : MonoBehaviour
         }
         else
         {
-            GameManager.Instance.ReturnToLastCheckPoint();
+            GameManager.Instance.KillPlayer();
         }
     }
 }

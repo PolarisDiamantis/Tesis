@@ -48,6 +48,7 @@ public class PlayerModel : MonoBehaviour
     public WitchSkin[] witchSkins;
     public SkinnedMeshRenderer witchModel;
 
+    public bool hasLifeRune = false;
 
     private void Awake()
     {
@@ -89,7 +90,7 @@ public class PlayerModel : MonoBehaviour
         if(Physics.SphereCast(rb.position, _magnetSphere, transform.forward, out hit, _magnetSphere, _magnetMask))
         {
             Debug.Log("HIT");
-            hit.transform.GetComponent<Crystal>().isPicked = true;
+            hit.transform.GetComponent<Crystal>().PickUp();
         }
     }
 
@@ -136,7 +137,14 @@ public class PlayerModel : MonoBehaviour
         anim.SetTrigger("Damage");
     }
 
-    public void LastCheckPoint(CheckPoint check)
+    public void KillPlayer(CheckPoint check)
+    {
+        if (hasLifeRune) { hasLifeRune = false; return; }
+        // Should play a safe view event.
+        StartCoroutine(DeathSequence(2, check));
+    }
+
+    public void GetBackToLastCheck(CheckPoint check)
     {
         StartCoroutine(DeathSequence(2, check));
     }

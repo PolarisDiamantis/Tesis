@@ -41,11 +41,22 @@ public class PlayerController : MonoBehaviour
     private bool _canBoost = true;
     private bool _canShield = true;
 
-    [SerializeField] float _boostTime = 4f;
-    [SerializeField] float _boostCoolDown = 4f;
-    float _boostCoolDownTimer = 0f;
-
+    // Edit variables with rune logic
+    [Header("Boost Settings")]
+    [SerializeField] private float _boostTime = 4f;
+    [SerializeField] private float _boostCoolDown = 4f;
+    private float _boostCoolDownTimer = 0f;
     [SerializeField] Image _boostBar;
+
+    // Edit variables with rune logic
+    [Header("Shield Settings")]
+    [SerializeField] private float _shieldTime;
+    [SerializeField] private float _shieldCoolDown;
+    private float _shieldCoolDownTimer = 0f;
+    [SerializeField] Image _shieldBar;
+
+    // Modify throtle with rune logic
+    // Add extra life rune
 
     Vector2 direction;
 
@@ -237,6 +248,18 @@ public class PlayerController : MonoBehaviour
         _throttle -= speed;
     }
 
+    public void ModifySpeed(float multiplier)
+    {
+        maxThrust *= multiplier;
+    }
+
+    public void ModifyPower(float multiplierB, float multiplierS)
+    {
+        _boostCoolDown *= multiplierB;
+        _shieldCoolDown *= multiplierS;
+    }
+
+    #region Power Sequences
     IEnumerator BoostSequence(float d, float cd)
     {
         _boostCoolDownTimer = _boostTime;
@@ -264,6 +287,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(cd);
         _canShield = true;
     }
+    #endregion
 
     private void OnTriggerEnter(Collider other)
     {

@@ -42,9 +42,14 @@ public class GameManager : MonoBehaviour
         _ui.UpdateCrystalCount(val);
     }
 
-    public void ReturnToLastCheckPoint()
+    public void KillPlayer()
     {
-        player.LastCheckPoint(lastCheckPoint);
+        player.KillPlayer(lastCheckPoint);
+    }
+
+    public void ForcePlayerBackToBounds()
+    {
+        player.GetBackToLastCheck(lastCheckPoint);
     }
 
     public void FinalResults()

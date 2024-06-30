@@ -25,7 +25,7 @@ public class Debri : MonoBehaviour
         }
         else
         {
-            GameManager.Instance.ReturnToLastCheckPoint();
+            GameManager.Instance.KillPlayer();
         }
     }
 }

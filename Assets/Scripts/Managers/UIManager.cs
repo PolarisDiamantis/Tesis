@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     public GameObject[] posibleScores;
 
     public GameObject finalResults;
+    public GameObject runesUI;
 
     public void UpdateCrystalCount(int val)
     {

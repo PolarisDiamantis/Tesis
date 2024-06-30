@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Crystal : SteeringAgent
+public class Crystal : MonoBehaviour
 {
 
     public GameObject Particles;
-    [SerializeField] AudioClip PickupSound;
+    //[SerializeField] AudioClip PickupSound;
     public bool isPicked = false;
-    public string isActive; 
+    //public string isActive; 
 
     public Animator Anim;
 
@@ -18,16 +18,26 @@ public class Crystal : SteeringAgent
     }
     private void FixedUpdate()
     {
-        if (!isPicked) return;
+        /*if (!isPicked) return;
         {
             SetVelocity(GameManager.Instance.player.transform.position, _maxVelocity);
             Anim.SetTrigger("isActive");
-        }
+        }*/
 
       
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void PickUp()
+    {
+        if (isPicked) return;
+        isPicked = true;
+        GameManager.Instance.Crystals++;
+        GameManager.Instance.player.GetComponent<PlayerModel>().CrystalCollected();
+        Anim.SetTrigger("isActive");
+        Destroy(gameObject, 1.5f);
+    }
+
+    /*private void OnTriggerEnter(Collider other)
     {
         if(other.GetComponent<PlayerModel>() != null)
         {
@@ -36,5 +46,5 @@ public class Crystal : SteeringAgent
             //Instantiate(Particles, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
-    }
+    }*/
 }
