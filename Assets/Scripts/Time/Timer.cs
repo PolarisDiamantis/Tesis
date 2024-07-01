@@ -37,11 +37,10 @@ public class Timer : MonoBehaviour
 
     public void CheckTimer()
     {
-        //Debug.Log(_currentTime.TotalMinutes.ToString("00") + " : " + _currentTime.TotalSeconds.ToString("00"));
-        if(!PlayerPrefs.HasKey(_currentLevelKey))
+        if(!PlayerPrefs.HasKey(_currentLevelKey + "1"))
         {
             Debug.Log("New Record");
-            PlayerPrefs.SetString(_currentLevelKey, _currentTime.ToString());
+            PlayerPrefs.SetString(_currentLevelKey + "1", _currentTime.ToString());
         }
         else
         {
