@@ -14,6 +14,8 @@ public class Catapult : MonoBehaviour
     [SerializeField] float _viewAngle;
     [SerializeField] Transform _playerRot;
     [SerializeField] float _rotationSpeed = 1.5f;
+    public AudioSource _onReload;
+    public AudioSource _bomCatapult;
 
     [Header("Fragmentation Range")]
     [SerializeField] float _minXRot = -20f;

@@ -39,7 +39,7 @@ public class PlayerModel : MonoBehaviour
     public Animator anim;
 
     [Header("Audios")]
-    public AudioClip pickUpSound;
+    public AudioClip pickUpSound; 
 
     [SerializeField] private float _magnetSphere; 
     [SerializeField] private LayerMask _magnetMask;
