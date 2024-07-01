@@ -1,0 +1,1276 @@
+Using pre-set license
+Built from '2022.3/release' branch; Version is '2022.3.5f1 (9674261d40ee) revision 9860134'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19045) 64bit Professional' Language: 'es' Physical Memory: 32541 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity 2022.3.5f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker4
+-projectPath
+E:/GitHub/TESIS/Tesis Enchanted Skylands
+-logFile
+Logs/AssetImportWorker4.log
+-srvPort
+50562
+Successfully changed project path to: E:/GitHub/TESIS/Tesis Enchanted Skylands
+E:/GitHub/TESIS/Tesis Enchanted Skylands
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [24888] Host "[IP] 192.168.0.102 [Port] 0 [Flags] 2 [Guid] 508028191 [EditorId] 508028191 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-IOH5AP5) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [24888] Host "[IP] 192.168.0.102 [Port] 0 [Flags] 2 [Guid] 508028191 [EditorId] 508028191 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-IOH5AP5) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+Refreshing native plugins compatible for Editor in 9.77 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.3.5f1 (9674261d40ee)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity 2022.3.5f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path E:/GitHub/TESIS/Tesis Enchanted Skylands/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1060 6GB (ID=0x1b83)
+    Vendor:   NVIDIA
+    VRAM:     6043 MB
+    Driver:   31.0.15.3699
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity 2022.3.5f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity 2022.3.5f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity 2022.3.5f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56288
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity 2022.3.5f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.009573 seconds.
+- Loaded All Assemblies, in  0.385 seconds
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.301 seconds
+Domain Reload Profiling: 683ms
+	BeginReloadAssembly (101ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (40ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (73ms)
+	LoadAllAssembliesAndSetupDomain (155ms)
+		LoadAssemblies (97ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (146ms)
+			TypeCache.Refresh (145ms)
+				TypeCache.ScanAssembly (133ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (301ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (235ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (11ms)
+			SetLoadedEditorAssemblies (8ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (2ms)
+			ProcessInitializeOnLoadAttributes (158ms)
+			ProcessInitializeOnLoadMethodAttributes (55ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image E:\GitHub\TESIS\Tesis Enchanted Skylands\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image E:\GitHub\TESIS\Tesis Enchanted Skylands\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  0.882 seconds
+Refreshing native plugins compatible for Editor in 3.61 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.950 seconds
+Domain Reload Profiling: 1830ms
+	BeginReloadAssembly (147ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (19ms)
+	RebuildCommonClasses (40ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (55ms)
+	LoadAllAssembliesAndSetupDomain (624ms)
+		LoadAssemblies (291ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (407ms)
+			TypeCache.Refresh (358ms)
+				TypeCache.ScanAssembly (345ms)
+			ScanForSourceGeneratedMonoScriptInfo (32ms)
+			ResolveRequiredComponents (16ms)
+	FinalizeReload (951ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (674ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (9ms)
+			SetLoadedEditorAssemblies (4ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (94ms)
+			ProcessInitializeOnLoadAttributes (474ms)
+			ProcessInitializeOnLoadMethodAttributes (82ms)
+			AfterProcessingInitializeOnLoad (11ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (8ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 3.27 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6854 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 88 unused Assets / (1.2 MB). Loaded Objects now: 7343.
+Memory consumption went from 408.9 MB to 407.7 MB.
+Total: 6.485200 ms (FindLiveObjects: 0.810200 ms CreateObjectMapping: 0.372200 ms MarkObjects: 4.885700 ms  DeleteObjects: 0.415300 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: a3ef5dd2817f97addfee359851a9dba5 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 1515517.919480 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Voronoi - copia.jpg
+  artifactKey: Guid(d0346947bf6a5e140b0f093f44f3b31d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Voronoi - copia.jpg using Guid(d0346947bf6a5e140b0f093f44f3b31d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f318347539c19b14f658912936a59b83') in 0.016769 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.946793 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Voronoi - copia.jpg
+  artifactKey: Guid(d0346947bf6a5e140b0f093f44f3b31d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Arte/Particuls/Player/Shield/Voronoi - copia.jpg using Guid(d0346947bf6a5e140b0f093f44f3b31d) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '97330b122447afab599e111ccb7e8f8c') in 0.281869 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 183.516914 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield.shadergraph
+  artifactKey: Guid(21af07b2f5fbafb479f3943c36f87487) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield.shadergraph using Guid(21af07b2f5fbafb479f3943c36f87487) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd4f4ef568a0c39ca8e0c84d1cf20b347') in 0.003284 seconds
+Number of updated asset objects reloaded before import = 1
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.952377 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield.shadergraph
+  artifactKey: Guid(21af07b2f5fbafb479f3943c36f87487) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield.shadergraph using Guid(21af07b2f5fbafb479f3943c36f87487) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '7f01d3b8442f13b15bcf2f386091bc6b') in 0.051268 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 8.611157 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/New Graph.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/New Graph.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a4784253c1caf81e3ff38cbca279125') in 0.003796 seconds
+Number of updated asset objects reloaded before import = 4
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 41.646194 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/New Graph.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/New Graph.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '820438c13d1a372ffee10eec081d36fd') in 0.003826 seconds
+Number of updated asset objects reloaded before import = 4
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 0.873317 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/New Graph.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Arte/Particuls/Player/Shield/New Graph.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '3d046c4d2362e068034f61ab869417ad') in 0.066726 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 59.015112 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/New Graph.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/New Graph.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '98a6d9b5f798a03b8e67e6a880474c72') in 0.003306 seconds
+Number of updated asset objects reloaded before import = 4
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 0.843358 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/New Graph.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Arte/Particuls/Player/Shield/New Graph.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'a3b81733acf4aec795053d06cfb78709') in 0.043492 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 68.179680 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield.shadergraph
+  artifactKey: Guid(21af07b2f5fbafb479f3943c36f87487) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield.shadergraph using Guid(21af07b2f5fbafb479f3943c36f87487) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de7dc59dfcdb47a156f59d5906ad6aa0') in 0.001479 seconds
+Number of updated asset objects reloaded before import = 5
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.812748 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield.shadergraph
+  artifactKey: Guid(21af07b2f5fbafb479f3943c36f87487) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield.shadergraph using Guid(21af07b2f5fbafb479f3943c36f87487) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'b1177e39a1a876b5ce5bcef449a4f34a') in 0.022756 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 35.598927 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/New Graph.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/New Graph.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '37a7cb2477531ace01edab3dfde7bb3e') in 0.003673 seconds
+Number of updated asset objects reloaded before import = 4
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 0.871014 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/New Graph.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Arte/Particuls/Player/Shield/New Graph.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'ff113991943dbefd38cf0543cc1c2bab') in 0.061678 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 5.608090 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/New Graph.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/New Graph.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3085556b129485cfe30faaf761afb64c') in 0.003426 seconds
+Number of updated asset objects reloaded before import = 4
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 0.861625 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/New Graph.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Arte/Particuls/Player/Shield/New Graph.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'be2f411e722469e953f4234cc981a69c') in 0.043773 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 34.271487 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/New Graph.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/New Graph.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f2a32af2ea89f7a4eb9f85e8e5e5901d') in 0.004518 seconds
+Number of updated asset objects reloaded before import = 4
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 0.854232 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/New Graph.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Arte/Particuls/Player/Shield/New Graph.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '642d8c2b1660c1d7ff10fe1ddb1d094b') in 0.054030 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 329.273542 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/_albedo.png
+  artifactKey: Guid(9e8207eeebcc27849b64f47cac4d5def) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/_albedo.png using Guid(9e8207eeebcc27849b64f47cac4d5def) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a72d6e05a77af9690133aabd87ce2a0a') in 0.003292 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.941224 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/_albedo.png
+  artifactKey: Guid(9e8207eeebcc27849b64f47cac4d5def) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Arte/Particuls/Player/Shield/_albedo.png using Guid(9e8207eeebcc27849b64f47cac4d5def) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'c317ac8dff348e8deb98f3275967ce01') in 0.032938 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 11.612029 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Voronoi.png
+  artifactKey: Guid(9e8207eeebcc27849b64f47cac4d5def) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Voronoi.png using Guid(9e8207eeebcc27849b64f47cac4d5def) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f0cd2140b475d856dd98df44cea7023a') in 0.001778 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.946945 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Voronoi.png
+  artifactKey: Guid(9e8207eeebcc27849b64f47cac4d5def) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Arte/Particuls/Player/Shield/Voronoi.png using Guid(9e8207eeebcc27849b64f47cac4d5def) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'bccb8fab5b8f531b569129398b9167c3') in 0.024450 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 16.099328 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield.shadergraph
+  artifactKey: Guid(21af07b2f5fbafb479f3943c36f87487) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield.shadergraph using Guid(21af07b2f5fbafb479f3943c36f87487) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3d20b4d5c21334ae5994815b0fff8e66') in 0.001408 seconds
+Number of updated asset objects reloaded before import = 5
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.945426 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield.shadergraph
+  artifactKey: Guid(21af07b2f5fbafb479f3943c36f87487) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield.shadergraph using Guid(21af07b2f5fbafb479f3943c36f87487) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '0db25da620abe667679084e6f7f5ff14') in 0.023088 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 4.161729 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/New Graph.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/New Graph.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd1b2b231effc21842cee91a144c514e7') in 0.003345 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 37.094728 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield.shadergraph
+  artifactKey: Guid(21af07b2f5fbafb479f3943c36f87487) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield.shadergraph using Guid(21af07b2f5fbafb479f3943c36f87487) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6cb212344552b53f0da0966b258041ad') in 0.001460 seconds
+Number of updated asset objects reloaded before import = 5
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.789928 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield.shadergraph
+  artifactKey: Guid(21af07b2f5fbafb479f3943c36f87487) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield.shadergraph using Guid(21af07b2f5fbafb479f3943c36f87487) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'dc647f207a55706206b5d3cfafc36427') in 0.023762 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 37.548674 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield.shadergraph
+  artifactKey: Guid(21af07b2f5fbafb479f3943c36f87487) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield.shadergraph using Guid(21af07b2f5fbafb479f3943c36f87487) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '643aa243904b419aea207c170425f907') in 0.001552 seconds
+Number of updated asset objects reloaded before import = 5
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.780336 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield.shadergraph
+  artifactKey: Guid(21af07b2f5fbafb479f3943c36f87487) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield.shadergraph using Guid(21af07b2f5fbafb479f3943c36f87487) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'e157726cdf791bd962187af0d07745bc') in 0.024551 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 21.222443 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/New Graph.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/New Graph.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0952bfc4992fe6a567d552fb9104fb7c') in 0.004260 seconds
+Number of updated asset objects reloaded before import = 4
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 0.851702 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/New Graph.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Arte/Particuls/Player/Shield/New Graph.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '5ed575d86aadac085fda25fb2a73b22b') in 0.062942 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 54.040268 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/New Graph.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/New Graph.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e3534c96f8eb181d98cd03519c5e4ea6') in 0.003661 seconds
+Number of updated asset objects reloaded before import = 4
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 0.869633 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/New Graph.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Arte/Particuls/Player/Shield/New Graph.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'e840e8eb8b96ae934c9d8c89b15d2362') in 0.044372 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 14.710398 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/New Graph.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/New Graph.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2bb0521bcc9b2a20e30963b5d93859af') in 0.003450 seconds
+Number of updated asset objects reloaded before import = 4
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 0.857058 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/New Graph.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Arte/Particuls/Player/Shield/New Graph.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'c664aa76cfbcb8ecef97410aba52cacb') in 0.060950 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 56.175984 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/New Graph.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/New Graph.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bfe963b51d05ba84884d88554d53ac94') in 0.003262 seconds
+Number of updated asset objects reloaded before import = 4
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 0.852671 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/New Graph.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Arte/Particuls/Player/Shield/New Graph.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '7dbc5fb02ef019fdd9f1d3548762802b') in 0.045678 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 93.927164 seconds.
+  path: Assets/Prefab/Player.prefab
+  artifactKey: Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Prefab/Player.prefab using Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'f7a27767c79603ef967ea89c91c13b54') in 0.069673 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 492
+========================================================================
+Received Import Request.
+  Time since last request: 2.104642 seconds.
+  path: Assets/Prefab/Player.prefab
+  artifactKey: Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Prefab/Player.prefab using Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'ba101f6308fe319b4b5b7dcf001c3303') in 0.053325 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 492
+========================================================================
+Received Import Request.
+  Time since last request: 3.065292 seconds.
+  path: Assets/Prefab/Player.prefab
+  artifactKey: Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Prefab/Player.prefab using Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '7a98185b16382b44848728cf57c0becf') in 0.032570 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 492
+========================================================================
+Received Import Request.
+  Time since last request: 3.564923 seconds.
+  path: Assets/Prefab/Player.prefab
+  artifactKey: Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Prefab/Player.prefab using Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '467cabff958d2fe1d6ea26ece4ace83d') in 0.032079 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 492
+========================================================================
+Received Import Request.
+  Time since last request: 22.133167 seconds.
+  path: Assets/Prefab/Player.prefab
+  artifactKey: Guid(6227959bbce8c014586a9e641911101a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Player.prefab using Guid(6227959bbce8c014586a9e641911101a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '99ca887b05a888d3fc3df97df68c9d7f') in 0.014045 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 490
+========================================================================
+Received Import Request.
+  Time since last request: 21.002518 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/New Graph.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/New Graph.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b3f8adc472fc7971763f1d2a0b28ab74') in 0.003191 seconds
+Number of updated asset objects reloaded before import = 4
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 1.448889 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/New Graph.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/New Graph.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '432d8d6367cc5d04f50b036af21d546c') in 0.003490 seconds
+Number of updated asset objects reloaded before import = 4
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 3.528714 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/New Graph.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/New Graph.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '513cd60ca49c0fe7a0c3a9bf7ca525d8') in 0.003253 seconds
+Number of updated asset objects reloaded before import = 4
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 1.221923 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/New Graph.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/New Graph.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '75a95711c4faeecbe50d3ded4cc11a10') in 0.003573 seconds
+Number of updated asset objects reloaded before import = 4
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 2.800004 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/New Graph.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/New Graph.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd606206b495ee4ad40756dcd5a0c660f') in 0.003112 seconds
+Number of updated asset objects reloaded before import = 4
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 0.962527 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/New Graph.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/New Graph.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1571690fc39034e66454c9a641a89030') in 0.003313 seconds
+Number of updated asset objects reloaded before import = 4
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 2.816773 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/New Graph.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/New Graph.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd846b0a5b3b965ffbaba09dc3b712027') in 0.003629 seconds
+Number of updated asset objects reloaded before import = 4
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 0.863984 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/New Graph.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Arte/Particuls/Player/Shield/New Graph.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '6b49bfa6c674210b221839c597679d0d') in 0.063142 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 21.304687 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shiel.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shiel.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b5485435c5878ae33a929a31c75b5ea') in 0.003150 seconds
+Number of updated asset objects reloaded before import = 4
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 0.739248 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shiel.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Arte/Particuls/Player/Shield/Shiel.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '4549ae2c064fa3f84f663a2c9ae262a7') in 0.041813 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 1.536109 seconds.
+  path: Assets/Prefab/Player.prefab
+  artifactKey: Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Prefab/Player.prefab using Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'f238f1df71b057a4aae1b27348166c5e') in 0.033077 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 492
+========================================================================
+Received Import Request.
+  Time since last request: 2.327215 seconds.
+  path: Assets/Prefab/Player.prefab
+  artifactKey: Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Prefab/Player.prefab using Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '409b309d611b82ecc7b870e819ca8fba') in 0.049544 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 492
+========================================================================
+Received Import Request.
+  Time since last request: 2.956154 seconds.
+  path: Assets/Prefab/Player.prefab
+  artifactKey: Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Prefab/Player.prefab using Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'cc8c6f7246993185278f426f2f832e35') in 0.032678 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 492
+========================================================================
+Received Import Request.
+  Time since last request: 6.190798 seconds.
+  path: Assets/Prefab/Player.prefab
+  artifactKey: Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Prefab/Player.prefab using Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '442ba732656b08d3db4863f235b1abc0') in 0.032944 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 492
+========================================================================
+Received Import Request.
+  Time since last request: 55.453444 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shiel.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shiel.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3023502e1a0d7496f04e77b1164c19e3') in 0.003218 seconds
+Number of updated asset objects reloaded before import = 4
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 0.858484 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shiel.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Arte/Particuls/Player/Shield/Shiel.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'eeeec242225dfd7f1de5a6fc763a917c') in 0.052633 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 2.117022 seconds.
+  path: Assets/Prefab/Player.prefab
+  artifactKey: Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Prefab/Player.prefab using Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'cb817194abcfc5e58abcd183a2dbcb5d') in 0.033029 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 492
+========================================================================
+Received Import Request.
+  Time since last request: 2.728935 seconds.
+  path: Assets/Prefab/Player.prefab
+  artifactKey: Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Prefab/Player.prefab using Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '0e9a97470cdc10738ed3f155b1d2607e') in 0.032596 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 492
+========================================================================
+Received Import Request.
+  Time since last request: 2.360557 seconds.
+  path: Assets/Prefab/Player.prefab
+  artifactKey: Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Prefab/Player.prefab using Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'a66a0ccf251e6e37cfbb9e4c111c7062') in 0.032316 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 492
+========================================================================
+Received Import Request.
+  Time since last request: 10.256056 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shiel.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shiel.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3ea6e155db524ed0e482c702c22feaa2') in 0.003228 seconds
+Number of updated asset objects reloaded before import = 4
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 10.793078 seconds.
+  path: Assets/Prefab/Player.prefab
+  artifactKey: Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Prefab/Player.prefab using Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '9c300742e847677438868bc72a34392d') in 0.049648 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 492
+========================================================================
+Received Import Request.
+  Time since last request: 9.009035 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shiel.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Arte/Particuls/Player/Shield/Shiel.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '20497c4a34d75143443199d8cc436747') in 0.037852 seconds
+Number of updated asset objects reloaded before import = 4
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 1.685123 seconds.
+  path: Assets/Prefab/Player.prefab
+  artifactKey: Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Prefab/Player.prefab using Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '647f79632e2f8ae27b7a6593225ab279') in 0.032452 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 492
+========================================================================
+Received Import Request.
+  Time since last request: 13.387046 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shiel.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shiel.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e3880030fe3d5899f99271abfde2962') in 0.003498 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 11.516302 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shiel.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shiel.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dbced3bfd2c1b78d066ea2bed72e1a06') in 0.003213 seconds
+Number of updated asset objects reloaded before import = 4
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 0.867554 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shiel.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Arte/Particuls/Player/Shield/Shiel.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '27908411714b05c35ccaef7f45799b1d') in 0.054092 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 2.058444 seconds.
+  path: Assets/Prefab/Player.prefab
+  artifactKey: Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Prefab/Player.prefab using Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '5270eb5978ebbca16523ffabe07f0f0b') in 0.032892 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 492
+========================================================================
+Received Import Request.
+  Time since last request: 2.474600 seconds.
+  path: Assets/Prefab/Player.prefab
+  artifactKey: Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Prefab/Player.prefab using Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'f8d45d4c82466961ff2d182cfdbe68a8') in 0.032757 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 492
+========================================================================
+Received Import Request.
+  Time since last request: 2.567904 seconds.
+  path: Assets/Prefab/Player.prefab
+  artifactKey: Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Prefab/Player.prefab using Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '6c6dde96add23a5d994bf21a60503263') in 0.032391 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 492
+========================================================================
+Received Import Request.
+  Time since last request: 3.977866 seconds.
+  path: Assets/Prefab/Player.prefab
+  artifactKey: Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Prefab/Player.prefab using Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'e66021b36763c5a93548624a37fa84c0') in 0.049138 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 492
+========================================================================
+Received Import Request.
+  Time since last request: 17.195632 seconds.
+  path: Assets/Prefab/Player.prefab
+  artifactKey: Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Prefab/Player.prefab using Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '0a45630209b08ee71169183d9241b7f8') in 0.032822 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 492
+========================================================================
+Received Import Request.
+  Time since last request: 2.774306 seconds.
+  path: Assets/Prefab/Player.prefab
+  artifactKey: Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Prefab/Player.prefab using Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '217924ddba0ddb5c472f763e8ea4ad8f') in 0.032012 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 492
+========================================================================
+Received Import Request.
+  Time since last request: 6.708709 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shiel.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shiel.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdda9f0288a48e66a0d2d7f7e08905fd') in 0.003231 seconds
+Number of updated asset objects reloaded before import = 4
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 0.869496 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shiel.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Arte/Particuls/Player/Shield/Shiel.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '4ba93aee8eef4d5a54c466ac570fdd3b') in 0.052227 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 1.661066 seconds.
+  path: Assets/Prefab/Player.prefab
+  artifactKey: Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Prefab/Player.prefab using Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '5a06ad548f4b78c74ea2a37a7257835d') in 0.028878 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 492
+========================================================================
+Received Import Request.
+  Time since last request: 2.196966 seconds.
+  path: Assets/Prefab/Player.prefab
+  artifactKey: Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Prefab/Player.prefab using Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'bc65e9eb01fc5f77ea83c737cf143100') in 0.031731 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 492
+========================================================================
+Received Import Request.
+  Time since last request: 2.346468 seconds.
+  path: Assets/Prefab/Player.prefab
+  artifactKey: Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Prefab/Player.prefab using Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: 'ee4c64d641dbcda67de21f592fac1ebe') in 0.031992 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 492
+========================================================================
+Received Import Request.
+  Time since last request: 1.963250 seconds.
+  path: Assets/Prefab/Player.prefab
+  artifactKey: Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Prefab/Player.prefab using Guid(6227959bbce8c014586a9e641911101a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) Generated GUIDs only implemented for interfaces!
+ -> (artifact id: '04529a518e6a587939d8ba1726a6273f') in 0.052953 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 492
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image E:\GitHub\TESIS\Tesis Enchanted Skylands\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image E:\GitHub\TESIS\Tesis Enchanted Skylands\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  0.817 seconds
+Refreshing native plugins compatible for Editor in 2.67 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.749 seconds
+Domain Reload Profiling: 2563ms
+	BeginReloadAssembly (180ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (5ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (63ms)
+	RebuildCommonClasses (35ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (37ms)
+	LoadAllAssembliesAndSetupDomain (548ms)
+		LoadAssemblies (283ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (334ms)
+			TypeCache.Refresh (320ms)
+				TypeCache.ScanAssembly (308ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (14ms)
+	FinalizeReload (1750ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (684ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (10ms)
+			SetLoadedEditorAssemblies (4ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (98ms)
+			ProcessInitializeOnLoadAttributes (472ms)
+			ProcessInitializeOnLoadMethodAttributes (86ms)
+			AfterProcessingInitializeOnLoad (14ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (22ms)
+Refreshing native plugins compatible for Editor in 3.58 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6450 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 45 unused Assets / (1.1 MB). Loaded Objects now: 7363.
+Memory consumption went from 324.5 MB to 323.3 MB.
+Total: 5.306100 ms (FindLiveObjects: 0.912100 ms CreateObjectMapping: 0.443600 ms MarkObjects: 3.741400 ms  DeleteObjects: 0.207400 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: a3ef5dd2817f97addfee359851a9dba5 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 505.007166 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Verde
+  artifactKey: Guid(26b8ca44c73821f45916d9517706295a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Verde using Guid(26b8ca44c73821f45916d9517706295a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f5ed5bc533d7f02a65846decdcf24a6b') in 0.019689 seconds
+Number of updated asset objects reloaded before import = 5
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 1.944514 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield.shadergraph
+  artifactKey: Guid(21af07b2f5fbafb479f3943c36f87487) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield.shadergraph using Guid(21af07b2f5fbafb479f3943c36f87487) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1376ee2f5388015a150d694f61ae4840') in 0.003641 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 13.753886 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Verde/ForceFielBasi.prefab
+  artifactKey: Guid(a664dadef3a63b645b86cb471c3a659f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Verde/ForceFielBasi.prefab using Guid(a664dadef3a63b645b86cb471c3a659f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '04815af9a878608dcaa6321ea3c641e1') in 0.007721 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 0.370923 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Verde/ForceFielBasi.prefab
+  artifactKey: Guid(a664dadef3a63b645b86cb471c3a659f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Verde/ForceFielBasi.prefab using Guid(a664dadef3a63b645b86cb471c3a659f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '29b8a59aed4ab07922971b355a424441') in 0.003671 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 11.622538 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Verde/ForceFielBasi.prefab
+  artifactKey: Guid(a664dadef3a63b645b86cb471c3a659f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Verde/ForceFielBasi.prefab using Guid(a664dadef3a63b645b86cb471c3a659f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f58e60c2f92c5012099ed6f8648ee01') in 0.003820 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 20
+========================================================================
+Received Import Request.
+  Time since last request: 1.593358 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Verde/ForceFielBasi.prefab
+  artifactKey: Guid(a664dadef3a63b645b86cb471c3a659f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Verde/ForceFielBasi.prefab using Guid(a664dadef3a63b645b86cb471c3a659f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b89af2245391924279e3e22e395a34a3') in 0.003579 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 5.366510 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Verde/ForceFielBasi.prefab
+  artifactKey: Guid(a664dadef3a63b645b86cb471c3a659f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Verde/ForceFielBasi.prefab using Guid(a664dadef3a63b645b86cb471c3a659f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f69e08263ae26ede7e6d3c783fcb4615') in 0.003616 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 9.261421 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Verde/ForceFielBasi.prefab
+  artifactKey: Guid(a664dadef3a63b645b86cb471c3a659f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Verde/ForceFielBasi.prefab using Guid(a664dadef3a63b645b86cb471c3a659f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '741743a4e0d7dd9faebdaa6601da4bec') in 0.003688 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 1.591804 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Verde/ForceFielBasi.prefab
+  artifactKey: Guid(a664dadef3a63b645b86cb471c3a659f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Verde/ForceFielBasi.prefab using Guid(a664dadef3a63b645b86cb471c3a659f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '61f02974e95f1af9004645d18f0cd0f6') in 0.003552 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 37.994685 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Verde/Shield Green.prefab
+  artifactKey: Guid(a664dadef3a63b645b86cb471c3a659f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Verde/Shield Green.prefab using Guid(a664dadef3a63b645b86cb471c3a659f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd7fe545007205dd910861c23fae7688d') in 0.003509 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 6.098200 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Green
+  artifactKey: Guid(26b8ca44c73821f45916d9517706295a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Green using Guid(26b8ca44c73821f45916d9517706295a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '666346ef1b670fdd951341db8668673f') in 0.000458 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 6.419775 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Fire
+  artifactKey: Guid(21f3d6ae4c563104788360e0ab8ed532) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Fire using Guid(21f3d6ae4c563104788360e0ab8ed532) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '04cf8fdfd5392d79c7e83a8d33fc1abd') in 0.000538 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 2.184288 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Green/Shiel.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Green/Shiel.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3868dbf9ec419f3dad869bbdfebafbee') in 0.003475 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 15.600865 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Green/Shiel Green.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Green/Shiel Green.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c2388b1472b10a0819d7f3efbcb35b3e') in 0.003733 seconds
+Number of updated asset objects reloaded before import = 4
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 4.691126 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Green/Shield Green.shadergraph
+  artifactKey: Guid(21af07b2f5fbafb479f3943c36f87487) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Green/Shield Green.shadergraph using Guid(21af07b2f5fbafb479f3943c36f87487) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '72538503acadae2e3a963c4f35f43699') in 0.001121 seconds
+Number of updated asset objects reloaded before import = 5
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.849847 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Green/Shiel Green.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Green/Shiel Green.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '16f976519087592146677262311c6121') in 0.003370 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 2.512296 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Fire/Shield Green.prefab
+  artifactKey: Guid(10c9b66e7dab3414390d1b3090df5d9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Fire/Shield Green.prefab using Guid(10c9b66e7dab3414390d1b3090df5d9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cd8a910ac89010b68c219524430acf65') in 0.003667 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 1.572933 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Fire/Shiel Green.vfx
+  artifactKey: Guid(2d4b3c9d6ce703b48b395bdf6ce3f2ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Fire/Shiel Green.vfx using Guid(2d4b3c9d6ce703b48b395bdf6ce3f2ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '61a8f3dd1295a28af5650c6f816f5161') in 0.004932 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 20
+========================================================================
+Received Import Request.
+  Time since last request: 3.352054 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Fire/Shiel Fire.vfx
+  artifactKey: Guid(2d4b3c9d6ce703b48b395bdf6ce3f2ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Fire/Shiel Fire.vfx using Guid(2d4b3c9d6ce703b48b395bdf6ce3f2ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6434243bd9a87b749c248676a76d9a7c') in 0.005598 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 20
+========================================================================
+Received Import Request.
+  Time since last request: 3.711657 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Fire/Shield Fire.prefab
+  artifactKey: Guid(10c9b66e7dab3414390d1b3090df5d9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Fire/Shield Fire.prefab using Guid(10c9b66e7dab3414390d1b3090df5d9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95c063b625109cfe538872a61dca6af5') in 0.003356 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 1.023172 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Fire/Shield Green.shadergraph
+  artifactKey: Guid(60472a3546019ed48935e81c2004c50e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Fire/Shield Green.shadergraph using Guid(60472a3546019ed48935e81c2004c50e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '700293b5cfe2ef5d4cc8f86005669d4b') in 0.002181 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 5.294258 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Fire/Shield Fire.shadergraph
+  artifactKey: Guid(60472a3546019ed48935e81c2004c50e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Fire/Shield Fire.shadergraph using Guid(60472a3546019ed48935e81c2004c50e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b8a6fbed371fbf7194c026fa0cd25e0a') in 0.002134 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 4.815509 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Fire/Shield Fire.prefab
+  artifactKey: Guid(10c9b66e7dab3414390d1b3090df5d9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Fire/Shield Fire.prefab using Guid(10c9b66e7dab3414390d1b3090df5d9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '37919478413331b446808eb922dd2f25') in 0.001498 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 2.210329 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Fire/Shield Fire.prefab
+  artifactKey: Guid(10c9b66e7dab3414390d1b3090df5d9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Fire/Shield Fire.prefab using Guid(10c9b66e7dab3414390d1b3090df5d9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c916c446e74d2c0db09656acd1ad318d') in 0.025155 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 2.765809 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Fire/Shiel Fire.vfx
+  artifactKey: Guid(2d4b3c9d6ce703b48b395bdf6ce3f2ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Fire/Shiel Fire.vfx using Guid(2d4b3c9d6ce703b48b395bdf6ce3f2ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8f0394c1ebaf9aff1d8fa50ed9bd168a') in 0.005014 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 20
+========================================================================
+Received Import Request.
+  Time since last request: 63.755679 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Fire/Shiel Fire.vfx
+  artifactKey: Guid(2d4b3c9d6ce703b48b395bdf6ce3f2ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Fire/Shiel Fire.vfx using Guid(2d4b3c9d6ce703b48b395bdf6ce3f2ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b67c39702c53a38a238ee0a08d6a452') in 0.004813 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 20
+========================================================================
+Received Import Request.
+  Time since last request: 74.565667 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Fire/Shiel Fire.vfx
+  artifactKey: Guid(2d4b3c9d6ce703b48b395bdf6ce3f2ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Fire/Shiel Fire.vfx using Guid(2d4b3c9d6ce703b48b395bdf6ce3f2ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb4b48d68740af30d96fe1fa5aa98bc9') in 0.004980 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 20
+========================================================================
+Received Import Request.
+  Time since last request: 1.185071 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Fire/Shiel Fire.vfx
+  artifactKey: Guid(2d4b3c9d6ce703b48b395bdf6ce3f2ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Fire/Shiel Fire.vfx using Guid(2d4b3c9d6ce703b48b395bdf6ce3f2ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b1b6ee6471e618317fa2e7aa07787a47') in 0.005143 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 20
+========================================================================
+Received Import Request.
+  Time since last request: 1.826428 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Fire/Shiel Fire.vfx
+  artifactKey: Guid(2d4b3c9d6ce703b48b395bdf6ce3f2ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Fire/Shiel Fire.vfx using Guid(2d4b3c9d6ce703b48b395bdf6ce3f2ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2db033ceffb6bc98a57b3a07f1c9450a') in 0.004987 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 20
+========================================================================
+Received Import Request.
+  Time since last request: 307.265394 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Fire/Shiel Fire.vfx
+  artifactKey: Guid(2d4b3c9d6ce703b48b395bdf6ce3f2ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Fire/Shiel Fire.vfx using Guid(2d4b3c9d6ce703b48b395bdf6ce3f2ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '009286d418e3ec458f2cf249729f02b8') in 0.005805 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 20
+========================================================================
+Received Import Request.
+  Time since last request: 5.688020 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Fire/Shiel Fire.vfx
+  artifactKey: Guid(2d4b3c9d6ce703b48b395bdf6ce3f2ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Fire/Shiel Fire.vfx using Guid(2d4b3c9d6ce703b48b395bdf6ce3f2ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a11d7ebb24176ac5d38d0e2f6f9eef5') in 0.004953 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 20
+========================================================================
+Received Import Request.
+  Time since last request: 14.989569 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Fire/Shiel Fire.vfx
+  artifactKey: Guid(2d4b3c9d6ce703b48b395bdf6ce3f2ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Fire/Shiel Fire.vfx using Guid(2d4b3c9d6ce703b48b395bdf6ce3f2ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '242d7776f9ecc5ae38aa8dd876b8c879') in 0.005567 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 20
+========================================================================
+Received Import Request.
+  Time since last request: 6.864554 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Fire/Shiel Fire.vfx
+  artifactKey: Guid(2d4b3c9d6ce703b48b395bdf6ce3f2ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Fire/Shiel Fire.vfx using Guid(2d4b3c9d6ce703b48b395bdf6ce3f2ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7c9a20c508f619931fa9feb49f85c919') in 0.005354 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 20
+========================================================================
+Received Import Request.
+  Time since last request: 370.628709 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Fire/fuego creo_albedo.png
+  artifactKey: Guid(57f8caa283a56724bb68b7b198839632) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Fire/fuego creo_albedo.png using Guid(57f8caa283a56724bb68b7b198839632) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7a5124a352bb21ec1ef5f59e8986f67d') in 0.003200 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 119.022173 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Fire/fuego creo_albedo 1.png
+  artifactKey: Guid(60d02f12ecf317d42b465c5c8ea78580) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Fire/fuego creo_albedo 1.png using Guid(60d02f12ecf317d42b465c5c8ea78580) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '14dc3a3f83cd2cd51d785f1e4e78ca5d') in 0.002478 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 125.718859 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Fire/fuego creo_albedo.png
+  artifactKey: Guid(57f8caa283a56724bb68b7b198839632) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Fire/fuego creo_albedo.png using Guid(57f8caa283a56724bb68b7b198839632) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bbe152698c591739b3fc1e56f72f56ae') in 0.002360 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 51.077551 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Fire/fuego creo_albedo.png
+  artifactKey: Guid(57f8caa283a56724bb68b7b198839632) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Fire/fuego creo_albedo.png using Guid(57f8caa283a56724bb68b7b198839632) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5bb7f24142535b4d0a0a56e211b1caff') in 0.002243 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 58.266386 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Green/Shiel Green.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Green/Shiel Green.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e9408966ec24c7af8d9310ca311c8c0a') in 0.005628 seconds
+Number of updated asset objects reloaded before import = 4
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 4.563886 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Green/Shiel Green.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Green/Shiel Green.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ce03b32137cf17958ddc16c277a400ef') in 0.003585 seconds
+Number of updated asset objects reloaded before import = 4
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 108.057873 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Green/Shiel Green.vfx
+  artifactKey: Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Green/Shiel Green.vfx using Guid(76ded896b8eef6d409e6810035bf9609) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd295744f8a00f954d833c38f2448c8c5') in 0.003262 seconds
+Number of updated asset objects reloaded before import = 4
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 29.074242 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Green/Green.png
+  artifactKey: Guid(57f8caa283a56724bb68b7b198839632) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Green/Green.png using Guid(57f8caa283a56724bb68b7b198839632) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '180a57901fe189f6a8592af717bbf8aa') in 0.002296 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 3.883996 seconds.
+  path: Assets/Arte/Particuls/Player/Shield/Shield Green/Green Shield.png
+  artifactKey: Guid(57f8caa283a56724bb68b7b198839632) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Particuls/Player/Shield/Shield Green/Green Shield.png using Guid(57f8caa283a56724bb68b7b198839632) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eaf221431945f725615d4bfc49a9e406') in 0.002318 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 17.866617 seconds.
+  path: Assets/Prefab/Player.prefab
+  artifactKey: Guid(6227959bbce8c014586a9e641911101a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Player.prefab using Guid(6227959bbce8c014586a9e641911101a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f447d788dabec8b74e80c2f00dd07c1') in 0.018387 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 484
