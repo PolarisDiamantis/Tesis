@@ -7,7 +7,7 @@ public class PlayerRunes : MonoBehaviour
 {
     private PlayerController _controller;
     private PlayerModel _model;
-    [SerializeField] private UIManager _ui;
+    private UIManager _ui;
 
     [Header("Speed Rune")]
     [SerializeField] [Range(0, 2)] private float _speedModifer = 1f;
@@ -21,6 +21,7 @@ public class PlayerRunes : MonoBehaviour
 
     private void Start()
     {
+        _ui = GameManager.Instance.ui;
         _controller = GetComponent<PlayerController>();
         _model = GetComponent<PlayerModel>();
     }
@@ -41,6 +42,7 @@ public class PlayerRunes : MonoBehaviour
     public void ChooseLifeRune()
     {
         _model.hasLifeRune = true;
+        ChoiceMade();
     }
 
     private void ChoiceMade()

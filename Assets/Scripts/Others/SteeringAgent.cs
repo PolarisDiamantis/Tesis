@@ -7,7 +7,7 @@ public abstract class SteeringAgent : MonoBehaviour
 {
     [SerializeField] private float _force;
     [SerializeField] protected float _maxVelocity;
-    Rigidbody _rb;
+    protected Rigidbody _rb;
     [SerializeField] protected float _viewRadius = 5;
 
     protected virtual void Awake()

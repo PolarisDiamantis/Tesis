@@ -6,11 +6,12 @@ using System;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    [SerializeField] private UIManager _ui;
+    [SerializeField] public UIManager ui;
     public PlayerModel player;
     public CheckPoint lastCheckPoint;
     private int _collectedCrystals = 0;
     public TimeSpan finalTime;
+    [SerializeField] int _totalDeaths = 0;
 
     public int Crystals
     {
@@ -39,24 +40,27 @@ public class GameManager : MonoBehaviour
 
     private void UpdateCrystalCountUI(int val)
     {
-        _ui.UpdateCrystalCount(val);
+        ui.UpdateCrystalCount(val);
     }
 
     public void KillPlayer()
     {
+        _totalDeaths++;
         player.KillPlayer(lastCheckPoint);
     }
 
     public void ForcePlayerBackToBounds()
     {
+        _totalDeaths++;
         player.GetBackToLastCheck(lastCheckPoint);
     }
 
     public void FinalResults()
     {
-        string finalScore = ScoreManager.Instance.DetermineFinalScore(finalTime, Crystals);
-        _ui.UpdateResults(finalTime, finalScore);
-        _ui.ShowResults();
+        string[] finalScore = ScoreManager.Instance.DetermineFinalScore(finalTime, Crystals, _totalDeaths);
+
+        ui.UpdateResults(finalTime, _totalDeaths.ToString(),finalScore[0], finalScore[1], finalScore[2], finalScore[3]);
+        ui.ShowResults();
 
         if (!PlayerPrefs.HasKey("totalCrystals"))
         {

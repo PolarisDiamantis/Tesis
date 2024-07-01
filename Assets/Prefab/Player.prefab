@@ -19920,6 +19920,7 @@ GameObject:
   - component: {fileID: 3399382364173413947}
   - component: {fileID: 6761802725117173813}
   - component: {fileID: 4761548030024115317}
+  - component: {fileID: 6454114422181072446}
   - component: {fileID: 4631076634369029956}
   m_Layer: 0
   m_Name: Player
@@ -20039,6 +20040,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b68075b7d90e75545b5ad02824801df5, type: 2}
   - {fileID: 11400000, guid: aa8795e0cbf635240aefeb4082615820, type: 2}
   witchModel: {fileID: 9081391526929720703}
+  hasLifeRune: 0
 --- !u!114 &4761548030024115317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20060,8 +20062,29 @@ MonoBehaviour:
   _boostTime: 4
   _boostCoolDown: 4
   _boostBar: {fileID: 0}
+  _shieldTime: 0
+  _shieldCoolDown: 0
+  _shieldBar: {fileID: 0}
   manaUI: {fileID: 0}
   isSlowed: 0
+--- !u!114 &6454114422181072446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4597374451278870202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6aa1fb1a40a398499f5b39bd1de4892, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speedModifer: 1.25
+  _shieldModifierS: 1.25
+  _boostModifierS: 1.25
+  _shieldModifier: 0.75
+  _boostModifier: 0.75
+  _speedModiferP: 0.75
 --- !u!114 &4631076634369029956
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
 
     private bool _lockInputs = false;
     [Header("Boost Settings")]
-    private bool _isBoost = false;
+    public bool isBoost = false;
     public bool isShield = false;
 
     private bool _canBoost = true;
@@ -73,12 +73,12 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (_isBoost)
+        if (isBoost)
         {
             _boostCoolDownTimer -= Time.deltaTime;
             _boostBar.fillAmount = _boostCoolDownTimer / (_boostTime);
         }
-        if (!_canBoost && !_isBoost)
+        if (!_canBoost && !isBoost)
         {
             _boostCoolDownTimer += Time.deltaTime;
             _boostBar.fillAmount = _boostCoolDownTimer / (_boostCoolDown);
@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
         if (_lockInputs) return;
 
         // Throttle
-        if (_isBoost)
+        if (isBoost)
         {
             _agent.AddForce(transform.forward * maxThrust * 1.2f * _throttle);
         }
@@ -215,7 +215,7 @@ public class PlayerController : MonoBehaviour
     {
         if(context.performed && _canShield)
         {
-            StartCoroutine(ShieldSequence(1.5f, 2.2f));
+            StartCoroutine(ShieldSequence(_shieldTime, _shieldCoolDown));
         }
     }
     #endregion
@@ -263,12 +263,12 @@ public class PlayerController : MonoBehaviour
     IEnumerator BoostSequence(float d, float cd)
     {
         _boostCoolDownTimer = _boostTime;
-        _isBoost = true;
+        isBoost = true;
         _canBoost = false;
         _agent.OnBoost();
         yield return new WaitForSeconds(d);
         _boostCoolDownTimer = 0f;
-        _isBoost = false;
+        isBoost = false;
         _agent.OnBoost();
         _agent.OnBoostLoadUp();
         yield return new WaitForSeconds(cd);
@@ -292,7 +292,7 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<Catapult>() == null) return;
-        if (!_isBoost) return;
+        if (!isBoost) return;
         other.GetComponent<Catapult>().Die();
     }
 }
