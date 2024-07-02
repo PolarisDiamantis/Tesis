@@ -8487,6 +8487,7 @@ MonoBehaviour:
   - {fileID: 1918512129}
   finalResults: {fileID: 1040935055}
   runesUI: {fileID: 1994181802}
+  pauseUI: {fileID: 4813120008097318391}
 --- !u!1001 &366638572
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26995,6 +26996,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6604838110059854851, guid: c110bda965d757f4c80a8bf35033a800,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1757618877}
+    - target: {fileID: 6604838110059854851, guid: c110bda965d757f4c80a8bf35033a800,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeEscene
+      objectReference: {fileID: 0}
+    - target: {fileID: 6604838110059854851, guid: c110bda965d757f4c80a8bf35033a800,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Level 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -49685,7 +49701,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1994181803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54221,6 +54237,81 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8325238419738411675, guid: d46bd93f4cc5f7044843a593e8c16be9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8325238419738411675, guid: d46bd93f4cc5f7044843a593e8c16be9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8325238419738411675, guid: d46bd93f4cc5f7044843a593e8c16be9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1757618877}
+    - target: {fileID: 8325238419738411675, guid: d46bd93f4cc5f7044843a593e8c16be9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8325238419738411675, guid: d46bd93f4cc5f7044843a593e8c16be9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeEscene
+      objectReference: {fileID: 0}
+    - target: {fileID: 8325238419738411675, guid: d46bd93f4cc5f7044843a593e8c16be9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ManagerScene, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8325238419738411675, guid: d46bd93f4cc5f7044843a593e8c16be9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 8325238419738411675, guid: d46bd93f4cc5f7044843a593e8c16be9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8545039623610410032, guid: d46bd93f4cc5f7044843a593e8c16be9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8545039623610410032, guid: d46bd93f4cc5f7044843a593e8c16be9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8545039623610410032, guid: d46bd93f4cc5f7044843a593e8c16be9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 232469403}
+    - target: {fileID: 8545039623610410032, guid: d46bd93f4cc5f7044843a593e8c16be9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8545039623610410032, guid: d46bd93f4cc5f7044843a593e8c16be9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReturnToGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 8545039623610410032, guid: d46bd93f4cc5f7044843a593e8c16be9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AudioManagerMixer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8545039623610410032, guid: d46bd93f4cc5f7044843a593e8c16be9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8939307556435828778, guid: d46bd93f4cc5f7044843a593e8c16be9,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -54241,6 +54332,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d46bd93f4cc5f7044843a593e8c16be9, type: 3}
+--- !u!1 &4813120008097318391 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 115378948869737578, guid: d46bd93f4cc5f7044843a593e8c16be9,
+    type: 3}
+  m_PrefabInstance: {fileID: 4813120008097318390}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &7386737952999338631
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -54373,6 +54470,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1924983960}
   - {fileID: 1994181806}
+  - {fileID: 4813120008097318390}
   - {fileID: 698003255}
   - {fileID: 1268775430}
   - {fileID: 786928698}
@@ -54425,4 +54523,3 @@ SceneRoots:
   - {fileID: 1040935054}
   - {fileID: 1518650653}
   - {fileID: 1386621409}
-  - {fileID: 4813120008097318390}

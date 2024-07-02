@@ -19,6 +19,7 @@ public class StoreManager : MonoBehaviour // Should probably make singleton fath
     [SerializeField] private TextMeshProUGUI _crystalsUI;
 
     //public Material mat;
+    public GameObject[] skins;
 
     private void Awake()
     {
@@ -84,7 +85,18 @@ public class StoreManager : MonoBehaviour // Should probably make singleton fath
             _buyButton.SetActive(true);
         }
 
-        _witchModel.material = info.skin;
+        for(int i = 0; i < skins.Length; i++)
+        {
+            if(i != info.listPos)
+            {
+                skins[i].SetActive(false);
+            }
+            else
+            {
+                skins[i].SetActive(true);
+            }
+        }
+        //_witchModel.material = info.skin;
         _priceUI.text = info.price.ToString();
     }
 

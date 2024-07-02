@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "WitchSkin", menuName = "Skins/Create New Skin")]
 public class WitchSkin : ScriptableObject
 {
+    public int listPos;
     public string skinKey;
     public int price;
     public Material skin;

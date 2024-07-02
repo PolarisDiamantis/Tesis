@@ -91,4 +91,13 @@ public class AudioManagerMixer : MonoBehaviour
         PlayerPrefs.SetFloat(sensitivityID, slider.value);
         player.OnResponseChange(slider.value);
     }
+
+    public void ReturnToGame()
+    {
+        GameManager.Instance.player.GetComponent<PlayerController>()._lockInputs = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Time.timeScale = 1f;
+        GameManager.Instance.ui.pauseUI.SetActive(false);
+    }
 }

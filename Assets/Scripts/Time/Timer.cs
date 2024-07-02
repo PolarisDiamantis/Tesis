@@ -45,7 +45,10 @@ public class Timer : MonoBehaviour
         {
             if(TimeSpan.Parse(PlayerPrefs.GetString(_currentLevelKey + "1")) > _currentTime)
             {
-                PlayerPrefs.SetString(_currentLevelKey + "3", PlayerPrefs.GetString(_currentLevelKey + "2"));
+                if(PlayerPrefs.HasKey(_currentLevelKey + "2"))
+                {
+                    PlayerPrefs.SetString(_currentLevelKey + "3", PlayerPrefs.GetString(_currentLevelKey + "2"));
+                }
                 PlayerPrefs.SetString(_currentLevelKey + "2", PlayerPrefs.GetString(_currentLevelKey + "1"));
                 PlayerPrefs.SetString(_currentLevelKey + "1", _currentTime.ToString());
             }

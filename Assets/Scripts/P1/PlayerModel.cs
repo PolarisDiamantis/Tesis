@@ -46,13 +46,58 @@ public class PlayerModel : MonoBehaviour
 
     [Header("Skins")]
     public WitchSkin[] witchSkins;
+    public GameObject[] skins;
     public SkinnedMeshRenderer witchModel;
+    [HideInInspector] public bool _isShieldGO = false;
+
+    [SerializeField] private GameObject _shieldGreen, _shieldFire;
+    [HideInInspector] public GameObject shieldToGO = null;
 
     public bool hasLifeRune = false;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+
+        if (PlayerPrefs.HasKey("equippedSkinID"))
+        {
+            string equippedID = PlayerPrefs.GetString("equippedSkinID");
+            foreach (WitchSkin i in witchSkins)
+            {
+                if (i.skinKey == equippedID)
+                {
+                    for (int x = 0; x < skins.Length; x++)
+                    {
+                        if (x != i.listPos)
+                        {
+                            skins[x].SetActive(false);
+                        }
+                        else
+                        {
+                            skins[x].SetActive(true);
+                            anim = skins[x].transform.GetChild(0).GetComponent<Animator>();
+                        }
+                    }
+                    if(i.skinKey == "hallowenSkin")
+                    {
+                        _isShieldGO = true;
+                        shieldToGO = _shieldGreen;
+                    }
+                    if(i.skinKey == "fireSkin")
+                    {
+                        _isShieldGO = true;
+                        shieldToGO = _shieldFire;
+                    }
+                }
+            }
+        }
+        else
+        {
+            skins[0].SetActive(true);
+            anim = skins[0].transform.GetChild(0).GetComponent<Animator>();
+            PlayerPrefs.SetString("equippedSkinID", witchSkins[0].skinKey);
+        }
+
         _view = new PlayerView(this);
     }
 

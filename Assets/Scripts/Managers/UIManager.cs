@@ -23,6 +23,8 @@ public class UIManager : MonoBehaviour
 
     public GameObject runesUI;
 
+    public GameObject pauseUI;
+
     public void UpdateCrystalCount(int val)
     {
         crystalsUI.text = "" + val;

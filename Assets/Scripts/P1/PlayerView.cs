@@ -11,6 +11,9 @@ public class PlayerView
     bool _isOnBoostActive = false;
     bool _isShieldActive = false;
 
+    private GameObject _shieldGO;
+    bool _isShieldGO = false;
+
     AudioClip _pickUpSound;
     // Camera
     Animator _camAnim;
@@ -32,6 +35,11 @@ public class PlayerView
         _boostDecharge = c.boostDecharge;
         _crystalParticle = c.crystalParticle;
 
+        if (c._isShieldGO)
+        {
+            _isShieldGO = true;
+            _shieldGO = c.shieldToGO;
+        }
         // Action Assignments
         c.OnThrottle += OnThrottle;
         c.OnBoost += OnBoost;
@@ -48,7 +56,7 @@ public class PlayerView
         _witchSkins = c.witchSkins;
         _witchModel = c.witchModel;
 
-        if (PlayerPrefs.HasKey("equippedSkinID"))
+        /*if (PlayerPrefs.HasKey("equippedSkinID"))
         {
             string equippedID = PlayerPrefs.GetString("equippedSkinID");
             foreach(WitchSkin i in _witchSkins)
@@ -64,7 +72,7 @@ public class PlayerView
         {
             _witchModel.material = _witchSkins[0].skin;
             PlayerPrefs.SetString("equippedSkinID", _witchSkins[0].skinKey);
-        }
+        }*/
     }
 
     public void VirtualUpdate()
@@ -121,13 +129,27 @@ public class PlayerView
         if (!_isShieldActive)
         {
             _isShieldActive = true;
-            _shield.Play();
+            if (_isShieldGO)
+            {
+                _shieldGO.SetActive(true);
+            }
+            else
+            {
+                _shield.Play();
+            }
         }
         else
         {
             _isShieldActive = false;
-            _shield.Clear();
-            _shield.Stop();
+            if (_isShieldGO)
+            {
+                _shieldGO.SetActive(false);
+            }
+            else
+            {
+                _shield.Clear();
+                _shield.Stop();
+            }
         }
     }
 

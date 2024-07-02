@@ -48,5 +48,7 @@ public class PlayerRunes : MonoBehaviour
     private void ChoiceMade()
     {
         _ui.runesUI.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }

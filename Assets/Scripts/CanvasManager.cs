@@ -56,7 +56,7 @@ public class CanvasManager : MonoBehaviour
         }
         else
         {
-            firstPlace.text = "2. None";
+            secondPlace.text = "2. None";
         }
 
         if (PlayerPrefs.HasKey("lvl1BestTime" + "3"))

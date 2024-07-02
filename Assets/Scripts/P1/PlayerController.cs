@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float _controlSnap = 1;
 
-    private bool _lockInputs = false;
+    public bool _lockInputs = false;
     [Header("Boost Settings")]
     public bool isBoost = false;
     public bool isShield = false;
@@ -66,8 +66,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
         _agent = GetComponent<PlayerModel>();
     }
 
@@ -228,12 +228,8 @@ public class PlayerController : MonoBehaviour
             _lockInputs = true;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-        }
-        else if (context.canceled)
-        {
-            _lockInputs = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            Time.timeScale = 0f;
+            GameManager.Instance.ui.pauseUI.SetActive(true);
         }
     }
 
