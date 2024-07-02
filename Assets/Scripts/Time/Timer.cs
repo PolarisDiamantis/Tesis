@@ -39,17 +39,38 @@ public class Timer : MonoBehaviour
     {
         if(!PlayerPrefs.HasKey(_currentLevelKey + "1"))
         {
-            Debug.Log("New Record");
             PlayerPrefs.SetString(_currentLevelKey + "1", _currentTime.ToString());
         }
         else
         {
-            string prev = PlayerPrefs.GetString(_currentLevelKey);
-            TimeSpan prevTime = TimeSpan.Parse(prev);
-            if(_currentTime < prevTime)
+            if(TimeSpan.Parse(PlayerPrefs.GetString(_currentLevelKey + "1")) > _currentTime)
             {
-                Debug.Log("New Record");
-                PlayerPrefs.SetString(_currentLevelKey, _currentTime.ToString());
+                PlayerPrefs.SetString(_currentLevelKey + "3", PlayerPrefs.GetString(_currentLevelKey + "2"));
+                PlayerPrefs.SetString(_currentLevelKey + "2", PlayerPrefs.GetString(_currentLevelKey + "1"));
+                PlayerPrefs.SetString(_currentLevelKey + "1", _currentTime.ToString());
+            }
+            else
+            {
+                if (!PlayerPrefs.HasKey(_currentLevelKey + "2"))
+                {
+                    PlayerPrefs.SetString(_currentLevelKey + "2", _currentTime.ToString());
+                }
+                else if (TimeSpan.Parse(PlayerPrefs.GetString(_currentLevelKey + "2")) > _currentTime)
+                {
+                    PlayerPrefs.SetString(_currentLevelKey + "3", PlayerPrefs.GetString(_currentLevelKey + "2"));
+                    PlayerPrefs.SetString(_currentLevelKey + "2", _currentTime.ToString());
+                }
+                else
+                {
+                    if (!PlayerPrefs.HasKey(_currentLevelKey + "3"))
+                    {
+                        PlayerPrefs.SetString(_currentLevelKey + "3", _currentTime.ToString());
+                    }
+                    else if(TimeSpan.Parse(PlayerPrefs.GetString(_currentLevelKey + "3")) > _currentTime)
+                    {
+                        PlayerPrefs.SetString(_currentLevelKey + "3", _currentTime.ToString());
+                    }
+                }
             }
         }
         PlayerPrefs.Save();

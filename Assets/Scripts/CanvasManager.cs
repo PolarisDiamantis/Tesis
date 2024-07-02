@@ -10,9 +10,9 @@ public class CanvasManager : MonoBehaviour
     public TextMeshProUGUI lvl2R;
     public TextMeshProUGUI lvl3R;
 
-    public TextMeshPro firstPlace;
-    public TextMeshPro secondPlace;
-    public TextMeshPro thirdPlace;
+    public TextMeshProUGUI firstPlace;
+    public TextMeshProUGUI secondPlace;
+    public TextMeshProUGUI thirdPlace;
 
     void Start()
     {
