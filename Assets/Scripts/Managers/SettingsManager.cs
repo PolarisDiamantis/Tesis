@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Audio;
 
 public class SettingsManager : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private Slider _music;
     [SerializeField] private Slider _sfx;
     [SerializeField] private Slider _sensitivity;
+    [SerializeField] private AudioMixer _mixer;
 
     private void Start()
     {
@@ -42,21 +44,28 @@ public class SettingsManager : MonoBehaviour
         _music.value = PlayerPrefs.GetFloat(musicSoundID);
         _sfx.value = PlayerPrefs.GetFloat(sfxSoundID);
         _sensitivity.value = PlayerPrefs.GetFloat(sensitivityID);
+
+        _mixer.SetFloat("Master", Mathf.Log10(PlayerPrefs.GetFloat(masterSoundID)) * 20);
+        _mixer.SetFloat("Music", Mathf.Log10(PlayerPrefs.GetFloat(musicSoundID)) * 20);
+        _mixer.SetFloat("SFX", Mathf.Log10(PlayerPrefs.GetFloat(sfxSoundID)) * 20);
     }
 
     public void OnModifyMasterSound(Slider slider)
     {
         PlayerPrefs.SetFloat(masterSoundID, slider.value);
+        _mixer.SetFloat("Master", Mathf.Log10(PlayerPrefs.GetFloat(masterSoundID)) * 20);
     }
 
     public void OnModifyMusicSound(Slider slider)
     {
         PlayerPrefs.SetFloat(musicSoundID, slider.value);
+        _mixer.SetFloat("Music", Mathf.Log10(PlayerPrefs.GetFloat(musicSoundID)) * 20);
     }
 
     public void OnModifySFXSound(Slider slider)
     {
         PlayerPrefs.SetFloat(sfxSoundID, slider.value);
+        _mixer.SetFloat("SFX", Mathf.Log10(PlayerPrefs.GetFloat(sensitivityID)) * 20);
     }
 
     public void OnModifyMouseSensitivity(Slider slider)
