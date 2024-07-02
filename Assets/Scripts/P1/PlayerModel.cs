@@ -135,6 +135,7 @@ public class PlayerModel : MonoBehaviour
     public void OnDamage()
     {
         anim.SetTrigger("Damage");
+        anim.SetInteger("DamageID", UnityEngine.Random.Range(0, 2));
     }
 
     public void KillPlayer(CheckPoint check)
