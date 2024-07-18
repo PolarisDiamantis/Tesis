@@ -1,20 +1,12 @@
 // Made with Amplify Shader Editor v1.9.1.3
 // Available at the Unity Asset Store - http://u3d.as/y3X 
-Shader "S_Tornado"
+Shader "S_WindTunnel"
 {
 	Properties
 	{
 		[HideInInspector] _AlphaCutoff("Alpha Cutoff ", Range(0, 1)) = 0.5
 		[HideInInspector] _EmissionColor("Emission Color", Color) = (1,1,1,1)
-		[ASEBegin]_Speed("Speed", Float) = 2
-		_Speed1("Speed", Vector) = (0,1,0,0)
-		_Speed2("Speed", Float) = 2
-		_Fuerxza("Fuerxza ", Float) = 50
-		_Fuerxzarayos("Fuerxza rayos", Float) = 46.28
-		_Scale1("Scale", Float) = 0.48
-		_Float1("Float 1", Float) = 1.44
-		_Caliridaddelviento("Caliridad del viento", Float) = 0.3
-		[ASEEnd]_Intensidadoffset("Intensidad offset", Float) = 0.03
+		[ASEEnd][ASEBegin]_TextureSample0("Texture Sample 0", 2D) = "white" {}
 
 
 		//_TransmissionShadow( "Transmission Shadow", Range( 0, 1 ) ) = 0.5
@@ -25,7 +17,7 @@ Shader "S_Tornado"
 		//_TransAmbient( "Trans Ambient", Range( 0, 1 ) ) = 0.1
 		//_TransShadow( "Trans Shadow", Range( 0, 1 ) ) = 0.5
 		//_TessPhongStrength( "Tess Phong Strength", Range( 0, 1 ) ) = 0.5
-		_TessValue( "Max Tessellation", Range( 1, 32 ) ) = 16
+		//_TessValue( "Tess Max Tessellation", Range( 1, 32 ) ) = 16
 		//_TessMin( "Tess Min Distance", Float ) = 10
 		//_TessMax( "Tess Max Distance", Float ) = 25
 		//_TessEdgeLength ( "Tess Edge length", Range( 2, 50 ) ) = 16
@@ -51,7 +43,7 @@ Shader "S_Tornado"
 
 		Tags { "RenderPipeline"="UniversalPipeline" "RenderType"="Transparent" "Queue"="Transparent" }
 
-		Cull Off
+		Cull Back
 		ZWrite Off
 		ZTest LEqual
 		Offset 0 , 0
@@ -175,7 +167,7 @@ Shader "S_Tornado"
 		{
 			
 			Name "Forward"
-			Tags { "LightMode"="UniversalForwardOnly" }
+			Tags { "LightMode"="UniversalForward" }
 
 			Blend SrcAlpha OneMinusSrcAlpha, One OneMinusSrcAlpha
 			ZWrite On
@@ -193,13 +185,7 @@ Shader "S_Tornado"
 			#pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
 			#pragma multi_compile_fog
 			#define ASE_FOG 1
-			#define ASE_FIXED_TESSELLATION
 			#define _SURFACE_TYPE_TRANSPARENT 1
-			#define ASE_TESSELLATION 1
-			#pragma require tessellation tessHW
-			#pragma hull HullFunction
-			#pragma domain DomainFunction
-			#define _EMISSION
 			#define ASE_SRP_VERSION 140008
 
 
@@ -250,8 +236,7 @@ Shader "S_Tornado"
 				#define ENABLE_TERRAIN_PERPIXEL_NORMAL
 			#endif
 
-			#define ASE_NEEDS_VERT_NORMAL
-
+			
 
 			struct VertexInput
 			{
@@ -288,16 +273,7 @@ Shader "S_Tornado"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float2 _Speed1;
-			float _Intensidadoffset;
-			float _Speed;
-			float _Fuerxza;
-			float _Float1;
-			float _Caliridaddelviento;
-			float _Speed2;
-			float _Fuerxzarayos;
-			float _Scale1;
-			#ifdef ASE_TRANSMISSION
+						#ifdef ASE_TRANSMISSION
 				float _TransmissionShadow;
 			#endif
 			#ifdef ASE_TRANSLUCENCY
@@ -329,7 +305,8 @@ Shader "S_Tornado"
 				int _PassValue;
 			#endif
 
-			
+			sampler2D _TextureSample0;
+
 
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/Varyings.hlsl"
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/PBRForwardPass.hlsl"
@@ -338,35 +315,7 @@ Shader "S_Tornado"
 			//#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/VisualEffectVertex.hlsl"
 			//#endif
 
-			float3 mod2D289( float3 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
-			float2 mod2D289( float2 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
-			float3 permute( float3 x ) { return mod2D289( ( ( x * 34.0 ) + 1.0 ) * x ); }
-			float snoise( float2 v )
-			{
-				const float4 C = float4( 0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439 );
-				float2 i = floor( v + dot( v, C.yy ) );
-				float2 x0 = v - i + dot( i, C.xx );
-				float2 i1;
-				i1 = ( x0.x > x0.y ) ? float2( 1.0, 0.0 ) : float2( 0.0, 1.0 );
-				float4 x12 = x0.xyxy + C.xxzz;
-				x12.xy -= i1;
-				i = mod2D289( i );
-				float3 p = permute( permute( i.y + float3( 0.0, i1.y, 1.0 ) ) + i.x + float3( 0.0, i1.x, 1.0 ) );
-				float3 m = max( 0.5 - float3( dot( x0, x0 ), dot( x12.xy, x12.xy ), dot( x12.zw, x12.zw ) ), 0.0 );
-				m = m * m;
-				m = m * m;
-				float3 x = 2.0 * frac( p * C.www ) - 1.0;
-				float3 h = abs( x ) - 0.5;
-				float3 ox = floor( x + 0.5 );
-				float3 a0 = x - ox;
-				m *= 1.79284291400159 - 0.85373472095314 * ( a0 * a0 + h * h );
-				float3 g;
-				g.x = a0.x * x0.x + h.x * x0.y;
-				g.yz = a0.yz * x12.xz + h.yz * x12.yw;
-				return 130.0 * dot( m, g );
-			}
 			
-
 			VertexOutput VertexFunction( VertexInput v  )
 			{
 				VertexOutput o = (VertexOutput)0;
@@ -374,11 +323,6 @@ Shader "S_Tornado"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
-				float2 texCoord89 = v.texcoord.xy * float2( 1,1 ) + float2( 0,0 );
-				float2 panner88 = ( 1.0 * _Time.y * float2( 0,0.5 ) + texCoord89);
-				float simplePerlin2D87 = snoise( panner88*5.05 );
-				simplePerlin2D87 = simplePerlin2D87*0.5 + 0.5;
-				
 				o.ase_texcoord8.xy = v.texcoord.xy;
 				
 				//setting value to unused interpolator channels and avoid initialization warnings
@@ -390,7 +334,7 @@ Shader "S_Tornado"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = ( simplePerlin2D87 * _Intensidadoffset * v.ase_normal );
+				float3 vertexValue = defaultVertexValue;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					v.vertex.xyz = vertexValue;
@@ -591,53 +535,33 @@ Shader "S_Tornado"
 
 				WorldViewDirection = SafeNormalize( WorldViewDirection );
 
-				float4 color32 = IsGammaSpace() ? float4(0.5943396,0.5943396,0.5943396,0) : float4(0.3119799,0.3119799,0.3119799,0);
-				float4 color29 = IsGammaSpace() ? float4(0.4716981,0.4716981,0.4716981,0) : float4(0.1887741,0.1887741,0.1887741,0);
-				float2 texCoord11 = IN.ase_texcoord8.xy * float2( 1,1 ) + float2( 0,0 );
-				float cos12 = cos( ( _Speed * _TimeParameters.x ) );
-				float sin12 = sin( ( _Speed * _TimeParameters.x ) );
-				float2 rotator12 = mul( texCoord11 - float2( 0.5,0.5 ) , float2x2( cos12 , -sin12 , sin12 , cos12 )) + float2( 0.5,0.5 );
-				float2 center45_g2 = float2( 0.5,0.5 );
-				float2 delta6_g2 = ( rotator12 - center45_g2 );
-				float angle10_g2 = ( length( delta6_g2 ) * _Fuerxza );
-				float x23_g2 = ( ( cos( angle10_g2 ) * delta6_g2.x ) - ( sin( angle10_g2 ) * delta6_g2.y ) );
-				float2 break40_g2 = center45_g2;
-				float2 break41_g2 = float2( 0,0 );
-				float y35_g2 = ( ( sin( angle10_g2 ) * delta6_g2.x ) + ( cos( angle10_g2 ) * delta6_g2.y ) );
-				float2 appendResult44_g2 = (float2(( x23_g2 + break40_g2.x + break41_g2.x ) , ( break40_g2.y + break41_g2.y + y35_g2 )));
-				float2 lerpResult18 = lerp( texCoord11 , appendResult44_g2 , _Float1);
-				float2 texCoord26 = IN.ase_texcoord8.xy * float2( 1,1 ) + lerpResult18;
-				float4 lerpResult34 = lerp( color32 , color29 , texCoord26.x);
-				
-				float4 color80 = IsGammaSpace() ? float4(0.2899608,0.2963876,0.3396226,1) : float4(0.06836621,0.07146306,0.09441278,1);
-				float2 texCoord36 = IN.ase_texcoord8.xy * float2( 1,1 ) + float2( 0,0 );
-				float cos45 = cos( ( _Speed2 * _TimeParameters.x ) );
-				float sin45 = sin( ( _Speed2 * _TimeParameters.x ) );
-				float2 rotator45 = mul( texCoord36 - float2( 0.5,0.5 ) , float2x2( cos45 , -sin45 , sin45 , cos45 )) + float2( 0.5,0.5 );
-				float2 center45_g4 = float2( 0.5,0.5 );
-				float2 delta6_g4 = ( rotator45 - center45_g4 );
-				float angle10_g4 = ( length( delta6_g4 ) * _Fuerxzarayos );
-				float x23_g4 = ( ( cos( angle10_g4 ) * delta6_g4.x ) - ( sin( angle10_g4 ) * delta6_g4.y ) );
-				float2 break40_g4 = center45_g4;
-				float2 break41_g4 = float2( 0,0 );
-				float y35_g4 = ( ( sin( angle10_g4 ) * delta6_g4.x ) + ( cos( angle10_g4 ) * delta6_g4.y ) );
-				float2 appendResult44_g4 = (float2(( x23_g4 + break40_g4.x + break41_g4.x ) , ( break40_g4.y + break41_g4.y + y35_g4 )));
-				float2 panner37 = ( 1.0 * _Time.y * _Speed1 + appendResult44_g4);
-				float simplePerlin2D39 = snoise( panner37*_Scale1 );
-				simplePerlin2D39 = simplePerlin2D39*0.5 + 0.5;
-				float4 lerpResult47 = lerp( float4( 0,0,0,0 ) , color80 , step( simplePerlin2D39 , 0.15 ));
-				
-				float2 texCoord98 = IN.ase_texcoord8.xy * float2( 1,1 ) + float2( -0.5,-0.5 );
+				float4 color68 = IsGammaSpace() ? float4(0.1415094,0.1415094,0.1415094,0) : float4(0.0177139,0.0177139,0.0177139,0);
+				float4 color48 = IsGammaSpace() ? float4(0.8018868,0.8018868,0.8018868,0) : float4(0.6070304,0.6070304,0.6070304,0);
+				float4 color49 = IsGammaSpace() ? float4(0,0,0,0) : float4(0,0,0,0);
+				float2 texCoord30 = IN.ase_texcoord8.xy * float2( 1,1 ) + float2( 0,0 );
+				float2 panner31 = ( 1.0 * _Time.y * float2( 0.25,1 ) + texCoord30);
+				float2 break19_g1 = tex2D( _TextureSample0, panner31 ).rg;
+				float temp_output_1_0_g1 = 3.45;
+				float sinIn7_g1 = sin( temp_output_1_0_g1 );
+				float sinInOffset6_g1 = sin( ( temp_output_1_0_g1 + 1.0 ) );
+				float lerpResult20_g1 = lerp( break19_g1.x , break19_g1.y , frac( ( sin( ( ( sinIn7_g1 - sinInOffset6_g1 ) * 91.2228 ) ) * 43758.55 ) ));
+				float2 temp_cast_1 = (( lerpResult20_g1 + sinIn7_g1 )).xx;
+				float2 texCoord46 = IN.ase_texcoord8.xy * float2( 1,1 ) + temp_cast_1;
+				float4 lerpResult47 = lerp( color48 , color49 , texCoord46.x);
+				float mulTime59 = _TimeParameters.x * 2.23;
+				float2 temp_cast_2 = (mulTime59).xx;
+				float2 texCoord61 = IN.ase_texcoord8.xy * float2( 1,1 ) + temp_cast_2;
+				float4 lerpResult60 = lerp( color68 , lerpResult47 , sin( texCoord61.y ));
 				
 
-				float3 BaseColor = lerpResult34.rgb;
+				float3 BaseColor = lerpResult60.rgb;
 				float3 Normal = float3(0, 0, 1);
-				float3 Emission = ( _Caliridaddelviento + lerpResult47 ).rgb;
+				float3 Emission = 0;
 				float3 Specular = 0.5;
 				float Metallic = 0;
-				float Smoothness = 0.0;
+				float Smoothness = 0.5;
 				float Occlusion = 1;
-				float Alpha = ( ( 1.0 - pow( ( length( texCoord98 ) * 2.57 ) , 1.16 ) ) + lerpResult34 ).r;
+				float Alpha = lerpResult60.r;
 				float AlphaClipThreshold = 0.5;
 				float AlphaClipThresholdShadow = 0.5;
 				float3 BakedGI = 0;
@@ -882,13 +806,7 @@ Shader "S_Tornado"
 			#pragma multi_compile_instancing
 			#pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
 			#define ASE_FOG 1
-			#define ASE_FIXED_TESSELLATION
 			#define _SURFACE_TYPE_TRANSPARENT 1
-			#define ASE_TESSELLATION 1
-			#pragma require tessellation tessHW
-			#pragma hull HullFunction
-			#pragma domain DomainFunction
-			#define _EMISSION
 			#define ASE_SRP_VERSION 140008
 
 
@@ -912,8 +830,7 @@ Shader "S_Tornado"
 				#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/LODCrossFade.hlsl"
 			#endif
 
-			#define ASE_NEEDS_VERT_NORMAL
-
+			
 
 			struct VertexInput
 			{
@@ -938,16 +855,7 @@ Shader "S_Tornado"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float2 _Speed1;
-			float _Intensidadoffset;
-			float _Speed;
-			float _Fuerxza;
-			float _Float1;
-			float _Caliridaddelviento;
-			float _Speed2;
-			float _Fuerxzarayos;
-			float _Scale1;
-			#ifdef ASE_TRANSMISSION
+						#ifdef ASE_TRANSMISSION
 				float _TransmissionShadow;
 			#endif
 			#ifdef ASE_TRANSLUCENCY
@@ -979,7 +887,8 @@ Shader "S_Tornado"
 				int _PassValue;
 			#endif
 
-			
+			sampler2D _TextureSample0;
+
 
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/Varyings.hlsl"
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShadowCasterPass.hlsl"
@@ -988,35 +897,7 @@ Shader "S_Tornado"
 			//#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/VisualEffectVertex.hlsl"
 			//#endif
 
-			float3 mod2D289( float3 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
-			float2 mod2D289( float2 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
-			float3 permute( float3 x ) { return mod2D289( ( ( x * 34.0 ) + 1.0 ) * x ); }
-			float snoise( float2 v )
-			{
-				const float4 C = float4( 0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439 );
-				float2 i = floor( v + dot( v, C.yy ) );
-				float2 x0 = v - i + dot( i, C.xx );
-				float2 i1;
-				i1 = ( x0.x > x0.y ) ? float2( 1.0, 0.0 ) : float2( 0.0, 1.0 );
-				float4 x12 = x0.xyxy + C.xxzz;
-				x12.xy -= i1;
-				i = mod2D289( i );
-				float3 p = permute( permute( i.y + float3( 0.0, i1.y, 1.0 ) ) + i.x + float3( 0.0, i1.x, 1.0 ) );
-				float3 m = max( 0.5 - float3( dot( x0, x0 ), dot( x12.xy, x12.xy ), dot( x12.zw, x12.zw ) ), 0.0 );
-				m = m * m;
-				m = m * m;
-				float3 x = 2.0 * frac( p * C.www ) - 1.0;
-				float3 h = abs( x ) - 0.5;
-				float3 ox = floor( x + 0.5 );
-				float3 a0 = x - ox;
-				m *= 1.79284291400159 - 0.85373472095314 * ( a0 * a0 + h * h );
-				float3 g;
-				g.x = a0.x * x0.x + h.x * x0.y;
-				g.yz = a0.yz * x12.xz + h.yz * x12.yw;
-				return 130.0 * dot( m, g );
-			}
 			
-
 			float3 _LightDirection;
 			float3 _LightPosition;
 
@@ -1027,11 +908,6 @@ Shader "S_Tornado"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO( o );
 
-				float2 texCoord89 = v.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
-				float2 panner88 = ( 1.0 * _Time.y * float2( 0,0.5 ) + texCoord89);
-				float simplePerlin2D87 = snoise( panner88*5.05 );
-				simplePerlin2D87 = simplePerlin2D87*0.5 + 0.5;
-				
 				o.ase_texcoord2.xy = v.ase_texcoord.xy;
 				
 				//setting value to unused interpolator channels and avoid initialization warnings
@@ -1043,7 +919,7 @@ Shader "S_Tornado"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = ( simplePerlin2D87 * _Intensidadoffset * v.ase_normal );
+				float3 vertexValue = defaultVertexValue;
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					v.vertex.xyz = vertexValue;
 				#else
@@ -1195,27 +1071,26 @@ Shader "S_Tornado"
 					#endif
 				#endif
 
-				float2 texCoord98 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( -0.5,-0.5 );
-				float4 color32 = IsGammaSpace() ? float4(0.5943396,0.5943396,0.5943396,0) : float4(0.3119799,0.3119799,0.3119799,0);
-				float4 color29 = IsGammaSpace() ? float4(0.4716981,0.4716981,0.4716981,0) : float4(0.1887741,0.1887741,0.1887741,0);
-				float2 texCoord11 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
-				float cos12 = cos( ( _Speed * _TimeParameters.x ) );
-				float sin12 = sin( ( _Speed * _TimeParameters.x ) );
-				float2 rotator12 = mul( texCoord11 - float2( 0.5,0.5 ) , float2x2( cos12 , -sin12 , sin12 , cos12 )) + float2( 0.5,0.5 );
-				float2 center45_g2 = float2( 0.5,0.5 );
-				float2 delta6_g2 = ( rotator12 - center45_g2 );
-				float angle10_g2 = ( length( delta6_g2 ) * _Fuerxza );
-				float x23_g2 = ( ( cos( angle10_g2 ) * delta6_g2.x ) - ( sin( angle10_g2 ) * delta6_g2.y ) );
-				float2 break40_g2 = center45_g2;
-				float2 break41_g2 = float2( 0,0 );
-				float y35_g2 = ( ( sin( angle10_g2 ) * delta6_g2.x ) + ( cos( angle10_g2 ) * delta6_g2.y ) );
-				float2 appendResult44_g2 = (float2(( x23_g2 + break40_g2.x + break41_g2.x ) , ( break40_g2.y + break41_g2.y + y35_g2 )));
-				float2 lerpResult18 = lerp( texCoord11 , appendResult44_g2 , _Float1);
-				float2 texCoord26 = IN.ase_texcoord2.xy * float2( 1,1 ) + lerpResult18;
-				float4 lerpResult34 = lerp( color32 , color29 , texCoord26.x);
+				float4 color68 = IsGammaSpace() ? float4(0.1415094,0.1415094,0.1415094,0) : float4(0.0177139,0.0177139,0.0177139,0);
+				float4 color48 = IsGammaSpace() ? float4(0.8018868,0.8018868,0.8018868,0) : float4(0.6070304,0.6070304,0.6070304,0);
+				float4 color49 = IsGammaSpace() ? float4(0,0,0,0) : float4(0,0,0,0);
+				float2 texCoord30 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
+				float2 panner31 = ( 1.0 * _Time.y * float2( 0.25,1 ) + texCoord30);
+				float2 break19_g1 = tex2D( _TextureSample0, panner31 ).rg;
+				float temp_output_1_0_g1 = 3.45;
+				float sinIn7_g1 = sin( temp_output_1_0_g1 );
+				float sinInOffset6_g1 = sin( ( temp_output_1_0_g1 + 1.0 ) );
+				float lerpResult20_g1 = lerp( break19_g1.x , break19_g1.y , frac( ( sin( ( ( sinIn7_g1 - sinInOffset6_g1 ) * 91.2228 ) ) * 43758.55 ) ));
+				float2 temp_cast_1 = (( lerpResult20_g1 + sinIn7_g1 )).xx;
+				float2 texCoord46 = IN.ase_texcoord2.xy * float2( 1,1 ) + temp_cast_1;
+				float4 lerpResult47 = lerp( color48 , color49 , texCoord46.x);
+				float mulTime59 = _TimeParameters.x * 2.23;
+				float2 temp_cast_2 = (mulTime59).xx;
+				float2 texCoord61 = IN.ase_texcoord2.xy * float2( 1,1 ) + temp_cast_2;
+				float4 lerpResult60 = lerp( color68 , lerpResult47 , sin( texCoord61.y ));
 				
 
-				float Alpha = ( ( 1.0 - pow( ( length( texCoord98 ) * 2.57 ) , 1.16 ) ) + lerpResult34 ).r;
+				float Alpha = lerpResult60.r;
 				float AlphaClipThreshold = 0.5;
 				float AlphaClipThresholdShadow = 0.5;
 
@@ -1252,7 +1127,7 @@ Shader "S_Tornado"
 			Tags { "LightMode"="DepthOnly" }
 
 			ZWrite On
-			ColorMask 0
+			ColorMask R
 			AlphaToMask Off
 
 			HLSLPROGRAM
@@ -1261,13 +1136,7 @@ Shader "S_Tornado"
 			#pragma multi_compile_instancing
 			#pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
 			#define ASE_FOG 1
-			#define ASE_FIXED_TESSELLATION
 			#define _SURFACE_TYPE_TRANSPARENT 1
-			#define ASE_TESSELLATION 1
-			#pragma require tessellation tessHW
-			#pragma hull HullFunction
-			#pragma domain DomainFunction
-			#define _EMISSION
 			#define ASE_SRP_VERSION 140008
 
 
@@ -1289,8 +1158,7 @@ Shader "S_Tornado"
 				#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/LODCrossFade.hlsl"
 			#endif
 
-			#define ASE_NEEDS_VERT_NORMAL
-
+			
 
 			struct VertexInput
 			{
@@ -1315,16 +1183,7 @@ Shader "S_Tornado"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float2 _Speed1;
-			float _Intensidadoffset;
-			float _Speed;
-			float _Fuerxza;
-			float _Float1;
-			float _Caliridaddelviento;
-			float _Speed2;
-			float _Fuerxzarayos;
-			float _Scale1;
-			#ifdef ASE_TRANSMISSION
+						#ifdef ASE_TRANSMISSION
 				float _TransmissionShadow;
 			#endif
 			#ifdef ASE_TRANSLUCENCY
@@ -1356,7 +1215,8 @@ Shader "S_Tornado"
 				int _PassValue;
 			#endif
 
-			
+			sampler2D _TextureSample0;
+
 
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/Varyings.hlsl"
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/DepthOnlyPass.hlsl"
@@ -1365,35 +1225,7 @@ Shader "S_Tornado"
 			//#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/VisualEffectVertex.hlsl"
 			//#endif
 
-			float3 mod2D289( float3 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
-			float2 mod2D289( float2 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
-			float3 permute( float3 x ) { return mod2D289( ( ( x * 34.0 ) + 1.0 ) * x ); }
-			float snoise( float2 v )
-			{
-				const float4 C = float4( 0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439 );
-				float2 i = floor( v + dot( v, C.yy ) );
-				float2 x0 = v - i + dot( i, C.xx );
-				float2 i1;
-				i1 = ( x0.x > x0.y ) ? float2( 1.0, 0.0 ) : float2( 0.0, 1.0 );
-				float4 x12 = x0.xyxy + C.xxzz;
-				x12.xy -= i1;
-				i = mod2D289( i );
-				float3 p = permute( permute( i.y + float3( 0.0, i1.y, 1.0 ) ) + i.x + float3( 0.0, i1.x, 1.0 ) );
-				float3 m = max( 0.5 - float3( dot( x0, x0 ), dot( x12.xy, x12.xy ), dot( x12.zw, x12.zw ) ), 0.0 );
-				m = m * m;
-				m = m * m;
-				float3 x = 2.0 * frac( p * C.www ) - 1.0;
-				float3 h = abs( x ) - 0.5;
-				float3 ox = floor( x + 0.5 );
-				float3 a0 = x - ox;
-				m *= 1.79284291400159 - 0.85373472095314 * ( a0 * a0 + h * h );
-				float3 g;
-				g.x = a0.x * x0.x + h.x * x0.y;
-				g.yz = a0.yz * x12.xz + h.yz * x12.yw;
-				return 130.0 * dot( m, g );
-			}
 			
-
 			VertexOutput VertexFunction( VertexInput v  )
 			{
 				VertexOutput o = (VertexOutput)0;
@@ -1401,11 +1233,6 @@ Shader "S_Tornado"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
-				float2 texCoord89 = v.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
-				float2 panner88 = ( 1.0 * _Time.y * float2( 0,0.5 ) + texCoord89);
-				float simplePerlin2D87 = snoise( panner88*5.05 );
-				simplePerlin2D87 = simplePerlin2D87*0.5 + 0.5;
-				
 				o.ase_texcoord2.xy = v.ase_texcoord.xy;
 				
 				//setting value to unused interpolator channels and avoid initialization warnings
@@ -1417,7 +1244,7 @@ Shader "S_Tornado"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = ( simplePerlin2D87 * _Intensidadoffset * v.ase_normal );
+				float3 vertexValue = defaultVertexValue;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					v.vertex.xyz = vertexValue;
@@ -1554,27 +1381,26 @@ Shader "S_Tornado"
 					#endif
 				#endif
 
-				float2 texCoord98 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( -0.5,-0.5 );
-				float4 color32 = IsGammaSpace() ? float4(0.5943396,0.5943396,0.5943396,0) : float4(0.3119799,0.3119799,0.3119799,0);
-				float4 color29 = IsGammaSpace() ? float4(0.4716981,0.4716981,0.4716981,0) : float4(0.1887741,0.1887741,0.1887741,0);
-				float2 texCoord11 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
-				float cos12 = cos( ( _Speed * _TimeParameters.x ) );
-				float sin12 = sin( ( _Speed * _TimeParameters.x ) );
-				float2 rotator12 = mul( texCoord11 - float2( 0.5,0.5 ) , float2x2( cos12 , -sin12 , sin12 , cos12 )) + float2( 0.5,0.5 );
-				float2 center45_g2 = float2( 0.5,0.5 );
-				float2 delta6_g2 = ( rotator12 - center45_g2 );
-				float angle10_g2 = ( length( delta6_g2 ) * _Fuerxza );
-				float x23_g2 = ( ( cos( angle10_g2 ) * delta6_g2.x ) - ( sin( angle10_g2 ) * delta6_g2.y ) );
-				float2 break40_g2 = center45_g2;
-				float2 break41_g2 = float2( 0,0 );
-				float y35_g2 = ( ( sin( angle10_g2 ) * delta6_g2.x ) + ( cos( angle10_g2 ) * delta6_g2.y ) );
-				float2 appendResult44_g2 = (float2(( x23_g2 + break40_g2.x + break41_g2.x ) , ( break40_g2.y + break41_g2.y + y35_g2 )));
-				float2 lerpResult18 = lerp( texCoord11 , appendResult44_g2 , _Float1);
-				float2 texCoord26 = IN.ase_texcoord2.xy * float2( 1,1 ) + lerpResult18;
-				float4 lerpResult34 = lerp( color32 , color29 , texCoord26.x);
+				float4 color68 = IsGammaSpace() ? float4(0.1415094,0.1415094,0.1415094,0) : float4(0.0177139,0.0177139,0.0177139,0);
+				float4 color48 = IsGammaSpace() ? float4(0.8018868,0.8018868,0.8018868,0) : float4(0.6070304,0.6070304,0.6070304,0);
+				float4 color49 = IsGammaSpace() ? float4(0,0,0,0) : float4(0,0,0,0);
+				float2 texCoord30 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
+				float2 panner31 = ( 1.0 * _Time.y * float2( 0.25,1 ) + texCoord30);
+				float2 break19_g1 = tex2D( _TextureSample0, panner31 ).rg;
+				float temp_output_1_0_g1 = 3.45;
+				float sinIn7_g1 = sin( temp_output_1_0_g1 );
+				float sinInOffset6_g1 = sin( ( temp_output_1_0_g1 + 1.0 ) );
+				float lerpResult20_g1 = lerp( break19_g1.x , break19_g1.y , frac( ( sin( ( ( sinIn7_g1 - sinInOffset6_g1 ) * 91.2228 ) ) * 43758.55 ) ));
+				float2 temp_cast_1 = (( lerpResult20_g1 + sinIn7_g1 )).xx;
+				float2 texCoord46 = IN.ase_texcoord2.xy * float2( 1,1 ) + temp_cast_1;
+				float4 lerpResult47 = lerp( color48 , color49 , texCoord46.x);
+				float mulTime59 = _TimeParameters.x * 2.23;
+				float2 temp_cast_2 = (mulTime59).xx;
+				float2 texCoord61 = IN.ase_texcoord2.xy * float2( 1,1 ) + temp_cast_2;
+				float4 lerpResult60 = lerp( color68 , lerpResult47 , sin( texCoord61.y ));
 				
 
-				float Alpha = ( ( 1.0 - pow( ( length( texCoord98 ) * 2.57 ) , 1.16 ) ) + lerpResult34 ).r;
+				float Alpha = lerpResult60.r;
 				float AlphaClipThreshold = 0.5;
 				#ifdef ASE_DEPTH_WRITE_ON
 					float DepthValue = 0;
@@ -1611,13 +1437,7 @@ Shader "S_Tornado"
 			#define _NORMAL_DROPOFF_TS 1
 			#pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
 			#define ASE_FOG 1
-			#define ASE_FIXED_TESSELLATION
 			#define _SURFACE_TYPE_TRANSPARENT 1
-			#define ASE_TESSELLATION 1
-			#pragma require tessellation tessHW
-			#pragma hull HullFunction
-			#pragma domain DomainFunction
-			#define _EMISSION
 			#define ASE_SRP_VERSION 140008
 
 
@@ -1638,8 +1458,7 @@ Shader "S_Tornado"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/MetaInput.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 
-			#define ASE_NEEDS_VERT_NORMAL
-
+			
 
 			struct VertexInput
 			{
@@ -1671,16 +1490,7 @@ Shader "S_Tornado"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float2 _Speed1;
-			float _Intensidadoffset;
-			float _Speed;
-			float _Fuerxza;
-			float _Float1;
-			float _Caliridaddelviento;
-			float _Speed2;
-			float _Fuerxzarayos;
-			float _Scale1;
-			#ifdef ASE_TRANSMISSION
+						#ifdef ASE_TRANSMISSION
 				float _TransmissionShadow;
 			#endif
 			#ifdef ASE_TRANSLUCENCY
@@ -1712,7 +1522,8 @@ Shader "S_Tornado"
 				int _PassValue;
 			#endif
 
-			
+			sampler2D _TextureSample0;
+
 
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/Varyings.hlsl"
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/LightingMetaPass.hlsl"
@@ -1721,35 +1532,7 @@ Shader "S_Tornado"
 			//#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/VisualEffectVertex.hlsl"
 			//#endif
 
-			float3 mod2D289( float3 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
-			float2 mod2D289( float2 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
-			float3 permute( float3 x ) { return mod2D289( ( ( x * 34.0 ) + 1.0 ) * x ); }
-			float snoise( float2 v )
-			{
-				const float4 C = float4( 0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439 );
-				float2 i = floor( v + dot( v, C.yy ) );
-				float2 x0 = v - i + dot( i, C.xx );
-				float2 i1;
-				i1 = ( x0.x > x0.y ) ? float2( 1.0, 0.0 ) : float2( 0.0, 1.0 );
-				float4 x12 = x0.xyxy + C.xxzz;
-				x12.xy -= i1;
-				i = mod2D289( i );
-				float3 p = permute( permute( i.y + float3( 0.0, i1.y, 1.0 ) ) + i.x + float3( 0.0, i1.x, 1.0 ) );
-				float3 m = max( 0.5 - float3( dot( x0, x0 ), dot( x12.xy, x12.xy ), dot( x12.zw, x12.zw ) ), 0.0 );
-				m = m * m;
-				m = m * m;
-				float3 x = 2.0 * frac( p * C.www ) - 1.0;
-				float3 h = abs( x ) - 0.5;
-				float3 ox = floor( x + 0.5 );
-				float3 a0 = x - ox;
-				m *= 1.79284291400159 - 0.85373472095314 * ( a0 * a0 + h * h );
-				float3 g;
-				g.x = a0.x * x0.x + h.x * x0.y;
-				g.yz = a0.yz * x12.xz + h.yz * x12.yw;
-				return 130.0 * dot( m, g );
-			}
 			
-
 			VertexOutput VertexFunction( VertexInput v  )
 			{
 				VertexOutput o = (VertexOutput)0;
@@ -1757,11 +1540,6 @@ Shader "S_Tornado"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
-				float2 texCoord89 = v.texcoord0.xy * float2( 1,1 ) + float2( 0,0 );
-				float2 panner88 = ( 1.0 * _Time.y * float2( 0,0.5 ) + texCoord89);
-				float simplePerlin2D87 = snoise( panner88*5.05 );
-				simplePerlin2D87 = simplePerlin2D87*0.5 + 0.5;
-				
 				o.ase_texcoord4.xy = v.texcoord0.xy;
 				
 				//setting value to unused interpolator channels and avoid initialization warnings
@@ -1773,7 +1551,7 @@ Shader "S_Tornado"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = ( simplePerlin2D87 * _Intensidadoffset * v.ase_normal );
+				float3 vertexValue = defaultVertexValue;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					v.vertex.xyz = vertexValue;
@@ -1916,48 +1694,28 @@ Shader "S_Tornado"
 					#endif
 				#endif
 
-				float4 color32 = IsGammaSpace() ? float4(0.5943396,0.5943396,0.5943396,0) : float4(0.3119799,0.3119799,0.3119799,0);
-				float4 color29 = IsGammaSpace() ? float4(0.4716981,0.4716981,0.4716981,0) : float4(0.1887741,0.1887741,0.1887741,0);
-				float2 texCoord11 = IN.ase_texcoord4.xy * float2( 1,1 ) + float2( 0,0 );
-				float cos12 = cos( ( _Speed * _TimeParameters.x ) );
-				float sin12 = sin( ( _Speed * _TimeParameters.x ) );
-				float2 rotator12 = mul( texCoord11 - float2( 0.5,0.5 ) , float2x2( cos12 , -sin12 , sin12 , cos12 )) + float2( 0.5,0.5 );
-				float2 center45_g2 = float2( 0.5,0.5 );
-				float2 delta6_g2 = ( rotator12 - center45_g2 );
-				float angle10_g2 = ( length( delta6_g2 ) * _Fuerxza );
-				float x23_g2 = ( ( cos( angle10_g2 ) * delta6_g2.x ) - ( sin( angle10_g2 ) * delta6_g2.y ) );
-				float2 break40_g2 = center45_g2;
-				float2 break41_g2 = float2( 0,0 );
-				float y35_g2 = ( ( sin( angle10_g2 ) * delta6_g2.x ) + ( cos( angle10_g2 ) * delta6_g2.y ) );
-				float2 appendResult44_g2 = (float2(( x23_g2 + break40_g2.x + break41_g2.x ) , ( break40_g2.y + break41_g2.y + y35_g2 )));
-				float2 lerpResult18 = lerp( texCoord11 , appendResult44_g2 , _Float1);
-				float2 texCoord26 = IN.ase_texcoord4.xy * float2( 1,1 ) + lerpResult18;
-				float4 lerpResult34 = lerp( color32 , color29 , texCoord26.x);
-				
-				float4 color80 = IsGammaSpace() ? float4(0.2899608,0.2963876,0.3396226,1) : float4(0.06836621,0.07146306,0.09441278,1);
-				float2 texCoord36 = IN.ase_texcoord4.xy * float2( 1,1 ) + float2( 0,0 );
-				float cos45 = cos( ( _Speed2 * _TimeParameters.x ) );
-				float sin45 = sin( ( _Speed2 * _TimeParameters.x ) );
-				float2 rotator45 = mul( texCoord36 - float2( 0.5,0.5 ) , float2x2( cos45 , -sin45 , sin45 , cos45 )) + float2( 0.5,0.5 );
-				float2 center45_g4 = float2( 0.5,0.5 );
-				float2 delta6_g4 = ( rotator45 - center45_g4 );
-				float angle10_g4 = ( length( delta6_g4 ) * _Fuerxzarayos );
-				float x23_g4 = ( ( cos( angle10_g4 ) * delta6_g4.x ) - ( sin( angle10_g4 ) * delta6_g4.y ) );
-				float2 break40_g4 = center45_g4;
-				float2 break41_g4 = float2( 0,0 );
-				float y35_g4 = ( ( sin( angle10_g4 ) * delta6_g4.x ) + ( cos( angle10_g4 ) * delta6_g4.y ) );
-				float2 appendResult44_g4 = (float2(( x23_g4 + break40_g4.x + break41_g4.x ) , ( break40_g4.y + break41_g4.y + y35_g4 )));
-				float2 panner37 = ( 1.0 * _Time.y * _Speed1 + appendResult44_g4);
-				float simplePerlin2D39 = snoise( panner37*_Scale1 );
-				simplePerlin2D39 = simplePerlin2D39*0.5 + 0.5;
-				float4 lerpResult47 = lerp( float4( 0,0,0,0 ) , color80 , step( simplePerlin2D39 , 0.15 ));
-				
-				float2 texCoord98 = IN.ase_texcoord4.xy * float2( 1,1 ) + float2( -0.5,-0.5 );
+				float4 color68 = IsGammaSpace() ? float4(0.1415094,0.1415094,0.1415094,0) : float4(0.0177139,0.0177139,0.0177139,0);
+				float4 color48 = IsGammaSpace() ? float4(0.8018868,0.8018868,0.8018868,0) : float4(0.6070304,0.6070304,0.6070304,0);
+				float4 color49 = IsGammaSpace() ? float4(0,0,0,0) : float4(0,0,0,0);
+				float2 texCoord30 = IN.ase_texcoord4.xy * float2( 1,1 ) + float2( 0,0 );
+				float2 panner31 = ( 1.0 * _Time.y * float2( 0.25,1 ) + texCoord30);
+				float2 break19_g1 = tex2D( _TextureSample0, panner31 ).rg;
+				float temp_output_1_0_g1 = 3.45;
+				float sinIn7_g1 = sin( temp_output_1_0_g1 );
+				float sinInOffset6_g1 = sin( ( temp_output_1_0_g1 + 1.0 ) );
+				float lerpResult20_g1 = lerp( break19_g1.x , break19_g1.y , frac( ( sin( ( ( sinIn7_g1 - sinInOffset6_g1 ) * 91.2228 ) ) * 43758.55 ) ));
+				float2 temp_cast_1 = (( lerpResult20_g1 + sinIn7_g1 )).xx;
+				float2 texCoord46 = IN.ase_texcoord4.xy * float2( 1,1 ) + temp_cast_1;
+				float4 lerpResult47 = lerp( color48 , color49 , texCoord46.x);
+				float mulTime59 = _TimeParameters.x * 2.23;
+				float2 temp_cast_2 = (mulTime59).xx;
+				float2 texCoord61 = IN.ase_texcoord4.xy * float2( 1,1 ) + temp_cast_2;
+				float4 lerpResult60 = lerp( color68 , lerpResult47 , sin( texCoord61.y ));
 				
 
-				float3 BaseColor = lerpResult34.rgb;
-				float3 Emission = ( _Caliridaddelviento + lerpResult47 ).rgb;
-				float Alpha = ( ( 1.0 - pow( ( length( texCoord98 ) * 2.57 ) , 1.16 ) ) + lerpResult34 ).r;
+				float3 BaseColor = lerpResult60.rgb;
+				float3 Emission = 0;
+				float Alpha = lerpResult60.r;
 				float AlphaClipThreshold = 0.5;
 
 				#ifdef _ALPHATEST_ON
@@ -1995,13 +1753,7 @@ Shader "S_Tornado"
 			#define _NORMAL_DROPOFF_TS 1
 			#pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
 			#define ASE_FOG 1
-			#define ASE_FIXED_TESSELLATION
 			#define _SURFACE_TYPE_TRANSPARENT 1
-			#define ASE_TESSELLATION 1
-			#pragma require tessellation tessHW
-			#pragma hull HullFunction
-			#pragma domain DomainFunction
-			#define _EMISSION
 			#define ASE_SRP_VERSION 140008
 
 
@@ -2019,8 +1771,7 @@ Shader "S_Tornado"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 
-			#define ASE_NEEDS_VERT_NORMAL
-
+			
 
 			struct VertexInput
 			{
@@ -2045,16 +1796,7 @@ Shader "S_Tornado"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float2 _Speed1;
-			float _Intensidadoffset;
-			float _Speed;
-			float _Fuerxza;
-			float _Float1;
-			float _Caliridaddelviento;
-			float _Speed2;
-			float _Fuerxzarayos;
-			float _Scale1;
-			#ifdef ASE_TRANSMISSION
+						#ifdef ASE_TRANSMISSION
 				float _TransmissionShadow;
 			#endif
 			#ifdef ASE_TRANSLUCENCY
@@ -2086,7 +1828,8 @@ Shader "S_Tornado"
 				int _PassValue;
 			#endif
 
-			
+			sampler2D _TextureSample0;
+
 
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/Varyings.hlsl"
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/PBR2DPass.hlsl"
@@ -2095,35 +1838,7 @@ Shader "S_Tornado"
 			//#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/VisualEffectVertex.hlsl"
 			//#endif
 
-			float3 mod2D289( float3 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
-			float2 mod2D289( float2 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
-			float3 permute( float3 x ) { return mod2D289( ( ( x * 34.0 ) + 1.0 ) * x ); }
-			float snoise( float2 v )
-			{
-				const float4 C = float4( 0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439 );
-				float2 i = floor( v + dot( v, C.yy ) );
-				float2 x0 = v - i + dot( i, C.xx );
-				float2 i1;
-				i1 = ( x0.x > x0.y ) ? float2( 1.0, 0.0 ) : float2( 0.0, 1.0 );
-				float4 x12 = x0.xyxy + C.xxzz;
-				x12.xy -= i1;
-				i = mod2D289( i );
-				float3 p = permute( permute( i.y + float3( 0.0, i1.y, 1.0 ) ) + i.x + float3( 0.0, i1.x, 1.0 ) );
-				float3 m = max( 0.5 - float3( dot( x0, x0 ), dot( x12.xy, x12.xy ), dot( x12.zw, x12.zw ) ), 0.0 );
-				m = m * m;
-				m = m * m;
-				float3 x = 2.0 * frac( p * C.www ) - 1.0;
-				float3 h = abs( x ) - 0.5;
-				float3 ox = floor( x + 0.5 );
-				float3 a0 = x - ox;
-				m *= 1.79284291400159 - 0.85373472095314 * ( a0 * a0 + h * h );
-				float3 g;
-				g.x = a0.x * x0.x + h.x * x0.y;
-				g.yz = a0.yz * x12.xz + h.yz * x12.yw;
-				return 130.0 * dot( m, g );
-			}
 			
-
 			VertexOutput VertexFunction( VertexInput v  )
 			{
 				VertexOutput o = (VertexOutput)0;
@@ -2131,11 +1846,6 @@ Shader "S_Tornado"
 				UNITY_TRANSFER_INSTANCE_ID( v, o );
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO( o );
 
-				float2 texCoord89 = v.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
-				float2 panner88 = ( 1.0 * _Time.y * float2( 0,0.5 ) + texCoord89);
-				float simplePerlin2D87 = snoise( panner88*5.05 );
-				simplePerlin2D87 = simplePerlin2D87*0.5 + 0.5;
-				
 				o.ase_texcoord2.xy = v.ase_texcoord.xy;
 				
 				//setting value to unused interpolator channels and avoid initialization warnings
@@ -2147,7 +1857,7 @@ Shader "S_Tornado"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = ( simplePerlin2D87 * _Intensidadoffset * v.ase_normal );
+				float3 vertexValue = defaultVertexValue;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					v.vertex.xyz = vertexValue;
@@ -2275,29 +1985,27 @@ Shader "S_Tornado"
 					#endif
 				#endif
 
-				float4 color32 = IsGammaSpace() ? float4(0.5943396,0.5943396,0.5943396,0) : float4(0.3119799,0.3119799,0.3119799,0);
-				float4 color29 = IsGammaSpace() ? float4(0.4716981,0.4716981,0.4716981,0) : float4(0.1887741,0.1887741,0.1887741,0);
-				float2 texCoord11 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
-				float cos12 = cos( ( _Speed * _TimeParameters.x ) );
-				float sin12 = sin( ( _Speed * _TimeParameters.x ) );
-				float2 rotator12 = mul( texCoord11 - float2( 0.5,0.5 ) , float2x2( cos12 , -sin12 , sin12 , cos12 )) + float2( 0.5,0.5 );
-				float2 center45_g2 = float2( 0.5,0.5 );
-				float2 delta6_g2 = ( rotator12 - center45_g2 );
-				float angle10_g2 = ( length( delta6_g2 ) * _Fuerxza );
-				float x23_g2 = ( ( cos( angle10_g2 ) * delta6_g2.x ) - ( sin( angle10_g2 ) * delta6_g2.y ) );
-				float2 break40_g2 = center45_g2;
-				float2 break41_g2 = float2( 0,0 );
-				float y35_g2 = ( ( sin( angle10_g2 ) * delta6_g2.x ) + ( cos( angle10_g2 ) * delta6_g2.y ) );
-				float2 appendResult44_g2 = (float2(( x23_g2 + break40_g2.x + break41_g2.x ) , ( break40_g2.y + break41_g2.y + y35_g2 )));
-				float2 lerpResult18 = lerp( texCoord11 , appendResult44_g2 , _Float1);
-				float2 texCoord26 = IN.ase_texcoord2.xy * float2( 1,1 ) + lerpResult18;
-				float4 lerpResult34 = lerp( color32 , color29 , texCoord26.x);
-				
-				float2 texCoord98 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( -0.5,-0.5 );
+				float4 color68 = IsGammaSpace() ? float4(0.1415094,0.1415094,0.1415094,0) : float4(0.0177139,0.0177139,0.0177139,0);
+				float4 color48 = IsGammaSpace() ? float4(0.8018868,0.8018868,0.8018868,0) : float4(0.6070304,0.6070304,0.6070304,0);
+				float4 color49 = IsGammaSpace() ? float4(0,0,0,0) : float4(0,0,0,0);
+				float2 texCoord30 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
+				float2 panner31 = ( 1.0 * _Time.y * float2( 0.25,1 ) + texCoord30);
+				float2 break19_g1 = tex2D( _TextureSample0, panner31 ).rg;
+				float temp_output_1_0_g1 = 3.45;
+				float sinIn7_g1 = sin( temp_output_1_0_g1 );
+				float sinInOffset6_g1 = sin( ( temp_output_1_0_g1 + 1.0 ) );
+				float lerpResult20_g1 = lerp( break19_g1.x , break19_g1.y , frac( ( sin( ( ( sinIn7_g1 - sinInOffset6_g1 ) * 91.2228 ) ) * 43758.55 ) ));
+				float2 temp_cast_1 = (( lerpResult20_g1 + sinIn7_g1 )).xx;
+				float2 texCoord46 = IN.ase_texcoord2.xy * float2( 1,1 ) + temp_cast_1;
+				float4 lerpResult47 = lerp( color48 , color49 , texCoord46.x);
+				float mulTime59 = _TimeParameters.x * 2.23;
+				float2 temp_cast_2 = (mulTime59).xx;
+				float2 texCoord61 = IN.ase_texcoord2.xy * float2( 1,1 ) + temp_cast_2;
+				float4 lerpResult60 = lerp( color68 , lerpResult47 , sin( texCoord61.y ));
 				
 
-				float3 BaseColor = lerpResult34.rgb;
-				float Alpha = ( ( 1.0 - pow( ( length( texCoord98 ) * 2.57 ) , 1.16 ) ) + lerpResult34 ).r;
+				float3 BaseColor = lerpResult60.rgb;
+				float Alpha = lerpResult60.r;
 				float AlphaClipThreshold = 0.5;
 
 				half4 color = half4(BaseColor, Alpha );
@@ -2316,7 +2024,7 @@ Shader "S_Tornado"
 		{
 			
 			Name "DepthNormals"
-			Tags { "LightMode"="DepthNormalsOnly" }
+			Tags { "LightMode"="DepthNormals" }
 
 			Blend One Zero
 			ZTest LEqual
@@ -2328,13 +2036,7 @@ Shader "S_Tornado"
 			#pragma multi_compile_instancing
 			#pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
 			#define ASE_FOG 1
-			#define ASE_FIXED_TESSELLATION
 			#define _SURFACE_TYPE_TRANSPARENT 1
-			#define ASE_TESSELLATION 1
-			#pragma require tessellation tessHW
-			#pragma hull HullFunction
-			#pragma domain DomainFunction
-			#define _EMISSION
 			#define ASE_SRP_VERSION 140008
 
 
@@ -2358,8 +2060,7 @@ Shader "S_Tornado"
 				#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/LODCrossFade.hlsl"
 			#endif
 
-			#define ASE_NEEDS_VERT_NORMAL
-
+			
 
 			struct VertexInput
 			{
@@ -2387,16 +2088,7 @@ Shader "S_Tornado"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float2 _Speed1;
-			float _Intensidadoffset;
-			float _Speed;
-			float _Fuerxza;
-			float _Float1;
-			float _Caliridaddelviento;
-			float _Speed2;
-			float _Fuerxzarayos;
-			float _Scale1;
-			#ifdef ASE_TRANSMISSION
+						#ifdef ASE_TRANSMISSION
 				float _TransmissionShadow;
 			#endif
 			#ifdef ASE_TRANSLUCENCY
@@ -2428,7 +2120,8 @@ Shader "S_Tornado"
 				int _PassValue;
 			#endif
 
-			
+			sampler2D _TextureSample0;
+
 
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/Varyings.hlsl"
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/DepthNormalsOnlyPass.hlsl"
@@ -2437,35 +2130,7 @@ Shader "S_Tornado"
 			//#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/VisualEffectVertex.hlsl"
 			//#endif
 
-			float3 mod2D289( float3 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
-			float2 mod2D289( float2 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
-			float3 permute( float3 x ) { return mod2D289( ( ( x * 34.0 ) + 1.0 ) * x ); }
-			float snoise( float2 v )
-			{
-				const float4 C = float4( 0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439 );
-				float2 i = floor( v + dot( v, C.yy ) );
-				float2 x0 = v - i + dot( i, C.xx );
-				float2 i1;
-				i1 = ( x0.x > x0.y ) ? float2( 1.0, 0.0 ) : float2( 0.0, 1.0 );
-				float4 x12 = x0.xyxy + C.xxzz;
-				x12.xy -= i1;
-				i = mod2D289( i );
-				float3 p = permute( permute( i.y + float3( 0.0, i1.y, 1.0 ) ) + i.x + float3( 0.0, i1.x, 1.0 ) );
-				float3 m = max( 0.5 - float3( dot( x0, x0 ), dot( x12.xy, x12.xy ), dot( x12.zw, x12.zw ) ), 0.0 );
-				m = m * m;
-				m = m * m;
-				float3 x = 2.0 * frac( p * C.www ) - 1.0;
-				float3 h = abs( x ) - 0.5;
-				float3 ox = floor( x + 0.5 );
-				float3 a0 = x - ox;
-				m *= 1.79284291400159 - 0.85373472095314 * ( a0 * a0 + h * h );
-				float3 g;
-				g.x = a0.x * x0.x + h.x * x0.y;
-				g.yz = a0.yz * x12.xz + h.yz * x12.yw;
-				return 130.0 * dot( m, g );
-			}
 			
-
 			VertexOutput VertexFunction( VertexInput v  )
 			{
 				VertexOutput o = (VertexOutput)0;
@@ -2473,11 +2138,6 @@ Shader "S_Tornado"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
-				float2 texCoord89 = v.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
-				float2 panner88 = ( 1.0 * _Time.y * float2( 0,0.5 ) + texCoord89);
-				float simplePerlin2D87 = snoise( panner88*5.05 );
-				simplePerlin2D87 = simplePerlin2D87*0.5 + 0.5;
-				
 				o.ase_texcoord4.xy = v.ase_texcoord.xy;
 				
 				//setting value to unused interpolator channels and avoid initialization warnings
@@ -2488,7 +2148,7 @@ Shader "S_Tornado"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = ( simplePerlin2D87 * _Intensidadoffset * v.ase_normal );
+				float3 vertexValue = defaultVertexValue;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					v.vertex.xyz = vertexValue;
@@ -2635,28 +2295,27 @@ Shader "S_Tornado"
 					#endif
 				#endif
 
-				float2 texCoord98 = IN.ase_texcoord4.xy * float2( 1,1 ) + float2( -0.5,-0.5 );
-				float4 color32 = IsGammaSpace() ? float4(0.5943396,0.5943396,0.5943396,0) : float4(0.3119799,0.3119799,0.3119799,0);
-				float4 color29 = IsGammaSpace() ? float4(0.4716981,0.4716981,0.4716981,0) : float4(0.1887741,0.1887741,0.1887741,0);
-				float2 texCoord11 = IN.ase_texcoord4.xy * float2( 1,1 ) + float2( 0,0 );
-				float cos12 = cos( ( _Speed * _TimeParameters.x ) );
-				float sin12 = sin( ( _Speed * _TimeParameters.x ) );
-				float2 rotator12 = mul( texCoord11 - float2( 0.5,0.5 ) , float2x2( cos12 , -sin12 , sin12 , cos12 )) + float2( 0.5,0.5 );
-				float2 center45_g2 = float2( 0.5,0.5 );
-				float2 delta6_g2 = ( rotator12 - center45_g2 );
-				float angle10_g2 = ( length( delta6_g2 ) * _Fuerxza );
-				float x23_g2 = ( ( cos( angle10_g2 ) * delta6_g2.x ) - ( sin( angle10_g2 ) * delta6_g2.y ) );
-				float2 break40_g2 = center45_g2;
-				float2 break41_g2 = float2( 0,0 );
-				float y35_g2 = ( ( sin( angle10_g2 ) * delta6_g2.x ) + ( cos( angle10_g2 ) * delta6_g2.y ) );
-				float2 appendResult44_g2 = (float2(( x23_g2 + break40_g2.x + break41_g2.x ) , ( break40_g2.y + break41_g2.y + y35_g2 )));
-				float2 lerpResult18 = lerp( texCoord11 , appendResult44_g2 , _Float1);
-				float2 texCoord26 = IN.ase_texcoord4.xy * float2( 1,1 ) + lerpResult18;
-				float4 lerpResult34 = lerp( color32 , color29 , texCoord26.x);
+				float4 color68 = IsGammaSpace() ? float4(0.1415094,0.1415094,0.1415094,0) : float4(0.0177139,0.0177139,0.0177139,0);
+				float4 color48 = IsGammaSpace() ? float4(0.8018868,0.8018868,0.8018868,0) : float4(0.6070304,0.6070304,0.6070304,0);
+				float4 color49 = IsGammaSpace() ? float4(0,0,0,0) : float4(0,0,0,0);
+				float2 texCoord30 = IN.ase_texcoord4.xy * float2( 1,1 ) + float2( 0,0 );
+				float2 panner31 = ( 1.0 * _Time.y * float2( 0.25,1 ) + texCoord30);
+				float2 break19_g1 = tex2D( _TextureSample0, panner31 ).rg;
+				float temp_output_1_0_g1 = 3.45;
+				float sinIn7_g1 = sin( temp_output_1_0_g1 );
+				float sinInOffset6_g1 = sin( ( temp_output_1_0_g1 + 1.0 ) );
+				float lerpResult20_g1 = lerp( break19_g1.x , break19_g1.y , frac( ( sin( ( ( sinIn7_g1 - sinInOffset6_g1 ) * 91.2228 ) ) * 43758.55 ) ));
+				float2 temp_cast_1 = (( lerpResult20_g1 + sinIn7_g1 )).xx;
+				float2 texCoord46 = IN.ase_texcoord4.xy * float2( 1,1 ) + temp_cast_1;
+				float4 lerpResult47 = lerp( color48 , color49 , texCoord46.x);
+				float mulTime59 = _TimeParameters.x * 2.23;
+				float2 temp_cast_2 = (mulTime59).xx;
+				float2 texCoord61 = IN.ase_texcoord4.xy * float2( 1,1 ) + temp_cast_2;
+				float4 lerpResult60 = lerp( color68 , lerpResult47 , sin( texCoord61.y ));
 				
 
 				float3 Normal = float3(0, 0, 1);
-				float Alpha = ( ( 1.0 - pow( ( length( texCoord98 ) * 2.57 ) , 1.16 ) ) + lerpResult34 ).r;
+				float Alpha = lerpResult60.r;
 				float AlphaClipThreshold = 0.5;
 				#ifdef ASE_DEPTH_WRITE_ON
 					float DepthValue = 0;
@@ -2721,13 +2380,7 @@ Shader "S_Tornado"
 			#pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
 			#pragma multi_compile_fog
 			#define ASE_FOG 1
-			#define ASE_FIXED_TESSELLATION
 			#define _SURFACE_TYPE_TRANSPARENT 1
-			#define ASE_TESSELLATION 1
-			#pragma require tessellation tessHW
-			#pragma hull HullFunction
-			#pragma domain DomainFunction
-			#define _EMISSION
 			#define ASE_SRP_VERSION 140008
 
 
@@ -2773,8 +2426,7 @@ Shader "S_Tornado"
 				#define ENABLE_TERRAIN_PERPIXEL_NORMAL
 			#endif
 
-			#define ASE_NEEDS_VERT_NORMAL
-
+			
 
 			struct VertexInput
 			{
@@ -2811,16 +2463,7 @@ Shader "S_Tornado"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float2 _Speed1;
-			float _Intensidadoffset;
-			float _Speed;
-			float _Fuerxza;
-			float _Float1;
-			float _Caliridaddelviento;
-			float _Speed2;
-			float _Fuerxzarayos;
-			float _Scale1;
-			#ifdef ASE_TRANSMISSION
+						#ifdef ASE_TRANSMISSION
 				float _TransmissionShadow;
 			#endif
 			#ifdef ASE_TRANSLUCENCY
@@ -2852,41 +2495,14 @@ Shader "S_Tornado"
 				int _PassValue;
 			#endif
 
-			
+			sampler2D _TextureSample0;
+
 
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/Varyings.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/UnityGBuffer.hlsl"
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/PBRGBufferPass.hlsl"
 
-			float3 mod2D289( float3 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
-			float2 mod2D289( float2 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
-			float3 permute( float3 x ) { return mod2D289( ( ( x * 34.0 ) + 1.0 ) * x ); }
-			float snoise( float2 v )
-			{
-				const float4 C = float4( 0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439 );
-				float2 i = floor( v + dot( v, C.yy ) );
-				float2 x0 = v - i + dot( i, C.xx );
-				float2 i1;
-				i1 = ( x0.x > x0.y ) ? float2( 1.0, 0.0 ) : float2( 0.0, 1.0 );
-				float4 x12 = x0.xyxy + C.xxzz;
-				x12.xy -= i1;
-				i = mod2D289( i );
-				float3 p = permute( permute( i.y + float3( 0.0, i1.y, 1.0 ) ) + i.x + float3( 0.0, i1.x, 1.0 ) );
-				float3 m = max( 0.5 - float3( dot( x0, x0 ), dot( x12.xy, x12.xy ), dot( x12.zw, x12.zw ) ), 0.0 );
-				m = m * m;
-				m = m * m;
-				float3 x = 2.0 * frac( p * C.www ) - 1.0;
-				float3 h = abs( x ) - 0.5;
-				float3 ox = floor( x + 0.5 );
-				float3 a0 = x - ox;
-				m *= 1.79284291400159 - 0.85373472095314 * ( a0 * a0 + h * h );
-				float3 g;
-				g.x = a0.x * x0.x + h.x * x0.y;
-				g.yz = a0.yz * x12.xz + h.yz * x12.yw;
-				return 130.0 * dot( m, g );
-			}
 			
-
 			VertexOutput VertexFunction( VertexInput v  )
 			{
 				VertexOutput o = (VertexOutput)0;
@@ -2894,11 +2510,6 @@ Shader "S_Tornado"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
-				float2 texCoord89 = v.texcoord.xy * float2( 1,1 ) + float2( 0,0 );
-				float2 panner88 = ( 1.0 * _Time.y * float2( 0,0.5 ) + texCoord89);
-				float simplePerlin2D87 = snoise( panner88*5.05 );
-				simplePerlin2D87 = simplePerlin2D87*0.5 + 0.5;
-				
 				o.ase_texcoord8.xy = v.texcoord.xy;
 				
 				//setting value to unused interpolator channels and avoid initialization warnings
@@ -2909,7 +2520,7 @@ Shader "S_Tornado"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = ( simplePerlin2D87 * _Intensidadoffset * v.ase_normal );
+				float3 vertexValue = defaultVertexValue;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					v.vertex.xyz = vertexValue;
@@ -3107,53 +2718,33 @@ Shader "S_Tornado"
 
 				WorldViewDirection = SafeNormalize( WorldViewDirection );
 
-				float4 color32 = IsGammaSpace() ? float4(0.5943396,0.5943396,0.5943396,0) : float4(0.3119799,0.3119799,0.3119799,0);
-				float4 color29 = IsGammaSpace() ? float4(0.4716981,0.4716981,0.4716981,0) : float4(0.1887741,0.1887741,0.1887741,0);
-				float2 texCoord11 = IN.ase_texcoord8.xy * float2( 1,1 ) + float2( 0,0 );
-				float cos12 = cos( ( _Speed * _TimeParameters.x ) );
-				float sin12 = sin( ( _Speed * _TimeParameters.x ) );
-				float2 rotator12 = mul( texCoord11 - float2( 0.5,0.5 ) , float2x2( cos12 , -sin12 , sin12 , cos12 )) + float2( 0.5,0.5 );
-				float2 center45_g2 = float2( 0.5,0.5 );
-				float2 delta6_g2 = ( rotator12 - center45_g2 );
-				float angle10_g2 = ( length( delta6_g2 ) * _Fuerxza );
-				float x23_g2 = ( ( cos( angle10_g2 ) * delta6_g2.x ) - ( sin( angle10_g2 ) * delta6_g2.y ) );
-				float2 break40_g2 = center45_g2;
-				float2 break41_g2 = float2( 0,0 );
-				float y35_g2 = ( ( sin( angle10_g2 ) * delta6_g2.x ) + ( cos( angle10_g2 ) * delta6_g2.y ) );
-				float2 appendResult44_g2 = (float2(( x23_g2 + break40_g2.x + break41_g2.x ) , ( break40_g2.y + break41_g2.y + y35_g2 )));
-				float2 lerpResult18 = lerp( texCoord11 , appendResult44_g2 , _Float1);
-				float2 texCoord26 = IN.ase_texcoord8.xy * float2( 1,1 ) + lerpResult18;
-				float4 lerpResult34 = lerp( color32 , color29 , texCoord26.x);
-				
-				float4 color80 = IsGammaSpace() ? float4(0.2899608,0.2963876,0.3396226,1) : float4(0.06836621,0.07146306,0.09441278,1);
-				float2 texCoord36 = IN.ase_texcoord8.xy * float2( 1,1 ) + float2( 0,0 );
-				float cos45 = cos( ( _Speed2 * _TimeParameters.x ) );
-				float sin45 = sin( ( _Speed2 * _TimeParameters.x ) );
-				float2 rotator45 = mul( texCoord36 - float2( 0.5,0.5 ) , float2x2( cos45 , -sin45 , sin45 , cos45 )) + float2( 0.5,0.5 );
-				float2 center45_g4 = float2( 0.5,0.5 );
-				float2 delta6_g4 = ( rotator45 - center45_g4 );
-				float angle10_g4 = ( length( delta6_g4 ) * _Fuerxzarayos );
-				float x23_g4 = ( ( cos( angle10_g4 ) * delta6_g4.x ) - ( sin( angle10_g4 ) * delta6_g4.y ) );
-				float2 break40_g4 = center45_g4;
-				float2 break41_g4 = float2( 0,0 );
-				float y35_g4 = ( ( sin( angle10_g4 ) * delta6_g4.x ) + ( cos( angle10_g4 ) * delta6_g4.y ) );
-				float2 appendResult44_g4 = (float2(( x23_g4 + break40_g4.x + break41_g4.x ) , ( break40_g4.y + break41_g4.y + y35_g4 )));
-				float2 panner37 = ( 1.0 * _Time.y * _Speed1 + appendResult44_g4);
-				float simplePerlin2D39 = snoise( panner37*_Scale1 );
-				simplePerlin2D39 = simplePerlin2D39*0.5 + 0.5;
-				float4 lerpResult47 = lerp( float4( 0,0,0,0 ) , color80 , step( simplePerlin2D39 , 0.15 ));
-				
-				float2 texCoord98 = IN.ase_texcoord8.xy * float2( 1,1 ) + float2( -0.5,-0.5 );
+				float4 color68 = IsGammaSpace() ? float4(0.1415094,0.1415094,0.1415094,0) : float4(0.0177139,0.0177139,0.0177139,0);
+				float4 color48 = IsGammaSpace() ? float4(0.8018868,0.8018868,0.8018868,0) : float4(0.6070304,0.6070304,0.6070304,0);
+				float4 color49 = IsGammaSpace() ? float4(0,0,0,0) : float4(0,0,0,0);
+				float2 texCoord30 = IN.ase_texcoord8.xy * float2( 1,1 ) + float2( 0,0 );
+				float2 panner31 = ( 1.0 * _Time.y * float2( 0.25,1 ) + texCoord30);
+				float2 break19_g1 = tex2D( _TextureSample0, panner31 ).rg;
+				float temp_output_1_0_g1 = 3.45;
+				float sinIn7_g1 = sin( temp_output_1_0_g1 );
+				float sinInOffset6_g1 = sin( ( temp_output_1_0_g1 + 1.0 ) );
+				float lerpResult20_g1 = lerp( break19_g1.x , break19_g1.y , frac( ( sin( ( ( sinIn7_g1 - sinInOffset6_g1 ) * 91.2228 ) ) * 43758.55 ) ));
+				float2 temp_cast_1 = (( lerpResult20_g1 + sinIn7_g1 )).xx;
+				float2 texCoord46 = IN.ase_texcoord8.xy * float2( 1,1 ) + temp_cast_1;
+				float4 lerpResult47 = lerp( color48 , color49 , texCoord46.x);
+				float mulTime59 = _TimeParameters.x * 2.23;
+				float2 temp_cast_2 = (mulTime59).xx;
+				float2 texCoord61 = IN.ase_texcoord8.xy * float2( 1,1 ) + temp_cast_2;
+				float4 lerpResult60 = lerp( color68 , lerpResult47 , sin( texCoord61.y ));
 				
 
-				float3 BaseColor = lerpResult34.rgb;
+				float3 BaseColor = lerpResult60.rgb;
 				float3 Normal = float3(0, 0, 1);
-				float3 Emission = ( _Caliridaddelviento + lerpResult47 ).rgb;
+				float3 Emission = 0;
 				float3 Specular = 0.5;
 				float Metallic = 0;
-				float Smoothness = 0.0;
+				float Smoothness = 0.5;
 				float Occlusion = 1;
-				float Alpha = ( ( 1.0 - pow( ( length( texCoord98 ) * 2.57 ) , 1.16 ) ) + lerpResult34 ).r;
+				float Alpha = lerpResult60.r;
 				float AlphaClipThreshold = 0.5;
 				float AlphaClipThresholdShadow = 0.5;
 				float3 BakedGI = 0;
@@ -3270,13 +2861,7 @@ Shader "S_Tornado"
 			#define _NORMAL_DROPOFF_TS 1
 			#pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
 			#define ASE_FOG 1
-			#define ASE_FIXED_TESSELLATION
 			#define _SURFACE_TYPE_TRANSPARENT 1
-			#define ASE_TESSELLATION 1
-			#pragma require tessellation tessHW
-			#pragma hull HullFunction
-			#pragma domain DomainFunction
-			#define _EMISSION
 			#define ASE_SRP_VERSION 140008
 
 
@@ -3298,8 +2883,7 @@ Shader "S_Tornado"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 
-			#define ASE_NEEDS_VERT_NORMAL
-
+			
 
 			struct VertexInput
 			{
@@ -3318,16 +2902,7 @@ Shader "S_Tornado"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float2 _Speed1;
-			float _Intensidadoffset;
-			float _Speed;
-			float _Fuerxza;
-			float _Float1;
-			float _Caliridaddelviento;
-			float _Speed2;
-			float _Fuerxzarayos;
-			float _Scale1;
-			#ifdef ASE_TRANSMISSION
+						#ifdef ASE_TRANSMISSION
 				float _TransmissionShadow;
 			#endif
 			#ifdef ASE_TRANSLUCENCY
@@ -3359,7 +2934,8 @@ Shader "S_Tornado"
 				int _PassValue;
 			#endif
 
-			
+			sampler2D _TextureSample0;
+
 
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/Varyings.hlsl"
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/SelectionPickingPass.hlsl"
@@ -3368,35 +2944,7 @@ Shader "S_Tornado"
 			//#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/VisualEffectVertex.hlsl"
 			//#endif
 
-			float3 mod2D289( float3 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
-			float2 mod2D289( float2 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
-			float3 permute( float3 x ) { return mod2D289( ( ( x * 34.0 ) + 1.0 ) * x ); }
-			float snoise( float2 v )
-			{
-				const float4 C = float4( 0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439 );
-				float2 i = floor( v + dot( v, C.yy ) );
-				float2 x0 = v - i + dot( i, C.xx );
-				float2 i1;
-				i1 = ( x0.x > x0.y ) ? float2( 1.0, 0.0 ) : float2( 0.0, 1.0 );
-				float4 x12 = x0.xyxy + C.xxzz;
-				x12.xy -= i1;
-				i = mod2D289( i );
-				float3 p = permute( permute( i.y + float3( 0.0, i1.y, 1.0 ) ) + i.x + float3( 0.0, i1.x, 1.0 ) );
-				float3 m = max( 0.5 - float3( dot( x0, x0 ), dot( x12.xy, x12.xy ), dot( x12.zw, x12.zw ) ), 0.0 );
-				m = m * m;
-				m = m * m;
-				float3 x = 2.0 * frac( p * C.www ) - 1.0;
-				float3 h = abs( x ) - 0.5;
-				float3 ox = floor( x + 0.5 );
-				float3 a0 = x - ox;
-				m *= 1.79284291400159 - 0.85373472095314 * ( a0 * a0 + h * h );
-				float3 g;
-				g.x = a0.x * x0.x + h.x * x0.y;
-				g.yz = a0.yz * x12.xz + h.yz * x12.yw;
-				return 130.0 * dot( m, g );
-			}
 			
-
 			struct SurfaceDescription
 			{
 				float Alpha;
@@ -3412,11 +2960,6 @@ Shader "S_Tornado"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
-				float2 texCoord89 = v.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
-				float2 panner88 = ( 1.0 * _Time.y * float2( 0,0.5 ) + texCoord89);
-				float simplePerlin2D87 = snoise( panner88*5.05 );
-				simplePerlin2D87 = simplePerlin2D87*0.5 + 0.5;
-				
 				o.ase_texcoord.xy = v.ase_texcoord.xy;
 				
 				//setting value to unused interpolator channels and avoid initialization warnings
@@ -3428,7 +2971,7 @@ Shader "S_Tornado"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = ( simplePerlin2D87 * _Intensidadoffset * v.ase_normal );
+				float3 vertexValue = defaultVertexValue;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					v.vertex.xyz = vertexValue;
@@ -3529,27 +3072,26 @@ Shader "S_Tornado"
 			{
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
 
-				float2 texCoord98 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( -0.5,-0.5 );
-				float4 color32 = IsGammaSpace() ? float4(0.5943396,0.5943396,0.5943396,0) : float4(0.3119799,0.3119799,0.3119799,0);
-				float4 color29 = IsGammaSpace() ? float4(0.4716981,0.4716981,0.4716981,0) : float4(0.1887741,0.1887741,0.1887741,0);
-				float2 texCoord11 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
-				float cos12 = cos( ( _Speed * _TimeParameters.x ) );
-				float sin12 = sin( ( _Speed * _TimeParameters.x ) );
-				float2 rotator12 = mul( texCoord11 - float2( 0.5,0.5 ) , float2x2( cos12 , -sin12 , sin12 , cos12 )) + float2( 0.5,0.5 );
-				float2 center45_g2 = float2( 0.5,0.5 );
-				float2 delta6_g2 = ( rotator12 - center45_g2 );
-				float angle10_g2 = ( length( delta6_g2 ) * _Fuerxza );
-				float x23_g2 = ( ( cos( angle10_g2 ) * delta6_g2.x ) - ( sin( angle10_g2 ) * delta6_g2.y ) );
-				float2 break40_g2 = center45_g2;
-				float2 break41_g2 = float2( 0,0 );
-				float y35_g2 = ( ( sin( angle10_g2 ) * delta6_g2.x ) + ( cos( angle10_g2 ) * delta6_g2.y ) );
-				float2 appendResult44_g2 = (float2(( x23_g2 + break40_g2.x + break41_g2.x ) , ( break40_g2.y + break41_g2.y + y35_g2 )));
-				float2 lerpResult18 = lerp( texCoord11 , appendResult44_g2 , _Float1);
-				float2 texCoord26 = IN.ase_texcoord.xy * float2( 1,1 ) + lerpResult18;
-				float4 lerpResult34 = lerp( color32 , color29 , texCoord26.x);
+				float4 color68 = IsGammaSpace() ? float4(0.1415094,0.1415094,0.1415094,0) : float4(0.0177139,0.0177139,0.0177139,0);
+				float4 color48 = IsGammaSpace() ? float4(0.8018868,0.8018868,0.8018868,0) : float4(0.6070304,0.6070304,0.6070304,0);
+				float4 color49 = IsGammaSpace() ? float4(0,0,0,0) : float4(0,0,0,0);
+				float2 texCoord30 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
+				float2 panner31 = ( 1.0 * _Time.y * float2( 0.25,1 ) + texCoord30);
+				float2 break19_g1 = tex2D( _TextureSample0, panner31 ).rg;
+				float temp_output_1_0_g1 = 3.45;
+				float sinIn7_g1 = sin( temp_output_1_0_g1 );
+				float sinInOffset6_g1 = sin( ( temp_output_1_0_g1 + 1.0 ) );
+				float lerpResult20_g1 = lerp( break19_g1.x , break19_g1.y , frac( ( sin( ( ( sinIn7_g1 - sinInOffset6_g1 ) * 91.2228 ) ) * 43758.55 ) ));
+				float2 temp_cast_1 = (( lerpResult20_g1 + sinIn7_g1 )).xx;
+				float2 texCoord46 = IN.ase_texcoord.xy * float2( 1,1 ) + temp_cast_1;
+				float4 lerpResult47 = lerp( color48 , color49 , texCoord46.x);
+				float mulTime59 = _TimeParameters.x * 2.23;
+				float2 temp_cast_2 = (mulTime59).xx;
+				float2 texCoord61 = IN.ase_texcoord.xy * float2( 1,1 ) + temp_cast_2;
+				float4 lerpResult60 = lerp( color68 , lerpResult47 , sin( texCoord61.y ));
 				
 
-				surfaceDescription.Alpha = ( ( 1.0 - pow( ( length( texCoord98 ) * 2.57 ) , 1.16 ) ) + lerpResult34 ).r;
+				surfaceDescription.Alpha = lerpResult60.r;
 				surfaceDescription.AlphaClipThreshold = 0.5;
 
 				#if _ALPHATEST_ON
@@ -3586,13 +3128,7 @@ Shader "S_Tornado"
 			#define _NORMAL_DROPOFF_TS 1
 			#pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
 			#define ASE_FOG 1
-			#define ASE_FIXED_TESSELLATION
 			#define _SURFACE_TYPE_TRANSPARENT 1
-			#define ASE_TESSELLATION 1
-			#pragma require tessellation tessHW
-			#pragma hull HullFunction
-			#pragma domain DomainFunction
-			#define _EMISSION
 			#define ASE_SRP_VERSION 140008
 
 
@@ -3614,8 +3150,7 @@ Shader "S_Tornado"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 
-			#define ASE_NEEDS_VERT_NORMAL
-
+			
 
 			struct VertexInput
 			{
@@ -3634,16 +3169,7 @@ Shader "S_Tornado"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float2 _Speed1;
-			float _Intensidadoffset;
-			float _Speed;
-			float _Fuerxza;
-			float _Float1;
-			float _Caliridaddelviento;
-			float _Speed2;
-			float _Fuerxzarayos;
-			float _Scale1;
-			#ifdef ASE_TRANSMISSION
+						#ifdef ASE_TRANSMISSION
 				float _TransmissionShadow;
 			#endif
 			#ifdef ASE_TRANSLUCENCY
@@ -3675,7 +3201,8 @@ Shader "S_Tornado"
 				int _PassValue;
 			#endif
 
-			
+			sampler2D _TextureSample0;
+
 
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/Varyings.hlsl"
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/SelectionPickingPass.hlsl"
@@ -3684,35 +3211,7 @@ Shader "S_Tornado"
 			//#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/VisualEffectVertex.hlsl"
 			//#endif
 
-			float3 mod2D289( float3 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
-			float2 mod2D289( float2 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
-			float3 permute( float3 x ) { return mod2D289( ( ( x * 34.0 ) + 1.0 ) * x ); }
-			float snoise( float2 v )
-			{
-				const float4 C = float4( 0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439 );
-				float2 i = floor( v + dot( v, C.yy ) );
-				float2 x0 = v - i + dot( i, C.xx );
-				float2 i1;
-				i1 = ( x0.x > x0.y ) ? float2( 1.0, 0.0 ) : float2( 0.0, 1.0 );
-				float4 x12 = x0.xyxy + C.xxzz;
-				x12.xy -= i1;
-				i = mod2D289( i );
-				float3 p = permute( permute( i.y + float3( 0.0, i1.y, 1.0 ) ) + i.x + float3( 0.0, i1.x, 1.0 ) );
-				float3 m = max( 0.5 - float3( dot( x0, x0 ), dot( x12.xy, x12.xy ), dot( x12.zw, x12.zw ) ), 0.0 );
-				m = m * m;
-				m = m * m;
-				float3 x = 2.0 * frac( p * C.www ) - 1.0;
-				float3 h = abs( x ) - 0.5;
-				float3 ox = floor( x + 0.5 );
-				float3 a0 = x - ox;
-				m *= 1.79284291400159 - 0.85373472095314 * ( a0 * a0 + h * h );
-				float3 g;
-				g.x = a0.x * x0.x + h.x * x0.y;
-				g.yz = a0.yz * x12.xz + h.yz * x12.yw;
-				return 130.0 * dot( m, g );
-			}
 			
-
 			struct SurfaceDescription
 			{
 				float Alpha;
@@ -3728,11 +3227,6 @@ Shader "S_Tornado"
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
-				float2 texCoord89 = v.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
-				float2 panner88 = ( 1.0 * _Time.y * float2( 0,0.5 ) + texCoord89);
-				float simplePerlin2D87 = snoise( panner88*5.05 );
-				simplePerlin2D87 = simplePerlin2D87*0.5 + 0.5;
-				
 				o.ase_texcoord.xy = v.ase_texcoord.xy;
 				
 				//setting value to unused interpolator channels and avoid initialization warnings
@@ -3744,7 +3238,7 @@ Shader "S_Tornado"
 					float3 defaultVertexValue = float3(0, 0, 0);
 				#endif
 
-				float3 vertexValue = ( simplePerlin2D87 * _Intensidadoffset * v.ase_normal );
+				float3 vertexValue = defaultVertexValue;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					v.vertex.xyz = vertexValue;
@@ -3844,27 +3338,26 @@ Shader "S_Tornado"
 			{
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
 
-				float2 texCoord98 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( -0.5,-0.5 );
-				float4 color32 = IsGammaSpace() ? float4(0.5943396,0.5943396,0.5943396,0) : float4(0.3119799,0.3119799,0.3119799,0);
-				float4 color29 = IsGammaSpace() ? float4(0.4716981,0.4716981,0.4716981,0) : float4(0.1887741,0.1887741,0.1887741,0);
-				float2 texCoord11 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
-				float cos12 = cos( ( _Speed * _TimeParameters.x ) );
-				float sin12 = sin( ( _Speed * _TimeParameters.x ) );
-				float2 rotator12 = mul( texCoord11 - float2( 0.5,0.5 ) , float2x2( cos12 , -sin12 , sin12 , cos12 )) + float2( 0.5,0.5 );
-				float2 center45_g2 = float2( 0.5,0.5 );
-				float2 delta6_g2 = ( rotator12 - center45_g2 );
-				float angle10_g2 = ( length( delta6_g2 ) * _Fuerxza );
-				float x23_g2 = ( ( cos( angle10_g2 ) * delta6_g2.x ) - ( sin( angle10_g2 ) * delta6_g2.y ) );
-				float2 break40_g2 = center45_g2;
-				float2 break41_g2 = float2( 0,0 );
-				float y35_g2 = ( ( sin( angle10_g2 ) * delta6_g2.x ) + ( cos( angle10_g2 ) * delta6_g2.y ) );
-				float2 appendResult44_g2 = (float2(( x23_g2 + break40_g2.x + break41_g2.x ) , ( break40_g2.y + break41_g2.y + y35_g2 )));
-				float2 lerpResult18 = lerp( texCoord11 , appendResult44_g2 , _Float1);
-				float2 texCoord26 = IN.ase_texcoord.xy * float2( 1,1 ) + lerpResult18;
-				float4 lerpResult34 = lerp( color32 , color29 , texCoord26.x);
+				float4 color68 = IsGammaSpace() ? float4(0.1415094,0.1415094,0.1415094,0) : float4(0.0177139,0.0177139,0.0177139,0);
+				float4 color48 = IsGammaSpace() ? float4(0.8018868,0.8018868,0.8018868,0) : float4(0.6070304,0.6070304,0.6070304,0);
+				float4 color49 = IsGammaSpace() ? float4(0,0,0,0) : float4(0,0,0,0);
+				float2 texCoord30 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
+				float2 panner31 = ( 1.0 * _Time.y * float2( 0.25,1 ) + texCoord30);
+				float2 break19_g1 = tex2D( _TextureSample0, panner31 ).rg;
+				float temp_output_1_0_g1 = 3.45;
+				float sinIn7_g1 = sin( temp_output_1_0_g1 );
+				float sinInOffset6_g1 = sin( ( temp_output_1_0_g1 + 1.0 ) );
+				float lerpResult20_g1 = lerp( break19_g1.x , break19_g1.y , frac( ( sin( ( ( sinIn7_g1 - sinInOffset6_g1 ) * 91.2228 ) ) * 43758.55 ) ));
+				float2 temp_cast_1 = (( lerpResult20_g1 + sinIn7_g1 )).xx;
+				float2 texCoord46 = IN.ase_texcoord.xy * float2( 1,1 ) + temp_cast_1;
+				float4 lerpResult47 = lerp( color48 , color49 , texCoord46.x);
+				float mulTime59 = _TimeParameters.x * 2.23;
+				float2 temp_cast_2 = (mulTime59).xx;
+				float2 texCoord61 = IN.ase_texcoord.xy * float2( 1,1 ) + temp_cast_2;
+				float4 lerpResult60 = lerp( color68 , lerpResult47 , sin( texCoord61.y ));
 				
 
-				surfaceDescription.Alpha = ( ( 1.0 - pow( ( length( texCoord98 ) * 2.57 ) , 1.16 ) ) + lerpResult34 ).r;
+				surfaceDescription.Alpha = lerpResult60.r;
 				surfaceDescription.AlphaClipThreshold = 0.5;
 
 				#if _ALPHATEST_ON
@@ -3898,103 +3391,42 @@ Shader "S_Tornado"
 }
 /*ASEBEGIN
 Version=19103
-Node;AmplifyShaderEditor.LerpOp;34;575.4957,-610.4165;Inherit;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
-Node;AmplifyShaderEditor.ColorNode;32;270.6661,-1012.356;Inherit;False;Constant;_Color1;Color 0;3;0;Create;True;0;0;0;False;0;False;0.5943396,0.5943396,0.5943396,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.ColorNode;29;268.8537,-828.2036;Inherit;False;Constant;_Color0;Color 0;3;0;Create;True;0;0;0;False;0;False;0.4716981,0.4716981,0.4716981,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.TextureCoordinatesNode;26;314.9084,-601.1674;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.RangedFloatNode;19;-155.9263,-556.7671;Inherit;False;Property;_Float1;Float 1;6;0;Create;True;0;0;0;False;0;False;1.44;2.2;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.SimpleTimeNode;16;-827.3376,-532.9489;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0
-Node;AmplifyShaderEditor.RotatorNode;12;-467.9942,-745.2507;Inherit;False;3;0;FLOAT2;0,0;False;1;FLOAT2;0.5,0.5;False;2;FLOAT;1;False;1;FLOAT2;0
-Node;AmplifyShaderEditor.TextureCoordinatesNode;11;-747.1165,-827.5479;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;69;981.9536,-187.2451;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;12;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;ExtraPrePass;0;0;ExtraPrePass;5;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;3;True;12;all;0;False;True;1;1;False;;0;False;;0;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;0;False;False;0;;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;71;981.9536,-187.2451;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;12;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;ShadowCaster;0;2;ShadowCaster;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;False;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=ShadowCaster;False;False;0;;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;72;981.9536,-187.2451;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;12;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;DepthOnly;0;3;DepthOnly;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;False;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;False;False;True;1;LightMode=DepthOnly;False;False;0;;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;73;981.9536,-187.2451;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;12;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;Meta;0;4;Meta;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=Meta;False;False;0;;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;74;981.9536,-187.2451;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;12;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;Universal2D;0;5;Universal2D;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;3;True;12;all;0;False;True;1;5;False;;10;False;;1;1;False;;10;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=Universal2D;False;False;0;;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;75;981.9536,-187.2451;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;12;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;DepthNormals;0;6;DepthNormals;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;3;True;12;all;0;False;True;1;1;False;;0;False;;0;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=DepthNormalsOnly;False;False;0;;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;76;981.9536,-187.2451;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;12;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;GBuffer;0;7;GBuffer;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;3;True;12;all;0;False;True;1;5;False;;10;False;;1;1;False;;10;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalGBuffer;False;False;0;;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;77;981.9536,-187.2451;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;12;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;SceneSelectionPass;0;8;SceneSelectionPass;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=SceneSelectionPass;False;False;0;;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;78;981.9536,-187.2451;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;12;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;ScenePickingPass;0;9;ScenePickingPass;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=Picking;False;False;0;;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.FunctionNode;13;-238.9586,-723.7779;Inherit;False;Twirl;-1;;2;90936742ac32db8449cd21ab6dd337c8;0;4;1;FLOAT2;0,0;False;2;FLOAT2;0,0;False;3;FLOAT;0;False;4;FLOAT2;0,0;False;1;FLOAT2;0
-Node;AmplifyShaderEditor.RangedFloatNode;17;-448.4231,-586.7995;Inherit;False;Property;_Fuerxza;Fuerxza ;3;0;Create;True;0;0;0;False;0;False;50;35.41;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;15;-793.3376,-636.9495;Inherit;False;Property;_Speed;Speed;0;0;Create;True;0;0;0;False;0;False;2;2;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.SimpleMultiplyOpNode;14;-647.3376,-640.9495;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.PannerNode;37;-341.5219,-245.083;Inherit;False;3;0;FLOAT2;0,0;False;2;FLOAT2;0,0;False;1;FLOAT;1;False;1;FLOAT2;0
-Node;AmplifyShaderEditor.FunctionNode;83;-590.3408,-248.4935;Inherit;False;Twirl;-1;;4;90936742ac32db8449cd21ab6dd337c8;0;4;1;FLOAT2;0,0;False;2;FLOAT2;0,0;False;3;FLOAT;0;False;4;FLOAT2;0,0;False;1;FLOAT2;0
-Node;AmplifyShaderEditor.RotatorNode;45;-798.5494,-247.2243;Inherit;False;3;0;FLOAT2;0,0;False;1;FLOAT2;0.5,0.5;False;2;FLOAT;1;False;1;FLOAT2;0
-Node;AmplifyShaderEditor.TextureCoordinatesNode;36;-1032.118,-292.7141;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.SimpleMultiplyOpNode;44;-949.4875,-147.349;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;42;-1106.687,-159.3491;Inherit;False;Property;_Speed2;Speed;2;0;Create;True;0;0;0;False;0;False;2;2;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;84;-798.6462,-116.3287;Inherit;False;Property;_Fuerxzarayos;Fuerxza rayos;4;0;Create;True;0;0;0;False;0;False;46.28;20.1;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.SimpleTimeNode;43;-1140.533,-69.72649;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0
-Node;AmplifyShaderEditor.Vector2Node;38;-553.563,-97.48872;Inherit;False;Property;_Speed1;Speed;1;0;Create;True;0;0;0;False;0;False;0,1;0,1;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
-Node;AmplifyShaderEditor.RangedFloatNode;35;-311.2071,-112.7026;Inherit;False;Property;_Scale1;Scale;5;0;Create;True;0;0;0;False;0;False;0.48;-2.5;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.NoiseGeneratorNode;39;-140.3565,-209.4857;Inherit;True;Simplex2D;True;False;2;0;FLOAT2;0,0;False;1;FLOAT;1;False;1;FLOAT;0
-Node;AmplifyShaderEditor.StepOpNode;82;102.0548,-203.9234;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0.15;False;1;FLOAT;0
-Node;AmplifyShaderEditor.LerpOp;47;250.7459,-263.9889;Inherit;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
-Node;AmplifyShaderEditor.ColorNode;80;-13.97057,-427.0917;Inherit;False;Constant;_Color3;Color 2;6;0;Create;True;0;0;0;False;0;False;0.2899608,0.2963876,0.3396226,1;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.SimpleAddOpNode;86;718.2653,-277.5573;Inherit;False;2;2;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
-Node;AmplifyShaderEditor.RangedFloatNode;85;479.0659,-336.057;Inherit;False;Property;_Caliridaddelviento;Caliridad del viento;7;0;Create;True;0;0;0;False;0;False;0.3;0.3;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;79;868.4969,-217.7704;Inherit;False;Constant;_Float0;Float 0;6;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.TextureCoordinatesNode;89;242.4037,68.75439;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.Vector2Node;90;287.9038,201.5543;Inherit;False;Constant;_Vector1;Vector 1;8;0;Create;True;0;0;0;False;0;False;0,0.5;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
-Node;AmplifyShaderEditor.PannerNode;88;466.1043,92.65432;Inherit;False;3;0;FLOAT2;0,0;False;2;FLOAT2;0,0;False;1;FLOAT;1;False;1;FLOAT2;0
-Node;AmplifyShaderEditor.NoiseGeneratorNode;87;652.4267,86.98128;Inherit;True;Simplex2D;True;False;2;0;FLOAT2;0,0;False;1;FLOAT;5.05;False;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;92;705.6038,334.748;Inherit;False;Property;_Intensidadoffset;Intensidad offset;8;0;Create;True;0;0;0;False;0;False;0.03;0.001;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.NormalVertexDataNode;93;742.4194,420.9722;Inherit;False;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.SimpleMultiplyOpNode;91;986.4031,96.00842;Inherit;False;3;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT3;0,0,0;False;1;FLOAT3;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;70;2097.095,-304.4162;Float;False;True;-1;2;UnityEditor.ShaderGraphLitGUI;0;12;S_Tornado;94348b07e5e8bab40bd6c8a1e3df54cd;True;Forward;0;1;Forward;19;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;2;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;2;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Transparent=RenderType;Queue=Transparent=Queue=0;True;3;True;12;all;0;False;True;1;5;False;;10;False;;1;1;False;;10;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalForwardOnly;False;False;0;;0;0;Standard;41;Workflow;1;0;Surface;1;638343071093742254;  Refraction Model;0;0;  Blend;0;0;Two Sided;0;638343787728579279;Fragment Normal Space,InvertActionOnDeselection;0;0;Forward Only;1;0;Transmission;0;0;  Transmission Shadow;0.5,False,;0;Translucency;0;638343071054629591;  Translucency Strength;1,False,;0;  Normal Distortion;0.5,False,;0;  Scattering;2,False,;0;  Direct;0.9,False,;0;  Ambient;0.1,False,;0;  Shadow;0.5,False,;0;Cast Shadows;1;638343066386456918;  Use Shadow Threshold;0;0;Receive Shadows;1;0;GPU Instancing;1;0;LOD CrossFade;1;0;Built-in Fog;1;0;_FinalColorxAlpha;0;0;Meta Pass;1;0;Override Baked GI;0;0;Extra Pre Pass;0;0;DOTS Instancing;0;0;Tessellation;1;638343892215183533;  Phong;0;0;  Strength;0.5,False,;0;  Type;0;0;  Tess;16,False,;0;  Min;10,False,;0;  Max;25,False,;0;  Edge Length;16,False,;0;  Max Displacement;25,False,;0;Write Depth;0;0;  Early Z;0;0;Vertex Position,InvertActionOnDeselection;1;0;Debug Display;0;0;Clear Coat;0;0;0;10;False;True;True;True;True;True;True;True;True;True;False;;False;0
-Node;AmplifyShaderEditor.SimpleAddOpNode;106;901.3984,-876.3314;Inherit;True;2;2;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
-Node;AmplifyShaderEditor.OneMinusNode;100;763.5096,-1004.756;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.PowerNode;94;508.5287,-1348.774;Inherit;True;False;2;0;FLOAT;0;False;1;FLOAT;1.16;False;1;FLOAT;0
-Node;AmplifyShaderEditor.LerpOp;18;47.74135,-795.0883;Inherit;False;3;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;1;FLOAT2;0
-Node;AmplifyShaderEditor.SimpleMultiplyOpNode;95;354.2667,-1385.735;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;2.57;False;1;FLOAT;0
-Node;AmplifyShaderEditor.LengthOpNode;97;226.611,-1383.892;Inherit;False;1;0;FLOAT2;0,0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.TextureCoordinatesNode;98;8.214357,-1383.579;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;-0.5,-0.5;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-WireConnection;34;0;32;0
-WireConnection;34;1;29;0
-WireConnection;34;2;26;1
-WireConnection;26;1;18;0
-WireConnection;12;0;11;0
-WireConnection;12;2;14;0
-WireConnection;13;1;12;0
-WireConnection;13;3;17;0
-WireConnection;14;0;15;0
-WireConnection;14;1;16;0
-WireConnection;37;0;83;0
-WireConnection;37;2;38;0
-WireConnection;83;1;45;0
-WireConnection;83;3;84;0
-WireConnection;45;0;36;0
-WireConnection;45;2;44;0
-WireConnection;44;0;42;0
-WireConnection;44;1;43;0
-WireConnection;39;0;37;0
-WireConnection;39;1;35;0
-WireConnection;82;0;39;0
-WireConnection;47;1;80;0
-WireConnection;47;2;82;0
-WireConnection;86;0;85;0
-WireConnection;86;1;47;0
-WireConnection;88;0;89;0
-WireConnection;88;2;90;0
-WireConnection;87;0;88;0
-WireConnection;91;0;87;0
-WireConnection;91;1;92;0
-WireConnection;91;2;93;0
-WireConnection;70;0;34;0
-WireConnection;70;2;86;0
-WireConnection;70;4;79;0
-WireConnection;70;6;106;0
-WireConnection;70;8;91;0
-WireConnection;106;0;100;0
-WireConnection;106;1;34;0
-WireConnection;100;0;94;0
-WireConnection;94;0;95;0
-WireConnection;18;0;11;0
-WireConnection;18;1;13;0
-WireConnection;18;2;19;0
-WireConnection;95;0;97;0
-WireConnection;97;0;98;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;10;360.0164,12.58798;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;ExtraPrePass;0;0;ExtraPrePass;5;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;3;True;12;all;0;False;True;1;1;False;;0;False;;0;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;0;False;False;0;;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;12;360.0164,12.58798;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;ShadowCaster;0;2;ShadowCaster;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;False;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=ShadowCaster;False;False;0;;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;13;360.0164,12.58798;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;DepthOnly;0;3;DepthOnly;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;True;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;False;False;True;1;LightMode=DepthOnly;False;False;0;;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;14;360.0164,12.58798;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;Meta;0;4;Meta;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=Meta;False;False;0;;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;15;360.0164,12.58798;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;Universal2D;0;5;Universal2D;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;3;True;12;all;0;False;True;1;5;False;;10;False;;1;1;False;;10;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=Universal2D;False;False;0;;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;16;360.0164,12.58798;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;DepthNormals;0;6;DepthNormals;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;3;True;12;all;0;False;True;1;1;False;;0;False;;0;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=DepthNormals;False;False;0;;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;17;360.0164,12.58798;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;GBuffer;0;7;GBuffer;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;3;True;12;all;0;False;True;1;5;False;;10;False;;1;1;False;;10;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalGBuffer;False;False;0;;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;18;360.0164,12.58798;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;SceneSelectionPass;0;8;SceneSelectionPass;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=SceneSelectionPass;False;False;0;;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;19;360.0164,12.58798;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;ScenePickingPass;0;9;ScenePickingPass;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=Picking;False;False;0;;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.SamplerNode;29;-1843.477,-327.5885;Inherit;True;Property;_TextureSample0;Texture Sample 0;0;0;Create;True;0;0;0;False;0;False;-1;27c242a5c4f199f4a8497ca1457d8022;27c242a5c4f199f4a8497ca1457d8022;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;11;360.0164,12.58798;Float;False;True;-1;2;UnityEditor.ShaderGraphLitGUI;0;12;S_WindTunnel;94348b07e5e8bab40bd6c8a1e3df54cd;True;Forward;0;1;Forward;19;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;2;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Transparent=RenderType;Queue=Transparent=Queue=0;True;3;True;12;all;0;False;True;1;5;False;;10;False;;1;1;False;;10;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalForward;False;False;0;;0;0;Standard;41;Workflow;1;0;Surface;1;638569097694249312;  Refraction Model;0;0;  Blend;0;0;Two Sided;1;0;Fragment Normal Space,InvertActionOnDeselection;0;0;Forward Only;0;0;Transmission;0;0;  Transmission Shadow;0.5,False,;0;Translucency;0;0;  Translucency Strength;1,False,;0;  Normal Distortion;0.5,False,;0;  Scattering;2,False,;0;  Direct;0.9,False,;0;  Ambient;0.1,False,;0;  Shadow;0.5,False,;0;Cast Shadows;1;0;  Use Shadow Threshold;0;0;Receive Shadows;1;0;GPU Instancing;1;0;LOD CrossFade;1;0;Built-in Fog;1;0;_FinalColorxAlpha;0;0;Meta Pass;1;0;Override Baked GI;0;0;Extra Pre Pass;0;0;DOTS Instancing;0;0;Tessellation;0;0;  Phong;0;0;  Strength;0.5,False,;0;  Type;0;0;  Tess;16,False,;0;  Min;10,False,;0;  Max;25,False,;0;  Edge Length;16,False,;0;  Max Displacement;25,False,;0;Write Depth;0;0;  Early Z;0;0;Vertex Position,InvertActionOnDeselection;1;0;Debug Display;0;0;Clear Coat;0;0;0;10;False;True;True;True;True;True;True;True;True;True;False;;False;0
+Node;AmplifyShaderEditor.ColorNode;49;-1387.579,-611.6009;Inherit;False;Constant;_Color1;Color 1;2;0;Create;True;0;0;0;False;0;False;0,0,0,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.TextureCoordinatesNode;46;-1154.741,-101.0714;Inherit;True;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.FunctionNode;44;-1460.618,-289.0109;Inherit;True;Noise Sine Wave;-1;;1;a6eff29f739ced848846e3b648af87bd;0;2;1;FLOAT;3.45;False;2;FLOAT2;-0.5,0.5;False;1;FLOAT;0
+Node;AmplifyShaderEditor.TextureCoordinatesNode;30;-2371.415,-470.6836;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.LerpOp;47;-917.9464,-214.9695;Inherit;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
+Node;AmplifyShaderEditor.TextureCoordinatesNode;61;-1018.796,204.9554;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.SimpleTimeNode;59;-1257.423,394.6886;Inherit;False;1;0;FLOAT;2.23;False;1;FLOAT;0
+Node;AmplifyShaderEditor.SinOpNode;57;-697.8936,184.6678;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.LerpOp;60;-571.282,-214.3428;Inherit;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
+Node;AmplifyShaderEditor.ColorNode;48;-1092.948,-635.5115;Inherit;False;Constant;_Color0;Color 0;2;0;Create;True;0;0;0;False;0;False;0.8018868,0.8018868,0.8018868,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.ColorNode;68;-774.8829,-506.0024;Inherit;False;Constant;_Color2;Color 0;2;0;Create;True;0;0;0;False;0;False;0.1415094,0.1415094,0.1415094,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.PannerNode;31;-2072.384,-449.0564;Inherit;False;3;0;FLOAT2;0,0;False;2;FLOAT2;0.25,1;False;1;FLOAT;1;False;1;FLOAT2;0
+WireConnection;29;1;31;0
+WireConnection;11;0;60;0
+WireConnection;11;6;60;0
+WireConnection;46;1;44;0
+WireConnection;44;2;29;0
+WireConnection;47;0;48;0
+WireConnection;47;1;49;0
+WireConnection;47;2;46;1
+WireConnection;61;1;59;0
+WireConnection;57;0;61;2
+WireConnection;60;0;68;0
+WireConnection;60;1;47;0
+WireConnection;60;2;57;0
+WireConnection;31;0;30;0
 ASEEND*/
-//CHKSM=747643618D927ADC59E2775CA3066711030DD2CA
+//CHKSM=044A748FF473B1EDE94D67BB8A48AE4CF2D7A629
