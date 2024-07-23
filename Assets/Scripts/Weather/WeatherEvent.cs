@@ -6,6 +6,7 @@ public class WeatherEvent : MonoBehaviour
 {
     [SerializeField] private Storm _weather;
     [SerializeField] private GameObject _weatherVisual;
+    [SerializeField] private GameObject _weatherLightning;
     [SerializeField] private List<ParticleSystem> _particlesEffects;
 
     private void OnTriggerEnter(Collider other)
@@ -18,6 +19,7 @@ public class WeatherEvent : MonoBehaviour
             }
             if (_weather != null) _weather.isActive = true;
             _weatherVisual.SetActive(true);
+            _weatherLightning.SetActive(true);
         }
     }
 
@@ -31,6 +33,7 @@ public class WeatherEvent : MonoBehaviour
             }
             if (_weather != null) _weather.isActive = false;
             _weatherVisual.SetActive(false);
+            _weatherLightning.SetActive(false);
         }
     }
 }

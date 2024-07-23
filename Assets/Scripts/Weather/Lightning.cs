@@ -13,21 +13,22 @@ public class Lightning : MonoBehaviour
 
     private void Start()
     {
-        if (GetComponent<MeshRenderer>() != null) _mesh = GetComponent<MeshRenderer>();
-        Invoke("Activate", _time);
+        //if (GetComponent<MeshRenderer>() != null) _mesh = GetComponent<MeshRenderer>();
+        //Invoke("Activate", _time);
     }
 
     private void Activate()
     {
-        _mesh.enabled = false;
-        _particles.Play();
-        _isActive = true;
-        Destroy(gameObject, _destroyTime);
+        //_mesh.enabled = false;
+        //_particles.Play();
+        //_isActive = true;
+        //Destroy(gameObject, _destroyTime);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<PlayerModel>() == null || !_isActive) return;
+        //if (other.GetComponent<PlayerModel>() == null || !_isActive) return;
+        if (other.GetComponent<PlayerModel>() == null) return;
         if (other.GetComponent<PlayerController>().isShield)
         {
             Debug.Log("Triggered Shield");
