@@ -8,7 +8,8 @@ public class Catapult : MonoBehaviour
     [SerializeField] int stonesPerThrow = 15;
     [Header("Instance")]
     [SerializeField] GameObject _instance;
-    [SerializeField] float _interval = 5f;
+    [SerializeField] float _minInterval = 5f;
+    [SerializeField] float _maxInterval = 5f;
     [SerializeField] Transform _throwPoint;
     [SerializeField] private float _range = 20f;
     [SerializeField] float _viewAngle;
@@ -64,7 +65,7 @@ public class Catapult : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, goalRot, Time.deltaTime * _rotationSpeed);
         }
         if (_isBusy || !_isOnRange || !InFieldOfView(GameManager.Instance.player.transform.position)) return;
-        StartCoroutine(TriggerCatapult(_interval));
+        StartCoroutine(TriggerCatapult(UnityEngine.Random.Range(_minInterval, _maxInterval)));
     }
 
     public bool InFieldOfView(Vector3 target)
