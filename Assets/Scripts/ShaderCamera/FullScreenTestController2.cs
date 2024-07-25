@@ -44,6 +44,15 @@ public class FullScreenTestController2 : MonoBehaviour
         */
     }
 
+    public void CallFrozenShader()
+    {
+        if (_timer >= _cooldownReplay)
+        {
+            StartCoroutine(Hurt());
+            _timer = 0;
+        }
+    }
+
     IEnumerator Hurt()
     {
         _fullScreenFrozen.SetActive(true);

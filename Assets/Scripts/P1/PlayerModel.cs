@@ -52,6 +52,9 @@ public class PlayerModel : MonoBehaviour
     public GameObject[] skins;
     public SkinnedMeshRenderer witchModel;
 
+    [Header("Shaders")]
+    public FullScreenTestController damageShader;
+
     [HideInInspector] public bool _isShieldGO = false;
 
     [SerializeField] private GameObject _shieldGreen, _shieldFire;
@@ -121,6 +124,7 @@ public class PlayerModel : MonoBehaviour
             if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Damage"))
             {
                 OnDamage();
+                damageShader.CallDamageShader();
             }
             Vector3 imp = transform.position - hit.point;
             rb.velocity = Vector3.zero;

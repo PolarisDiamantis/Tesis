@@ -31,17 +31,28 @@ public class FullScreenTestController : MonoBehaviour
     {
         _timer += Time.deltaTime;
 
+        /*
         if (Input.GetKeyDown(KeyCode.R) && _timer >= _cooldownReplay)
         {
             StartCoroutine(Hurt());
             _timer = 0;
         }
+        */
         /*
         else if ((Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)))
         {
             stopShader();
         }
         */
+    }
+
+    public void CallDamageShader()
+    {
+        if (_timer >= _cooldownReplay)
+        {
+            StartCoroutine(Hurt());
+            _timer = 0;
+        }
     }
 
     IEnumerator Hurt()
