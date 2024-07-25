@@ -6,7 +6,6 @@ Shader "S_WindTunnel"
 	{
 		[HideInInspector] _AlphaCutoff("Alpha Cutoff ", Range(0, 1)) = 0.5
 		[HideInInspector] _EmissionColor("Emission Color", Color) = (1,1,1,1)
-		[ASEEnd][ASEBegin]_TextureSample0("Texture Sample 0", 2D) = "white" {}
 
 
 		//_TransmissionShadow( "Transmission Shadow", Range( 0, 1 ) ) = 0.5
@@ -305,8 +304,7 @@ Shader "S_WindTunnel"
 				int _PassValue;
 			#endif
 
-			sampler2D _TextureSample0;
-
+			
 
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/Varyings.hlsl"
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/PBRForwardPass.hlsl"
@@ -315,7 +313,35 @@ Shader "S_WindTunnel"
 			//#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/VisualEffectVertex.hlsl"
 			//#endif
 
+			float3 mod2D289( float3 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
+			float2 mod2D289( float2 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
+			float3 permute( float3 x ) { return mod2D289( ( ( x * 34.0 ) + 1.0 ) * x ); }
+			float snoise( float2 v )
+			{
+				const float4 C = float4( 0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439 );
+				float2 i = floor( v + dot( v, C.yy ) );
+				float2 x0 = v - i + dot( i, C.xx );
+				float2 i1;
+				i1 = ( x0.x > x0.y ) ? float2( 1.0, 0.0 ) : float2( 0.0, 1.0 );
+				float4 x12 = x0.xyxy + C.xxzz;
+				x12.xy -= i1;
+				i = mod2D289( i );
+				float3 p = permute( permute( i.y + float3( 0.0, i1.y, 1.0 ) ) + i.x + float3( 0.0, i1.x, 1.0 ) );
+				float3 m = max( 0.5 - float3( dot( x0, x0 ), dot( x12.xy, x12.xy ), dot( x12.zw, x12.zw ) ), 0.0 );
+				m = m * m;
+				m = m * m;
+				float3 x = 2.0 * frac( p * C.www ) - 1.0;
+				float3 h = abs( x ) - 0.5;
+				float3 ox = floor( x + 0.5 );
+				float3 a0 = x - ox;
+				m *= 1.79284291400159 - 0.85373472095314 * ( a0 * a0 + h * h );
+				float3 g;
+				g.x = a0.x * x0.x + h.x * x0.y;
+				g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+				return 130.0 * dot( m, g );
+			}
 			
+
 			VertexOutput VertexFunction( VertexInput v  )
 			{
 				VertexOutput o = (VertexOutput)0;
@@ -535,33 +561,44 @@ Shader "S_WindTunnel"
 
 				WorldViewDirection = SafeNormalize( WorldViewDirection );
 
-				float4 color68 = IsGammaSpace() ? float4(0.1415094,0.1415094,0.1415094,0) : float4(0.0177139,0.0177139,0.0177139,0);
-				float4 color48 = IsGammaSpace() ? float4(0.8018868,0.8018868,0.8018868,0) : float4(0.6070304,0.6070304,0.6070304,0);
-				float4 color49 = IsGammaSpace() ? float4(0,0,0,0) : float4(0,0,0,0);
+				float4 color135 = IsGammaSpace() ? float4(0.3584906,0.3584906,0.3584906,0) : float4(0.1056116,0.1056116,0.1056116,0);
 				float2 texCoord30 = IN.ase_texcoord8.xy * float2( 1,1 ) + float2( 0,0 );
-				float2 panner31 = ( 1.0 * _Time.y * float2( 0.25,1 ) + texCoord30);
-				float2 break19_g1 = tex2D( _TextureSample0, panner31 ).rg;
-				float temp_output_1_0_g1 = 3.45;
-				float sinIn7_g1 = sin( temp_output_1_0_g1 );
-				float sinInOffset6_g1 = sin( ( temp_output_1_0_g1 + 1.0 ) );
-				float lerpResult20_g1 = lerp( break19_g1.x , break19_g1.y , frac( ( sin( ( ( sinIn7_g1 - sinInOffset6_g1 ) * 91.2228 ) ) * 43758.55 ) ));
-				float2 temp_cast_1 = (( lerpResult20_g1 + sinIn7_g1 )).xx;
-				float2 texCoord46 = IN.ase_texcoord8.xy * float2( 1,1 ) + temp_cast_1;
-				float4 lerpResult47 = lerp( color48 , color49 , texCoord46.x);
-				float mulTime59 = _TimeParameters.x * 2.23;
-				float2 temp_cast_2 = (mulTime59).xx;
-				float2 texCoord61 = IN.ase_texcoord8.xy * float2( 1,1 ) + temp_cast_2;
-				float4 lerpResult60 = lerp( color68 , lerpResult47 , sin( texCoord61.y ));
+				float mulTime77 = _TimeParameters.x * 5.65;
+				float2 temp_cast_0 = (-4.0).xx;
+				float2 center45_g4 = temp_cast_0;
+				float2 delta6_g4 = ( texCoord30 - center45_g4 );
+				float angle10_g4 = ( length( delta6_g4 ) * 6.0 );
+				float x23_g4 = ( ( cos( angle10_g4 ) * delta6_g4.x ) - ( sin( angle10_g4 ) * delta6_g4.y ) );
+				float2 break40_g4 = center45_g4;
+				float2 break41_g4 = float2( 0,0 );
+				float y35_g4 = ( ( sin( angle10_g4 ) * delta6_g4.x ) + ( cos( angle10_g4 ) * delta6_g4.y ) );
+				float2 appendResult44_g4 = (float2(( x23_g4 + break40_g4.x + break41_g4.x ) , ( break40_g4.y + break41_g4.y + y35_g4 )));
+				float2 temp_cast_1 = (1.24).xx;
+				float2 center45_g14 = temp_cast_1;
+				float2 delta6_g14 = ( texCoord30 - center45_g14 );
+				float angle10_g14 = ( length( delta6_g14 ) * 6.0 );
+				float x23_g14 = ( ( cos( angle10_g14 ) * delta6_g14.x ) - ( sin( angle10_g14 ) * delta6_g14.y ) );
+				float2 break40_g14 = center45_g14;
+				float2 break41_g14 = float2( 0,0 );
+				float y35_g14 = ( ( sin( angle10_g14 ) * delta6_g14.x ) + ( cos( angle10_g14 ) * delta6_g14.y ) );
+				float2 appendResult44_g14 = (float2(( x23_g14 + break40_g14.x + break41_g14.x ) , ( break40_g14.y + break41_g14.y + y35_g14 )));
+				float2 lerpResult151 = lerp( appendResult44_g4 , float2( 0,0 ) , appendResult44_g14);
+				float2 panner76 = ( mulTime77 * float2( 0,2 ) + lerpResult151);
+				float simplePerlin2D75 = snoise( panner76*0.2 );
+				simplePerlin2D75 = simplePerlin2D75*0.5 + 0.5;
+				float2 lerpResult69 = lerp( texCoord30 , float2( 1.06,0 ) , simplePerlin2D75);
+				float2 texCoord46 = IN.ase_texcoord8.xy * float2( 0,0 ) + lerpResult69;
+				float4 lerpResult134 = lerp( color135 , float4( 1,1,1,0 ) , texCoord46.y);
 				
 
-				float3 BaseColor = lerpResult60.rgb;
+				float3 BaseColor = lerpResult134.rgb;
 				float3 Normal = float3(0, 0, 1);
 				float3 Emission = 0;
 				float3 Specular = 0.5;
 				float Metallic = 0;
-				float Smoothness = 0.5;
+				float Smoothness = 0.0;
 				float Occlusion = 1;
-				float Alpha = lerpResult60.r;
+				float Alpha = lerpResult134.r;
 				float AlphaClipThreshold = 0.5;
 				float AlphaClipThresholdShadow = 0.5;
 				float3 BakedGI = 0;
@@ -887,8 +924,7 @@ Shader "S_WindTunnel"
 				int _PassValue;
 			#endif
 
-			sampler2D _TextureSample0;
-
+			
 
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/Varyings.hlsl"
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShadowCasterPass.hlsl"
@@ -897,7 +933,35 @@ Shader "S_WindTunnel"
 			//#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/VisualEffectVertex.hlsl"
 			//#endif
 
+			float3 mod2D289( float3 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
+			float2 mod2D289( float2 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
+			float3 permute( float3 x ) { return mod2D289( ( ( x * 34.0 ) + 1.0 ) * x ); }
+			float snoise( float2 v )
+			{
+				const float4 C = float4( 0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439 );
+				float2 i = floor( v + dot( v, C.yy ) );
+				float2 x0 = v - i + dot( i, C.xx );
+				float2 i1;
+				i1 = ( x0.x > x0.y ) ? float2( 1.0, 0.0 ) : float2( 0.0, 1.0 );
+				float4 x12 = x0.xyxy + C.xxzz;
+				x12.xy -= i1;
+				i = mod2D289( i );
+				float3 p = permute( permute( i.y + float3( 0.0, i1.y, 1.0 ) ) + i.x + float3( 0.0, i1.x, 1.0 ) );
+				float3 m = max( 0.5 - float3( dot( x0, x0 ), dot( x12.xy, x12.xy ), dot( x12.zw, x12.zw ) ), 0.0 );
+				m = m * m;
+				m = m * m;
+				float3 x = 2.0 * frac( p * C.www ) - 1.0;
+				float3 h = abs( x ) - 0.5;
+				float3 ox = floor( x + 0.5 );
+				float3 a0 = x - ox;
+				m *= 1.79284291400159 - 0.85373472095314 * ( a0 * a0 + h * h );
+				float3 g;
+				g.x = a0.x * x0.x + h.x * x0.y;
+				g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+				return 130.0 * dot( m, g );
+			}
 			
+
 			float3 _LightDirection;
 			float3 _LightPosition;
 
@@ -1071,26 +1135,37 @@ Shader "S_WindTunnel"
 					#endif
 				#endif
 
-				float4 color68 = IsGammaSpace() ? float4(0.1415094,0.1415094,0.1415094,0) : float4(0.0177139,0.0177139,0.0177139,0);
-				float4 color48 = IsGammaSpace() ? float4(0.8018868,0.8018868,0.8018868,0) : float4(0.6070304,0.6070304,0.6070304,0);
-				float4 color49 = IsGammaSpace() ? float4(0,0,0,0) : float4(0,0,0,0);
+				float4 color135 = IsGammaSpace() ? float4(0.3584906,0.3584906,0.3584906,0) : float4(0.1056116,0.1056116,0.1056116,0);
 				float2 texCoord30 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
-				float2 panner31 = ( 1.0 * _Time.y * float2( 0.25,1 ) + texCoord30);
-				float2 break19_g1 = tex2D( _TextureSample0, panner31 ).rg;
-				float temp_output_1_0_g1 = 3.45;
-				float sinIn7_g1 = sin( temp_output_1_0_g1 );
-				float sinInOffset6_g1 = sin( ( temp_output_1_0_g1 + 1.0 ) );
-				float lerpResult20_g1 = lerp( break19_g1.x , break19_g1.y , frac( ( sin( ( ( sinIn7_g1 - sinInOffset6_g1 ) * 91.2228 ) ) * 43758.55 ) ));
-				float2 temp_cast_1 = (( lerpResult20_g1 + sinIn7_g1 )).xx;
-				float2 texCoord46 = IN.ase_texcoord2.xy * float2( 1,1 ) + temp_cast_1;
-				float4 lerpResult47 = lerp( color48 , color49 , texCoord46.x);
-				float mulTime59 = _TimeParameters.x * 2.23;
-				float2 temp_cast_2 = (mulTime59).xx;
-				float2 texCoord61 = IN.ase_texcoord2.xy * float2( 1,1 ) + temp_cast_2;
-				float4 lerpResult60 = lerp( color68 , lerpResult47 , sin( texCoord61.y ));
+				float mulTime77 = _TimeParameters.x * 5.65;
+				float2 temp_cast_0 = (-4.0).xx;
+				float2 center45_g4 = temp_cast_0;
+				float2 delta6_g4 = ( texCoord30 - center45_g4 );
+				float angle10_g4 = ( length( delta6_g4 ) * 6.0 );
+				float x23_g4 = ( ( cos( angle10_g4 ) * delta6_g4.x ) - ( sin( angle10_g4 ) * delta6_g4.y ) );
+				float2 break40_g4 = center45_g4;
+				float2 break41_g4 = float2( 0,0 );
+				float y35_g4 = ( ( sin( angle10_g4 ) * delta6_g4.x ) + ( cos( angle10_g4 ) * delta6_g4.y ) );
+				float2 appendResult44_g4 = (float2(( x23_g4 + break40_g4.x + break41_g4.x ) , ( break40_g4.y + break41_g4.y + y35_g4 )));
+				float2 temp_cast_1 = (1.24).xx;
+				float2 center45_g14 = temp_cast_1;
+				float2 delta6_g14 = ( texCoord30 - center45_g14 );
+				float angle10_g14 = ( length( delta6_g14 ) * 6.0 );
+				float x23_g14 = ( ( cos( angle10_g14 ) * delta6_g14.x ) - ( sin( angle10_g14 ) * delta6_g14.y ) );
+				float2 break40_g14 = center45_g14;
+				float2 break41_g14 = float2( 0,0 );
+				float y35_g14 = ( ( sin( angle10_g14 ) * delta6_g14.x ) + ( cos( angle10_g14 ) * delta6_g14.y ) );
+				float2 appendResult44_g14 = (float2(( x23_g14 + break40_g14.x + break41_g14.x ) , ( break40_g14.y + break41_g14.y + y35_g14 )));
+				float2 lerpResult151 = lerp( appendResult44_g4 , float2( 0,0 ) , appendResult44_g14);
+				float2 panner76 = ( mulTime77 * float2( 0,2 ) + lerpResult151);
+				float simplePerlin2D75 = snoise( panner76*0.2 );
+				simplePerlin2D75 = simplePerlin2D75*0.5 + 0.5;
+				float2 lerpResult69 = lerp( texCoord30 , float2( 1.06,0 ) , simplePerlin2D75);
+				float2 texCoord46 = IN.ase_texcoord2.xy * float2( 0,0 ) + lerpResult69;
+				float4 lerpResult134 = lerp( color135 , float4( 1,1,1,0 ) , texCoord46.y);
 				
 
-				float Alpha = lerpResult60.r;
+				float Alpha = lerpResult134.r;
 				float AlphaClipThreshold = 0.5;
 				float AlphaClipThresholdShadow = 0.5;
 
@@ -1215,8 +1290,7 @@ Shader "S_WindTunnel"
 				int _PassValue;
 			#endif
 
-			sampler2D _TextureSample0;
-
+			
 
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/Varyings.hlsl"
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/DepthOnlyPass.hlsl"
@@ -1225,7 +1299,35 @@ Shader "S_WindTunnel"
 			//#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/VisualEffectVertex.hlsl"
 			//#endif
 
+			float3 mod2D289( float3 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
+			float2 mod2D289( float2 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
+			float3 permute( float3 x ) { return mod2D289( ( ( x * 34.0 ) + 1.0 ) * x ); }
+			float snoise( float2 v )
+			{
+				const float4 C = float4( 0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439 );
+				float2 i = floor( v + dot( v, C.yy ) );
+				float2 x0 = v - i + dot( i, C.xx );
+				float2 i1;
+				i1 = ( x0.x > x0.y ) ? float2( 1.0, 0.0 ) : float2( 0.0, 1.0 );
+				float4 x12 = x0.xyxy + C.xxzz;
+				x12.xy -= i1;
+				i = mod2D289( i );
+				float3 p = permute( permute( i.y + float3( 0.0, i1.y, 1.0 ) ) + i.x + float3( 0.0, i1.x, 1.0 ) );
+				float3 m = max( 0.5 - float3( dot( x0, x0 ), dot( x12.xy, x12.xy ), dot( x12.zw, x12.zw ) ), 0.0 );
+				m = m * m;
+				m = m * m;
+				float3 x = 2.0 * frac( p * C.www ) - 1.0;
+				float3 h = abs( x ) - 0.5;
+				float3 ox = floor( x + 0.5 );
+				float3 a0 = x - ox;
+				m *= 1.79284291400159 - 0.85373472095314 * ( a0 * a0 + h * h );
+				float3 g;
+				g.x = a0.x * x0.x + h.x * x0.y;
+				g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+				return 130.0 * dot( m, g );
+			}
 			
+
 			VertexOutput VertexFunction( VertexInput v  )
 			{
 				VertexOutput o = (VertexOutput)0;
@@ -1381,26 +1483,37 @@ Shader "S_WindTunnel"
 					#endif
 				#endif
 
-				float4 color68 = IsGammaSpace() ? float4(0.1415094,0.1415094,0.1415094,0) : float4(0.0177139,0.0177139,0.0177139,0);
-				float4 color48 = IsGammaSpace() ? float4(0.8018868,0.8018868,0.8018868,0) : float4(0.6070304,0.6070304,0.6070304,0);
-				float4 color49 = IsGammaSpace() ? float4(0,0,0,0) : float4(0,0,0,0);
+				float4 color135 = IsGammaSpace() ? float4(0.3584906,0.3584906,0.3584906,0) : float4(0.1056116,0.1056116,0.1056116,0);
 				float2 texCoord30 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
-				float2 panner31 = ( 1.0 * _Time.y * float2( 0.25,1 ) + texCoord30);
-				float2 break19_g1 = tex2D( _TextureSample0, panner31 ).rg;
-				float temp_output_1_0_g1 = 3.45;
-				float sinIn7_g1 = sin( temp_output_1_0_g1 );
-				float sinInOffset6_g1 = sin( ( temp_output_1_0_g1 + 1.0 ) );
-				float lerpResult20_g1 = lerp( break19_g1.x , break19_g1.y , frac( ( sin( ( ( sinIn7_g1 - sinInOffset6_g1 ) * 91.2228 ) ) * 43758.55 ) ));
-				float2 temp_cast_1 = (( lerpResult20_g1 + sinIn7_g1 )).xx;
-				float2 texCoord46 = IN.ase_texcoord2.xy * float2( 1,1 ) + temp_cast_1;
-				float4 lerpResult47 = lerp( color48 , color49 , texCoord46.x);
-				float mulTime59 = _TimeParameters.x * 2.23;
-				float2 temp_cast_2 = (mulTime59).xx;
-				float2 texCoord61 = IN.ase_texcoord2.xy * float2( 1,1 ) + temp_cast_2;
-				float4 lerpResult60 = lerp( color68 , lerpResult47 , sin( texCoord61.y ));
+				float mulTime77 = _TimeParameters.x * 5.65;
+				float2 temp_cast_0 = (-4.0).xx;
+				float2 center45_g4 = temp_cast_0;
+				float2 delta6_g4 = ( texCoord30 - center45_g4 );
+				float angle10_g4 = ( length( delta6_g4 ) * 6.0 );
+				float x23_g4 = ( ( cos( angle10_g4 ) * delta6_g4.x ) - ( sin( angle10_g4 ) * delta6_g4.y ) );
+				float2 break40_g4 = center45_g4;
+				float2 break41_g4 = float2( 0,0 );
+				float y35_g4 = ( ( sin( angle10_g4 ) * delta6_g4.x ) + ( cos( angle10_g4 ) * delta6_g4.y ) );
+				float2 appendResult44_g4 = (float2(( x23_g4 + break40_g4.x + break41_g4.x ) , ( break40_g4.y + break41_g4.y + y35_g4 )));
+				float2 temp_cast_1 = (1.24).xx;
+				float2 center45_g14 = temp_cast_1;
+				float2 delta6_g14 = ( texCoord30 - center45_g14 );
+				float angle10_g14 = ( length( delta6_g14 ) * 6.0 );
+				float x23_g14 = ( ( cos( angle10_g14 ) * delta6_g14.x ) - ( sin( angle10_g14 ) * delta6_g14.y ) );
+				float2 break40_g14 = center45_g14;
+				float2 break41_g14 = float2( 0,0 );
+				float y35_g14 = ( ( sin( angle10_g14 ) * delta6_g14.x ) + ( cos( angle10_g14 ) * delta6_g14.y ) );
+				float2 appendResult44_g14 = (float2(( x23_g14 + break40_g14.x + break41_g14.x ) , ( break40_g14.y + break41_g14.y + y35_g14 )));
+				float2 lerpResult151 = lerp( appendResult44_g4 , float2( 0,0 ) , appendResult44_g14);
+				float2 panner76 = ( mulTime77 * float2( 0,2 ) + lerpResult151);
+				float simplePerlin2D75 = snoise( panner76*0.2 );
+				simplePerlin2D75 = simplePerlin2D75*0.5 + 0.5;
+				float2 lerpResult69 = lerp( texCoord30 , float2( 1.06,0 ) , simplePerlin2D75);
+				float2 texCoord46 = IN.ase_texcoord2.xy * float2( 0,0 ) + lerpResult69;
+				float4 lerpResult134 = lerp( color135 , float4( 1,1,1,0 ) , texCoord46.y);
 				
 
-				float Alpha = lerpResult60.r;
+				float Alpha = lerpResult134.r;
 				float AlphaClipThreshold = 0.5;
 				#ifdef ASE_DEPTH_WRITE_ON
 					float DepthValue = 0;
@@ -1522,8 +1635,7 @@ Shader "S_WindTunnel"
 				int _PassValue;
 			#endif
 
-			sampler2D _TextureSample0;
-
+			
 
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/Varyings.hlsl"
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/LightingMetaPass.hlsl"
@@ -1532,7 +1644,35 @@ Shader "S_WindTunnel"
 			//#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/VisualEffectVertex.hlsl"
 			//#endif
 
+			float3 mod2D289( float3 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
+			float2 mod2D289( float2 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
+			float3 permute( float3 x ) { return mod2D289( ( ( x * 34.0 ) + 1.0 ) * x ); }
+			float snoise( float2 v )
+			{
+				const float4 C = float4( 0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439 );
+				float2 i = floor( v + dot( v, C.yy ) );
+				float2 x0 = v - i + dot( i, C.xx );
+				float2 i1;
+				i1 = ( x0.x > x0.y ) ? float2( 1.0, 0.0 ) : float2( 0.0, 1.0 );
+				float4 x12 = x0.xyxy + C.xxzz;
+				x12.xy -= i1;
+				i = mod2D289( i );
+				float3 p = permute( permute( i.y + float3( 0.0, i1.y, 1.0 ) ) + i.x + float3( 0.0, i1.x, 1.0 ) );
+				float3 m = max( 0.5 - float3( dot( x0, x0 ), dot( x12.xy, x12.xy ), dot( x12.zw, x12.zw ) ), 0.0 );
+				m = m * m;
+				m = m * m;
+				float3 x = 2.0 * frac( p * C.www ) - 1.0;
+				float3 h = abs( x ) - 0.5;
+				float3 ox = floor( x + 0.5 );
+				float3 a0 = x - ox;
+				m *= 1.79284291400159 - 0.85373472095314 * ( a0 * a0 + h * h );
+				float3 g;
+				g.x = a0.x * x0.x + h.x * x0.y;
+				g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+				return 130.0 * dot( m, g );
+			}
 			
+
 			VertexOutput VertexFunction( VertexInput v  )
 			{
 				VertexOutput o = (VertexOutput)0;
@@ -1694,28 +1834,39 @@ Shader "S_WindTunnel"
 					#endif
 				#endif
 
-				float4 color68 = IsGammaSpace() ? float4(0.1415094,0.1415094,0.1415094,0) : float4(0.0177139,0.0177139,0.0177139,0);
-				float4 color48 = IsGammaSpace() ? float4(0.8018868,0.8018868,0.8018868,0) : float4(0.6070304,0.6070304,0.6070304,0);
-				float4 color49 = IsGammaSpace() ? float4(0,0,0,0) : float4(0,0,0,0);
+				float4 color135 = IsGammaSpace() ? float4(0.3584906,0.3584906,0.3584906,0) : float4(0.1056116,0.1056116,0.1056116,0);
 				float2 texCoord30 = IN.ase_texcoord4.xy * float2( 1,1 ) + float2( 0,0 );
-				float2 panner31 = ( 1.0 * _Time.y * float2( 0.25,1 ) + texCoord30);
-				float2 break19_g1 = tex2D( _TextureSample0, panner31 ).rg;
-				float temp_output_1_0_g1 = 3.45;
-				float sinIn7_g1 = sin( temp_output_1_0_g1 );
-				float sinInOffset6_g1 = sin( ( temp_output_1_0_g1 + 1.0 ) );
-				float lerpResult20_g1 = lerp( break19_g1.x , break19_g1.y , frac( ( sin( ( ( sinIn7_g1 - sinInOffset6_g1 ) * 91.2228 ) ) * 43758.55 ) ));
-				float2 temp_cast_1 = (( lerpResult20_g1 + sinIn7_g1 )).xx;
-				float2 texCoord46 = IN.ase_texcoord4.xy * float2( 1,1 ) + temp_cast_1;
-				float4 lerpResult47 = lerp( color48 , color49 , texCoord46.x);
-				float mulTime59 = _TimeParameters.x * 2.23;
-				float2 temp_cast_2 = (mulTime59).xx;
-				float2 texCoord61 = IN.ase_texcoord4.xy * float2( 1,1 ) + temp_cast_2;
-				float4 lerpResult60 = lerp( color68 , lerpResult47 , sin( texCoord61.y ));
+				float mulTime77 = _TimeParameters.x * 5.65;
+				float2 temp_cast_0 = (-4.0).xx;
+				float2 center45_g4 = temp_cast_0;
+				float2 delta6_g4 = ( texCoord30 - center45_g4 );
+				float angle10_g4 = ( length( delta6_g4 ) * 6.0 );
+				float x23_g4 = ( ( cos( angle10_g4 ) * delta6_g4.x ) - ( sin( angle10_g4 ) * delta6_g4.y ) );
+				float2 break40_g4 = center45_g4;
+				float2 break41_g4 = float2( 0,0 );
+				float y35_g4 = ( ( sin( angle10_g4 ) * delta6_g4.x ) + ( cos( angle10_g4 ) * delta6_g4.y ) );
+				float2 appendResult44_g4 = (float2(( x23_g4 + break40_g4.x + break41_g4.x ) , ( break40_g4.y + break41_g4.y + y35_g4 )));
+				float2 temp_cast_1 = (1.24).xx;
+				float2 center45_g14 = temp_cast_1;
+				float2 delta6_g14 = ( texCoord30 - center45_g14 );
+				float angle10_g14 = ( length( delta6_g14 ) * 6.0 );
+				float x23_g14 = ( ( cos( angle10_g14 ) * delta6_g14.x ) - ( sin( angle10_g14 ) * delta6_g14.y ) );
+				float2 break40_g14 = center45_g14;
+				float2 break41_g14 = float2( 0,0 );
+				float y35_g14 = ( ( sin( angle10_g14 ) * delta6_g14.x ) + ( cos( angle10_g14 ) * delta6_g14.y ) );
+				float2 appendResult44_g14 = (float2(( x23_g14 + break40_g14.x + break41_g14.x ) , ( break40_g14.y + break41_g14.y + y35_g14 )));
+				float2 lerpResult151 = lerp( appendResult44_g4 , float2( 0,0 ) , appendResult44_g14);
+				float2 panner76 = ( mulTime77 * float2( 0,2 ) + lerpResult151);
+				float simplePerlin2D75 = snoise( panner76*0.2 );
+				simplePerlin2D75 = simplePerlin2D75*0.5 + 0.5;
+				float2 lerpResult69 = lerp( texCoord30 , float2( 1.06,0 ) , simplePerlin2D75);
+				float2 texCoord46 = IN.ase_texcoord4.xy * float2( 0,0 ) + lerpResult69;
+				float4 lerpResult134 = lerp( color135 , float4( 1,1,1,0 ) , texCoord46.y);
 				
 
-				float3 BaseColor = lerpResult60.rgb;
+				float3 BaseColor = lerpResult134.rgb;
 				float3 Emission = 0;
-				float Alpha = lerpResult60.r;
+				float Alpha = lerpResult134.r;
 				float AlphaClipThreshold = 0.5;
 
 				#ifdef _ALPHATEST_ON
@@ -1828,8 +1979,7 @@ Shader "S_WindTunnel"
 				int _PassValue;
 			#endif
 
-			sampler2D _TextureSample0;
-
+			
 
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/Varyings.hlsl"
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/PBR2DPass.hlsl"
@@ -1838,7 +1988,35 @@ Shader "S_WindTunnel"
 			//#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/VisualEffectVertex.hlsl"
 			//#endif
 
+			float3 mod2D289( float3 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
+			float2 mod2D289( float2 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
+			float3 permute( float3 x ) { return mod2D289( ( ( x * 34.0 ) + 1.0 ) * x ); }
+			float snoise( float2 v )
+			{
+				const float4 C = float4( 0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439 );
+				float2 i = floor( v + dot( v, C.yy ) );
+				float2 x0 = v - i + dot( i, C.xx );
+				float2 i1;
+				i1 = ( x0.x > x0.y ) ? float2( 1.0, 0.0 ) : float2( 0.0, 1.0 );
+				float4 x12 = x0.xyxy + C.xxzz;
+				x12.xy -= i1;
+				i = mod2D289( i );
+				float3 p = permute( permute( i.y + float3( 0.0, i1.y, 1.0 ) ) + i.x + float3( 0.0, i1.x, 1.0 ) );
+				float3 m = max( 0.5 - float3( dot( x0, x0 ), dot( x12.xy, x12.xy ), dot( x12.zw, x12.zw ) ), 0.0 );
+				m = m * m;
+				m = m * m;
+				float3 x = 2.0 * frac( p * C.www ) - 1.0;
+				float3 h = abs( x ) - 0.5;
+				float3 ox = floor( x + 0.5 );
+				float3 a0 = x - ox;
+				m *= 1.79284291400159 - 0.85373472095314 * ( a0 * a0 + h * h );
+				float3 g;
+				g.x = a0.x * x0.x + h.x * x0.y;
+				g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+				return 130.0 * dot( m, g );
+			}
 			
+
 			VertexOutput VertexFunction( VertexInput v  )
 			{
 				VertexOutput o = (VertexOutput)0;
@@ -1985,27 +2163,38 @@ Shader "S_WindTunnel"
 					#endif
 				#endif
 
-				float4 color68 = IsGammaSpace() ? float4(0.1415094,0.1415094,0.1415094,0) : float4(0.0177139,0.0177139,0.0177139,0);
-				float4 color48 = IsGammaSpace() ? float4(0.8018868,0.8018868,0.8018868,0) : float4(0.6070304,0.6070304,0.6070304,0);
-				float4 color49 = IsGammaSpace() ? float4(0,0,0,0) : float4(0,0,0,0);
+				float4 color135 = IsGammaSpace() ? float4(0.3584906,0.3584906,0.3584906,0) : float4(0.1056116,0.1056116,0.1056116,0);
 				float2 texCoord30 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
-				float2 panner31 = ( 1.0 * _Time.y * float2( 0.25,1 ) + texCoord30);
-				float2 break19_g1 = tex2D( _TextureSample0, panner31 ).rg;
-				float temp_output_1_0_g1 = 3.45;
-				float sinIn7_g1 = sin( temp_output_1_0_g1 );
-				float sinInOffset6_g1 = sin( ( temp_output_1_0_g1 + 1.0 ) );
-				float lerpResult20_g1 = lerp( break19_g1.x , break19_g1.y , frac( ( sin( ( ( sinIn7_g1 - sinInOffset6_g1 ) * 91.2228 ) ) * 43758.55 ) ));
-				float2 temp_cast_1 = (( lerpResult20_g1 + sinIn7_g1 )).xx;
-				float2 texCoord46 = IN.ase_texcoord2.xy * float2( 1,1 ) + temp_cast_1;
-				float4 lerpResult47 = lerp( color48 , color49 , texCoord46.x);
-				float mulTime59 = _TimeParameters.x * 2.23;
-				float2 temp_cast_2 = (mulTime59).xx;
-				float2 texCoord61 = IN.ase_texcoord2.xy * float2( 1,1 ) + temp_cast_2;
-				float4 lerpResult60 = lerp( color68 , lerpResult47 , sin( texCoord61.y ));
+				float mulTime77 = _TimeParameters.x * 5.65;
+				float2 temp_cast_0 = (-4.0).xx;
+				float2 center45_g4 = temp_cast_0;
+				float2 delta6_g4 = ( texCoord30 - center45_g4 );
+				float angle10_g4 = ( length( delta6_g4 ) * 6.0 );
+				float x23_g4 = ( ( cos( angle10_g4 ) * delta6_g4.x ) - ( sin( angle10_g4 ) * delta6_g4.y ) );
+				float2 break40_g4 = center45_g4;
+				float2 break41_g4 = float2( 0,0 );
+				float y35_g4 = ( ( sin( angle10_g4 ) * delta6_g4.x ) + ( cos( angle10_g4 ) * delta6_g4.y ) );
+				float2 appendResult44_g4 = (float2(( x23_g4 + break40_g4.x + break41_g4.x ) , ( break40_g4.y + break41_g4.y + y35_g4 )));
+				float2 temp_cast_1 = (1.24).xx;
+				float2 center45_g14 = temp_cast_1;
+				float2 delta6_g14 = ( texCoord30 - center45_g14 );
+				float angle10_g14 = ( length( delta6_g14 ) * 6.0 );
+				float x23_g14 = ( ( cos( angle10_g14 ) * delta6_g14.x ) - ( sin( angle10_g14 ) * delta6_g14.y ) );
+				float2 break40_g14 = center45_g14;
+				float2 break41_g14 = float2( 0,0 );
+				float y35_g14 = ( ( sin( angle10_g14 ) * delta6_g14.x ) + ( cos( angle10_g14 ) * delta6_g14.y ) );
+				float2 appendResult44_g14 = (float2(( x23_g14 + break40_g14.x + break41_g14.x ) , ( break40_g14.y + break41_g14.y + y35_g14 )));
+				float2 lerpResult151 = lerp( appendResult44_g4 , float2( 0,0 ) , appendResult44_g14);
+				float2 panner76 = ( mulTime77 * float2( 0,2 ) + lerpResult151);
+				float simplePerlin2D75 = snoise( panner76*0.2 );
+				simplePerlin2D75 = simplePerlin2D75*0.5 + 0.5;
+				float2 lerpResult69 = lerp( texCoord30 , float2( 1.06,0 ) , simplePerlin2D75);
+				float2 texCoord46 = IN.ase_texcoord2.xy * float2( 0,0 ) + lerpResult69;
+				float4 lerpResult134 = lerp( color135 , float4( 1,1,1,0 ) , texCoord46.y);
 				
 
-				float3 BaseColor = lerpResult60.rgb;
-				float Alpha = lerpResult60.r;
+				float3 BaseColor = lerpResult134.rgb;
+				float Alpha = lerpResult134.r;
 				float AlphaClipThreshold = 0.5;
 
 				half4 color = half4(BaseColor, Alpha );
@@ -2120,8 +2309,7 @@ Shader "S_WindTunnel"
 				int _PassValue;
 			#endif
 
-			sampler2D _TextureSample0;
-
+			
 
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/Varyings.hlsl"
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/DepthNormalsOnlyPass.hlsl"
@@ -2130,7 +2318,35 @@ Shader "S_WindTunnel"
 			//#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/VisualEffectVertex.hlsl"
 			//#endif
 
+			float3 mod2D289( float3 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
+			float2 mod2D289( float2 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
+			float3 permute( float3 x ) { return mod2D289( ( ( x * 34.0 ) + 1.0 ) * x ); }
+			float snoise( float2 v )
+			{
+				const float4 C = float4( 0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439 );
+				float2 i = floor( v + dot( v, C.yy ) );
+				float2 x0 = v - i + dot( i, C.xx );
+				float2 i1;
+				i1 = ( x0.x > x0.y ) ? float2( 1.0, 0.0 ) : float2( 0.0, 1.0 );
+				float4 x12 = x0.xyxy + C.xxzz;
+				x12.xy -= i1;
+				i = mod2D289( i );
+				float3 p = permute( permute( i.y + float3( 0.0, i1.y, 1.0 ) ) + i.x + float3( 0.0, i1.x, 1.0 ) );
+				float3 m = max( 0.5 - float3( dot( x0, x0 ), dot( x12.xy, x12.xy ), dot( x12.zw, x12.zw ) ), 0.0 );
+				m = m * m;
+				m = m * m;
+				float3 x = 2.0 * frac( p * C.www ) - 1.0;
+				float3 h = abs( x ) - 0.5;
+				float3 ox = floor( x + 0.5 );
+				float3 a0 = x - ox;
+				m *= 1.79284291400159 - 0.85373472095314 * ( a0 * a0 + h * h );
+				float3 g;
+				g.x = a0.x * x0.x + h.x * x0.y;
+				g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+				return 130.0 * dot( m, g );
+			}
 			
+
 			VertexOutput VertexFunction( VertexInput v  )
 			{
 				VertexOutput o = (VertexOutput)0;
@@ -2295,27 +2511,38 @@ Shader "S_WindTunnel"
 					#endif
 				#endif
 
-				float4 color68 = IsGammaSpace() ? float4(0.1415094,0.1415094,0.1415094,0) : float4(0.0177139,0.0177139,0.0177139,0);
-				float4 color48 = IsGammaSpace() ? float4(0.8018868,0.8018868,0.8018868,0) : float4(0.6070304,0.6070304,0.6070304,0);
-				float4 color49 = IsGammaSpace() ? float4(0,0,0,0) : float4(0,0,0,0);
+				float4 color135 = IsGammaSpace() ? float4(0.3584906,0.3584906,0.3584906,0) : float4(0.1056116,0.1056116,0.1056116,0);
 				float2 texCoord30 = IN.ase_texcoord4.xy * float2( 1,1 ) + float2( 0,0 );
-				float2 panner31 = ( 1.0 * _Time.y * float2( 0.25,1 ) + texCoord30);
-				float2 break19_g1 = tex2D( _TextureSample0, panner31 ).rg;
-				float temp_output_1_0_g1 = 3.45;
-				float sinIn7_g1 = sin( temp_output_1_0_g1 );
-				float sinInOffset6_g1 = sin( ( temp_output_1_0_g1 + 1.0 ) );
-				float lerpResult20_g1 = lerp( break19_g1.x , break19_g1.y , frac( ( sin( ( ( sinIn7_g1 - sinInOffset6_g1 ) * 91.2228 ) ) * 43758.55 ) ));
-				float2 temp_cast_1 = (( lerpResult20_g1 + sinIn7_g1 )).xx;
-				float2 texCoord46 = IN.ase_texcoord4.xy * float2( 1,1 ) + temp_cast_1;
-				float4 lerpResult47 = lerp( color48 , color49 , texCoord46.x);
-				float mulTime59 = _TimeParameters.x * 2.23;
-				float2 temp_cast_2 = (mulTime59).xx;
-				float2 texCoord61 = IN.ase_texcoord4.xy * float2( 1,1 ) + temp_cast_2;
-				float4 lerpResult60 = lerp( color68 , lerpResult47 , sin( texCoord61.y ));
+				float mulTime77 = _TimeParameters.x * 5.65;
+				float2 temp_cast_0 = (-4.0).xx;
+				float2 center45_g4 = temp_cast_0;
+				float2 delta6_g4 = ( texCoord30 - center45_g4 );
+				float angle10_g4 = ( length( delta6_g4 ) * 6.0 );
+				float x23_g4 = ( ( cos( angle10_g4 ) * delta6_g4.x ) - ( sin( angle10_g4 ) * delta6_g4.y ) );
+				float2 break40_g4 = center45_g4;
+				float2 break41_g4 = float2( 0,0 );
+				float y35_g4 = ( ( sin( angle10_g4 ) * delta6_g4.x ) + ( cos( angle10_g4 ) * delta6_g4.y ) );
+				float2 appendResult44_g4 = (float2(( x23_g4 + break40_g4.x + break41_g4.x ) , ( break40_g4.y + break41_g4.y + y35_g4 )));
+				float2 temp_cast_1 = (1.24).xx;
+				float2 center45_g14 = temp_cast_1;
+				float2 delta6_g14 = ( texCoord30 - center45_g14 );
+				float angle10_g14 = ( length( delta6_g14 ) * 6.0 );
+				float x23_g14 = ( ( cos( angle10_g14 ) * delta6_g14.x ) - ( sin( angle10_g14 ) * delta6_g14.y ) );
+				float2 break40_g14 = center45_g14;
+				float2 break41_g14 = float2( 0,0 );
+				float y35_g14 = ( ( sin( angle10_g14 ) * delta6_g14.x ) + ( cos( angle10_g14 ) * delta6_g14.y ) );
+				float2 appendResult44_g14 = (float2(( x23_g14 + break40_g14.x + break41_g14.x ) , ( break40_g14.y + break41_g14.y + y35_g14 )));
+				float2 lerpResult151 = lerp( appendResult44_g4 , float2( 0,0 ) , appendResult44_g14);
+				float2 panner76 = ( mulTime77 * float2( 0,2 ) + lerpResult151);
+				float simplePerlin2D75 = snoise( panner76*0.2 );
+				simplePerlin2D75 = simplePerlin2D75*0.5 + 0.5;
+				float2 lerpResult69 = lerp( texCoord30 , float2( 1.06,0 ) , simplePerlin2D75);
+				float2 texCoord46 = IN.ase_texcoord4.xy * float2( 0,0 ) + lerpResult69;
+				float4 lerpResult134 = lerp( color135 , float4( 1,1,1,0 ) , texCoord46.y);
 				
 
 				float3 Normal = float3(0, 0, 1);
-				float Alpha = lerpResult60.r;
+				float Alpha = lerpResult134.r;
 				float AlphaClipThreshold = 0.5;
 				#ifdef ASE_DEPTH_WRITE_ON
 					float DepthValue = 0;
@@ -2495,14 +2722,41 @@ Shader "S_WindTunnel"
 				int _PassValue;
 			#endif
 
-			sampler2D _TextureSample0;
-
+			
 
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/Varyings.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/UnityGBuffer.hlsl"
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/PBRGBufferPass.hlsl"
 
+			float3 mod2D289( float3 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
+			float2 mod2D289( float2 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
+			float3 permute( float3 x ) { return mod2D289( ( ( x * 34.0 ) + 1.0 ) * x ); }
+			float snoise( float2 v )
+			{
+				const float4 C = float4( 0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439 );
+				float2 i = floor( v + dot( v, C.yy ) );
+				float2 x0 = v - i + dot( i, C.xx );
+				float2 i1;
+				i1 = ( x0.x > x0.y ) ? float2( 1.0, 0.0 ) : float2( 0.0, 1.0 );
+				float4 x12 = x0.xyxy + C.xxzz;
+				x12.xy -= i1;
+				i = mod2D289( i );
+				float3 p = permute( permute( i.y + float3( 0.0, i1.y, 1.0 ) ) + i.x + float3( 0.0, i1.x, 1.0 ) );
+				float3 m = max( 0.5 - float3( dot( x0, x0 ), dot( x12.xy, x12.xy ), dot( x12.zw, x12.zw ) ), 0.0 );
+				m = m * m;
+				m = m * m;
+				float3 x = 2.0 * frac( p * C.www ) - 1.0;
+				float3 h = abs( x ) - 0.5;
+				float3 ox = floor( x + 0.5 );
+				float3 a0 = x - ox;
+				m *= 1.79284291400159 - 0.85373472095314 * ( a0 * a0 + h * h );
+				float3 g;
+				g.x = a0.x * x0.x + h.x * x0.y;
+				g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+				return 130.0 * dot( m, g );
+			}
 			
+
 			VertexOutput VertexFunction( VertexInput v  )
 			{
 				VertexOutput o = (VertexOutput)0;
@@ -2718,33 +2972,44 @@ Shader "S_WindTunnel"
 
 				WorldViewDirection = SafeNormalize( WorldViewDirection );
 
-				float4 color68 = IsGammaSpace() ? float4(0.1415094,0.1415094,0.1415094,0) : float4(0.0177139,0.0177139,0.0177139,0);
-				float4 color48 = IsGammaSpace() ? float4(0.8018868,0.8018868,0.8018868,0) : float4(0.6070304,0.6070304,0.6070304,0);
-				float4 color49 = IsGammaSpace() ? float4(0,0,0,0) : float4(0,0,0,0);
+				float4 color135 = IsGammaSpace() ? float4(0.3584906,0.3584906,0.3584906,0) : float4(0.1056116,0.1056116,0.1056116,0);
 				float2 texCoord30 = IN.ase_texcoord8.xy * float2( 1,1 ) + float2( 0,0 );
-				float2 panner31 = ( 1.0 * _Time.y * float2( 0.25,1 ) + texCoord30);
-				float2 break19_g1 = tex2D( _TextureSample0, panner31 ).rg;
-				float temp_output_1_0_g1 = 3.45;
-				float sinIn7_g1 = sin( temp_output_1_0_g1 );
-				float sinInOffset6_g1 = sin( ( temp_output_1_0_g1 + 1.0 ) );
-				float lerpResult20_g1 = lerp( break19_g1.x , break19_g1.y , frac( ( sin( ( ( sinIn7_g1 - sinInOffset6_g1 ) * 91.2228 ) ) * 43758.55 ) ));
-				float2 temp_cast_1 = (( lerpResult20_g1 + sinIn7_g1 )).xx;
-				float2 texCoord46 = IN.ase_texcoord8.xy * float2( 1,1 ) + temp_cast_1;
-				float4 lerpResult47 = lerp( color48 , color49 , texCoord46.x);
-				float mulTime59 = _TimeParameters.x * 2.23;
-				float2 temp_cast_2 = (mulTime59).xx;
-				float2 texCoord61 = IN.ase_texcoord8.xy * float2( 1,1 ) + temp_cast_2;
-				float4 lerpResult60 = lerp( color68 , lerpResult47 , sin( texCoord61.y ));
+				float mulTime77 = _TimeParameters.x * 5.65;
+				float2 temp_cast_0 = (-4.0).xx;
+				float2 center45_g4 = temp_cast_0;
+				float2 delta6_g4 = ( texCoord30 - center45_g4 );
+				float angle10_g4 = ( length( delta6_g4 ) * 6.0 );
+				float x23_g4 = ( ( cos( angle10_g4 ) * delta6_g4.x ) - ( sin( angle10_g4 ) * delta6_g4.y ) );
+				float2 break40_g4 = center45_g4;
+				float2 break41_g4 = float2( 0,0 );
+				float y35_g4 = ( ( sin( angle10_g4 ) * delta6_g4.x ) + ( cos( angle10_g4 ) * delta6_g4.y ) );
+				float2 appendResult44_g4 = (float2(( x23_g4 + break40_g4.x + break41_g4.x ) , ( break40_g4.y + break41_g4.y + y35_g4 )));
+				float2 temp_cast_1 = (1.24).xx;
+				float2 center45_g14 = temp_cast_1;
+				float2 delta6_g14 = ( texCoord30 - center45_g14 );
+				float angle10_g14 = ( length( delta6_g14 ) * 6.0 );
+				float x23_g14 = ( ( cos( angle10_g14 ) * delta6_g14.x ) - ( sin( angle10_g14 ) * delta6_g14.y ) );
+				float2 break40_g14 = center45_g14;
+				float2 break41_g14 = float2( 0,0 );
+				float y35_g14 = ( ( sin( angle10_g14 ) * delta6_g14.x ) + ( cos( angle10_g14 ) * delta6_g14.y ) );
+				float2 appendResult44_g14 = (float2(( x23_g14 + break40_g14.x + break41_g14.x ) , ( break40_g14.y + break41_g14.y + y35_g14 )));
+				float2 lerpResult151 = lerp( appendResult44_g4 , float2( 0,0 ) , appendResult44_g14);
+				float2 panner76 = ( mulTime77 * float2( 0,2 ) + lerpResult151);
+				float simplePerlin2D75 = snoise( panner76*0.2 );
+				simplePerlin2D75 = simplePerlin2D75*0.5 + 0.5;
+				float2 lerpResult69 = lerp( texCoord30 , float2( 1.06,0 ) , simplePerlin2D75);
+				float2 texCoord46 = IN.ase_texcoord8.xy * float2( 0,0 ) + lerpResult69;
+				float4 lerpResult134 = lerp( color135 , float4( 1,1,1,0 ) , texCoord46.y);
 				
 
-				float3 BaseColor = lerpResult60.rgb;
+				float3 BaseColor = lerpResult134.rgb;
 				float3 Normal = float3(0, 0, 1);
 				float3 Emission = 0;
 				float3 Specular = 0.5;
 				float Metallic = 0;
-				float Smoothness = 0.5;
+				float Smoothness = 0.0;
 				float Occlusion = 1;
-				float Alpha = lerpResult60.r;
+				float Alpha = lerpResult134.r;
 				float AlphaClipThreshold = 0.5;
 				float AlphaClipThresholdShadow = 0.5;
 				float3 BakedGI = 0;
@@ -2934,8 +3199,7 @@ Shader "S_WindTunnel"
 				int _PassValue;
 			#endif
 
-			sampler2D _TextureSample0;
-
+			
 
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/Varyings.hlsl"
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/SelectionPickingPass.hlsl"
@@ -2944,7 +3208,35 @@ Shader "S_WindTunnel"
 			//#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/VisualEffectVertex.hlsl"
 			//#endif
 
+			float3 mod2D289( float3 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
+			float2 mod2D289( float2 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
+			float3 permute( float3 x ) { return mod2D289( ( ( x * 34.0 ) + 1.0 ) * x ); }
+			float snoise( float2 v )
+			{
+				const float4 C = float4( 0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439 );
+				float2 i = floor( v + dot( v, C.yy ) );
+				float2 x0 = v - i + dot( i, C.xx );
+				float2 i1;
+				i1 = ( x0.x > x0.y ) ? float2( 1.0, 0.0 ) : float2( 0.0, 1.0 );
+				float4 x12 = x0.xyxy + C.xxzz;
+				x12.xy -= i1;
+				i = mod2D289( i );
+				float3 p = permute( permute( i.y + float3( 0.0, i1.y, 1.0 ) ) + i.x + float3( 0.0, i1.x, 1.0 ) );
+				float3 m = max( 0.5 - float3( dot( x0, x0 ), dot( x12.xy, x12.xy ), dot( x12.zw, x12.zw ) ), 0.0 );
+				m = m * m;
+				m = m * m;
+				float3 x = 2.0 * frac( p * C.www ) - 1.0;
+				float3 h = abs( x ) - 0.5;
+				float3 ox = floor( x + 0.5 );
+				float3 a0 = x - ox;
+				m *= 1.79284291400159 - 0.85373472095314 * ( a0 * a0 + h * h );
+				float3 g;
+				g.x = a0.x * x0.x + h.x * x0.y;
+				g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+				return 130.0 * dot( m, g );
+			}
 			
+
 			struct SurfaceDescription
 			{
 				float Alpha;
@@ -3072,26 +3364,37 @@ Shader "S_WindTunnel"
 			{
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
 
-				float4 color68 = IsGammaSpace() ? float4(0.1415094,0.1415094,0.1415094,0) : float4(0.0177139,0.0177139,0.0177139,0);
-				float4 color48 = IsGammaSpace() ? float4(0.8018868,0.8018868,0.8018868,0) : float4(0.6070304,0.6070304,0.6070304,0);
-				float4 color49 = IsGammaSpace() ? float4(0,0,0,0) : float4(0,0,0,0);
+				float4 color135 = IsGammaSpace() ? float4(0.3584906,0.3584906,0.3584906,0) : float4(0.1056116,0.1056116,0.1056116,0);
 				float2 texCoord30 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
-				float2 panner31 = ( 1.0 * _Time.y * float2( 0.25,1 ) + texCoord30);
-				float2 break19_g1 = tex2D( _TextureSample0, panner31 ).rg;
-				float temp_output_1_0_g1 = 3.45;
-				float sinIn7_g1 = sin( temp_output_1_0_g1 );
-				float sinInOffset6_g1 = sin( ( temp_output_1_0_g1 + 1.0 ) );
-				float lerpResult20_g1 = lerp( break19_g1.x , break19_g1.y , frac( ( sin( ( ( sinIn7_g1 - sinInOffset6_g1 ) * 91.2228 ) ) * 43758.55 ) ));
-				float2 temp_cast_1 = (( lerpResult20_g1 + sinIn7_g1 )).xx;
-				float2 texCoord46 = IN.ase_texcoord.xy * float2( 1,1 ) + temp_cast_1;
-				float4 lerpResult47 = lerp( color48 , color49 , texCoord46.x);
-				float mulTime59 = _TimeParameters.x * 2.23;
-				float2 temp_cast_2 = (mulTime59).xx;
-				float2 texCoord61 = IN.ase_texcoord.xy * float2( 1,1 ) + temp_cast_2;
-				float4 lerpResult60 = lerp( color68 , lerpResult47 , sin( texCoord61.y ));
+				float mulTime77 = _TimeParameters.x * 5.65;
+				float2 temp_cast_0 = (-4.0).xx;
+				float2 center45_g4 = temp_cast_0;
+				float2 delta6_g4 = ( texCoord30 - center45_g4 );
+				float angle10_g4 = ( length( delta6_g4 ) * 6.0 );
+				float x23_g4 = ( ( cos( angle10_g4 ) * delta6_g4.x ) - ( sin( angle10_g4 ) * delta6_g4.y ) );
+				float2 break40_g4 = center45_g4;
+				float2 break41_g4 = float2( 0,0 );
+				float y35_g4 = ( ( sin( angle10_g4 ) * delta6_g4.x ) + ( cos( angle10_g4 ) * delta6_g4.y ) );
+				float2 appendResult44_g4 = (float2(( x23_g4 + break40_g4.x + break41_g4.x ) , ( break40_g4.y + break41_g4.y + y35_g4 )));
+				float2 temp_cast_1 = (1.24).xx;
+				float2 center45_g14 = temp_cast_1;
+				float2 delta6_g14 = ( texCoord30 - center45_g14 );
+				float angle10_g14 = ( length( delta6_g14 ) * 6.0 );
+				float x23_g14 = ( ( cos( angle10_g14 ) * delta6_g14.x ) - ( sin( angle10_g14 ) * delta6_g14.y ) );
+				float2 break40_g14 = center45_g14;
+				float2 break41_g14 = float2( 0,0 );
+				float y35_g14 = ( ( sin( angle10_g14 ) * delta6_g14.x ) + ( cos( angle10_g14 ) * delta6_g14.y ) );
+				float2 appendResult44_g14 = (float2(( x23_g14 + break40_g14.x + break41_g14.x ) , ( break40_g14.y + break41_g14.y + y35_g14 )));
+				float2 lerpResult151 = lerp( appendResult44_g4 , float2( 0,0 ) , appendResult44_g14);
+				float2 panner76 = ( mulTime77 * float2( 0,2 ) + lerpResult151);
+				float simplePerlin2D75 = snoise( panner76*0.2 );
+				simplePerlin2D75 = simplePerlin2D75*0.5 + 0.5;
+				float2 lerpResult69 = lerp( texCoord30 , float2( 1.06,0 ) , simplePerlin2D75);
+				float2 texCoord46 = IN.ase_texcoord.xy * float2( 0,0 ) + lerpResult69;
+				float4 lerpResult134 = lerp( color135 , float4( 1,1,1,0 ) , texCoord46.y);
 				
 
-				surfaceDescription.Alpha = lerpResult60.r;
+				surfaceDescription.Alpha = lerpResult134.r;
 				surfaceDescription.AlphaClipThreshold = 0.5;
 
 				#if _ALPHATEST_ON
@@ -3201,8 +3504,7 @@ Shader "S_WindTunnel"
 				int _PassValue;
 			#endif
 
-			sampler2D _TextureSample0;
-
+			
 
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/Varyings.hlsl"
 			//#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/SelectionPickingPass.hlsl"
@@ -3211,7 +3513,35 @@ Shader "S_WindTunnel"
 			//#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/VisualEffectVertex.hlsl"
 			//#endif
 
+			float3 mod2D289( float3 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
+			float2 mod2D289( float2 x ) { return x - floor( x * ( 1.0 / 289.0 ) ) * 289.0; }
+			float3 permute( float3 x ) { return mod2D289( ( ( x * 34.0 ) + 1.0 ) * x ); }
+			float snoise( float2 v )
+			{
+				const float4 C = float4( 0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439 );
+				float2 i = floor( v + dot( v, C.yy ) );
+				float2 x0 = v - i + dot( i, C.xx );
+				float2 i1;
+				i1 = ( x0.x > x0.y ) ? float2( 1.0, 0.0 ) : float2( 0.0, 1.0 );
+				float4 x12 = x0.xyxy + C.xxzz;
+				x12.xy -= i1;
+				i = mod2D289( i );
+				float3 p = permute( permute( i.y + float3( 0.0, i1.y, 1.0 ) ) + i.x + float3( 0.0, i1.x, 1.0 ) );
+				float3 m = max( 0.5 - float3( dot( x0, x0 ), dot( x12.xy, x12.xy ), dot( x12.zw, x12.zw ) ), 0.0 );
+				m = m * m;
+				m = m * m;
+				float3 x = 2.0 * frac( p * C.www ) - 1.0;
+				float3 h = abs( x ) - 0.5;
+				float3 ox = floor( x + 0.5 );
+				float3 a0 = x - ox;
+				m *= 1.79284291400159 - 0.85373472095314 * ( a0 * a0 + h * h );
+				float3 g;
+				g.x = a0.x * x0.x + h.x * x0.y;
+				g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+				return 130.0 * dot( m, g );
+			}
 			
+
 			struct SurfaceDescription
 			{
 				float Alpha;
@@ -3338,26 +3668,37 @@ Shader "S_WindTunnel"
 			{
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
 
-				float4 color68 = IsGammaSpace() ? float4(0.1415094,0.1415094,0.1415094,0) : float4(0.0177139,0.0177139,0.0177139,0);
-				float4 color48 = IsGammaSpace() ? float4(0.8018868,0.8018868,0.8018868,0) : float4(0.6070304,0.6070304,0.6070304,0);
-				float4 color49 = IsGammaSpace() ? float4(0,0,0,0) : float4(0,0,0,0);
+				float4 color135 = IsGammaSpace() ? float4(0.3584906,0.3584906,0.3584906,0) : float4(0.1056116,0.1056116,0.1056116,0);
 				float2 texCoord30 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
-				float2 panner31 = ( 1.0 * _Time.y * float2( 0.25,1 ) + texCoord30);
-				float2 break19_g1 = tex2D( _TextureSample0, panner31 ).rg;
-				float temp_output_1_0_g1 = 3.45;
-				float sinIn7_g1 = sin( temp_output_1_0_g1 );
-				float sinInOffset6_g1 = sin( ( temp_output_1_0_g1 + 1.0 ) );
-				float lerpResult20_g1 = lerp( break19_g1.x , break19_g1.y , frac( ( sin( ( ( sinIn7_g1 - sinInOffset6_g1 ) * 91.2228 ) ) * 43758.55 ) ));
-				float2 temp_cast_1 = (( lerpResult20_g1 + sinIn7_g1 )).xx;
-				float2 texCoord46 = IN.ase_texcoord.xy * float2( 1,1 ) + temp_cast_1;
-				float4 lerpResult47 = lerp( color48 , color49 , texCoord46.x);
-				float mulTime59 = _TimeParameters.x * 2.23;
-				float2 temp_cast_2 = (mulTime59).xx;
-				float2 texCoord61 = IN.ase_texcoord.xy * float2( 1,1 ) + temp_cast_2;
-				float4 lerpResult60 = lerp( color68 , lerpResult47 , sin( texCoord61.y ));
+				float mulTime77 = _TimeParameters.x * 5.65;
+				float2 temp_cast_0 = (-4.0).xx;
+				float2 center45_g4 = temp_cast_0;
+				float2 delta6_g4 = ( texCoord30 - center45_g4 );
+				float angle10_g4 = ( length( delta6_g4 ) * 6.0 );
+				float x23_g4 = ( ( cos( angle10_g4 ) * delta6_g4.x ) - ( sin( angle10_g4 ) * delta6_g4.y ) );
+				float2 break40_g4 = center45_g4;
+				float2 break41_g4 = float2( 0,0 );
+				float y35_g4 = ( ( sin( angle10_g4 ) * delta6_g4.x ) + ( cos( angle10_g4 ) * delta6_g4.y ) );
+				float2 appendResult44_g4 = (float2(( x23_g4 + break40_g4.x + break41_g4.x ) , ( break40_g4.y + break41_g4.y + y35_g4 )));
+				float2 temp_cast_1 = (1.24).xx;
+				float2 center45_g14 = temp_cast_1;
+				float2 delta6_g14 = ( texCoord30 - center45_g14 );
+				float angle10_g14 = ( length( delta6_g14 ) * 6.0 );
+				float x23_g14 = ( ( cos( angle10_g14 ) * delta6_g14.x ) - ( sin( angle10_g14 ) * delta6_g14.y ) );
+				float2 break40_g14 = center45_g14;
+				float2 break41_g14 = float2( 0,0 );
+				float y35_g14 = ( ( sin( angle10_g14 ) * delta6_g14.x ) + ( cos( angle10_g14 ) * delta6_g14.y ) );
+				float2 appendResult44_g14 = (float2(( x23_g14 + break40_g14.x + break41_g14.x ) , ( break40_g14.y + break41_g14.y + y35_g14 )));
+				float2 lerpResult151 = lerp( appendResult44_g4 , float2( 0,0 ) , appendResult44_g14);
+				float2 panner76 = ( mulTime77 * float2( 0,2 ) + lerpResult151);
+				float simplePerlin2D75 = snoise( panner76*0.2 );
+				simplePerlin2D75 = simplePerlin2D75*0.5 + 0.5;
+				float2 lerpResult69 = lerp( texCoord30 , float2( 1.06,0 ) , simplePerlin2D75);
+				float2 texCoord46 = IN.ase_texcoord.xy * float2( 0,0 ) + lerpResult69;
+				float4 lerpResult134 = lerp( color135 , float4( 1,1,1,0 ) , texCoord46.y);
 				
 
-				surfaceDescription.Alpha = lerpResult60.r;
+				surfaceDescription.Alpha = lerpResult134.r;
 				surfaceDescription.AlphaClipThreshold = 0.5;
 
 				#if _ALPHATEST_ON
@@ -3391,7 +3732,7 @@ Shader "S_WindTunnel"
 }
 /*ASEBEGIN
 Version=19103
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;10;360.0164,12.58798;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;ExtraPrePass;0;0;ExtraPrePass;5;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;3;True;12;all;0;False;True;1;1;False;;0;False;;0;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;0;False;False;0;;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;10;-320.4534,-168.1743;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;ExtraPrePass;0;0;ExtraPrePass;5;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;3;True;12;all;0;False;True;1;1;False;;0;False;;0;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;0;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;12;360.0164,12.58798;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;ShadowCaster;0;2;ShadowCaster;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;False;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=ShadowCaster;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;13;360.0164,12.58798;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;DepthOnly;0;3;DepthOnly;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;True;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;False;False;True;1;LightMode=DepthOnly;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;14;360.0164,12.58798;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;Meta;0;4;Meta;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=Meta;False;False;0;;0;0;Standard;0;False;0
@@ -3400,33 +3741,41 @@ Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;16;360.0164,12.58798;Float;
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;17;360.0164,12.58798;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;GBuffer;0;7;GBuffer;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;3;True;12;all;0;False;True;1;5;False;;10;False;;1;1;False;;10;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalGBuffer;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;18;360.0164,12.58798;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;SceneSelectionPass;0;8;SceneSelectionPass;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=SceneSelectionPass;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;19;360.0164,12.58798;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;ScenePickingPass;0;9;ScenePickingPass;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=Picking;False;False;0;;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.SamplerNode;29;-1843.477,-327.5885;Inherit;True;Property;_TextureSample0;Texture Sample 0;0;0;Create;True;0;0;0;False;0;False;-1;27c242a5c4f199f4a8497ca1457d8022;27c242a5c4f199f4a8497ca1457d8022;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;11;360.0164,12.58798;Float;False;True;-1;2;UnityEditor.ShaderGraphLitGUI;0;12;S_WindTunnel;94348b07e5e8bab40bd6c8a1e3df54cd;True;Forward;0;1;Forward;19;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;2;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Transparent=RenderType;Queue=Transparent=Queue=0;True;3;True;12;all;0;False;True;1;5;False;;10;False;;1;1;False;;10;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalForward;False;False;0;;0;0;Standard;41;Workflow;1;0;Surface;1;638569097694249312;  Refraction Model;0;0;  Blend;0;0;Two Sided;1;0;Fragment Normal Space,InvertActionOnDeselection;0;0;Forward Only;0;0;Transmission;0;0;  Transmission Shadow;0.5,False,;0;Translucency;0;0;  Translucency Strength;1,False,;0;  Normal Distortion;0.5,False,;0;  Scattering;2,False,;0;  Direct;0.9,False,;0;  Ambient;0.1,False,;0;  Shadow;0.5,False,;0;Cast Shadows;1;0;  Use Shadow Threshold;0;0;Receive Shadows;1;0;GPU Instancing;1;0;LOD CrossFade;1;0;Built-in Fog;1;0;_FinalColorxAlpha;0;0;Meta Pass;1;0;Override Baked GI;0;0;Extra Pre Pass;0;0;DOTS Instancing;0;0;Tessellation;0;0;  Phong;0;0;  Strength;0.5,False,;0;  Type;0;0;  Tess;16,False,;0;  Min;10,False,;0;  Max;25,False,;0;  Edge Length;16,False,;0;  Max Displacement;25,False,;0;Write Depth;0;0;  Early Z;0;0;Vertex Position,InvertActionOnDeselection;1;0;Debug Display;0;0;Clear Coat;0;0;0;10;False;True;True;True;True;True;True;True;True;True;False;;False;0
-Node;AmplifyShaderEditor.ColorNode;49;-1387.579,-611.6009;Inherit;False;Constant;_Color1;Color 1;2;0;Create;True;0;0;0;False;0;False;0,0,0,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.TextureCoordinatesNode;46;-1154.741,-101.0714;Inherit;True;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.FunctionNode;44;-1460.618,-289.0109;Inherit;True;Noise Sine Wave;-1;;1;a6eff29f739ced848846e3b648af87bd;0;2;1;FLOAT;3.45;False;2;FLOAT2;-0.5,0.5;False;1;FLOAT;0
-Node;AmplifyShaderEditor.TextureCoordinatesNode;30;-2371.415,-470.6836;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.LerpOp;47;-917.9464,-214.9695;Inherit;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
-Node;AmplifyShaderEditor.TextureCoordinatesNode;61;-1018.796,204.9554;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.SimpleTimeNode;59;-1257.423,394.6886;Inherit;False;1;0;FLOAT;2.23;False;1;FLOAT;0
-Node;AmplifyShaderEditor.SinOpNode;57;-697.8936,184.6678;Inherit;True;1;0;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.LerpOp;60;-571.282,-214.3428;Inherit;True;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
-Node;AmplifyShaderEditor.ColorNode;48;-1092.948,-635.5115;Inherit;False;Constant;_Color0;Color 0;2;0;Create;True;0;0;0;False;0;False;0.8018868,0.8018868,0.8018868,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.ColorNode;68;-774.8829,-506.0024;Inherit;False;Constant;_Color2;Color 0;2;0;Create;True;0;0;0;False;0;False;0.1415094,0.1415094,0.1415094,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.PannerNode;31;-2072.384,-449.0564;Inherit;False;3;0;FLOAT2;0,0;False;2;FLOAT2;0.25,1;False;1;FLOAT;1;False;1;FLOAT2;0
-WireConnection;29;1;31;0
-WireConnection;11;0;60;0
-WireConnection;11;6;60;0
-WireConnection;46;1;44;0
-WireConnection;44;2;29;0
-WireConnection;47;0;48;0
-WireConnection;47;1;49;0
-WireConnection;47;2;46;1
-WireConnection;61;1;59;0
-WireConnection;57;0;61;2
-WireConnection;60;0;68;0
-WireConnection;60;1;47;0
-WireConnection;60;2;57;0
-WireConnection;31;0;30;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;11;-320.4534,-168.1743;Float;False;True;-1;2;UnityEditor.ShaderGraphLitGUI;0;12;S_WindTunnel;94348b07e5e8bab40bd6c8a1e3df54cd;True;Forward;0;1;Forward;19;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;2;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Transparent=RenderType;Queue=Transparent=Queue=0;True;3;True;12;all;0;False;True;1;5;False;;10;False;;1;1;False;;10;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalForward;False;False;0;;0;0;Standard;41;Workflow;1;0;Surface;1;638569097694249312;  Refraction Model;0;0;  Blend;0;0;Two Sided;1;0;Fragment Normal Space,InvertActionOnDeselection;0;0;Forward Only;0;0;Transmission;0;0;  Transmission Shadow;0.5,False,;0;Translucency;0;0;  Translucency Strength;1,False,;0;  Normal Distortion;0.5,False,;0;  Scattering;2,False,;0;  Direct;0.9,False,;0;  Ambient;0.1,False,;0;  Shadow;0.5,False,;0;Cast Shadows;1;0;  Use Shadow Threshold;0;0;Receive Shadows;1;0;GPU Instancing;1;0;LOD CrossFade;1;0;Built-in Fog;1;0;_FinalColorxAlpha;0;0;Meta Pass;1;0;Override Baked GI;0;0;Extra Pre Pass;0;0;DOTS Instancing;0;0;Tessellation;0;0;  Phong;0;0;  Strength;0.5,False,;0;  Type;0;0;  Tess;4.4,False,;0;  Min;10,False,;0;  Max;25,False,;0;  Edge Length;16,False,;0;  Max Displacement;25,False,;0;Write Depth;0;0;  Early Z;0;0;Vertex Position,InvertActionOnDeselection;1;0;Debug Display;0;0;Clear Coat;0;0;0;10;False;True;True;True;True;True;True;True;True;True;False;;False;0
+Node;AmplifyShaderEditor.RangedFloatNode;100;-537.9547,1.952471;Inherit;False;Constant;_Float2;Float 2;0;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.LerpOp;69;-1462.16,-759.303;Inherit;True;3;0;FLOAT2;0,0;False;1;FLOAT2;1.06,0;False;2;FLOAT;0;False;1;FLOAT2;0
+Node;AmplifyShaderEditor.FunctionNode;148;-2346.924,-102.6906;Inherit;True;Twirl;-1;;14;90936742ac32db8449cd21ab6dd337c8;0;4;1;FLOAT2;0,0;False;2;FLOAT2;0,0;False;3;FLOAT;0;False;4;FLOAT2;0,0;False;1;FLOAT2;0
+Node;AmplifyShaderEditor.TextureCoordinatesNode;46;-1252.984,-461.3669;Inherit;True;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.PannerNode;76;-1896.017,-464.577;Inherit;True;3;0;FLOAT2;0,0;False;2;FLOAT2;0,2;False;1;FLOAT;1;False;1;FLOAT2;0
+Node;AmplifyShaderEditor.FunctionNode;78;-2592.59,-448.9496;Inherit;True;Twirl;-1;;4;90936742ac32db8449cd21ab6dd337c8;0;4;1;FLOAT2;0,0;False;2;FLOAT2;0,0;False;3;FLOAT;0;False;4;FLOAT2;0,0;False;1;FLOAT2;0
+Node;AmplifyShaderEditor.LerpOp;151;-2241.52,-481.5187;Inherit;True;3;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;2;FLOAT2;0,0;False;1;FLOAT2;0
+Node;AmplifyShaderEditor.ColorNode;135;-1129.297,-785.026;Inherit;False;Constant;_Color3;Color 1;2;0;Create;True;0;0;0;False;0;False;0.3584906,0.3584906,0.3584906,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.RangedFloatNode;79;-2697.496,-86.4634;Inherit;False;Constant;_Float0;Float 0;0;0;Create;True;0;0;0;False;0;False;6;0;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.TextureCoordinatesNode;30;-2992.587,-592.9492;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.RangedFloatNode;149;-2451.349,289.7092;Inherit;False;Constant;_Float3;Float 0;0;0;Create;True;0;0;0;False;0;False;6;0;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;150;-2856.961,260.6989;Inherit;False;Constant;_Float4;Float 0;0;0;Create;True;0;0;0;False;0;False;1.24;0;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;88;-2991.072,-263.7287;Inherit;False;Constant;_Float1;Float 0;0;0;Create;True;0;0;0;False;0;False;-4;0;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.LerpOp;134;-936.1328,-425.5733;Inherit;True;3;0;COLOR;0.2830189,0.2830189,0.2830189,0;False;1;COLOR;1,1,1,0;False;2;FLOAT;0;False;1;COLOR;0
+Node;AmplifyShaderEditor.NoiseGeneratorNode;75;-1630.025,-444.4039;Inherit;True;Simplex2D;True;False;2;0;FLOAT2;0,0;False;1;FLOAT;0.2;False;1;FLOAT;0
+Node;AmplifyShaderEditor.SimpleTimeNode;77;-1932.004,46.10909;Inherit;False;1;0;FLOAT;5.65;False;1;FLOAT;0
+WireConnection;11;0;134;0
+WireConnection;11;4;100;0
+WireConnection;11;6;134;0
+WireConnection;69;0;30;0
+WireConnection;69;2;75;0
+WireConnection;148;1;30;0
+WireConnection;148;2;150;0
+WireConnection;148;3;149;0
+WireConnection;46;1;69;0
+WireConnection;76;0;151;0
+WireConnection;76;1;77;0
+WireConnection;78;1;30;0
+WireConnection;78;2;88;0
+WireConnection;78;3;79;0
+WireConnection;151;0;78;0
+WireConnection;151;2;148;0
+WireConnection;134;0;135;0
+WireConnection;134;2;46;2
+WireConnection;75;0;76;0
 ASEEND*/
-//CHKSM=044A748FF473B1EDE94D67BB8A48AE4CF2D7A629
+//CHKSM=691B85750C1FAE94BC4D22AF726D0F80BCE3D9CD
