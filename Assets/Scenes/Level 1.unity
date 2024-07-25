@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.2511921, g: 0.47104976, b: 0.47418886, a: 1}
+  m_IndirectSpecularColor: {r: 0.25119212, g: 0.47104976, b: 0.47418886, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11370,7 +11370,6 @@ MonoBehaviour:
   ui: {fileID: 794921522}
   player: {fileID: 0}
   lastCheckPoint: {fileID: 0}
-  _totalDeaths: 0
 --- !u!1 &563337069
 GameObject:
   m_ObjectHideFlags: 0
@@ -16113,26 +16112,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 4597374451278870202, guid: 6227959bbce8c014586a9e641911101a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4761548030024115317, guid: 6227959bbce8c014586a9e641911101a,
         type: 3}
       propertyPath: _boostBar
       value: 
       objectReference: {fileID: 8734057983601645908}
-    - target: {fileID: 4761548030024115317, guid: 6227959bbce8c014586a9e641911101a,
-        type: 3}
-      propertyPath: _shieldTime
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4761548030024115317, guid: 6227959bbce8c014586a9e641911101a,
-        type: 3}
-      propertyPath: _shieldCoolDown
-      value: 2.2
-      objectReference: {fileID: 0}
     - target: {fileID: 6761802725117173813, guid: 6227959bbce8c014586a9e641911101a,
         type: 3}
       propertyPath: camAnim

@@ -4874,7 +4874,6 @@ MonoBehaviour:
   ui: {fileID: 238327302}
   player: {fileID: 0}
   lastCheckPoint: {fileID: 0}
-  _totalDeaths: 0
 --- !u!1 &560668999
 GameObject:
   m_ObjectHideFlags: 0
@@ -7420,6 +7419,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3149537274144774872, guid: 6227959bbce8c014586a9e641911101a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3317361993605255604, guid: 6227959bbce8c014586a9e641911101a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4597374451278870202, guid: 6227959bbce8c014586a9e641911101a,
         type: 3}
       propertyPath: m_Name
@@ -8227,7 +8236,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &908502449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18532,11 +18541,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9699c8f5da3def54e9a312ea43291527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 813861137}
-  smoothSpeed: 49
-  locationOffset: {x: 0, y: 3, z: -5}
-  rotationOffset: {x: 15, y: 0, z: 0}
-  _maxDistance: 0
 --- !u!114 &1924983963
 MonoBehaviour:
   m_ObjectHideFlags: 0
