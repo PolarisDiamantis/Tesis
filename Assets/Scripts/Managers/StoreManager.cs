@@ -11,14 +11,19 @@ public class StoreManager : MonoBehaviour // Should probably make singleton fath
     [SerializeField] private WitchSkin[] _witchSkins;
     private int step = 0;
 
+    [Header("Base Model")]
     [SerializeField] private SkinnedMeshRenderer _witchModel;
-    [SerializeField] private TextMeshProUGUI _priceUI;
+
+    [Header("Buttons")]
     [SerializeField] private GameObject _equipButton;
     [SerializeField] private GameObject _buyButton;
 
+    [Header("UI")]
+    [SerializeField] private TextMeshProUGUI _priceUI;
     [SerializeField] private TextMeshProUGUI _crystalsUI;
 
     //public Material mat;
+    [Header("Skins")]
     public GameObject[] skins;
 
     private void Awake()

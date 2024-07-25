@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    public static GameManager Instance;
-    [SerializeField] public UIManager ui;
+    public UIManager ui;
     public PlayerModel player;
+
     public CheckPoint lastCheckPoint;
+
+    // Stats
     private int _collectedCrystals = 0;
-    public TimeSpan finalTime;
-    [SerializeField] int _totalDeaths = 0;
+    [HideInInspector]public TimeSpan finalTime;
+    private int _totalDeaths = 0;
 
     public int Crystals
     {
@@ -23,18 +25,6 @@ public class GameManager : MonoBehaviour
         {
             _collectedCrystals = value;
             UpdateCrystalCountUI(_collectedCrystals);
-        }
-    }
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
         }
     }
 

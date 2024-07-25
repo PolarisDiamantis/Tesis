@@ -17,6 +17,7 @@ public class PlayerView
     AudioClip _pickUpSound;
     // Camera
     Animator _camAnim;
+    Animator _anim;
 
     // Skins
     private WitchSkin[] _witchSkins;
@@ -26,6 +27,8 @@ public class PlayerView
     {
         
         _camAnim = c.camAnim;
+        _anim = c.anim;
+
         _normalSpeed = c.normalSpeed;
         _boostSpeed = c.boostSpeed;
         _boostForceField = c.boostParticles;
@@ -48,6 +51,9 @@ public class PlayerView
         c.OnBoostReady += OnBoostReady;
         c.OnCrystalCollected += OnCrystalCollected;
 
+        c.OnMovement += OnMovement;
+        c.OnDeath += OnDeath;
+        c.OnDamage += OnDamage;
         // Audios
         _pickUpSound = c.pickUpSound;
 
@@ -56,23 +62,6 @@ public class PlayerView
         _witchSkins = c.witchSkins;
         _witchModel = c.witchModel;
 
-        /*if (PlayerPrefs.HasKey("equippedSkinID"))
-        {
-            string equippedID = PlayerPrefs.GetString("equippedSkinID");
-            foreach(WitchSkin i in _witchSkins)
-            {
-                if(i.skinKey == equippedID)
-                {
-                    _witchModel.material = i.skin;
-                    break;
-                }
-            }
-        }
-        else
-        {
-            _witchModel.material = _witchSkins[0].skin;
-            PlayerPrefs.SetString("equippedSkinID", _witchSkins[0].skinKey);
-        }*/
     }
 
     public void VirtualUpdate()
@@ -157,5 +146,22 @@ public class PlayerView
     {
         _crystalParticle.Play();
         AudioManager.instance.PlaySound(_pickUpSound);
+    }
+
+    private void OnMovement(float x, float y)
+    {
+        _anim.SetFloat("x", x * 75);
+        _anim.SetFloat("y", y);
+    }
+
+    private void OnDeath()
+    {
+        _anim.SetTrigger("Death");
+    }
+
+    private void OnDamage()
+    {
+        _anim.SetTrigger("Damage");
+        _anim.SetInteger("DamageID", UnityEngine.Random.Range(0, 2));
     }
 }

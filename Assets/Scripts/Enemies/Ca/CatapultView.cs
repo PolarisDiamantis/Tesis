@@ -6,15 +6,15 @@ public class CatapultView
 {
     Animator _anim;
     AudioSource _onReloadInstance;
-    AudioSource _onBomInstance;
+    //AudioSource _onBoomInstance;
 
     public CatapultView(Catapult a)
     {
         _anim = a.anim;
         a.OnFire += OnFire;
         a.OnReload += OnReload;
-        _onReloadInstance = a._onReload;
-        _onBomInstance = a._bomCatapult;
+        _onReloadInstance = a.onReload;
+        //_onBoomInstance = a.boomCatapult;
     }
 
     private void OnReload()

@@ -21,6 +21,10 @@ public class PlayerModel : MonoBehaviour
     public Action OnBoostReady = delegate { };
     public Action OnCrystalCollected = delegate { };
 
+    public Action<float, float> OnMovement = delegate { };
+    public Action OnDeath = delegate { };
+    public Action OnDamage = delegate { };
+
     private PlayerView _view;
 
     [Header("Particles")]
@@ -32,7 +36,6 @@ public class PlayerModel : MonoBehaviour
     public ParticleSystem boostReady;
     public ParticleSystem boostDecharge;
     public ParticleSystem crystalParticle;
-    //public CinemachineVirtualCamera cam;
 
     [Header("Animations")]
     public Animator camAnim;
@@ -48,6 +51,7 @@ public class PlayerModel : MonoBehaviour
     public WitchSkin[] witchSkins;
     public GameObject[] skins;
     public SkinnedMeshRenderer witchModel;
+
     [HideInInspector] public bool _isShieldGO = false;
 
     [SerializeField] private GameObject _shieldGreen, _shieldFire;
@@ -103,24 +107,15 @@ public class PlayerModel : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance.player = this;
+        if(GameManager.Instance != null) GameManager.Instance.player = this;
     }
 
     private void FixedUpdate()
     {
-        //Debug.Log(_rb.velocity.magnitude);
-        // When about to collision with an obstacles, impulses the player in the opposite direction of said collision.
         RaycastHit hit;
 
-        /*if (Physics.SphereCast(rb.position, _collisionSphere, transform.forward, out hit, _collisionSphere, _collisionMask))
-        {
-            OnDamage();
-            Vector3 imp = transform.position - hit.point;
-            rb.velocity = Vector3.zero;
-            AddImpulse(imp.normalized * _impulseStreght);
-        }*/
-
-        if(Physics.Raycast(rb.position, transform.forward, out hit,_collisionSphere, _collisionMask))
+        // When about to collision with an obstacles, impulses the player in the opposite direction of said collision.
+        if (Physics.Raycast(rb.position, transform.forward, out hit,_collisionSphere, _collisionMask))
         {
             Debug.Log("Col");
             if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Damage"))
@@ -165,23 +160,6 @@ public class PlayerModel : MonoBehaviour
         rb.AddForce(dir, ForceMode.VelocityChange);
     }
     #endregion
-
-    public void OnMovement(float x, float y)
-    {
-        anim.SetFloat("x", x * 75);
-        anim.SetFloat("y", y);
-    }
-
-    public void OnDeath()
-    {
-        anim.SetTrigger("Death");
-    }
-
-    public void OnDamage()
-    {
-        anim.SetTrigger("Damage");
-        anim.SetInteger("DamageID", UnityEngine.Random.Range(0, 2));
-    }
 
     public void KillPlayer(CheckPoint check)
     {

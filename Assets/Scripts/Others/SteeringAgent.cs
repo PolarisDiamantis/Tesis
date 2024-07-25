@@ -5,9 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public abstract class SteeringAgent : MonoBehaviour
 {
+    [Header("Movement Settings")]
     [SerializeField] private float _force;
     [SerializeField] protected float _maxVelocity;
     protected Rigidbody _rb;
+    [Header("View Settings")]
     [SerializeField] protected float _viewRadius = 5;
 
     protected virtual void Awake()

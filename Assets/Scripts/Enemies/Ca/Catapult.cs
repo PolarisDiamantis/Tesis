@@ -5,18 +5,24 @@ using System;
 
 public class Catapult : MonoBehaviour
 {
-    [SerializeField] int stonesPerThrow = 15;
-    [Header("Instance")]
-    [SerializeField] GameObject _instance;
-    [SerializeField] float _minInterval = 5f;
-    [SerializeField] float _maxInterval = 5f;
-    [SerializeField] Transform _throwPoint;
+    [Header("View Settings")]
     [SerializeField] private float _range = 20f;
     [SerializeField] float _viewAngle;
     [SerializeField] Transform _playerRot;
     [SerializeField] float _rotationSpeed = 1.5f;
-    public AudioSource _onReload;
-    public AudioSource _bomCatapult;
+
+    [Header("Throwable Settings")]
+    [SerializeField] Transform _throwPoint;
+    [SerializeField] GameObject _instance;
+    [SerializeField] int stonesPerThrow = 15;
+
+    [Header("Intervals")]
+    [SerializeField] float _minInterval = 5f;
+    [SerializeField] float _maxInterval = 5f;
+
+    [Header("Audios")]
+    public AudioSource onReload;
+    //public AudioSource boomCatapult;
 
     [Header("Fragmentation Range")]
     [SerializeField] float _minXRot = -20f;
@@ -24,17 +30,16 @@ public class Catapult : MonoBehaviour
     [SerializeField] float _minYRot = -10f;
     [SerializeField] float _maxYRot = 10f;
 
-    private GameManager _gm;
-    private bool _isBusy = false;
-    private bool _isOnRange = false;
-
-    // Anim
+    [Header("Animation Settings")]
     private CatapultView _view;
     public Animator anim;
     public Action OnFire = delegate { };
     public Action OnReload = delegate { };
 
-
+    // Internal
+    private GameManager _gm;
+    private bool _isBusy = false;
+    private bool _isOnRange = false;
 
     private void Awake()
     {
@@ -60,7 +65,6 @@ public class Catapult : MonoBehaviour
 
         if (_isOnRange)
         {
-            //transform.LookAt(GameManager.Instance.player.transform, Vector3.up);
             Quaternion goalRot = Quaternion.Euler(0, _playerRot.rotation.eulerAngles.y, 0);
             transform.rotation = Quaternion.Lerp(transform.rotation, goalRot, Time.deltaTime * _rotationSpeed);
         }

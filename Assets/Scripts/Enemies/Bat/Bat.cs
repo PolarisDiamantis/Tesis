@@ -5,7 +5,10 @@ using UnityEngine;
 public class Bat : SteeringAgent
 {
     private bool _playerSpotted = false;
+    [Header("Bat Settings")]
     [SerializeField] private float _effectArea = 10f;
+
+    // Update: Make the bat go to player pos, once there make it show on their screen for a set amount of time and the attack.
     private void Update()
     {
         if (Vector3.Distance(_rb.position, GameManager.Instance.player.transform.position) <= _effectArea)

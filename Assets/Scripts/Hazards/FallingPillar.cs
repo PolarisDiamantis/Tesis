@@ -6,9 +6,17 @@ public class FallingPillar : MonoBehaviour
 {
     private bool _isTriggered = false;
     private bool _isActive = false;
+
+    [Header("Movement Settings")]
     [SerializeField] private float _fallStreght;
+    [SerializeField] private float _coolDownTime = 3f;
+
+    [Header("View Settings")]
     [SerializeField] private float _triggerRadius;
+
+
     private Quaternion originalPos;
+
 
     private void Awake()
     {
@@ -17,6 +25,7 @@ public class FallingPillar : MonoBehaviour
 
     private void Update()
     {
+        // Triggers falling once player is in the trigger radius.
         if(Vector3.Distance(transform.position, GameManager.Instance.player.transform.position) <= _triggerRadius && !_isTriggered)
         {
             _isActive = true;
@@ -29,6 +38,7 @@ public class FallingPillar : MonoBehaviour
 
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(120, transform
             .rotation.eulerAngles.y, transform.rotation.eulerAngles.z), Time.fixedDeltaTime * _fallStreght);
+
         if (transform.rotation.eulerAngles.x >= 85f)
         {
             if (_isActive)
@@ -41,7 +51,7 @@ public class FallingPillar : MonoBehaviour
 
     private IEnumerator ReturnToOGPos()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(_coolDownTime);
         transform.rotation = originalPos;
         _isTriggered = false;
         _isActive = false;

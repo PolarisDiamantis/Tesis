@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _controlSnap = 1;
 
     public bool _lockInputs = false;
-    [Header("Boost Settings")]
+    //[Header("Boost Settings")]
     public bool isBoost = false;
     public bool isShield = false;
 
