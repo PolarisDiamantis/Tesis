@@ -5,26 +5,33 @@ using UnityEngine;
 public class Bat : SteeringAgent
 {
     private bool _playerSpotted = false;
+    private bool _isWaiting = false;
+    private Transform _player;
+    private Vector3 _initialPosition;
+
     [Header("Bat Settings")]
     [SerializeField] private float _effectArea = 10f;
     [SerializeField] private float _stopDistance = 5f;
-    [SerializeField] private float _waitTimeBeforeAttack = 2f;
+    [SerializeField] private float _minWaitTimeBeforeAttack = 2f;
+    [SerializeField] private float _maxWaitTimeBeforeAttack = 2f;
+    [SerializeField] private float _forwardOffset = 2f;
+    [SerializeField] private float _attackSpeed = 2f;
 
-    private Transform _player;
 
-
-    // Update: Make the bat go to player pos, once there make it show on their screen for a set amount of time and the attack.
     private void Update()
     {
-        if (Vector3.Distance(_rb.position, GameManager.Instance.player.transform.position) <= _effectArea)
+        float distanceToPlayer = Vector3.Distance(transform.position, GameManager.Instance.player.transform.position);
+
+        if (distanceToPlayer <= _effectArea)
         {
             if (!GameManager.Instance.player.GetComponent<PlayerController>().isShield)
             {
-                //GameManager.Instance.KillPlayer();
+                GameManager.Instance.KillPlayer();
             }
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
-        if (Vector3.Distance(_rb.position, GameManager.Instance.player.transform.position) <= _viewRadius)
+
+        if (distanceToPlayer <= _viewRadius)
         {
             _playerSpotted = true;
         }
@@ -36,12 +43,25 @@ public class Bat : SteeringAgent
 
     private void FixedUpdate()
     {
-        if (!_playerSpotted) return;
-        if (Vector3.Distance(_rb.position, GameManager.Instance.player.transform.position) > _stopDistance)
+        if (!_playerSpotted || _isWaiting) return;
+
+        _player = GameManager.Instance.player.transform;
+        //Vector3 forwardPosition = _player.position + _player.forward * _forwardOffset;
+        Vector3 forwardPosition = _player.position + new Vector3(0, 0, _forwardOffset);
+
+        float distanceToPlayer = Vector3.Distance(transform.position, _player.position);
+
+        if (Vector3.Distance(_rb.position, forwardPosition) > _stopDistance)
         {
-            _player = GameManager.Instance.player.transform;
-            Seek(_player.position);
-            LookAtTarget(_player.position);
+            Seek(forwardPosition);
+            LookAtTarget(forwardPosition);
+        }
+        else
+        {
+            if (!_isWaiting)
+            {
+                StartCoroutine(WaitAndAttack());
+            }
         }
     }
 
@@ -49,8 +69,40 @@ public class Bat : SteeringAgent
     {
         Vector3 direction = (targetPosition - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f); // Ajusta la velocidad de rotación según sea necesario
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
+
+    private IEnumerator WaitAndAttack()
+    {
+        _isWaiting = true;
+        transform.SetParent(_player);
+        _initialPosition = transform.localPosition;
+
+        yield return new WaitForSeconds(Random.Range(_minWaitTimeBeforeAttack, _maxWaitTimeBeforeAttack));
+
+        Vector3 attackPosition = _player.position;
+
+        while (Vector3.Distance(transform.position, attackPosition) > 0.1f)
+        {
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition, Vector3.zero, _attackSpeed * Time.deltaTime);
+            LookAtTarget(attackPosition);
+            yield return null;
+        }
+
+        /*
+        if (Vector3.Distance(transform.position, Vector3.zero) <= 1f)
+        {
+            if (!GameManager.Instance.player.GetComponent<PlayerController>().isShield)
+            {
+                GameManager.Instance.KillPlayer();
+            }
+            Destroy(gameObject);
+        }
+        */
+
+        _isWaiting = false;
+    }
+
 
     private void OnDrawGizmos()
     {

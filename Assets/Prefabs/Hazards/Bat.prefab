@@ -1420,10 +1420,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.3542692, y: 0.10982984, z: 0.19984618}
+  m_Center: {x: 0, y: 0.022608513, z: 0}
 --- !u!54 &2005447834585568897
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1463,12 +1463,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00269156db56e3647b316a268a569b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _force: 1200
-  _maxVelocity: 280
+  _force: 1000
+  _maxVelocity: 1000
   _viewRadius: 600
-  _effectArea: 10
-  _stopDistance: 30
-  _waitTimeBeforeAttack: 8
+  _effectArea: 1
+  _stopDistance: 3
+  _minWaitTimeBeforeAttack: 5
+  _maxWaitTimeBeforeAttack: 8
+  _forwardOffset: 10
+  _attackSpeed: 10
 --- !u!1 &8874879992409553843
 GameObject:
   m_ObjectHideFlags: 0
