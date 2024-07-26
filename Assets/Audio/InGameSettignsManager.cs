@@ -4,10 +4,9 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class AudioManagerMixer : MonoBehaviour
+public class InGameSettignsManager : Singleton<InGameSettignsManager>
 {
     
-    public static AudioManagerMixer instance;
     [SerializeField] private AudioMixer _mixer;
 
 
@@ -22,18 +21,6 @@ public class AudioManagerMixer : MonoBehaviour
     [SerializeField] private Slider _music;
     [SerializeField] private Slider _sfx;
     [SerializeField] private Slider _sensitivity;
-
-    private void Awake()
-    {
-        if (instance == null) 
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
 
     private void Start()
     {

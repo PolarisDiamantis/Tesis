@@ -46,21 +46,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _boostTime = 4f;
     [SerializeField] private float _boostCoolDown = 4f;
     private float _boostCoolDownTimer = 0f;
-    [SerializeField] Image _boostBar;
 
     // Edit variables with rune logic
     [Header("Shield Settings")]
     [SerializeField] private float _shieldTime;
     [SerializeField] private float _shieldCoolDown;
     private float _shieldCoolDownTimer = 0f;
-    [SerializeField] Image _shieldBar;
 
     // Modify throtle with rune logic
     // Add extra life rune
 
     Vector2 direction;
 
-    public TextMeshProUGUI manaUI;
+    //public TextMeshProUGUI manaUI;
 
     public bool isSlowed = false;
 
@@ -76,16 +74,19 @@ public class PlayerController : MonoBehaviour
         if (isBoost)
         {
             _boostCoolDownTimer -= Time.deltaTime;
-            _boostBar.fillAmount = _boostCoolDownTimer / (_boostTime);
+            if(UIManager.Instance != null) 
+                if(UIManager.Instance.boostBar != null)
+                    UIManager.Instance.boostBar.fillAmount = _boostCoolDownTimer / (_boostTime);
         }
         if (!_canBoost && !isBoost)
         {
             _boostCoolDownTimer += Time.deltaTime;
-            _boostBar.fillAmount = _boostCoolDownTimer / (_boostCoolDown);
+            if (UIManager.Instance != null)
+                if (UIManager.Instance.boostBar != null)
+                    UIManager.Instance.boostBar.fillAmount = _boostCoolDownTimer / (_boostCoolDown);
         }
         if (direction.x == 0 && direction.y == 0)
         {
-            //Debug.Log("B");
             _horizontalInput = Mathf.Lerp(_horizontalInput, 0, _controlSnap * Time.deltaTime * 0.7f);
             _verticalInput = Mathf.Lerp(_verticalInput, 0, _controlSnap * Time.deltaTime * 0.7f);
         }
@@ -218,6 +219,14 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(ShieldSequence(_shieldTime, _shieldCoolDown));
         }
     }
+
+    public void OnTeleport(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            TeleportFoward(200);
+        }
+    }
     #endregion
 
     #region Debug Methods
@@ -229,7 +238,7 @@ public class PlayerController : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             Time.timeScale = 0f;
-            GameManager.Instance.ui.pauseUI.SetActive(true);
+            UIManager.Instance.pauseUI.SetActive(true);
         }
     }
 
@@ -253,6 +262,21 @@ public class PlayerController : MonoBehaviour
     {
         _boostCoolDown *= multiplierB;
         _shieldCoolDown *= multiplierS;
+    }
+
+    public void TeleportFoward(float distance)
+    {
+        //Vector3 destination = _agent.rb.position + (transform.forward * distance);
+        StartCoroutine(TeleportProcess(distance, 0.25f, 2f));
+
+    }
+
+    IEnumerator TeleportProcess(float distance, float charge, float cooldown)
+    {
+        yield return new WaitForSeconds(charge);
+        Vector3 destination = _agent.rb.position + (transform.forward * distance);
+        _agent.transform.position = destination;
+        yield return new WaitForSeconds(cooldown);
     }
 
     #region Power Sequences

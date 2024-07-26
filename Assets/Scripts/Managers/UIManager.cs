@@ -5,25 +5,31 @@ using TMPro;
 using UnityEngine.UI;
 using System;
 
-public class UIManager : MonoBehaviour
+public class UIManager : Singleton<UIManager>
 {
     public TextMeshProUGUI crystalsUI;
+
+    [Header("Final Results UI")]
     public TextMeshProUGUI finalCrystalsUI;
     public TextMeshProUGUI lvlUI;
     public TextMeshProUGUI finalTimeUI;
     public TextMeshProUGUI finalDeathsUI;
 
+
+    [Header("Final Scores Images")]
     public GameObject[] posibleFinalScores;
     public GameObject[] posibleTimeScores;
     public GameObject[] posibleCrystalScores;
     public GameObject[] posibleDeathScores;
 
 
-    public GameObject finalResults;
+    /*[SerializeField]*/ public GameObject finalResultsUI;
+    /*[SerializeField]*/ public GameObject runesUI;
+    /*[SerializeField]*/ public GameObject pauseUI;
 
-    public GameObject runesUI;
-
-    public GameObject pauseUI;
+    [Header("Ability bars")]
+    public Image boostBar;
+    //public Image shieldBar;
 
     public void UpdateCrystalCount(int val)
     {
@@ -143,6 +149,6 @@ public class UIManager : MonoBehaviour
 
     public void ShowResults()
     {
-        finalResults.SetActive(true);
+        finalResultsUI.SetActive(true);
     }
 }

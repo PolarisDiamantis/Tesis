@@ -21,7 +21,7 @@ public class PlayerRunes : MonoBehaviour
 
     private void Start()
     {
-        _ui = GameManager.Instance.ui;
+        if(UIManager.Instance != null) _ui = UIManager.Instance;
         _controller = GetComponent<PlayerController>();
         _model = GetComponent<PlayerModel>();
     }

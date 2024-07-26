@@ -59874,6 +59874,7 @@ MonoBehaviour:
   - {fileID: 6572855431846996823}
   - {fileID: 2453479707544433314}
   witchModel: {fileID: 4013639765673736901}
+  damageShader: {fileID: 0}
   _isShieldGO: 0
   _shieldGreen: {fileID: 4315531371384540662}
   _shieldFire: {fileID: 1996098945294082989}
@@ -59901,11 +59902,8 @@ MonoBehaviour:
   isShield: 0
   _boostTime: 4
   _boostCoolDown: 4
-  _boostBar: {fileID: 0}
   _shieldTime: 1.5
   _shieldCoolDown: 2.2
-  _shieldBar: {fileID: 0}
-  manaUI: {fileID: 0}
   isSlowed: 0
 --- !u!114 &6454114422181072446
 MonoBehaviour:
@@ -60079,6 +60077,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 3356f79e-0639-4566-93d0-b7560919066e
     m_ActionName: Base/Shield[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4761548030024115317}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnTeleport
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: efc09af2-bee4-4a37-ada7-dbf4fca32c88
+    m_ActionName: Base/Teleport[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Base
