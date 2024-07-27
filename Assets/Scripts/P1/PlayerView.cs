@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.VFX;
 
 public class PlayerView
 {
@@ -21,11 +22,13 @@ public class PlayerView
 
     // Skins
     private WitchSkin[] _witchSkins;
-    private SkinnedMeshRenderer _witchModel;
+    private GameObject _witchModel;
+
+    private VisualEffect _tpInitial;
+    private VisualEffect _tpIFinish;
 
     public PlayerView(PlayerModel c)
     {
-        
         _camAnim = c.camAnim;
         _anim = c.anim;
 
@@ -37,6 +40,9 @@ public class PlayerView
         _boostReady = c.boostReady;
         _boostDecharge = c.boostDecharge;
         _crystalParticle = c.crystalParticle;
+
+        _tpInitial = c.tpInitial;
+        _tpIFinish = c.tpIFinish;
 
         if (c._isShieldGO)
         {
@@ -50,6 +56,9 @@ public class PlayerView
         c.OnBoostLoadUp += OnBoostLoadUp;
         c.OnBoostReady += OnBoostReady;
         c.OnCrystalCollected += OnCrystalCollected;
+        c.ONTpStart += OnTPStart;
+        c.OnTpArrive += OnTPArrive;
+        c.ONTpBegan += OnTPBegan;
 
         c.OnMovement += OnMovement;
         c.OnDeath += OnDeath;
@@ -163,5 +172,24 @@ public class PlayerView
     {
         _anim.SetTrigger("Damage");
         _anim.SetInteger("DamageID", UnityEngine.Random.Range(0, 2));
+    }
+
+    private void OnTPStart()
+    {
+        _tpInitial.Play();
+        _camAnim.Play("TP");
+    }
+
+    private void OnTPBegan()
+    {
+        //_camAnim.Play("TP");
+        _witchModel.SetActive(false);
+    }
+
+    private void OnTPArrive()
+    {
+        _witchModel.SetActive(true);
+        _tpIFinish.Play();
+        _camAnim.Play("Normal");
     }
 }

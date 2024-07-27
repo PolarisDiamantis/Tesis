@@ -267,15 +267,19 @@ public class PlayerController : MonoBehaviour
     public void TeleportFoward(float distance)
     {
         //Vector3 destination = _agent.rb.position + (transform.forward * distance);
-        StartCoroutine(TeleportProcess(distance, 0.25f, 2f));
+        StartCoroutine(TeleportProcess(distance, 0.50f, 2f));
 
     }
 
     IEnumerator TeleportProcess(float distance, float charge, float cooldown)
     {
+        _agent.ONTpStart();
         yield return new WaitForSeconds(charge);
+        _agent.ONTpBegan();
+        yield return new WaitForSeconds(0.5f);
         Vector3 destination = _agent.rb.position + (transform.forward * distance);
-        _agent.transform.position = destination;
+        _agent.OnTpArrive();
+        _agent.rb.position = destination;
         yield return new WaitForSeconds(cooldown);
     }
 

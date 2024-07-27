@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Cinemachine;
+using UnityEngine.VFX;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerModel : MonoBehaviour
@@ -25,6 +26,10 @@ public class PlayerModel : MonoBehaviour
     public Action OnDeath = delegate { };
     public Action OnDamage = delegate { };
 
+    public Action ONTpStart = delegate { };
+    public Action ONTpBegan = delegate { };
+    public Action OnTpArrive = delegate { };
+
     private PlayerView _view;
 
     [Header("Particles")]
@@ -36,6 +41,9 @@ public class PlayerModel : MonoBehaviour
     public ParticleSystem boostReady;
     public ParticleSystem boostDecharge;
     public ParticleSystem crystalParticle;
+
+    public VisualEffect tpInitial;
+    public VisualEffect tpIFinish;
 
     [Header("Animations")]
     public Animator camAnim;
@@ -50,7 +58,7 @@ public class PlayerModel : MonoBehaviour
     [Header("Skins")]
     public WitchSkin[] witchSkins;
     public GameObject[] skins;
-    public SkinnedMeshRenderer witchModel;
+    public GameObject witchModel;
 
     [Header("Shaders")]
     public FullScreenTestController damageShader;
