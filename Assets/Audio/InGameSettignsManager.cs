@@ -81,7 +81,7 @@ public class InGameSettignsManager : Singleton<InGameSettignsManager>
 
     public void ReturnToGame()
     {
-        GameManager.Instance.player.GetComponent<PlayerController>()._lockInputs = false;
+        GameManager.Instance.player.GetComponent<PlayerController>().lockInputs = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Time.timeScale = 1f;

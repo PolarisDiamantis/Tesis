@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float _controlSnap = 1;
 
-    public bool _lockInputs = false;
+    public bool lockInputs = false;
     //[Header("Boost Settings")]
     public bool isBoost = false;
     public bool isShield = false;
@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_lockInputs) return;
+        if (lockInputs) return;
 
         // Throttle
         if (isBoost)
@@ -136,7 +136,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleThrottleInputs()
     {
-        if (_lockInputs) return;
+        if (lockInputs) return;
         if (_throttleUp) _throttle += throttleIncrement;
         if (!_throttleUp && !_throttleDown) _throttle -= throttleIncrement;
         if (_throttleDown) _throttle -= throttleIncrement * 2;
@@ -234,7 +234,7 @@ public class PlayerController : MonoBehaviour
     {
         if (context.performed)
         {
-            _lockInputs = true;
+            lockInputs = true;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             Time.timeScale = 0f;
