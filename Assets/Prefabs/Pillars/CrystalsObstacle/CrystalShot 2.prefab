@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2578015719317168710}
   - component: {fileID: -4670208596652109213}
   - component: {fileID: -8890396062554186305}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CrystalShot 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,7 +32,8 @@ Transform:
   m_LocalPosition: {x: -873.2, y: 203.1, z: -4202.6}
   m_LocalScale: {x: 1500, y: 1500, z: 1500}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 4017755554188026815}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -20.452}
 --- !u!33 &3408492612971119567
@@ -116,3 +117,58 @@ MonoBehaviour:
   speed: 450
   direction: {x: 1, y: 0, z: -1}
   lifetime: 35
+--- !u!1 &3337978019778475365
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4017755554188026815}
+  - component: {fileID: 61886750468116168}
+  m_Layer: 6
+  m_Name: HitBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4017755554188026815
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3337978019778475365}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.23829702, y: -0.66079026, z: 0.23007524, w: 0.6735252}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.1764263, y: 1.406341, z: 1.6101319}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2692286767402265957}
+  m_LocalEulerAnglesHint: {x: 38.687, y: -89.035, z: -0.367}
+--- !u!136 &61886750468116168
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3337978019778475365}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.003804533
+  m_Height: 0.037474833
+  m_Direction: 1
+  m_Center: {x: 0.00029769787, y: -0.0009092328, z: 0.00064579817}

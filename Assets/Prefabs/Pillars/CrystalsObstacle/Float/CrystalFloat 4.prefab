@@ -1,5 +1,60 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5986942122592185253
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3825402082153612307}
+  - component: {fileID: 8720812164252640243}
+  m_Layer: 6
+  m_Name: HitBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3825402082153612307
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5986942122592185253}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.33463997, y: -0.47350165, z: -0.199003, w: 0.7900697}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.1764268, y: 1.4063413, z: 1.6101321}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1581011442535620479}
+  m_LocalEulerAnglesHint: {x: 19.896, y: -69.609, z: -42.178}
+--- !u!136 &8720812164252640243
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5986942122592185253}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0029526355
+  m_Height: 0.021655941
+  m_Direction: 1
+  m_Center: {x: 0.00026746508, y: -0.0005724112, z: -0.00008865637}
 --- !u!1 &6676851847246052285
 GameObject:
   m_ObjectHideFlags: 0
@@ -13,7 +68,8 @@ GameObject:
   - component: {fileID: 8562930039752855758}
   - component: {fileID: 5053113682876802540}
   - component: {fileID: 8189458813258200223}
-  m_Layer: 0
+  - component: {fileID: -4728034974395010738}
+  m_Layer: 6
   m_Name: CrystalFloat 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,7 +88,8 @@ Transform:
   m_LocalPosition: {x: -871.4, y: 162.5, z: -4249.9}
   m_LocalScale: {x: 1500, y: 1499.9999, z: 1499.9999}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 3825402082153612307}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -13.763, y: 0, z: 0}
 --- !u!33 &3941341069057862256
@@ -115,3 +172,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   areaRadius: 100
+--- !u!64 &-4728034974395010738
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6676851847246052285}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2786440611349163606, guid: c26eb52155e5aea4d9423de623fde9e9, type: 3}

@@ -1,5 +1,60 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3832226044650852075
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7660191414980103885}
+  - component: {fileID: 7702582686202877125}
+  m_Layer: 6
+  m_Name: HitBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7660191414980103885
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3832226044650852075}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.052463263, y: -0.7253543, z: -0.38845694, w: 0.565871}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.1764266, y: 1.4063417, z: 1.6101322}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5760118057614607613}
+  m_LocalEulerAnglesHint: {x: -38.529, y: -94.236, z: -27.69}
+--- !u!136 &7702582686202877125
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3832226044650852075}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0040332396
+  m_Height: 0.036954395
+  m_Direction: 1
+  m_Center: {x: 0.00071231, y: 0.00018786761, z: -0.0011129221}
 --- !u!1 &5225596049029295524
 GameObject:
   m_ObjectHideFlags: 0
@@ -13,7 +68,7 @@ GameObject:
   - component: {fileID: 7731370110428701572}
   - component: {fileID: 1649422985152609898}
   - component: {fileID: 1077465704124770604}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CrystalShot 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,7 +87,8 @@ Transform:
   m_LocalPosition: {x: -934.4, y: 162.6, z: -4136}
   m_LocalScale: {x: 1500, y: 1500, z: 1500}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 7660191414980103885}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7661243661366755409
