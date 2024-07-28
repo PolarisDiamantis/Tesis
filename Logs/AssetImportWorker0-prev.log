@@ -1,0 +1,529 @@
+Using pre-set license
+Built from '2022.3/release' branch; Version is '2022.3.5f1 (9674261d40ee) revision 9860134'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19045) 64bit Professional' Language: 'es' Physical Memory: 32541 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity 2022.3.5f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+E:/GitHub/TESIS/Tesis Enchanted Skylands
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+60941
+Successfully changed project path to: E:/GitHub/TESIS/Tesis Enchanted Skylands
+E:/GitHub/TESIS/Tesis Enchanted Skylands
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [25068] Host "[IP] 192.168.0.102 [Port] 0 [Flags] 2 [Guid] 4078514829 [EditorId] 4078514829 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-IOH5AP5) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [25068] Host "[IP] 192.168.0.102 [Port] 0 [Flags] 2 [Guid] 4078514829 [EditorId] 4078514829 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-IOH5AP5) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+Refreshing native plugins compatible for Editor in 8.06 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.3.5f1 (9674261d40ee)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity 2022.3.5f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path E:/GitHub/TESIS/Tesis Enchanted Skylands/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1060 6GB (ID=0x1b83)
+    Vendor:   NVIDIA
+    VRAM:     6029 MB
+    Driver:   32.0.15.5612
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity 2022.3.5f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity 2022.3.5f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity 2022.3.5f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56836
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity 2022.3.5f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.010141 seconds.
+- Loaded All Assemblies, in  0.387 seconds
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.298 seconds
+Domain Reload Profiling: 682ms
+	BeginReloadAssembly (108ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (37ms)
+	RebuildNativeTypeToScriptingClass (12ms)
+	initialDomainReloadingComplete (73ms)
+	LoadAllAssembliesAndSetupDomain (153ms)
+		LoadAssemblies (104ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (143ms)
+			TypeCache.Refresh (142ms)
+				TypeCache.ScanAssembly (130ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (298ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (232ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (12ms)
+			SetLoadedEditorAssemblies (8ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (2ms)
+			ProcessInitializeOnLoadAttributes (156ms)
+			ProcessInitializeOnLoadMethodAttributes (54ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image E:\GitHub\TESIS\Tesis Enchanted Skylands\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image E:\GitHub\TESIS\Tesis Enchanted Skylands\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  0.894 seconds
+Refreshing native plugins compatible for Editor in 3.10 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.862 seconds
+Domain Reload Profiling: 1754ms
+	BeginReloadAssembly (149ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (19ms)
+	RebuildCommonClasses (37ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (54ms)
+	LoadAllAssembliesAndSetupDomain (638ms)
+		LoadAssemblies (316ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (395ms)
+			TypeCache.Refresh (351ms)
+				TypeCache.ScanAssembly (337ms)
+			ScanForSourceGeneratedMonoScriptInfo (30ms)
+			ResolveRequiredComponents (14ms)
+	FinalizeReload (863ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (620ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (7ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (82ms)
+			ProcessInitializeOnLoadAttributes (440ms)
+			ProcessInitializeOnLoadMethodAttributes (76ms)
+			AfterProcessingInitializeOnLoad (11ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (8ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 3.29 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6880 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 88 unused Assets / (1.2 MB). Loaded Objects now: 7384.
+Memory consumption went from 424.3 MB to 423.2 MB.
+Total: 5.223700 ms (FindLiveObjects: 0.848400 ms CreateObjectMapping: 0.394600 ms MarkObjects: 3.552100 ms  DeleteObjects: 0.427500 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 513154.398732 seconds.
+  path: Assets/Scenes/Level 4.unity
+  artifactKey: Guid(599ee35e584062341a77d39f0a7f536b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Level 4.unity using Guid(599ee35e584062341a77d39f0a7f536b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '486f3faf2f8ea9a1b8027b67c99562a3') in 0.003285 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 2.63 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4 unused Assets / (1.1 MB). Loaded Objects now: 7384.
+Memory consumption went from 235.6 MB to 234.5 MB.
+Total: 3.721100 ms (FindLiveObjects: 0.731800 ms CreateObjectMapping: 0.238900 ms MarkObjects: 2.609900 ms  DeleteObjects: 0.139300 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: a3ef5dd2817f97addfee359851a9dba5 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 101.110131 seconds.
+  path: Assets/Scenes/Level 5.unity
+  artifactKey: Guid(cfa947cd9779f96479f37cf53ff43256) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Level 5.unity using Guid(cfa947cd9779f96479f37cf53ff43256) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e305cb9bfc02d0f9fdd890d5a8db8f1') in 0.017387 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 82.010260 seconds.
+  path: Assets/Prefabs/Player.prefab
+  artifactKey: Guid(6227959bbce8c014586a9e641911101a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Player.prefab using Guid(6227959bbce8c014586a9e641911101a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54f81b4ec6b0e1cb1b18e193dcd4afa6') in 0.083020 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3338
+========================================================================
+Received Import Request.
+  Time since last request: 140.609507 seconds.
+  path: Assets/Arte/Shaders/Volcano/volcano.mat
+  artifactKey: Guid(836ce93c5f53d1a46b12c6bbc453a8b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Shaders/Volcano/volcano.mat using Guid(836ce93c5f53d1a46b12c6bbc453a8b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '86e5685c4873a052b3dfc2f05818e5d9') in 0.001253 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 52.269602 seconds.
+  path: Assets/Arte/Models/NewCrystalPilars
+  artifactKey: Guid(0f51242fd1f48284694a614c6830fab9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Models/NewCrystalPilars using Guid(0f51242fd1f48284694a614c6830fab9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '828755f1b4357faadd4a74a6b6b8323f') in 0.000500 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.057647 seconds.
+  path: Assets/Arte/Models/NewCrystalPilars/PilaresBaseCristales.fbx
+  artifactKey: Guid(eb506f1bff297ab49a5d75a2c0aef5e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Models/NewCrystalPilars/PilaresBaseCristales.fbx using Guid(eb506f1bff297ab49a5d75a2c0aef5e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b4f5a53fc8c23121da09e6b662433290') in 0.033203 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 915
+========================================================================
+Received Import Request.
+  Time since last request: 4.589454 seconds.
+  path: Assets/Arte/Models/NewCrystalPilars/TextureFin
+  artifactKey: Guid(0d7f00168e38c8b4eb6e55251c4921b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Models/NewCrystalPilars/TextureFin using Guid(0d7f00168e38c8b4eb6e55251c4921b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '739dffedfd5be636d037157dc160522c') in 0.000546 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.809564 seconds.
+  path: Assets/Arte/Models/NewCrystalPilars/TextureBase
+  artifactKey: Guid(a0ebbde017219b74d9500c9fee4f070b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Models/NewCrystalPilars/TextureBase using Guid(a0ebbde017219b74d9500c9fee4f070b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '85ac4f5263f829803be8ccf71da4390e') in 0.000512 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 1.075275 seconds.
+  path: Assets/Arte/Models/NewCrystalPilars/TextureBase/CrystalPilarbase.mat
+  artifactKey: Guid(863d3eeb99c2e0f489d9a76d1e0b8bdb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Models/NewCrystalPilars/TextureBase/CrystalPilarbase.mat using Guid(863d3eeb99c2e0f489d9a76d1e0b8bdb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4b44a3efe1a251973a583606810da0c3') in 0.001317 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Arte/Models/NewCrystalPilars/TextureBase/PilaresBaseCristales_lambert3_Height.png
+  artifactKey: Guid(ac7852644fd681b46a0668bdf13c413a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Models/NewCrystalPilars/TextureBase/PilaresBaseCristales_lambert3_Height.png using Guid(ac7852644fd681b46a0668bdf13c413a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c16409408db062161dad3199063feae7') in 0.001652 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Arte/Models/NewCrystalPilars/TextureBase/PilaresBaseCristales_lambert3_Emissive.png
+  artifactKey: Guid(e22517fd87bfa4f44ab1f41b25d3c634) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Models/NewCrystalPilars/TextureBase/PilaresBaseCristales_lambert3_Emissive.png using Guid(e22517fd87bfa4f44ab1f41b25d3c634) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df4f7066f1429ba04fd0546325f820bb') in 0.001824 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Arte/Models/NewCrystalPilars/TextureBase/PilaresBaseCristales_lambert3_Metallic.png
+  artifactKey: Guid(7b29fff4e98f2174491004737058fb88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Models/NewCrystalPilars/TextureBase/PilaresBaseCristales_lambert3_Metallic.png using Guid(7b29fff4e98f2174491004737058fb88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '258dcd6c6908de75fe0834d95249dcff') in 0.001797 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Arte/Models/NewCrystalPilars/TextureBase/PilaresBaseCristales_Cristal1_Normal.png
+  artifactKey: Guid(eaf94e11d1677f64ba9a12bc2b64092f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Models/NewCrystalPilars/TextureBase/PilaresBaseCristales_Cristal1_Normal.png using Guid(eaf94e11d1677f64ba9a12bc2b64092f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '134a085ceed2fdc02d06da792839d1ed') in 0.002244 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Arte/Models/NewCrystalPilars/TextureBase/PilaresBaseCristales_Cristal1_Height.png
+  artifactKey: Guid(2914cd43573153243a07abb9fef497d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Models/NewCrystalPilars/TextureBase/PilaresBaseCristales_Cristal1_Height.png using Guid(2914cd43573153243a07abb9fef497d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '415e896716840f2bc496d3993f8f1608') in 0.001497 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Arte/Models/NewCrystalPilars/TextureBase/PilaresBaseCristales_Cristal1_Emissive.png
+  artifactKey: Guid(6d342a3e69bc81643b97b4a2c1a2b1fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Models/NewCrystalPilars/TextureBase/PilaresBaseCristales_Cristal1_Emissive.png using Guid(6d342a3e69bc81643b97b4a2c1a2b1fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df1533d311207893f258f6ea2253daa7') in 0.001575 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 2.841945 seconds.
+  path: Assets/Arte/Models/NewCrystalPilars/TextureFin/CrystalPilarFin.mat
+  artifactKey: Guid(f776b3aa667b18543a5baa98618952ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Models/NewCrystalPilars/TextureFin/CrystalPilarFin.mat using Guid(f776b3aa667b18543a5baa98618952ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b6c1dbacf254ab0c351acfd830b9bb73') in 0.001103 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Arte/Models/NewCrystalPilars/TextureFin/PilarFin.mat
+  artifactKey: Guid(20b9aaf4095d3374f85e79ee26ee2d88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Models/NewCrystalPilars/TextureFin/PilarFin.mat using Guid(20b9aaf4095d3374f85e79ee26ee2d88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d96fe5a4167600594ec55e432889555') in 0.001321 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Arte/Models/NewCrystalPilars/TextureFin/PilaresFinCristales_pasted__Cristal1_Height.png
+  artifactKey: Guid(69f7384690435574e9dd2935b160c35f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Models/NewCrystalPilars/TextureFin/PilaresFinCristales_pasted__Cristal1_Height.png using Guid(69f7384690435574e9dd2935b160c35f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '740c6c19c8bc18a773ab7ad513d560e4') in 0.001345 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Arte/Models/NewCrystalPilars/TextureFin/PilaresFinCristales_lambert2_Normal.png
+  artifactKey: Guid(47a96091ac1b89348aebd9dff6d9df35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Models/NewCrystalPilars/TextureFin/PilaresFinCristales_lambert2_Normal.png using Guid(47a96091ac1b89348aebd9dff6d9df35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '004753740ea31c9a4764dd5c57e3f8d8') in 0.001733 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Arte/Models/NewCrystalPilars/TextureFin/PilaresFinCristales_pasted__Cristal1_Normal.png
+  artifactKey: Guid(591a2f41f4f91f04aad4793e67cfea6b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Models/NewCrystalPilars/TextureFin/PilaresFinCristales_pasted__Cristal1_Normal.png using Guid(591a2f41f4f91f04aad4793e67cfea6b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d9d8b6833ad202d0eff882ce8b77802') in 0.001835 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Arte/Models/NewCrystalPilars/TextureFin/PilaresFinCristales_lambert2_Metallic.png
+  artifactKey: Guid(0d797b49317fef94b951c9a502c549f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Models/NewCrystalPilars/TextureFin/PilaresFinCristales_lambert2_Metallic.png using Guid(0d797b49317fef94b951c9a502c549f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c0978d5b1d08fe592b2e08f2d9e57a8d') in 0.001329 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Arte/Models/NewCrystalPilars/TextureFin/PilaresFinCristales_pasted__Cristal1_BaseColor.png
+  artifactKey: Guid(8bd2bb46b5df3fa47a3fd7f3ebb3aaa1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Arte/Models/NewCrystalPilars/TextureFin/PilaresFinCristales_pasted__Cristal1_BaseColor.png using Guid(8bd2bb46b5df3fa47a3fd7f3ebb3aaa1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '25f0afb0d2db5ac4a81500bfea5c568a') in 0.001301 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 157.415228 seconds.
+  path: Assets/Prefabs/Pillars/PillarsCryGreen
+  artifactKey: Guid(b80a806d644468944b05b3eaee8a6b44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Pillars/PillarsCryGreen using Guid(b80a806d644468944b05b3eaee8a6b44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '01624f67a154f61a211b91fcd4a5a18e') in 0.000518 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 6.000439 seconds.
+  path: Assets/Prefabs/Pillars/Bases
+  artifactKey: Guid(f12dab917ecceb04e82f8e54559f44fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Pillars/Bases using Guid(f12dab917ecceb04e82f8e54559f44fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '110809ceb3dfb4a9cb0eb1b06906781c') in 0.000495 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.091520 seconds.
+  path: Assets/Prefabs/Pillars/Bases/Base A.prefab
+  artifactKey: Guid(fa2fb7020fb55a4499ad858c18acfdfc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Pillars/Bases/Base A.prefab using Guid(fa2fb7020fb55a4499ad858c18acfdfc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e861cb609fb6f822239ad5d9da24cce0') in 0.001834 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 6
+========================================================================
+Received Import Request.
+  Time since last request: 0.000953 seconds.
+  path: Assets/Prefabs/Pillars/Bases/Base C.prefab
+  artifactKey: Guid(6107bec4837880c49b82747542f8296c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Pillars/Bases/Base C.prefab using Guid(6107bec4837880c49b82747542f8296c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8bdbc5d9ea87520342d448f1ea3ac2d9') in 0.001848 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 6
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Prefabs/Pillars/Bases/Base E.prefab
+  artifactKey: Guid(6dcf59dd1a3109e40aaad24b4016eb32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Pillars/Bases/Base E.prefab using Guid(6dcf59dd1a3109e40aaad24b4016eb32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c30f73ce4614293eb35503aba525a2d1') in 0.001884 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 6
+========================================================================
+Received Import Request.
+  Time since last request: 3.982723 seconds.
+  path: Assets/Prefabs/Pillars/complete
+  artifactKey: Guid(bcca84bcbd2bc2542bf475c9dc235810) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Pillars/complete using Guid(bcca84bcbd2bc2542bf475c9dc235810) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c226d9c3e343a411da28f6a64d61b703') in 0.000490 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.045461 seconds.
+  path: Assets/Prefabs/Pillars/complete/Pillar A.prefab
+  artifactKey: Guid(688db03abb7fcd94cb92c57ecf12d7b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Pillars/complete/Pillar A.prefab using Guid(688db03abb7fcd94cb92c57ecf12d7b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c7974d3deeea2c0e7eea8d0fa13fa141') in 0.002249 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 15
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Prefabs/Pillars/complete/Pillar C.prefab
+  artifactKey: Guid(0ead7c13b0a906048bd7ed0cc5774e2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Pillars/complete/Pillar C.prefab using Guid(0ead7c13b0a906048bd7ed0cc5774e2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a434d3b800a9fc89ab348e2751f8d849') in 0.002137 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 15
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Prefabs/Pillars/complete/Pillar K.prefab
+  artifactKey: Guid(841e5c6335dc9594a989cce1a04cb7cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Pillars/complete/Pillar K.prefab using Guid(841e5c6335dc9594a989cce1a04cb7cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc1cfeff230dc873ef218f8aaf23f898') in 0.002225 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 15
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Prefabs/Pillars/complete/Pillar L.prefab
+  artifactKey: Guid(34fcccaa8e019c94586319578f2b73ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Pillars/complete/Pillar L.prefab using Guid(34fcccaa8e019c94586319578f2b73ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6c2a6ff2c423765a964875609ca57b22') in 0.001720 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 15
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Prefabs/Pillars/complete/Pillar I.prefab
+  artifactKey: Guid(5238d4f1224697d4ba0322b92a077ebf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Pillars/complete/Pillar I.prefab using Guid(5238d4f1224697d4ba0322b92a077ebf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78da469147841a8443fdef46fcef02b1') in 0.002080 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 15
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Prefabs/Pillars/complete/Pillar N.prefab
+  artifactKey: Guid(90d73cbafb6c1fb44b7f423a04278ba2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Pillars/complete/Pillar N.prefab using Guid(90d73cbafb6c1fb44b7f423a04278ba2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1460eca776afac9478c1ec9dadb69b10') in 0.001707 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 15
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Prefabs/Pillars/complete/Pillar M.prefab
+  artifactKey: Guid(5e899630cbcbe7746ae9647410d0997e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Pillars/complete/Pillar M.prefab using Guid(5e899630cbcbe7746ae9647410d0997e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8ec676b781d3b83a02bd60ffe0bfb8b9') in 0.002217 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 15
+========================================================================
+Received Import Request.
+  Time since last request: 13.706472 seconds.
+  path: Assets/Prefabs/Pillars/PillarsCryGreen/Pillar A.prefab
+  artifactKey: Guid(08139ac863675524182036d4021e6934) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Pillars/PillarsCryGreen/Pillar A.prefab using Guid(08139ac863675524182036d4021e6934) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3db149327878b4ea53d3c454f7d43118') in 0.001806 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 15
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Prefabs/Pillars/PillarsCryGreen/Pillar E.prefab
+  artifactKey: Guid(475777dde5571fb45b222cb1f99c67b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Pillars/PillarsCryGreen/Pillar E.prefab using Guid(475777dde5571fb45b222cb1f99c67b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de01f02f61aa47c19d2591dcc5adbaf7') in 0.001607 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 15
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Prefabs/Pillars/PillarsCryGreen/Pillar D.prefab
+  artifactKey: Guid(86fa384516ce2874c9951de36e2514d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Pillars/PillarsCryGreen/Pillar D.prefab using Guid(86fa384516ce2874c9951de36e2514d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e1f1720890170b9a414e7c023729c01') in 0.001528 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 15
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Prefabs/Pillars/PillarsCryGreen/Pillar G.prefab
+  artifactKey: Guid(bdf62823e69b7364aa92c52e0ba2c25c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Pillars/PillarsCryGreen/Pillar G.prefab using Guid(bdf62823e69b7364aa92c52e0ba2c25c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '26a5f18fc7d2349d86ceea8bd400e5e9') in 0.001553 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 15
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Prefabs/Pillars/PillarsCryGreen/Pillar H.prefab
+  artifactKey: Guid(175092e92239a174ea5d61706f6a582e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Pillars/PillarsCryGreen/Pillar H.prefab using Guid(175092e92239a174ea5d61706f6a582e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ce04ac90da36bcb3ec8f5f3fd0ff02b') in 0.001609 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 15
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+TcpMessagingSession - receive error: operation aborted. errorcode: 995, details: La operación de E/S se anuló por una salida de subproceso o por una solicitud de aplicación.
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

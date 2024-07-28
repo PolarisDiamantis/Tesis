@@ -92,6 +92,7 @@ public class PlayerController : MonoBehaviour
         }
         HandleThrottleInputs();
 
+        if (lockInputs) return;
         _agent.OnMovement(_horizontalInput, _throttle);
     }
 
@@ -225,6 +226,17 @@ public class PlayerController : MonoBehaviour
         if (context.performed)
         {
             TeleportFoward(200);
+        }
+    }
+
+    public void OnForceField(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            _agent.OnForceFieldActivate();
+        }else if (context.canceled)
+        {
+            _agent.OnForceFieldCancel();
         }
     }
     #endregion

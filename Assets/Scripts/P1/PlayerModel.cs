@@ -32,6 +32,9 @@ public class PlayerModel : MonoBehaviour
 
     private PlayerView _view;
 
+    public Action OnForceFieldActivate = delegate { };
+    public Action OnForceFieldCancel = delegate { };
+
     [Header("Particles")]
     public ParticleSystem normalSpeed;
     public ParticleSystem boostSpeed;
