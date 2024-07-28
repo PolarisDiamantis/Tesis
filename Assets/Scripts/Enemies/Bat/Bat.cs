@@ -17,7 +17,6 @@ public class Bat : SteeringAgent
     [SerializeField] private float _forwardOffset = 2f;
     [SerializeField] private float _attackSpeed = 2f;
 
-
     private void Update()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, GameManager.Instance.player.transform.position);
@@ -46,12 +45,11 @@ public class Bat : SteeringAgent
         if (!_playerSpotted || _isWaiting) return;
 
         _player = GameManager.Instance.player.transform;
-        //Vector3 forwardPosition = _player.position + _player.forward * _forwardOffset;
-        Vector3 forwardPosition = _player.position + new Vector3(0, 0, _forwardOffset);
+        Vector3 forwardPosition = _player.position + _player.forward * _forwardOffset;
 
-        float distanceToPlayer = Vector3.Distance(transform.position, _player.position);
+        float distanceToPlayer = Vector3.Distance(transform.position, forwardPosition);
 
-        if (Vector3.Distance(_rb.position, forwardPosition) > _stopDistance)
+        if (distanceToPlayer > _stopDistance)
         {
             Seek(forwardPosition);
             LookAtTarget(forwardPosition);
@@ -75,8 +73,12 @@ public class Bat : SteeringAgent
     private IEnumerator WaitAndAttack()
     {
         _isWaiting = true;
+        _player = GameManager.Instance.player.transform;
+        Vector3 offset = transform.position - _player.position;
         transform.SetParent(_player);
-        _initialPosition = transform.localPosition;
+        _rb.isKinematic = true;
+
+        transform.rotation = _player.rotation;
 
         yield return new WaitForSeconds(Random.Range(_minWaitTimeBeforeAttack, _maxWaitTimeBeforeAttack));
 
@@ -101,6 +103,7 @@ public class Bat : SteeringAgent
         */
 
         _isWaiting = false;
+        _rb.isKinematic = false;
     }
 
 
