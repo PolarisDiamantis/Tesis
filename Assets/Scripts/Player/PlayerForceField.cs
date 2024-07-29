@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlayerForceField : MonoBehaviour
 {
     private PlayerModel _agent;
-    //private List<Debri> _collectedDebris = new List<Debri>();
     [SerializeField] private int _maxDebris = 5;
     private int _debrisCollected = 0;
     [SerializeField] private GameObject _instance;
@@ -17,6 +16,11 @@ public class PlayerForceField : MonoBehaviour
     [SerializeField] private float _areaOfEffect = 25f;
     [SerializeField] LayerMask _collisionMask;
 
+    [SerializeField] private Transform _shootingPoint;
+    [SerializeField] private Transform _debriRotation;
+
+    [SerializeField] private GameObject _debriGraphic;
+    private List<GameObject> _collectedDebris = new List<GameObject>();
     private void Start()
     {
         _agent = GetComponent<PlayerModel>();
@@ -56,19 +60,22 @@ public class PlayerForceField : MonoBehaviour
     {
         if (_debrisCollected >= _maxDebris) return;
         _debrisCollected++;
+        var inst = Instantiate(_debriGraphic, _debriRotation);
+        inst.transform.position = _debriRotation.position + _agent.transform.right * 3f;
+        //_collectedDebris.Add(inst);
     }
 
     private void RemoveDebri()
     {
-        if (_debrisCollected <= 0) return;
+        Debug.Log("Fired");
         _debrisCollected--;
+        Destroy(_debriRotation.GetChild(0).gameObject);
     }
 
     public void FireAllDebris()
     {
         if (_isBusyFiring) return;
         StartCoroutine(FireDebrisProccess(_debrisCollected, _interval));
-        _debrisCollected = 0;
     }
 
 
@@ -84,12 +91,18 @@ public class PlayerForceField : MonoBehaviour
     {
         _isBusyFiring = true;
         int a = amount;
-        for(int i = 0; i <= a + 1; i++)
+        for(int i = 1; i <= a; i++)
         {
-            var inst = Instantiate(_instance, transform.position, transform.rotation);
             RemoveDebri();
+            var inst = Instantiate(_instance, _shootingPoint.position, _shootingPoint.rotation);
             yield return new WaitForSeconds(interval);
         }
         _isBusyFiring = false;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, _areaOfEffect);
     }
 }

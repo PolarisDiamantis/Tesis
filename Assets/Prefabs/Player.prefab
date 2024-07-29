@@ -59769,6 +59769,7 @@ GameObject:
   - component: {fileID: 4761548030024115317}
   - component: {fileID: 6454114422181072446}
   - component: {fileID: 8437366654177580078}
+  - component: {fileID: 8131643960198538193}
   - component: {fileID: 4631076634369029956}
   - component: {fileID: 8168382918550822799}
   m_Layer: 0
@@ -59791,6 +59792,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3203084797408092413}
+  - {fileID: 1252120794863041606}
   - {fileID: 6118663516281923737}
   - {fileID: 4488979552858929919}
   - {fileID: 2169686766892799140}
@@ -59974,6 +59977,31 @@ MonoBehaviour:
   _rotationSpeed: 10
   _distancePerStep: 40
   _force: 25000
+--- !u!114 &8131643960198538193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4597374451278870202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2be23da26dd04fe4785240a8dc97771a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxDebris: 5
+  _instance: {fileID: 7790593216013607009, guid: 37d5faa2f6eee6f4d82de81a4b08ac9f,
+    type: 3}
+  _interval: 0.5
+  _duration: 2
+  _areaOfEffect: 75
+  _collisionMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  _shootingPoint: {fileID: 1252120794863041606}
+  _debriRotation: {fileID: 3203084797408092413}
+  _debriGraphic: {fileID: 5841948407392783937, guid: 7c7b240d2d86d1a44a3788c900599ee4,
+    type: 3}
 --- !u!114 &4631076634369029956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60144,6 +60172,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: efc09af2-bee4-4a37-ada7-dbf4fca32c88
     m_ActionName: Base/Teleport[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4761548030024115317}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnForceField
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6f2b4bf1-66b4-4b90-9db3-bf7c74185acb
+    m_ActionName: Base/ForceField[/Keyboard/r]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Base
@@ -63895,6 +63939,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4986850498369864203}
   m_LocalEulerAnglesHint: {x: -13.672645, y: -33.341614, z: -127.54349}
+--- !u!1 &5186352111712933492
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1252120794863041606}
+  m_Layer: 0
+  m_Name: ShootingPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1252120794863041606
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5186352111712933492}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 374515411828595802}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5198279224802212055
 GameObject:
   m_ObjectHideFlags: 0
@@ -120674,6 +120749,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1533804534381834301}
   m_LocalEulerAnglesHint: {x: -9.130072, y: -5.1082215, z: 2.3770254}
+--- !u!1 &9176400452307399071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3203084797408092413}
+  - component: {fileID: 5751395956154641963}
+  m_Layer: 0
+  m_Name: DebriRotationPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3203084797408092413
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9176400452307399071}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 374515411828595802}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5751395956154641963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9176400452307399071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b133613409c194340a6999317c65ae3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: {x: 0, y: 100, z: 0}
 --- !u!1 &9178813833065152851
 GameObject:
   m_ObjectHideFlags: 0

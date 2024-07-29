@@ -295,6 +295,18 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(cooldown);
     }
 
+    public void ModifyThrottle(float amount, float duration)
+    {
+        StartCoroutine(ModifyThrottleProcess(amount, duration));
+    }
+
+    IEnumerator ModifyThrottleProcess(float amount, float duration)
+    {
+        _throttle += amount;
+        yield return new WaitForSeconds(duration);
+        _throttle -= amount;
+    }
+
     #region Power Sequences
     IEnumerator BoostSequence(float d, float cd)
     {
