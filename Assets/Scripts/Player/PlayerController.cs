@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private float _responseModifier = 1f;
 
     private float _throttle;
+    private float _maxThrottle = 100f;
     private float _roll;
     private float _pitch;
     private float _yaw;
@@ -149,7 +150,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            _throttle = Mathf.Clamp(_throttle, 0f, 100f);
+            _throttle = Mathf.Clamp(_throttle, 0f, _maxThrottle);
         }
         // Reduce if inside a cloud...
     }
@@ -297,16 +298,25 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(cooldown);
     }
 
-    public void ModifyThrottle(float amount, float duration)
+    public void ModifyThrottle(float amount, float duration, ModifyThrottleSource source)
     {
+        switch (source)
+        {
+            case ModifyThrottleSource.impact:
+                break;
+            case ModifyThrottleSource.frezee:
+                _agent.OnFrozen();
+                break;
+        }
         StartCoroutine(ModifyThrottleProcess(amount, duration));
+
     }
 
     IEnumerator ModifyThrottleProcess(float amount, float duration)
     {
-        _throttle += amount;
+        _maxThrottle += amount;
         yield return new WaitForSeconds(duration);
-        _throttle -= amount;
+        _maxThrottle -= amount;
     }
 
     #region Power Sequences
@@ -345,4 +355,10 @@ public class PlayerController : MonoBehaviour
         if (!isBoost) return;
         other.GetComponent<Catapult>().Die();
     }
+}
+
+public enum ModifyThrottleSource
+{
+    impact,
+    frezee
 }

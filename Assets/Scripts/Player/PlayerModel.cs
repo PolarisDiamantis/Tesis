@@ -35,6 +35,8 @@ public class PlayerModel : MonoBehaviour
     public Action OnForceFieldActivate = delegate { };
     public Action OnForceFieldCancel = delegate { };
 
+    public Action OnFrozen = delegate { };
+
     [Header("Particles")]
     public ParticleSystem normalSpeed;
     public ParticleSystem boostSpeed;
@@ -47,6 +49,7 @@ public class PlayerModel : MonoBehaviour
 
     public VisualEffect tpInitial;
     public VisualEffect tpIFinish;
+    public VisualEffect boostVFX;
 
     [Header("Animations")]
     public Animator camAnim;
@@ -64,7 +67,8 @@ public class PlayerModel : MonoBehaviour
     public GameObject witchModel;
 
     [Header("Shaders")]
-    public FullScreenTestController damageShader;
+    public FullScreenTestController dizzyShader;
+    public FullScreenTestController2 frezzeShader;
 
     [HideInInspector] public bool _isShieldGO = false;
 
@@ -96,6 +100,7 @@ public class PlayerModel : MonoBehaviour
                         {
                             skins[x].SetActive(true);
                             anim = skins[x].transform.GetChild(0).GetComponent<Animator>();
+                            boostVFX = skins[x].transform.GetChild(1).GetComponent<VisualEffect>();
                         }
                     }
                     if(i.skinKey == "hallowenSkin")
@@ -115,6 +120,7 @@ public class PlayerModel : MonoBehaviour
         {
             skins[0].SetActive(true);
             anim = skins[0].transform.GetChild(0).GetComponent<Animator>();
+            boostVFX = skins[0].transform.GetChild(1).GetComponent<VisualEffect>();
             PlayerPrefs.SetString("equippedSkinID", witchSkins[0].skinKey);
         }
 
@@ -136,8 +142,9 @@ public class PlayerModel : MonoBehaviour
             Debug.Log("Col");
             if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Damage"))
             {
+                GetComponent<PlayerController>().ModifyThrottle(30f, 1.5f, ModifyThrottleSource.impact);
                 OnDamage();
-                damageShader.CallDamageShader();
+                dizzyShader.CallDamageShader();
             }
             Vector3 imp = transform.position - hit.point;
             rb.velocity = Vector3.zero;

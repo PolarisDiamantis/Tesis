@@ -30,6 +30,7 @@ public class GameManager : Singleton<GameManager>
 
     private void UpdateCrystalCountUI(int val)
     {
+        if (ui == null) return;
         ui.UpdateCrystalCount(val);
     }
 

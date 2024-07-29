@@ -23,7 +23,7 @@ public class Debri : MonoBehaviour
         _rb.AddForce(Vector3.up * _gravity, ForceMode.Acceleration);
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<PlayerController>() == null) return;
         if (other.GetComponent<PlayerController>().isShield)

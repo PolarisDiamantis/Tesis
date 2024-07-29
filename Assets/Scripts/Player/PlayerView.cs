@@ -26,6 +26,9 @@ public class PlayerView
 
     private VisualEffect _tpInitial;
     private VisualEffect _tpIFinish;
+    private VisualEffect _boostVFX;
+
+    private FullScreenTestController2 _frezzeShader;
 
     public PlayerView(PlayerModel c)
     {
@@ -43,6 +46,9 @@ public class PlayerView
 
         _tpInitial = c.tpInitial;
         _tpIFinish = c.tpIFinish;
+        _boostVFX = c.boostVFX;
+
+        _frezzeShader = c.frezzeShader;
 
         if (c._isShieldGO)
         {
@@ -63,6 +69,8 @@ public class PlayerView
         c.OnMovement += OnMovement;
         c.OnDeath += OnDeath;
         c.OnDamage += OnDamage;
+
+        c.OnFrozen += OnFrezzeStart;
         // Audios
         _pickUpSound = c.pickUpSound;
 
@@ -99,7 +107,7 @@ public class PlayerView
             _isOnBoostActive = true;
             _boostReady.Stop();
             //_boostSpeed.Play();
-            _boostForceField.Play();
+            _boostVFX.gameObject.SetActive(true);
             _boostDecharge.Play();
             _camAnim.Play("Boost");
         }
@@ -107,7 +115,7 @@ public class PlayerView
         {
             _isOnBoostActive = false;
             //_boostSpeed.Stop();
-            _boostForceField.Stop();
+            _boostVFX.gameObject.SetActive(false);
             _camAnim.Play("Normal");
         }
     }
@@ -154,6 +162,7 @@ public class PlayerView
     private void OnCrystalCollected()
     {
         _crystalParticle.Play();
+        if (AudioManager.instance == null) return;
         AudioManager.instance.PlaySound(_pickUpSound);
     }
 
@@ -191,5 +200,11 @@ public class PlayerView
         _witchModel.SetActive(true);
         _tpIFinish.Play();
         _camAnim.Play("Normal");
+    }
+
+    private void OnFrezzeStart()
+    {
+        _frezzeShader.CallFrozenShader();
+        // Here goes frezee sound
     }
 }
