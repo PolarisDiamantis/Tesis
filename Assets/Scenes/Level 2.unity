@@ -9646,9 +9646,10 @@ MonoBehaviour:
   - {fileID: 1918512131}
   - {fileID: 1918512130}
   - {fileID: 1918512129}
-  finalResults: {fileID: 1040935055}
+  finalResultsUI: {fileID: 0}
   runesUI: {fileID: 1994181802}
   pauseUI: {fileID: 4813120008097318391}
+  boostBar: {fileID: 0}
 --- !u!1001 &366638572
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30305,12 +30306,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c110bda965d757f4c80a8bf35033a800, type: 3}
---- !u!1 &1040935055 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3946027047056996036, guid: c110bda965d757f4c80a8bf35033a800,
-    type: 3}
-  m_PrefabInstance: {fileID: 1040935054}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1040935056 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7061140505975668962, guid: c110bda965d757f4c80a8bf35033a800,
@@ -55349,7 +55344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
+  m_ScaleFactor: 0.6
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0

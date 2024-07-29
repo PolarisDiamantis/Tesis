@@ -9,6 +9,9 @@ public class CanvasManager : MonoBehaviour
     public TextMeshProUGUI lvl1R;
     public TextMeshProUGUI lvl2R;
     public TextMeshProUGUI lvl3R;
+    public TextMeshProUGUI lvl4R;
+    public TextMeshProUGUI lvl5R;
+    public TextMeshProUGUI lvl6R;
 
     public TextMeshProUGUI firstPlace;
     public TextMeshProUGUI secondPlace;
@@ -32,6 +35,21 @@ public class CanvasManager : MonoBehaviour
         if (PlayerPrefs.HasKey("lvl3BestTime"))
         {
             TimeSpan time = TimeSpan.Parse(PlayerPrefs.GetString("lvl3BestTime"));
+            lvl3R.text = time.Hours.ToString("00") + " : " + time.Minutes.ToString("00") + " : " + time.Seconds.ToString("00");
+        }
+        if (PlayerPrefs.HasKey("lvl4BestTime"))
+        {
+            TimeSpan time = TimeSpan.Parse(PlayerPrefs.GetString("lvl4BestTime"));
+            lvl3R.text = time.Hours.ToString("00") + " : " + time.Minutes.ToString("00") + " : " + time.Seconds.ToString("00");
+        }
+        if (PlayerPrefs.HasKey("lvl5BestTime"))
+        {
+            TimeSpan time = TimeSpan.Parse(PlayerPrefs.GetString("lvl5BestTime"));
+            lvl3R.text = time.Hours.ToString("00") + " : " + time.Minutes.ToString("00") + " : " + time.Seconds.ToString("00");
+        }
+        if (PlayerPrefs.HasKey("lvl6BestTime"))
+        {
+            TimeSpan time = TimeSpan.Parse(PlayerPrefs.GetString("lvl6BestTime"));
             lvl3R.text = time.Hours.ToString("00") + " : " + time.Minutes.ToString("00") + " : " + time.Seconds.ToString("00");
         }
     }
@@ -128,6 +146,108 @@ public class CanvasManager : MonoBehaviour
         if (PlayerPrefs.HasKey("lvl3BestTime" + "3"))
         {
             TimeSpan time = TimeSpan.Parse(PlayerPrefs.GetString("lvl3BestTime" + "3"));
+            thirdPlace.text = time.Hours.ToString("00") + " : " + time.Minutes.ToString("00") + " : " + time.Seconds.ToString("00");
+        }
+        else
+        {
+            thirdPlace.text = "3. None";
+        }
+
+    }
+
+    public void LoadLvl4Board()
+    {
+        if (PlayerPrefs.HasKey("lvl4BestTime" + "1"))
+        {
+            TimeSpan time = TimeSpan.Parse(PlayerPrefs.GetString("lvl4BestTime" + "1"));
+            firstPlace.text = time.Hours.ToString("00") + " : " + time.Minutes.ToString("00") + " : " + time.Seconds.ToString("00");
+        }
+        else
+        {
+            firstPlace.text = "1. None";
+        }
+
+        if (PlayerPrefs.HasKey("lvl4BestTime" + "2"))
+        {
+            TimeSpan time = TimeSpan.Parse(PlayerPrefs.GetString("lvl4BestTime" + "2"));
+            secondPlace.text = time.Hours.ToString("00") + " : " + time.Minutes.ToString("00") + " : " + time.Seconds.ToString("00");
+        }
+        else
+        {
+            secondPlace.text = "2. None";
+        }
+
+        if (PlayerPrefs.HasKey("lvl4BestTime" + "3"))
+        {
+            TimeSpan time = TimeSpan.Parse(PlayerPrefs.GetString("lvl4BestTime" + "3"));
+            thirdPlace.text = time.Hours.ToString("00") + " : " + time.Minutes.ToString("00") + " : " + time.Seconds.ToString("00");
+        }
+        else
+        {
+            thirdPlace.text = "3. None";
+        }
+
+    }
+
+    public void LoadLvl5Board()
+    {
+        if (PlayerPrefs.HasKey("lvl5BestTime" + "1"))
+        {
+            TimeSpan time = TimeSpan.Parse(PlayerPrefs.GetString("lvl5BestTime" + "1"));
+            firstPlace.text = time.Hours.ToString("00") + " : " + time.Minutes.ToString("00") + " : " + time.Seconds.ToString("00");
+        }
+        else
+        {
+            firstPlace.text = "1. None";
+        }
+
+        if (PlayerPrefs.HasKey("lvl5BestTime" + "2"))
+        {
+            TimeSpan time = TimeSpan.Parse(PlayerPrefs.GetString("lvl5BestTime" + "2"));
+            secondPlace.text = time.Hours.ToString("00") + " : " + time.Minutes.ToString("00") + " : " + time.Seconds.ToString("00");
+        }
+        else
+        {
+            secondPlace.text = "2. None";
+        }
+
+        if (PlayerPrefs.HasKey("lvl5BestTime" + "3"))
+        {
+            TimeSpan time = TimeSpan.Parse(PlayerPrefs.GetString("lvl5BestTime" + "3"));
+            thirdPlace.text = time.Hours.ToString("00") + " : " + time.Minutes.ToString("00") + " : " + time.Seconds.ToString("00");
+        }
+        else
+        {
+            thirdPlace.text = "3. None";
+        }
+
+    }
+
+    public void LoadLvl6Board()
+    {
+        if (PlayerPrefs.HasKey("lvl6BestTime" + "1"))
+        {
+            TimeSpan time = TimeSpan.Parse(PlayerPrefs.GetString("lvl6BestTime" + "1"));
+            firstPlace.text = time.Hours.ToString("00") + " : " + time.Minutes.ToString("00") + " : " + time.Seconds.ToString("00");
+        }
+        else
+        {
+            firstPlace.text = "1. None";
+        }
+
+        if (PlayerPrefs.HasKey("lvl6BestTime" + "2"))
+        {
+            TimeSpan time = TimeSpan.Parse(PlayerPrefs.GetString("lvl6BestTime" + "2"));
+            secondPlace.text = time.Hours.ToString("00") + " : " + time.Minutes.ToString("00") + " : " + time.Seconds.ToString("00");
+        }
+        else
+        {
+            secondPlace.text = "2. None";
+        }
+
+        if (PlayerPrefs.HasKey("lvl6BestTime" + "3"))
+        {
+            TimeSpan time = TimeSpan.Parse(PlayerPrefs.GetString("lvl6BestTime" + "3"));
             thirdPlace.text = time.Hours.ToString("00") + " : " + time.Minutes.ToString("00") + " : " + time.Seconds.ToString("00");
         }
         else
