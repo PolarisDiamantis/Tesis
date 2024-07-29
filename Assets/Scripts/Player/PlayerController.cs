@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     private float _drift;
     [SerializeField] private float _driftModifier = 1f;
 
+    [SerializeField] private float _tpDuration = 1f;
+
     private bool _throttleUp = false;
     private bool _throttleDown = false;
 
@@ -279,7 +281,7 @@ public class PlayerController : MonoBehaviour
     public void TeleportFoward(float distance)
     {
         //Vector3 destination = _agent.rb.position + (transform.forward * distance);
-        StartCoroutine(TeleportProcess(distance, 0.50f, 2f));
+        StartCoroutine(TeleportProcess(distance, 0.05f, 2f));
 
     }
 
