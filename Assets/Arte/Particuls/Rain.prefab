@@ -4898,6 +4898,7 @@ GameObject:
   - component: {fileID: 1193797516892452245}
   - component: {fileID: 9158007783199920357}
   - component: {fileID: 3297258794698179392}
+  - component: {fileID: 4729112663863423870}
   m_Layer: 9
   m_Name: Rain
   m_TagString: Untagged
@@ -9723,10 +9724,28 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3024917918894787747}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e46c6a659580df429c44c399f839e1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
   offSet: {x: 0, y: 10, z: 0}
+--- !u!114 &4729112663863423870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3024917918894787747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd2bf0c91defe445b25f8b181db5895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 0}
+  offSet: {x: 0, y: 10, z: 0}
+  defaultPoint: {fileID: 0}
+  mediumSpeedPoint: {fileID: 0}
+  maxSpeedPoint: {fileID: 0}
+  maxSpeed: 10

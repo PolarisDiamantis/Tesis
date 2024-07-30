@@ -2991,6 +2991,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d8aebd17c9c90544935d5a2096633d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &555379166 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2127962201092446656, guid: 6686309f62cf2ee439130173672341cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 555379164}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26a4b9cc8691cdc4ea6b9d1f7122daa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &557204467
 GameObject:
   m_ObjectHideFlags: 0
@@ -4579,9 +4591,19 @@ PrefabInstance:
       objectReference: {fileID: 1467378054}
     - target: {fileID: 6761802725117173813, guid: 6227959bbce8c014586a9e641911101a,
         type: 3}
+      propertyPath: dizzyShader
+      value: 
+      objectReference: {fileID: 555379165}
+    - target: {fileID: 6761802725117173813, guid: 6227959bbce8c014586a9e641911101a,
+        type: 3}
       propertyPath: damageShader
       value: 
       objectReference: {fileID: 555379165}
+    - target: {fileID: 6761802725117173813, guid: 6227959bbce8c014586a9e641911101a,
+        type: 3}
+      propertyPath: frezzeShader
+      value: 
+      objectReference: {fileID: 555379166}
     - target: {fileID: 6761802725117173813, guid: 6227959bbce8c014586a9e641911101a,
         type: 3}
       propertyPath: _collisionSphere

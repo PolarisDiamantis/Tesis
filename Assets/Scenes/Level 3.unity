@@ -5095,6 +5095,26 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 813861137}
+    - target: {fileID: 3615963840814385674, guid: 4269e10d63aef4a42b06004e4ad58f78,
+        type: 3}
+      propertyPath: _target
+      value: 
+      objectReference: {fileID: 813861137}
+    - target: {fileID: 3615963840814385674, guid: 4269e10d63aef4a42b06004e4ad58f78,
+        type: 3}
+      propertyPath: defaultPoint
+      value: 
+      objectReference: {fileID: 813861142}
+    - target: {fileID: 3615963840814385674, guid: 4269e10d63aef4a42b06004e4ad58f78,
+        type: 3}
+      propertyPath: maxSpeedPoint
+      value: 
+      objectReference: {fileID: 813861141}
+    - target: {fileID: 3615963840814385674, guid: 4269e10d63aef4a42b06004e4ad58f78,
+        type: 3}
+      propertyPath: mediumSpeedPoint
+      value: 
+      objectReference: {fileID: 813861140}
     - target: {fileID: 4191259693832103822, guid: 4269e10d63aef4a42b06004e4ad58f78,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7522,9 +7542,19 @@ PrefabInstance:
       objectReference: {fileID: 1467378054}
     - target: {fileID: 6761802725117173813, guid: 6227959bbce8c014586a9e641911101a,
         type: 3}
+      propertyPath: dizzyShader
+      value: 
+      objectReference: {fileID: 138392857}
+    - target: {fileID: 6761802725117173813, guid: 6227959bbce8c014586a9e641911101a,
+        type: 3}
       propertyPath: damageShader
       value: 
       objectReference: {fileID: 138392857}
+    - target: {fileID: 6761802725117173813, guid: 6227959bbce8c014586a9e641911101a,
+        type: 3}
+      propertyPath: frezzeShader
+      value: 
+      objectReference: {fileID: 1358009682}
     - target: {fileID: 6761802725117173813, guid: 6227959bbce8c014586a9e641911101a,
         type: 3}
       propertyPath: _collisionSphere
@@ -7586,6 +7616,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccbd73d921c2a5f4389b5963e10bedfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &813861140 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1141304601811261072, guid: 6227959bbce8c014586a9e641911101a,
+    type: 3}
+  m_PrefabInstance: {fileID: 813861135}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &813861141 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5476187837845978636, guid: 6227959bbce8c014586a9e641911101a,
+    type: 3}
+  m_PrefabInstance: {fileID: 813861135}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &813861142 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7142599296577204692, guid: 6227959bbce8c014586a9e641911101a,
+    type: 3}
+  m_PrefabInstance: {fileID: 813861135}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &818550035 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6071120446171198910, guid: efb38cc7b72c85d41964a86f7dfe50a6,
@@ -13325,6 +13373,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efb38cc7b72c85d41964a86f7dfe50a6, type: 3}
+--- !u!114 &1358009682 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2127962201092446656, guid: 6686309f62cf2ee439130173672341cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 138392856}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26a4b9cc8691cdc4ea6b9d1f7122daa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1369235299
 GameObject:
   m_ObjectHideFlags: 0

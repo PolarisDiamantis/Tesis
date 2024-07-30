@@ -7,7 +7,8 @@ Shader "S_BulletRock"
 		[HideInInspector] _AlphaCutoff("Alpha Cutoff ", Range(0, 1)) = 0.5
 		[HideInInspector] _EmissionColor("Emission Color", Color) = (1,1,1,1)
 		[ASEBegin]_Rock_Diffuse("Rock_Diffuse", 2D) = "white" {}
-		[ASEEnd]_Rock_Normal("Rock_Normal", 2D) = "bump" {}
+		_Rock_Normal("Rock_Normal", 2D) = "bump" {}
+		[ASEEnd]_Color0("Color 0", Color) = (1,0.4512821,0,0)
 		[HideInInspector] _texcoord( "", 2D ) = "white" {}
 
 
@@ -277,6 +278,7 @@ Shader "S_BulletRock"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
+			float4 _Color0;
 			float4 _Rock_Diffuse_ST;
 			float4 _Rock_Normal_ST;
 			#ifdef ASE_TRANSMISSION
@@ -545,13 +547,12 @@ Shader "S_BulletRock"
 				float fresnelNdotV17 = dot( WorldNormal, WorldViewDirection );
 				float fresnelNode17 = ( 0.0 + 1.0 * pow( 1.0 - fresnelNdotV17, 5.0 ) );
 				float lerpResult25 = lerp( ( fresnelNode17 * 8.0 ) , 0.0 , 0.0);
-				float4 color12 = IsGammaSpace() ? float4(1,0.4512821,0,0) : float4(1,0.1716865,0,0);
 				float2 uv_Rock_Diffuse = IN.ase_texcoord8.xy * _Rock_Diffuse_ST.xy + _Rock_Diffuse_ST.zw;
 				
 				float2 uv_Rock_Normal = IN.ase_texcoord8.xy * _Rock_Normal_ST.xy + _Rock_Normal_ST.zw;
 				
 
-				float3 BaseColor = ( ( lerpResult25 * color12 ) + ( color12 * tex2D( _Rock_Diffuse, uv_Rock_Diffuse ) ) ).rgb;
+				float3 BaseColor = ( ( lerpResult25 * _Color0 ) + ( _Color0 * tex2D( _Rock_Diffuse, uv_Rock_Diffuse ) ) ).rgb;
 				float3 Normal = UnpackNormalScale( tex2D( _Rock_Normal, uv_Rock_Normal ), 1.0f );
 				float3 Emission = 0;
 				float3 Specular = 0.5;
@@ -852,6 +853,7 @@ Shader "S_BulletRock"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
+			float4 _Color0;
 			float4 _Rock_Diffuse_ST;
 			float4 _Rock_Normal_ST;
 			#ifdef ASE_TRANSMISSION
@@ -1160,6 +1162,7 @@ Shader "S_BulletRock"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
+			float4 _Color0;
 			float4 _Rock_Diffuse_ST;
 			float4 _Rock_Normal_ST;
 			#ifdef ASE_TRANSMISSION
@@ -1450,6 +1453,7 @@ Shader "S_BulletRock"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
+			float4 _Color0;
 			float4 _Rock_Diffuse_ST;
 			float4 _Rock_Normal_ST;
 			#ifdef ASE_TRANSMISSION
@@ -1666,11 +1670,10 @@ Shader "S_BulletRock"
 				float fresnelNdotV17 = dot( ase_worldNormal, ase_worldViewDir );
 				float fresnelNode17 = ( 0.0 + 1.0 * pow( 1.0 - fresnelNdotV17, 5.0 ) );
 				float lerpResult25 = lerp( ( fresnelNode17 * 8.0 ) , 0.0 , 0.0);
-				float4 color12 = IsGammaSpace() ? float4(1,0.4512821,0,0) : float4(1,0.1716865,0,0);
 				float2 uv_Rock_Diffuse = IN.ase_texcoord5.xy * _Rock_Diffuse_ST.xy + _Rock_Diffuse_ST.zw;
 				
 
-				float3 BaseColor = ( ( lerpResult25 * color12 ) + ( color12 * tex2D( _Rock_Diffuse, uv_Rock_Diffuse ) ) ).rgb;
+				float3 BaseColor = ( ( lerpResult25 * _Color0 ) + ( _Color0 * tex2D( _Rock_Diffuse, uv_Rock_Diffuse ) ) ).rgb;
 				float3 Emission = 0;
 				float Alpha = 1;
 				float AlphaClipThreshold = 0.5;
@@ -1756,6 +1759,7 @@ Shader "S_BulletRock"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
+			float4 _Color0;
 			float4 _Rock_Diffuse_ST;
 			float4 _Rock_Normal_ST;
 			#ifdef ASE_TRANSMISSION
@@ -1957,11 +1961,10 @@ Shader "S_BulletRock"
 				float fresnelNdotV17 = dot( ase_worldNormal, ase_worldViewDir );
 				float fresnelNode17 = ( 0.0 + 1.0 * pow( 1.0 - fresnelNdotV17, 5.0 ) );
 				float lerpResult25 = lerp( ( fresnelNode17 * 8.0 ) , 0.0 , 0.0);
-				float4 color12 = IsGammaSpace() ? float4(1,0.4512821,0,0) : float4(1,0.1716865,0,0);
 				float2 uv_Rock_Diffuse = IN.ase_texcoord3.xy * _Rock_Diffuse_ST.xy + _Rock_Diffuse_ST.zw;
 				
 
-				float3 BaseColor = ( ( lerpResult25 * color12 ) + ( color12 * tex2D( _Rock_Diffuse, uv_Rock_Diffuse ) ) ).rgb;
+				float3 BaseColor = ( ( lerpResult25 * _Color0 ) + ( _Color0 * tex2D( _Rock_Diffuse, uv_Rock_Diffuse ) ) ).rgb;
 				float Alpha = 1;
 				float AlphaClipThreshold = 0.5;
 
@@ -2045,6 +2048,7 @@ Shader "S_BulletRock"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
+			float4 _Color0;
 			float4 _Rock_Diffuse_ST;
 			float4 _Rock_Normal_ST;
 			#ifdef ASE_TRANSMISSION
@@ -2408,6 +2412,7 @@ Shader "S_BulletRock"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
+			float4 _Color0;
 			float4 _Rock_Diffuse_ST;
 			float4 _Rock_Normal_ST;
 			#ifdef ASE_TRANSMISSION
@@ -2669,13 +2674,12 @@ Shader "S_BulletRock"
 				float fresnelNdotV17 = dot( WorldNormal, WorldViewDirection );
 				float fresnelNode17 = ( 0.0 + 1.0 * pow( 1.0 - fresnelNdotV17, 5.0 ) );
 				float lerpResult25 = lerp( ( fresnelNode17 * 8.0 ) , 0.0 , 0.0);
-				float4 color12 = IsGammaSpace() ? float4(1,0.4512821,0,0) : float4(1,0.1716865,0,0);
 				float2 uv_Rock_Diffuse = IN.ase_texcoord8.xy * _Rock_Diffuse_ST.xy + _Rock_Diffuse_ST.zw;
 				
 				float2 uv_Rock_Normal = IN.ase_texcoord8.xy * _Rock_Normal_ST.xy + _Rock_Normal_ST.zw;
 				
 
-				float3 BaseColor = ( ( lerpResult25 * color12 ) + ( color12 * tex2D( _Rock_Diffuse, uv_Rock_Diffuse ) ) ).rgb;
+				float3 BaseColor = ( ( lerpResult25 * _Color0 ) + ( _Color0 * tex2D( _Rock_Diffuse, uv_Rock_Diffuse ) ) ).rgb;
 				float3 Normal = UnpackNormalScale( tex2D( _Rock_Normal, uv_Rock_Normal ), 1.0f );
 				float3 Emission = 0;
 				float3 Specular = 0.5;
@@ -2840,6 +2844,7 @@ Shader "S_BulletRock"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
+			float4 _Color0;
 			float4 _Rock_Diffuse_ST;
 			float4 _Rock_Normal_ST;
 			#ifdef ASE_TRANSMISSION
@@ -3087,6 +3092,7 @@ Shader "S_BulletRock"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
+			float4 _Color0;
 			float4 _Rock_Diffuse_ST;
 			float4 _Rock_Normal_ST;
 			#ifdef ASE_TRANSMISSION
@@ -3304,12 +3310,12 @@ Node;AmplifyShaderEditor.RangedFloatNode;14;-7.505798,263.5498;Inherit;False;Con
 Node;AmplifyShaderEditor.SamplerNode;10;-867.6796,-116.9954;Inherit;True;Property;_Rock_Diffuse;Rock_Diffuse;0;0;Create;True;0;0;0;False;0;False;-1;81d1a42c0c726154cade0e79f9ef8ed0;81d1a42c0c726154cade0e79f9ef8ed0;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;13;-495.7979,-137.5051;Inherit;True;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.SimpleAddOpNode;18;-114.3241,-185.0884;Inherit;True;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
-Node;AmplifyShaderEditor.ColorNode;12;-771.484,-308.9765;Inherit;False;Constant;_Color0;Color 0;1;0;Create;True;0;0;0;False;0;False;1,0.4512821,0,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;19;-301.1399,-432.2164;Inherit;True;2;2;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.FresnelNode;17;-1124.064,-816.3443;Inherit;True;Standard;WorldNormal;ViewDir;False;False;5;0;FLOAT3;0,0,1;False;4;FLOAT3;0,0,0;False;1;FLOAT;0;False;2;FLOAT;1;False;3;FLOAT;5;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;24;-790.8933,-774.4752;Inherit;True;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.LerpOp;25;-546.8933,-664.4752;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;22;-1041.852,-560.2933;Inherit;False;Constant;_Float1;Float 1;2;0;Create;True;0;0;0;False;0;False;8;0;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.ColorNode;12;-771.484,-308.9765;Inherit;False;Property;_Color0;Color 0;2;0;Create;True;0;0;0;False;0;False;1,0.4512821,0,0;1,0.4512821,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 WireConnection;1;0;18;0
 WireConnection;1;1;15;0
 WireConnection;1;4;14;0
@@ -3323,4 +3329,4 @@ WireConnection;24;0;17;0
 WireConnection;24;1;22;0
 WireConnection;25;0;24;0
 ASEEND*/
-//CHKSM=107F0D5EC765E330F6FA6F5000A5C947753C9972
+//CHKSM=3E0F1E6FAE9279D1FE760B5CDFB332D74A5A45E4
