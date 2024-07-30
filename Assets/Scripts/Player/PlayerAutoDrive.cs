@@ -75,6 +75,8 @@ public class PlayerAutoDrive : MonoBehaviour
 
     private void FinishFollowPath()
     {
+        _controller.SetThrottle(0);
+        _agent.rb.velocity = Vector3.zero;
         _path = null;
         _followingPath = false;
         _controller.lockInputs = false;

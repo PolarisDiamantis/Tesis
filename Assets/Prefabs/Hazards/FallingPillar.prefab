@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8083878536148385454}
   - component: {fileID: 6033593107460637744}
   - component: {fileID: 5833258474873239760}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Pillar A 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 867294004347598241}
   - component: {fileID: 7447086069599615990}
   - component: {fileID: 3065812374795270225}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Tip A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,9 +177,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1793107951807007153}
   - component: {fileID: 7155770014209552079}
+  - component: {fileID: -2275974146381825810}
   - component: {fileID: 7848639184693913488}
   - component: {fileID: 6361781566072409371}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: FallingPillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,6 +231,33 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers: []
   m_Enabled: 1
+--- !u!54 &-2275974146381825810
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4640088078544221223}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!65 &7848639184693913488
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -264,4 +292,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fallStreght: 0.5
+  _coolDownTime: 3
   _triggerRadius: 500

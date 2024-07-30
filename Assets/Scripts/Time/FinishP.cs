@@ -16,5 +16,7 @@ public class FinishP : MonoBehaviour
         _time.FinishTimer();
         GameManager.Instance.FinalResults();
         //_scene.ChangeEscene("MainMenu");
+        GameManager.Instance.player.rb.velocity = Vector3.zero;
+        GameManager.Instance.player.GetComponent<PlayerController>().lockInputs = true;
     }
 }

@@ -8,6 +8,7 @@ public class MagicBall : MonoBehaviour
     [SerializeField] float _force = 500f;
     [SerializeField] float _gravity = -9.8f;
     [SerializeField] private float _duration = 5f;
+    [SerializeField] LayerMask _targets;
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -22,6 +23,17 @@ public class MagicBall : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
+        if(other.gameObject.layer == 13)
+        {
+            Destroy(other.gameObject);
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.layer == _targets)
+        {
+            Destroy(other.gameObject);
+        }
     }
 }

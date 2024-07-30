@@ -86,5 +86,6 @@ public class InGameSettignsManager : Singleton<InGameSettignsManager>
         Cursor.visible = false;
         Time.timeScale = 1f;
         GameManager.Instance.ui.pauseUI.SetActive(false);
+        GameManager.Instance.time.ResumeTimer();
     }
 }

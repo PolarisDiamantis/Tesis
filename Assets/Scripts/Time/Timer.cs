@@ -7,14 +7,22 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
     DateTime _startingTime;
+    DateTime _pauseTime;
     TimeSpan _currentTime;
+    TimeSpan _currentPauseTime;
     [SerializeField] TextMeshProUGUI _timer;
     [SerializeField] string _currentLevelKey = "lvl1BestTime";
     bool _isActive = false;
+    bool _isPause = false;
 
     private void Update()
     {
         if (!_isActive) return;
+        if (_isPause) 
+        {
+            _currentPauseTime = DateTime.Now - _pauseTime;
+            return; 
+        }
         _currentTime = DateTime.Now - _startingTime;
        //Debug.Log(_currentTime.Hours.ToString("00") + " : " + _currentTime.Minutes.ToString("00") + " : " + _currentTime.Seconds.ToString("00"));
         _timer.text = _currentTime.Hours.ToString("00") + " : " + _currentTime.Minutes.ToString("00") + " : " + _currentTime.Seconds.ToString("00");
@@ -25,6 +33,19 @@ public class Timer : MonoBehaviour
         Debug.Log("Time Started");
         _startingTime = DateTime.Now;
         _isActive = true;
+    }
+
+    public void PauseTimer()
+    {
+        _isPause = true;
+        _pauseTime = DateTime.Now;
+    }
+
+    public void ResumeTimer()
+    {
+        _isPause = false;
+        _startingTime += _currentPauseTime;
+
     }
 
     public void FinishTimer()

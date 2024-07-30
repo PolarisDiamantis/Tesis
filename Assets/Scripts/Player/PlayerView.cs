@@ -180,7 +180,7 @@ public class PlayerView
     private void OnDamage()
     {
         _anim.SetTrigger("Damage");
-        _anim.SetInteger("DamageID", UnityEngine.Random.Range(0, 2));
+        //_anim.SetInteger("DamageID", UnityEngine.Random.Range(0, 2));
     }
 
     private void OnTPStart()

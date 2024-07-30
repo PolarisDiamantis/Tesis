@@ -28,6 +28,8 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    public Timer time;
+
     private void UpdateCrystalCountUI(int val)
     {
         if (ui == null) return;

@@ -50,6 +50,7 @@ public class PlayerModel : MonoBehaviour
     public VisualEffect tpInitial;
     public VisualEffect tpIFinish;
     public VisualEffect boostVFX;
+    public VisualEffect extraLifeVFX;
 
     [Header("Animations")]
     public Animator camAnim;
@@ -142,7 +143,7 @@ public class PlayerModel : MonoBehaviour
             Debug.Log("Col");
             if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Damage"))
             {
-                GetComponent<PlayerController>().ModifyThrottle(30f, 1.5f, ModifyThrottleSource.impact);
+                GetComponent<PlayerController>().ModifyThrottle(-30f, 1.5f, ModifyThrottleSource.impact);
                 OnDamage();
                 dizzyShader.CallDamageShader();
             }
@@ -191,7 +192,7 @@ public class PlayerModel : MonoBehaviour
     public void KillPlayer(CheckPoint check)
     {
         if (isInvincible) { return; }
-        if (hasLifeRune) { hasLifeRune = false; return; }
+        if (hasLifeRune) { hasLifeRune = false; extraLifeVFX.Play(); return; }
         // Should play a safe view event.
         StartCoroutine(DeathSequence(2, check));
     }
@@ -207,6 +208,8 @@ public class PlayerModel : MonoBehaviour
         yield return new WaitForSeconds(duration);
         rb.position = check.spawnPoint.position;
         GetComponent<PlayerController>().ModifyRotation(check.spawnPoint.rotation.eulerAngles.y, check.spawnPoint.rotation.eulerAngles.x);
+        GetComponent<PlayerController>().SetThrottle(0);
+        rb.velocity = Vector3.zero;
         anim.Play("Movimiento");
     }
 

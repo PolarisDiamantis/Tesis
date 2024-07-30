@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StartingP : MonoBehaviour
 {
-    [SerializeField] Timer _time;
+    /*[SerializeField] Timer _time;
     private bool _triggered = false;
 
     private void OnTriggerEnter(Collider other)
@@ -12,5 +12,5 @@ public class StartingP : MonoBehaviour
         if (other.GetComponent<PlayerModel>() == null || _triggered) return;
         _triggered = true;
         _time.StartTimer();
-    }
+    }*/
 }

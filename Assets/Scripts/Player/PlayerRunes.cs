@@ -47,6 +47,8 @@ public class PlayerRunes : MonoBehaviour
 
     private void ChoiceMade()
     {
+
+        GameManager.Instance.time.StartTimer();
         _ui.runesUI.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

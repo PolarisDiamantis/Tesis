@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
 
     private bool _canBoost = true;
     private bool _canShield = true;
+    private bool _canTP = true;
 
     // Edit variables with rune logic
     [Header("Boost Settings")]
@@ -254,6 +255,7 @@ public class PlayerController : MonoBehaviour
             Cursor.visible = true;
             Time.timeScale = 0f;
             UIManager.Instance.pauseUI.SetActive(true);
+            GameManager.Instance.time.PauseTimer();
         }
     }
 
@@ -281,6 +283,7 @@ public class PlayerController : MonoBehaviour
 
     public void TeleportFoward(float distance)
     {
+        if (!_canTP) return;
         //Vector3 destination = _agent.rb.position + (transform.forward * distance);
         StartCoroutine(TeleportProcess(distance, 0.05f, 2f));
 
@@ -288,6 +291,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator TeleportProcess(float distance, float charge, float cooldown)
     {
+        _canTP = false;
         _agent.ONTpStart();
         yield return new WaitForSeconds(charge);
         _agent.ONTpBegan();
@@ -296,6 +300,7 @@ public class PlayerController : MonoBehaviour
         _agent.OnTpArrive();
         _agent.rb.position = destination;
         yield return new WaitForSeconds(cooldown);
+        _canTP = true;
     }
 
     public void ModifyThrottle(float amount, float duration, ModifyThrottleSource source)
@@ -310,6 +315,11 @@ public class PlayerController : MonoBehaviour
         }
         StartCoroutine(ModifyThrottleProcess(amount, duration));
 
+    }
+
+    public void SetThrottle(float val)
+    {
+        _throttle = val;
     }
 
     IEnumerator ModifyThrottleProcess(float amount, float duration)

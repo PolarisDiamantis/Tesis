@@ -3081,6 +3081,7 @@ MonoBehaviour:
   ui: {fileID: 238327302}
   player: {fileID: 0}
   lastCheckPoint: {fileID: 0}
+  time: {fileID: 175638936}
 --- !u!1 &570479538
 GameObject:
   m_ObjectHideFlags: 0
@@ -3212,6 +3213,11 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 813861137}
+    - target: {fileID: 3615963840814385674, guid: 4269e10d63aef4a42b06004e4ad58f78,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4191259693832103822, guid: 4269e10d63aef4a42b06004e4ad58f78,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4802,7 +4808,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14bd1e53fee0ce14eb8ca4f4736db069, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _time: {fileID: 175638936}
 --- !u!65 &855846632
 BoxCollider:
   m_ObjectHideFlags: 0
