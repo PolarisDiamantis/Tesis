@@ -58,6 +58,8 @@ public class PlayerModel : MonoBehaviour
 
     [Header("Audios")]
     public AudioClip pickUpSound; 
+    public AudioSource hitSound; 
+    public AudioSource totemSound; 
 
     [SerializeField] private float _magnetSphere; 
     [SerializeField] private LayerMask _magnetMask;
@@ -145,6 +147,7 @@ public class PlayerModel : MonoBehaviour
             {
                 GetComponent<PlayerController>().ModifyThrottle(-30f, 1.5f, ModifyThrottleSource.impact);
                 OnDamage();
+                hitSound.Play();
                 dizzyShader.CallDamageShader();
             }
             Vector3 imp = transform.position - hit.point;
@@ -191,8 +194,15 @@ public class PlayerModel : MonoBehaviour
 
     public void KillPlayer(CheckPoint check)
     {
-        if (isInvincible) { return; }
-        if (hasLifeRune) { hasLifeRune = false; extraLifeVFX.Play(); return; }
+        if (isInvincible) 
+        {
+            return; 
+        }
+        if (hasLifeRune) 
+        {
+            totemSound.Play();
+            hasLifeRune = false; extraLifeVFX.Play(); return;
+        }
         // Should play a safe view event.
         StartCoroutine(DeathSequence(2, check));
     }

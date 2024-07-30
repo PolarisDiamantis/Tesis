@@ -14,6 +14,8 @@ public class FullScreenTestController2 : MonoBehaviour
     [Header("References")]
     [SerializeField] private ScriptableRendererFeature _fullScreenFrozen;
     [SerializeField] private Material _material;
+    public AudioSource frezeAudio;
+
 
     float _timer;
 
@@ -49,6 +51,7 @@ public class FullScreenTestController2 : MonoBehaviour
         if (_timer >= _cooldownReplay)
         {
             StartCoroutine(Hurt());
+            frezeAudio.Play();
             _timer = 0;
         }
     }

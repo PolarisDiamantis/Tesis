@@ -6,7 +6,8 @@ public class Debri : MonoBehaviour
 {
     Rigidbody _rb;
     [SerializeField] float _force = 500f;
-    [SerializeField] float _gravity = -9.8f;
+    [SerializeField] float _mingravity = -9.8f;
+    [SerializeField] float _maxgravity = -9.8f;
 
     [Range(0, 100)]
     [SerializeField] float _speedReduction = 90f;
@@ -20,7 +21,7 @@ public class Debri : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rb.AddForce(Vector3.up * _gravity, ForceMode.Acceleration);
+        _rb.AddForce(Vector3.up * Random.Range(_mingravity, _maxgravity), ForceMode.Acceleration);
     }
 
     protected virtual void OnTriggerEnter(Collider other)

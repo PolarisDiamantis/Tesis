@@ -64,7 +64,7 @@ public class Tornado : WeatherZone
     private void Update()
     {
         if (_isBusy) return;
-        StartCoroutine(ThrowDebri(Random.Range(_minInterval, _maxInterval)));
+        //StartCoroutine(ThrowDebri(Random.Range(_minInterval, _maxInterval)));
     }
 
     private Vector3 GetRNGPosition()

@@ -19,6 +19,8 @@ public class PlayerRunes : MonoBehaviour
     [SerializeField] [Range(0, 2)] private float _boostModifier = 1f;
     [SerializeField] [Range(0, 2)] private float _speedModiferP = 1f;
 
+    [SerializeField] PlayerStasrtingSpawn _rotateSpawn;
+
     private void Start()
     {
         if(UIManager.Instance != null) _ui = UIManager.Instance;
@@ -47,7 +49,7 @@ public class PlayerRunes : MonoBehaviour
 
     private void ChoiceMade()
     {
-
+        _rotateSpawn.SetRotation();
         GameManager.Instance.time.StartTimer();
         _ui.runesUI.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;

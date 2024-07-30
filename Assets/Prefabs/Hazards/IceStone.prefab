@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.021, y: -0.053, z: -0.746}
-  m_LocalScale: {x: 0.013023544, y: 0.013023544, z: 0.013023544}
+  m_LocalScale: {x: 0.0048503587, y: 0.0048503587, z: 0.0048503587}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4571492552532878467}
@@ -5083,7 +5083,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _force: 350
-  _gravity: -9.8
+  _mingravity: -9.8
+  _maxgravity: -9.8
   _speedReduction: 100
   _duration: 5
   _effectDuration: 3

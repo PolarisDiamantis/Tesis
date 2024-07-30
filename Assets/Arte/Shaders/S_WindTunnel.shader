@@ -42,7 +42,7 @@ Shader "S_WindTunnel"
 
 		Tags { "RenderPipeline"="UniversalPipeline" "RenderType"="Transparent" "Queue"="Transparent" }
 
-		Cull Back
+		Cull Front
 		ZWrite Off
 		ZTest LEqual
 		Offset 0 , 0
@@ -185,6 +185,7 @@ Shader "S_WindTunnel"
 			#pragma multi_compile_fog
 			#define ASE_FOG 1
 			#define _SURFACE_TYPE_TRANSPARENT 1
+			#define _EMISSION
 			#define ASE_SRP_VERSION 140008
 
 
@@ -565,14 +566,14 @@ Shader "S_WindTunnel"
 				float2 texCoord30 = IN.ase_texcoord8.xy * float2( 1,1 ) + float2( 0,0 );
 				float mulTime77 = _TimeParameters.x * 5.65;
 				float2 temp_cast_0 = (-4.0).xx;
-				float2 center45_g4 = temp_cast_0;
-				float2 delta6_g4 = ( texCoord30 - center45_g4 );
-				float angle10_g4 = ( length( delta6_g4 ) * 6.0 );
-				float x23_g4 = ( ( cos( angle10_g4 ) * delta6_g4.x ) - ( sin( angle10_g4 ) * delta6_g4.y ) );
-				float2 break40_g4 = center45_g4;
-				float2 break41_g4 = float2( 0,0 );
-				float y35_g4 = ( ( sin( angle10_g4 ) * delta6_g4.x ) + ( cos( angle10_g4 ) * delta6_g4.y ) );
-				float2 appendResult44_g4 = (float2(( x23_g4 + break40_g4.x + break41_g4.x ) , ( break40_g4.y + break41_g4.y + y35_g4 )));
+				float2 center45_g15 = temp_cast_0;
+				float2 delta6_g15 = ( texCoord30 - center45_g15 );
+				float angle10_g15 = ( length( delta6_g15 ) * 6.0 );
+				float x23_g15 = ( ( cos( angle10_g15 ) * delta6_g15.x ) - ( sin( angle10_g15 ) * delta6_g15.y ) );
+				float2 break40_g15 = center45_g15;
+				float2 break41_g15 = float2( 0,0 );
+				float y35_g15 = ( ( sin( angle10_g15 ) * delta6_g15.x ) + ( cos( angle10_g15 ) * delta6_g15.y ) );
+				float2 appendResult44_g15 = (float2(( x23_g15 + break40_g15.x + break41_g15.x ) , ( break40_g15.y + break41_g15.y + y35_g15 )));
 				float2 temp_cast_1 = (1.24).xx;
 				float2 center45_g14 = temp_cast_1;
 				float2 delta6_g14 = ( texCoord30 - center45_g14 );
@@ -582,7 +583,7 @@ Shader "S_WindTunnel"
 				float2 break41_g14 = float2( 0,0 );
 				float y35_g14 = ( ( sin( angle10_g14 ) * delta6_g14.x ) + ( cos( angle10_g14 ) * delta6_g14.y ) );
 				float2 appendResult44_g14 = (float2(( x23_g14 + break40_g14.x + break41_g14.x ) , ( break40_g14.y + break41_g14.y + y35_g14 )));
-				float2 lerpResult151 = lerp( appendResult44_g4 , float2( 0,0 ) , appendResult44_g14);
+				float2 lerpResult151 = lerp( appendResult44_g15 , float2( 0,0 ) , appendResult44_g14);
 				float2 panner76 = ( mulTime77 * float2( 0,2 ) + lerpResult151);
 				float simplePerlin2D75 = snoise( panner76*0.2 );
 				simplePerlin2D75 = simplePerlin2D75*0.5 + 0.5;
@@ -593,7 +594,7 @@ Shader "S_WindTunnel"
 
 				float3 BaseColor = lerpResult134.rgb;
 				float3 Normal = float3(0, 0, 1);
-				float3 Emission = 0;
+				float3 Emission = lerpResult134.rgb;
 				float3 Specular = 0.5;
 				float Metallic = 0;
 				float Smoothness = 0.0;
@@ -844,6 +845,7 @@ Shader "S_WindTunnel"
 			#pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
 			#define ASE_FOG 1
 			#define _SURFACE_TYPE_TRANSPARENT 1
+			#define _EMISSION
 			#define ASE_SRP_VERSION 140008
 
 
@@ -1139,14 +1141,14 @@ Shader "S_WindTunnel"
 				float2 texCoord30 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
 				float mulTime77 = _TimeParameters.x * 5.65;
 				float2 temp_cast_0 = (-4.0).xx;
-				float2 center45_g4 = temp_cast_0;
-				float2 delta6_g4 = ( texCoord30 - center45_g4 );
-				float angle10_g4 = ( length( delta6_g4 ) * 6.0 );
-				float x23_g4 = ( ( cos( angle10_g4 ) * delta6_g4.x ) - ( sin( angle10_g4 ) * delta6_g4.y ) );
-				float2 break40_g4 = center45_g4;
-				float2 break41_g4 = float2( 0,0 );
-				float y35_g4 = ( ( sin( angle10_g4 ) * delta6_g4.x ) + ( cos( angle10_g4 ) * delta6_g4.y ) );
-				float2 appendResult44_g4 = (float2(( x23_g4 + break40_g4.x + break41_g4.x ) , ( break40_g4.y + break41_g4.y + y35_g4 )));
+				float2 center45_g15 = temp_cast_0;
+				float2 delta6_g15 = ( texCoord30 - center45_g15 );
+				float angle10_g15 = ( length( delta6_g15 ) * 6.0 );
+				float x23_g15 = ( ( cos( angle10_g15 ) * delta6_g15.x ) - ( sin( angle10_g15 ) * delta6_g15.y ) );
+				float2 break40_g15 = center45_g15;
+				float2 break41_g15 = float2( 0,0 );
+				float y35_g15 = ( ( sin( angle10_g15 ) * delta6_g15.x ) + ( cos( angle10_g15 ) * delta6_g15.y ) );
+				float2 appendResult44_g15 = (float2(( x23_g15 + break40_g15.x + break41_g15.x ) , ( break40_g15.y + break41_g15.y + y35_g15 )));
 				float2 temp_cast_1 = (1.24).xx;
 				float2 center45_g14 = temp_cast_1;
 				float2 delta6_g14 = ( texCoord30 - center45_g14 );
@@ -1156,7 +1158,7 @@ Shader "S_WindTunnel"
 				float2 break41_g14 = float2( 0,0 );
 				float y35_g14 = ( ( sin( angle10_g14 ) * delta6_g14.x ) + ( cos( angle10_g14 ) * delta6_g14.y ) );
 				float2 appendResult44_g14 = (float2(( x23_g14 + break40_g14.x + break41_g14.x ) , ( break40_g14.y + break41_g14.y + y35_g14 )));
-				float2 lerpResult151 = lerp( appendResult44_g4 , float2( 0,0 ) , appendResult44_g14);
+				float2 lerpResult151 = lerp( appendResult44_g15 , float2( 0,0 ) , appendResult44_g14);
 				float2 panner76 = ( mulTime77 * float2( 0,2 ) + lerpResult151);
 				float simplePerlin2D75 = snoise( panner76*0.2 );
 				simplePerlin2D75 = simplePerlin2D75*0.5 + 0.5;
@@ -1212,6 +1214,7 @@ Shader "S_WindTunnel"
 			#pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
 			#define ASE_FOG 1
 			#define _SURFACE_TYPE_TRANSPARENT 1
+			#define _EMISSION
 			#define ASE_SRP_VERSION 140008
 
 
@@ -1487,14 +1490,14 @@ Shader "S_WindTunnel"
 				float2 texCoord30 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
 				float mulTime77 = _TimeParameters.x * 5.65;
 				float2 temp_cast_0 = (-4.0).xx;
-				float2 center45_g4 = temp_cast_0;
-				float2 delta6_g4 = ( texCoord30 - center45_g4 );
-				float angle10_g4 = ( length( delta6_g4 ) * 6.0 );
-				float x23_g4 = ( ( cos( angle10_g4 ) * delta6_g4.x ) - ( sin( angle10_g4 ) * delta6_g4.y ) );
-				float2 break40_g4 = center45_g4;
-				float2 break41_g4 = float2( 0,0 );
-				float y35_g4 = ( ( sin( angle10_g4 ) * delta6_g4.x ) + ( cos( angle10_g4 ) * delta6_g4.y ) );
-				float2 appendResult44_g4 = (float2(( x23_g4 + break40_g4.x + break41_g4.x ) , ( break40_g4.y + break41_g4.y + y35_g4 )));
+				float2 center45_g15 = temp_cast_0;
+				float2 delta6_g15 = ( texCoord30 - center45_g15 );
+				float angle10_g15 = ( length( delta6_g15 ) * 6.0 );
+				float x23_g15 = ( ( cos( angle10_g15 ) * delta6_g15.x ) - ( sin( angle10_g15 ) * delta6_g15.y ) );
+				float2 break40_g15 = center45_g15;
+				float2 break41_g15 = float2( 0,0 );
+				float y35_g15 = ( ( sin( angle10_g15 ) * delta6_g15.x ) + ( cos( angle10_g15 ) * delta6_g15.y ) );
+				float2 appendResult44_g15 = (float2(( x23_g15 + break40_g15.x + break41_g15.x ) , ( break40_g15.y + break41_g15.y + y35_g15 )));
 				float2 temp_cast_1 = (1.24).xx;
 				float2 center45_g14 = temp_cast_1;
 				float2 delta6_g14 = ( texCoord30 - center45_g14 );
@@ -1504,7 +1507,7 @@ Shader "S_WindTunnel"
 				float2 break41_g14 = float2( 0,0 );
 				float y35_g14 = ( ( sin( angle10_g14 ) * delta6_g14.x ) + ( cos( angle10_g14 ) * delta6_g14.y ) );
 				float2 appendResult44_g14 = (float2(( x23_g14 + break40_g14.x + break41_g14.x ) , ( break40_g14.y + break41_g14.y + y35_g14 )));
-				float2 lerpResult151 = lerp( appendResult44_g4 , float2( 0,0 ) , appendResult44_g14);
+				float2 lerpResult151 = lerp( appendResult44_g15 , float2( 0,0 ) , appendResult44_g14);
 				float2 panner76 = ( mulTime77 * float2( 0,2 ) + lerpResult151);
 				float simplePerlin2D75 = snoise( panner76*0.2 );
 				simplePerlin2D75 = simplePerlin2D75*0.5 + 0.5;
@@ -1551,6 +1554,7 @@ Shader "S_WindTunnel"
 			#pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
 			#define ASE_FOG 1
 			#define _SURFACE_TYPE_TRANSPARENT 1
+			#define _EMISSION
 			#define ASE_SRP_VERSION 140008
 
 
@@ -1838,14 +1842,14 @@ Shader "S_WindTunnel"
 				float2 texCoord30 = IN.ase_texcoord4.xy * float2( 1,1 ) + float2( 0,0 );
 				float mulTime77 = _TimeParameters.x * 5.65;
 				float2 temp_cast_0 = (-4.0).xx;
-				float2 center45_g4 = temp_cast_0;
-				float2 delta6_g4 = ( texCoord30 - center45_g4 );
-				float angle10_g4 = ( length( delta6_g4 ) * 6.0 );
-				float x23_g4 = ( ( cos( angle10_g4 ) * delta6_g4.x ) - ( sin( angle10_g4 ) * delta6_g4.y ) );
-				float2 break40_g4 = center45_g4;
-				float2 break41_g4 = float2( 0,0 );
-				float y35_g4 = ( ( sin( angle10_g4 ) * delta6_g4.x ) + ( cos( angle10_g4 ) * delta6_g4.y ) );
-				float2 appendResult44_g4 = (float2(( x23_g4 + break40_g4.x + break41_g4.x ) , ( break40_g4.y + break41_g4.y + y35_g4 )));
+				float2 center45_g15 = temp_cast_0;
+				float2 delta6_g15 = ( texCoord30 - center45_g15 );
+				float angle10_g15 = ( length( delta6_g15 ) * 6.0 );
+				float x23_g15 = ( ( cos( angle10_g15 ) * delta6_g15.x ) - ( sin( angle10_g15 ) * delta6_g15.y ) );
+				float2 break40_g15 = center45_g15;
+				float2 break41_g15 = float2( 0,0 );
+				float y35_g15 = ( ( sin( angle10_g15 ) * delta6_g15.x ) + ( cos( angle10_g15 ) * delta6_g15.y ) );
+				float2 appendResult44_g15 = (float2(( x23_g15 + break40_g15.x + break41_g15.x ) , ( break40_g15.y + break41_g15.y + y35_g15 )));
 				float2 temp_cast_1 = (1.24).xx;
 				float2 center45_g14 = temp_cast_1;
 				float2 delta6_g14 = ( texCoord30 - center45_g14 );
@@ -1855,7 +1859,7 @@ Shader "S_WindTunnel"
 				float2 break41_g14 = float2( 0,0 );
 				float y35_g14 = ( ( sin( angle10_g14 ) * delta6_g14.x ) + ( cos( angle10_g14 ) * delta6_g14.y ) );
 				float2 appendResult44_g14 = (float2(( x23_g14 + break40_g14.x + break41_g14.x ) , ( break40_g14.y + break41_g14.y + y35_g14 )));
-				float2 lerpResult151 = lerp( appendResult44_g4 , float2( 0,0 ) , appendResult44_g14);
+				float2 lerpResult151 = lerp( appendResult44_g15 , float2( 0,0 ) , appendResult44_g14);
 				float2 panner76 = ( mulTime77 * float2( 0,2 ) + lerpResult151);
 				float simplePerlin2D75 = snoise( panner76*0.2 );
 				simplePerlin2D75 = simplePerlin2D75*0.5 + 0.5;
@@ -1865,7 +1869,7 @@ Shader "S_WindTunnel"
 				
 
 				float3 BaseColor = lerpResult134.rgb;
-				float3 Emission = 0;
+				float3 Emission = lerpResult134.rgb;
 				float Alpha = lerpResult134.r;
 				float AlphaClipThreshold = 0.5;
 
@@ -1905,6 +1909,7 @@ Shader "S_WindTunnel"
 			#pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
 			#define ASE_FOG 1
 			#define _SURFACE_TYPE_TRANSPARENT 1
+			#define _EMISSION
 			#define ASE_SRP_VERSION 140008
 
 
@@ -2167,14 +2172,14 @@ Shader "S_WindTunnel"
 				float2 texCoord30 = IN.ase_texcoord2.xy * float2( 1,1 ) + float2( 0,0 );
 				float mulTime77 = _TimeParameters.x * 5.65;
 				float2 temp_cast_0 = (-4.0).xx;
-				float2 center45_g4 = temp_cast_0;
-				float2 delta6_g4 = ( texCoord30 - center45_g4 );
-				float angle10_g4 = ( length( delta6_g4 ) * 6.0 );
-				float x23_g4 = ( ( cos( angle10_g4 ) * delta6_g4.x ) - ( sin( angle10_g4 ) * delta6_g4.y ) );
-				float2 break40_g4 = center45_g4;
-				float2 break41_g4 = float2( 0,0 );
-				float y35_g4 = ( ( sin( angle10_g4 ) * delta6_g4.x ) + ( cos( angle10_g4 ) * delta6_g4.y ) );
-				float2 appendResult44_g4 = (float2(( x23_g4 + break40_g4.x + break41_g4.x ) , ( break40_g4.y + break41_g4.y + y35_g4 )));
+				float2 center45_g15 = temp_cast_0;
+				float2 delta6_g15 = ( texCoord30 - center45_g15 );
+				float angle10_g15 = ( length( delta6_g15 ) * 6.0 );
+				float x23_g15 = ( ( cos( angle10_g15 ) * delta6_g15.x ) - ( sin( angle10_g15 ) * delta6_g15.y ) );
+				float2 break40_g15 = center45_g15;
+				float2 break41_g15 = float2( 0,0 );
+				float y35_g15 = ( ( sin( angle10_g15 ) * delta6_g15.x ) + ( cos( angle10_g15 ) * delta6_g15.y ) );
+				float2 appendResult44_g15 = (float2(( x23_g15 + break40_g15.x + break41_g15.x ) , ( break40_g15.y + break41_g15.y + y35_g15 )));
 				float2 temp_cast_1 = (1.24).xx;
 				float2 center45_g14 = temp_cast_1;
 				float2 delta6_g14 = ( texCoord30 - center45_g14 );
@@ -2184,7 +2189,7 @@ Shader "S_WindTunnel"
 				float2 break41_g14 = float2( 0,0 );
 				float y35_g14 = ( ( sin( angle10_g14 ) * delta6_g14.x ) + ( cos( angle10_g14 ) * delta6_g14.y ) );
 				float2 appendResult44_g14 = (float2(( x23_g14 + break40_g14.x + break41_g14.x ) , ( break40_g14.y + break41_g14.y + y35_g14 )));
-				float2 lerpResult151 = lerp( appendResult44_g4 , float2( 0,0 ) , appendResult44_g14);
+				float2 lerpResult151 = lerp( appendResult44_g15 , float2( 0,0 ) , appendResult44_g14);
 				float2 panner76 = ( mulTime77 * float2( 0,2 ) + lerpResult151);
 				float simplePerlin2D75 = snoise( panner76*0.2 );
 				simplePerlin2D75 = simplePerlin2D75*0.5 + 0.5;
@@ -2226,6 +2231,7 @@ Shader "S_WindTunnel"
 			#pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
 			#define ASE_FOG 1
 			#define _SURFACE_TYPE_TRANSPARENT 1
+			#define _EMISSION
 			#define ASE_SRP_VERSION 140008
 
 
@@ -2515,14 +2521,14 @@ Shader "S_WindTunnel"
 				float2 texCoord30 = IN.ase_texcoord4.xy * float2( 1,1 ) + float2( 0,0 );
 				float mulTime77 = _TimeParameters.x * 5.65;
 				float2 temp_cast_0 = (-4.0).xx;
-				float2 center45_g4 = temp_cast_0;
-				float2 delta6_g4 = ( texCoord30 - center45_g4 );
-				float angle10_g4 = ( length( delta6_g4 ) * 6.0 );
-				float x23_g4 = ( ( cos( angle10_g4 ) * delta6_g4.x ) - ( sin( angle10_g4 ) * delta6_g4.y ) );
-				float2 break40_g4 = center45_g4;
-				float2 break41_g4 = float2( 0,0 );
-				float y35_g4 = ( ( sin( angle10_g4 ) * delta6_g4.x ) + ( cos( angle10_g4 ) * delta6_g4.y ) );
-				float2 appendResult44_g4 = (float2(( x23_g4 + break40_g4.x + break41_g4.x ) , ( break40_g4.y + break41_g4.y + y35_g4 )));
+				float2 center45_g15 = temp_cast_0;
+				float2 delta6_g15 = ( texCoord30 - center45_g15 );
+				float angle10_g15 = ( length( delta6_g15 ) * 6.0 );
+				float x23_g15 = ( ( cos( angle10_g15 ) * delta6_g15.x ) - ( sin( angle10_g15 ) * delta6_g15.y ) );
+				float2 break40_g15 = center45_g15;
+				float2 break41_g15 = float2( 0,0 );
+				float y35_g15 = ( ( sin( angle10_g15 ) * delta6_g15.x ) + ( cos( angle10_g15 ) * delta6_g15.y ) );
+				float2 appendResult44_g15 = (float2(( x23_g15 + break40_g15.x + break41_g15.x ) , ( break40_g15.y + break41_g15.y + y35_g15 )));
 				float2 temp_cast_1 = (1.24).xx;
 				float2 center45_g14 = temp_cast_1;
 				float2 delta6_g14 = ( texCoord30 - center45_g14 );
@@ -2532,7 +2538,7 @@ Shader "S_WindTunnel"
 				float2 break41_g14 = float2( 0,0 );
 				float y35_g14 = ( ( sin( angle10_g14 ) * delta6_g14.x ) + ( cos( angle10_g14 ) * delta6_g14.y ) );
 				float2 appendResult44_g14 = (float2(( x23_g14 + break40_g14.x + break41_g14.x ) , ( break40_g14.y + break41_g14.y + y35_g14 )));
-				float2 lerpResult151 = lerp( appendResult44_g4 , float2( 0,0 ) , appendResult44_g14);
+				float2 lerpResult151 = lerp( appendResult44_g15 , float2( 0,0 ) , appendResult44_g14);
 				float2 panner76 = ( mulTime77 * float2( 0,2 ) + lerpResult151);
 				float simplePerlin2D75 = snoise( panner76*0.2 );
 				simplePerlin2D75 = simplePerlin2D75*0.5 + 0.5;
@@ -2608,6 +2614,7 @@ Shader "S_WindTunnel"
 			#pragma multi_compile_fog
 			#define ASE_FOG 1
 			#define _SURFACE_TYPE_TRANSPARENT 1
+			#define _EMISSION
 			#define ASE_SRP_VERSION 140008
 
 
@@ -2976,14 +2983,14 @@ Shader "S_WindTunnel"
 				float2 texCoord30 = IN.ase_texcoord8.xy * float2( 1,1 ) + float2( 0,0 );
 				float mulTime77 = _TimeParameters.x * 5.65;
 				float2 temp_cast_0 = (-4.0).xx;
-				float2 center45_g4 = temp_cast_0;
-				float2 delta6_g4 = ( texCoord30 - center45_g4 );
-				float angle10_g4 = ( length( delta6_g4 ) * 6.0 );
-				float x23_g4 = ( ( cos( angle10_g4 ) * delta6_g4.x ) - ( sin( angle10_g4 ) * delta6_g4.y ) );
-				float2 break40_g4 = center45_g4;
-				float2 break41_g4 = float2( 0,0 );
-				float y35_g4 = ( ( sin( angle10_g4 ) * delta6_g4.x ) + ( cos( angle10_g4 ) * delta6_g4.y ) );
-				float2 appendResult44_g4 = (float2(( x23_g4 + break40_g4.x + break41_g4.x ) , ( break40_g4.y + break41_g4.y + y35_g4 )));
+				float2 center45_g15 = temp_cast_0;
+				float2 delta6_g15 = ( texCoord30 - center45_g15 );
+				float angle10_g15 = ( length( delta6_g15 ) * 6.0 );
+				float x23_g15 = ( ( cos( angle10_g15 ) * delta6_g15.x ) - ( sin( angle10_g15 ) * delta6_g15.y ) );
+				float2 break40_g15 = center45_g15;
+				float2 break41_g15 = float2( 0,0 );
+				float y35_g15 = ( ( sin( angle10_g15 ) * delta6_g15.x ) + ( cos( angle10_g15 ) * delta6_g15.y ) );
+				float2 appendResult44_g15 = (float2(( x23_g15 + break40_g15.x + break41_g15.x ) , ( break40_g15.y + break41_g15.y + y35_g15 )));
 				float2 temp_cast_1 = (1.24).xx;
 				float2 center45_g14 = temp_cast_1;
 				float2 delta6_g14 = ( texCoord30 - center45_g14 );
@@ -2993,7 +3000,7 @@ Shader "S_WindTunnel"
 				float2 break41_g14 = float2( 0,0 );
 				float y35_g14 = ( ( sin( angle10_g14 ) * delta6_g14.x ) + ( cos( angle10_g14 ) * delta6_g14.y ) );
 				float2 appendResult44_g14 = (float2(( x23_g14 + break40_g14.x + break41_g14.x ) , ( break40_g14.y + break41_g14.y + y35_g14 )));
-				float2 lerpResult151 = lerp( appendResult44_g4 , float2( 0,0 ) , appendResult44_g14);
+				float2 lerpResult151 = lerp( appendResult44_g15 , float2( 0,0 ) , appendResult44_g14);
 				float2 panner76 = ( mulTime77 * float2( 0,2 ) + lerpResult151);
 				float simplePerlin2D75 = snoise( panner76*0.2 );
 				simplePerlin2D75 = simplePerlin2D75*0.5 + 0.5;
@@ -3004,7 +3011,7 @@ Shader "S_WindTunnel"
 
 				float3 BaseColor = lerpResult134.rgb;
 				float3 Normal = float3(0, 0, 1);
-				float3 Emission = 0;
+				float3 Emission = lerpResult134.rgb;
 				float3 Specular = 0.5;
 				float Metallic = 0;
 				float Smoothness = 0.0;
@@ -3127,6 +3134,7 @@ Shader "S_WindTunnel"
 			#pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
 			#define ASE_FOG 1
 			#define _SURFACE_TYPE_TRANSPARENT 1
+			#define _EMISSION
 			#define ASE_SRP_VERSION 140008
 
 
@@ -3368,14 +3376,14 @@ Shader "S_WindTunnel"
 				float2 texCoord30 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
 				float mulTime77 = _TimeParameters.x * 5.65;
 				float2 temp_cast_0 = (-4.0).xx;
-				float2 center45_g4 = temp_cast_0;
-				float2 delta6_g4 = ( texCoord30 - center45_g4 );
-				float angle10_g4 = ( length( delta6_g4 ) * 6.0 );
-				float x23_g4 = ( ( cos( angle10_g4 ) * delta6_g4.x ) - ( sin( angle10_g4 ) * delta6_g4.y ) );
-				float2 break40_g4 = center45_g4;
-				float2 break41_g4 = float2( 0,0 );
-				float y35_g4 = ( ( sin( angle10_g4 ) * delta6_g4.x ) + ( cos( angle10_g4 ) * delta6_g4.y ) );
-				float2 appendResult44_g4 = (float2(( x23_g4 + break40_g4.x + break41_g4.x ) , ( break40_g4.y + break41_g4.y + y35_g4 )));
+				float2 center45_g15 = temp_cast_0;
+				float2 delta6_g15 = ( texCoord30 - center45_g15 );
+				float angle10_g15 = ( length( delta6_g15 ) * 6.0 );
+				float x23_g15 = ( ( cos( angle10_g15 ) * delta6_g15.x ) - ( sin( angle10_g15 ) * delta6_g15.y ) );
+				float2 break40_g15 = center45_g15;
+				float2 break41_g15 = float2( 0,0 );
+				float y35_g15 = ( ( sin( angle10_g15 ) * delta6_g15.x ) + ( cos( angle10_g15 ) * delta6_g15.y ) );
+				float2 appendResult44_g15 = (float2(( x23_g15 + break40_g15.x + break41_g15.x ) , ( break40_g15.y + break41_g15.y + y35_g15 )));
 				float2 temp_cast_1 = (1.24).xx;
 				float2 center45_g14 = temp_cast_1;
 				float2 delta6_g14 = ( texCoord30 - center45_g14 );
@@ -3385,7 +3393,7 @@ Shader "S_WindTunnel"
 				float2 break41_g14 = float2( 0,0 );
 				float y35_g14 = ( ( sin( angle10_g14 ) * delta6_g14.x ) + ( cos( angle10_g14 ) * delta6_g14.y ) );
 				float2 appendResult44_g14 = (float2(( x23_g14 + break40_g14.x + break41_g14.x ) , ( break40_g14.y + break41_g14.y + y35_g14 )));
-				float2 lerpResult151 = lerp( appendResult44_g4 , float2( 0,0 ) , appendResult44_g14);
+				float2 lerpResult151 = lerp( appendResult44_g15 , float2( 0,0 ) , appendResult44_g14);
 				float2 panner76 = ( mulTime77 * float2( 0,2 ) + lerpResult151);
 				float simplePerlin2D75 = snoise( panner76*0.2 );
 				simplePerlin2D75 = simplePerlin2D75*0.5 + 0.5;
@@ -3432,6 +3440,7 @@ Shader "S_WindTunnel"
 			#pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
 			#define ASE_FOG 1
 			#define _SURFACE_TYPE_TRANSPARENT 1
+			#define _EMISSION
 			#define ASE_SRP_VERSION 140008
 
 
@@ -3672,14 +3681,14 @@ Shader "S_WindTunnel"
 				float2 texCoord30 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
 				float mulTime77 = _TimeParameters.x * 5.65;
 				float2 temp_cast_0 = (-4.0).xx;
-				float2 center45_g4 = temp_cast_0;
-				float2 delta6_g4 = ( texCoord30 - center45_g4 );
-				float angle10_g4 = ( length( delta6_g4 ) * 6.0 );
-				float x23_g4 = ( ( cos( angle10_g4 ) * delta6_g4.x ) - ( sin( angle10_g4 ) * delta6_g4.y ) );
-				float2 break40_g4 = center45_g4;
-				float2 break41_g4 = float2( 0,0 );
-				float y35_g4 = ( ( sin( angle10_g4 ) * delta6_g4.x ) + ( cos( angle10_g4 ) * delta6_g4.y ) );
-				float2 appendResult44_g4 = (float2(( x23_g4 + break40_g4.x + break41_g4.x ) , ( break40_g4.y + break41_g4.y + y35_g4 )));
+				float2 center45_g15 = temp_cast_0;
+				float2 delta6_g15 = ( texCoord30 - center45_g15 );
+				float angle10_g15 = ( length( delta6_g15 ) * 6.0 );
+				float x23_g15 = ( ( cos( angle10_g15 ) * delta6_g15.x ) - ( sin( angle10_g15 ) * delta6_g15.y ) );
+				float2 break40_g15 = center45_g15;
+				float2 break41_g15 = float2( 0,0 );
+				float y35_g15 = ( ( sin( angle10_g15 ) * delta6_g15.x ) + ( cos( angle10_g15 ) * delta6_g15.y ) );
+				float2 appendResult44_g15 = (float2(( x23_g15 + break40_g15.x + break41_g15.x ) , ( break40_g15.y + break41_g15.y + y35_g15 )));
 				float2 temp_cast_1 = (1.24).xx;
 				float2 center45_g14 = temp_cast_1;
 				float2 delta6_g14 = ( texCoord30 - center45_g14 );
@@ -3689,7 +3698,7 @@ Shader "S_WindTunnel"
 				float2 break41_g14 = float2( 0,0 );
 				float y35_g14 = ( ( sin( angle10_g14 ) * delta6_g14.x ) + ( cos( angle10_g14 ) * delta6_g14.y ) );
 				float2 appendResult44_g14 = (float2(( x23_g14 + break40_g14.x + break41_g14.x ) , ( break40_g14.y + break41_g14.y + y35_g14 )));
-				float2 lerpResult151 = lerp( appendResult44_g4 , float2( 0,0 ) , appendResult44_g14);
+				float2 lerpResult151 = lerp( appendResult44_g15 , float2( 0,0 ) , appendResult44_g14);
 				float2 panner76 = ( mulTime77 * float2( 0,2 ) + lerpResult151);
 				float simplePerlin2D75 = snoise( panner76*0.2 );
 				simplePerlin2D75 = simplePerlin2D75*0.5 + 0.5;
@@ -3741,13 +3750,12 @@ Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;16;360.0164,12.58798;Float;
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;17;360.0164,12.58798;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;GBuffer;0;7;GBuffer;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;3;True;12;all;0;False;True;1;5;False;;10;False;;1;1;False;;10;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalGBuffer;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;18;360.0164,12.58798;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;SceneSelectionPass;0;8;SceneSelectionPass;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=SceneSelectionPass;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;19;360.0164,12.58798;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;ScenePickingPass;0;9;ScenePickingPass;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;3;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=Picking;False;False;0;;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;11;-320.4534,-168.1743;Float;False;True;-1;2;UnityEditor.ShaderGraphLitGUI;0;12;S_WindTunnel;94348b07e5e8bab40bd6c8a1e3df54cd;True;Forward;0;1;Forward;19;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;2;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Transparent=RenderType;Queue=Transparent=Queue=0;True;3;True;12;all;0;False;True;1;5;False;;10;False;;1;1;False;;10;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalForward;False;False;0;;0;0;Standard;41;Workflow;1;0;Surface;1;638569097694249312;  Refraction Model;0;0;  Blend;0;0;Two Sided;1;0;Fragment Normal Space,InvertActionOnDeselection;0;0;Forward Only;0;0;Transmission;0;0;  Transmission Shadow;0.5,False,;0;Translucency;0;0;  Translucency Strength;1,False,;0;  Normal Distortion;0.5,False,;0;  Scattering;2,False,;0;  Direct;0.9,False,;0;  Ambient;0.1,False,;0;  Shadow;0.5,False,;0;Cast Shadows;1;0;  Use Shadow Threshold;0;0;Receive Shadows;1;0;GPU Instancing;1;0;LOD CrossFade;1;0;Built-in Fog;1;0;_FinalColorxAlpha;0;0;Meta Pass;1;0;Override Baked GI;0;0;Extra Pre Pass;0;0;DOTS Instancing;0;0;Tessellation;0;0;  Phong;0;0;  Strength;0.5,False,;0;  Type;0;0;  Tess;4.4,False,;0;  Min;10,False,;0;  Max;25,False,;0;  Edge Length;16,False,;0;  Max Displacement;25,False,;0;Write Depth;0;0;  Early Z;0;0;Vertex Position,InvertActionOnDeselection;1;0;Debug Display;0;0;Clear Coat;0;0;0;10;False;True;True;True;True;True;True;True;True;True;False;;False;0
 Node;AmplifyShaderEditor.RangedFloatNode;100;-537.9547,1.952471;Inherit;False;Constant;_Float2;Float 2;0;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.LerpOp;69;-1462.16,-759.303;Inherit;True;3;0;FLOAT2;0,0;False;1;FLOAT2;1.06,0;False;2;FLOAT;0;False;1;FLOAT2;0
 Node;AmplifyShaderEditor.FunctionNode;148;-2346.924,-102.6906;Inherit;True;Twirl;-1;;14;90936742ac32db8449cd21ab6dd337c8;0;4;1;FLOAT2;0,0;False;2;FLOAT2;0,0;False;3;FLOAT;0;False;4;FLOAT2;0,0;False;1;FLOAT2;0
 Node;AmplifyShaderEditor.TextureCoordinatesNode;46;-1252.984,-461.3669;Inherit;True;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.PannerNode;76;-1896.017,-464.577;Inherit;True;3;0;FLOAT2;0,0;False;2;FLOAT2;0,2;False;1;FLOAT;1;False;1;FLOAT2;0
-Node;AmplifyShaderEditor.FunctionNode;78;-2592.59,-448.9496;Inherit;True;Twirl;-1;;4;90936742ac32db8449cd21ab6dd337c8;0;4;1;FLOAT2;0,0;False;2;FLOAT2;0,0;False;3;FLOAT;0;False;4;FLOAT2;0,0;False;1;FLOAT2;0
+Node;AmplifyShaderEditor.FunctionNode;78;-2592.59,-448.9496;Inherit;True;Twirl;-1;;15;90936742ac32db8449cd21ab6dd337c8;0;4;1;FLOAT2;0,0;False;2;FLOAT2;0,0;False;3;FLOAT;0;False;4;FLOAT2;0,0;False;1;FLOAT2;0
 Node;AmplifyShaderEditor.LerpOp;151;-2241.52,-481.5187;Inherit;True;3;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;2;FLOAT2;0,0;False;1;FLOAT2;0
 Node;AmplifyShaderEditor.ColorNode;135;-1129.297,-785.026;Inherit;False;Constant;_Color3;Color 1;2;0;Create;True;0;0;0;False;0;False;0.3584906,0.3584906,0.3584906,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.RangedFloatNode;79;-2697.496,-86.4634;Inherit;False;Constant;_Float0;Float 0;0;0;Create;True;0;0;0;False;0;False;6;0;0;0;0;1;FLOAT;0
@@ -3758,9 +3766,7 @@ Node;AmplifyShaderEditor.RangedFloatNode;88;-2991.072,-263.7287;Inherit;False;Co
 Node;AmplifyShaderEditor.LerpOp;134;-936.1328,-425.5733;Inherit;True;3;0;COLOR;0.2830189,0.2830189,0.2830189,0;False;1;COLOR;1,1,1,0;False;2;FLOAT;0;False;1;COLOR;0
 Node;AmplifyShaderEditor.NoiseGeneratorNode;75;-1630.025,-444.4039;Inherit;True;Simplex2D;True;False;2;0;FLOAT2;0,0;False;1;FLOAT;0.2;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleTimeNode;77;-1932.004,46.10909;Inherit;False;1;0;FLOAT;5.65;False;1;FLOAT;0
-WireConnection;11;0;134;0
-WireConnection;11;4;100;0
-WireConnection;11;6;134;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;11;-320.4534,-168.1743;Float;False;True;-1;2;UnityEditor.ShaderGraphLitGUI;0;12;S_WindTunnel;94348b07e5e8bab40bd6c8a1e3df54cd;True;Forward;0;1;Forward;19;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;1;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;2;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Transparent=RenderType;Queue=Transparent=Queue=0;True;3;True;12;all;0;False;True;1;5;False;;10;False;;1;1;False;;10;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalForward;False;False;0;;0;0;Standard;41;Workflow;1;0;Surface;1;638569097694249312;  Refraction Model;0;0;  Blend;0;0;Two Sided;2;638579087013160392;Fragment Normal Space,InvertActionOnDeselection;0;0;Forward Only;0;0;Transmission;0;0;  Transmission Shadow;0.5,False,;0;Translucency;0;0;  Translucency Strength;1,False,;0;  Normal Distortion;0.5,False,;0;  Scattering;2,False,;0;  Direct;0.9,False,;0;  Ambient;0.1,False,;0;  Shadow;0.5,False,;0;Cast Shadows;1;0;  Use Shadow Threshold;0;0;Receive Shadows;1;0;GPU Instancing;1;0;LOD CrossFade;1;0;Built-in Fog;1;0;_FinalColorxAlpha;0;0;Meta Pass;1;0;Override Baked GI;0;0;Extra Pre Pass;0;0;DOTS Instancing;0;0;Tessellation;0;0;  Phong;0;0;  Strength;0.5,False,;0;  Type;0;0;  Tess;4.4,False,;0;  Min;10,False,;0;  Max;25,False,;0;  Edge Length;16,False,;0;  Max Displacement;25,False,;0;Write Depth;0;0;  Early Z;0;0;Vertex Position,InvertActionOnDeselection;1;0;Debug Display;0;0;Clear Coat;0;0;0;10;False;True;True;True;True;True;True;True;True;True;False;;False;0
 WireConnection;69;0;30;0
 WireConnection;69;2;75;0
 WireConnection;148;1;30;0
@@ -3777,5 +3783,9 @@ WireConnection;151;2;148;0
 WireConnection;134;0;135;0
 WireConnection;134;2;46;2
 WireConnection;75;0;76;0
+WireConnection;11;0;134;0
+WireConnection;11;2;134;0
+WireConnection;11;4;100;0
+WireConnection;11;6;134;0
 ASEEND*/
-//CHKSM=691B85750C1FAE94BC4D22AF726D0F80BCE3D9CD
+//CHKSM=4588D0BB85E908C04E65338C5EB72439A82B6520

@@ -19,12 +19,16 @@ public class PlayerPickUps : MonoBehaviour
     [SerializeField] private float _magnetSphere = 100f;
     [SerializeField] private LayerMask _magnetMask;
     [SerializeField] private float _magnetDuration = 10f;
+    public AudioSource getMagnet;
+    public AudioSource magnet;
 
     [Header("Invincibility Settings")]
     [SerializeField] private float _invisDuration = 5f;
 
     [Header("Crystals Node Settings")]
     [SerializeField] private int _crystalsAmount = 25;
+    public AudioSource crystalBoxAudio;
+    public ParticleSystem crystalBoxExploscion;
 
     private void Start()
     {
@@ -88,6 +92,8 @@ public class PlayerPickUps : MonoBehaviour
     private void TriggerCrystalsEffect(int amount)
     {
         GameManager.Instance.Crystals += amount;
+        crystalBoxAudio.Play();
+        crystalBoxExploscion.Play();
     }
 
     private void TriggerInvincibilityEffect(float duration)
@@ -98,10 +104,13 @@ public class PlayerPickUps : MonoBehaviour
 
     private IEnumerator MagnetProccess(float duration)
     {
+        getMagnet.Play();
+        magnet.Play();
         _isMagnetActive = true;
         _agent.magnetActive = true;
         ActiveFixedEffects += MagnetEffect;
         yield return new WaitForSeconds(duration);
+        magnet.Stop();
         ActiveFixedEffects -= MagnetEffect;
         _agent.magnetActive = false;
     }
