@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
-public class StoreManager : MonoBehaviour // Should probably make singleton father for all Managers
+public class StoreManager : MonoBehaviour
 {
     public static StoreManager Instance;
 
@@ -22,7 +21,6 @@ public class StoreManager : MonoBehaviour // Should probably make singleton fath
     [SerializeField] private TextMeshProUGUI _priceUI;
     [SerializeField] private TextMeshProUGUI _crystalsUI;
 
-    //public Material mat;
     [Header("Skins")]
     public GameObject[] skins;
 
@@ -73,7 +71,7 @@ public class StoreManager : MonoBehaviour // Should probably make singleton fath
         _crystalsUI.text = PlayerPrefs.GetInt("totalCrystals").ToString();
         if (PlayerPrefs.GetInt(info.skinKey) != 0)
         {
-            if(PlayerPrefs.GetString("equippedSkinID") != info.skinKey)
+            if (PlayerPrefs.GetString("equippedSkinID") != info.skinKey)
             {
                 _equipButton.SetActive(true);
                 _buyButton.SetActive(false);
@@ -90,9 +88,9 @@ public class StoreManager : MonoBehaviour // Should probably make singleton fath
             _buyButton.SetActive(true);
         }
 
-        for(int i = 0; i < skins.Length; i++)
+        for (int i = 0; i < skins.Length; i++)
         {
-            if(i != info.listPos)
+            if (i != info.listPos)
             {
                 skins[i].SetActive(false);
             }
@@ -107,15 +105,13 @@ public class StoreManager : MonoBehaviour // Should probably make singleton fath
 
     public void ShowNext()
     {
-        if (step + 1 >= _witchSkins.Length) return;
-        step++;
+        step = (step + 1) % _witchSkins.Length;  // loop back to first skin if at end of array
         LoadSkinInfo(_witchSkins[step]);
     }
 
     public void ShowPrevious()
     {
-        if (step <= 0) return;
-        step--;
+        step = (step - 1 + _witchSkins.Length) % _witchSkins.Length;  //loop back to the end if at start
         LoadSkinInfo(_witchSkins[step]);
     }
 
@@ -125,3 +121,4 @@ public class StoreManager : MonoBehaviour // Should probably make singleton fath
         LoadSkinInfo(_witchSkins[step]);
     }
 }
+
