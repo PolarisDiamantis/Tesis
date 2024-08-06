@@ -8,6 +8,7 @@ public class BorderManager : MonoBehaviour
     public static BorderManager Instance;
     private bool _isCounting = false;
     [SerializeField] private float _time = 5f;
+    [SerializeField] ShaderExitMap shaderExitMap;
 
     private void Awake()
     {
@@ -34,11 +35,13 @@ public class BorderManager : MonoBehaviour
         if(status && !_isCounting)
         {
             StartCoroutine(CountDown(_time));
+            shaderExitMap.CallExitMapShader();
         }
         if (!status)
         {
             StopAllCoroutines();
             _isCounting = false;
+            shaderExitMap.stopShader();
         }
     }
 

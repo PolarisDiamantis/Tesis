@@ -60,6 +60,8 @@ public class PlayerController : MonoBehaviour
     // Modify throtle with rune logic
     // Add extra life rune
 
+    public bool checkRunes = false;
+
     Vector2 direction;
 
     //public TextMeshProUGUI manaUI;
@@ -211,7 +213,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnBoost(InputAction.CallbackContext context)
     {
-        if (context.performed && _canBoost)
+        if (context.performed && _canBoost && checkRunes == true)
         {
             StartCoroutine(BoostSequence(_boostTime, _boostCoolDown));
         }
@@ -219,7 +221,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnShield(InputAction.CallbackContext context)
     {
-        if(context.performed && _canShield)
+        if(context.performed && _canShield && checkRunes == true)
         {
             StartCoroutine(ShieldSequence(_shieldTime, _shieldCoolDown));
         }
@@ -227,7 +229,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnTeleport(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && checkRunes == true)
         {
             TeleportFoward(200);
         }

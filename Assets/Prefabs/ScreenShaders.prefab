@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4737015493200210370}
   - component: {fileID: 787180970074597158}
   - component: {fileID: 2127962201092446656}
+  - component: {fileID: 5673936247097707686}
   - component: {fileID: 3365189713994061590}
   m_Layer: 0
   m_Name: ScreenShaders
@@ -49,6 +50,7 @@ MonoBehaviour:
   _hurtDisplayTime: 2
   _hurtFadeOutTime: 3
   _cooldownReplay: 0
+  pioQueGira: {fileID: 0}
   _fullScreenDamage: {fileID: 3513734505777393093, guid: c40be3174f62c4acf8c1216858c64956,
     type: 2}
   _material: {fileID: 2100000, guid: 0bf66e30387fa2a44bea4d73f6ed98bb, type: 2}
@@ -71,6 +73,24 @@ MonoBehaviour:
     type: 2}
   _material: {fileID: 2100000, guid: fbaa41d8ad48ac44f9bde6c69512fd43, type: 2}
   frezeAudio: {fileID: 3365189713994061590}
+--- !u!114 &5673936247097707686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9158439582188927296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f8ffb8b8bc3787409e288f89dbaf134, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hurtDisplayTime: 2
+  _hurtFadeOutTime: 1
+  _cooldownReplay: 0
+  _fullScreenExitMap: {fileID: 4117049370404999733, guid: c40be3174f62c4acf8c1216858c64956,
+    type: 2}
+  _material: {fileID: 2100000, guid: d198f5b56dce4f04b891198b94fa7050, type: 2}
 --- !u!82 &3365189713994061590
 AudioSource:
   m_ObjectHideFlags: 0

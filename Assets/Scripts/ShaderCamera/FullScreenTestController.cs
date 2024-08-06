@@ -10,6 +10,7 @@ public class FullScreenTestController : MonoBehaviour
     [SerializeField] private float _hurtDisplayTime = 1.5f;
     [SerializeField] private float _hurtFadeOutTime = 0.5f;
     [SerializeField] float _cooldownReplay;
+    [SerializeField] GameObject pioQueGira;
 
     [Header("References")]
     [SerializeField] private ScriptableRendererFeature _fullScreenDamage;
@@ -50,6 +51,7 @@ public class FullScreenTestController : MonoBehaviour
     {
         if (_timer >= _cooldownReplay)
         {
+            pioQueGira.SetActive(true);
             StartCoroutine(Hurt());
             _timer = 0;
         }
@@ -79,6 +81,7 @@ public class FullScreenTestController : MonoBehaviour
 
     private void stopShader()
     {
+        pioQueGira.SetActive(false);
         _fullScreenDamage.SetActive(false);
     }
 }

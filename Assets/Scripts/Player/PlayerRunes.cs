@@ -31,6 +31,7 @@ public class PlayerRunes : MonoBehaviour
     {
         _controller.ModifySpeed(_speedModifer);
         _controller.ModifyPower(_boostModifierS, _shieldModifierS);
+        _controller.checkRunes = true;
         ChoiceMade();
     }
 
@@ -38,12 +39,14 @@ public class PlayerRunes : MonoBehaviour
     {
         _controller.ModifyPower(_boostModifier, _shieldModifier);
         _controller.ModifySpeed(_speedModiferP);
+        _controller.checkRunes = true;
         ChoiceMade();
     }
 
     public void ChooseLifeRune()
     {
         _model.hasLifeRune = true;
+        _controller.checkRunes = true;
         ChoiceMade();
     }
 

@@ -33,12 +33,13 @@ public class FullScreenTestController2 : MonoBehaviour
     {
         _timer += Time.deltaTime;
 
+        /*
         if (Input.GetKeyDown(KeyCode.T) && _timer >= _cooldownReplay)
         {
             StartCoroutine(Hurt());
             _timer = 0;
         }
-        /*
+        
         else if ((Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)))
         {
             stopShader();

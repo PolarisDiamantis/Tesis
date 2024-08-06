@@ -18304,6 +18304,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccbd73d921c2a5f4389b5963e10bedfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &813861139 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3392561109272748182, guid: 6227959bbce8c014586a9e641911101a,
+    type: 3}
+  m_PrefabInstance: {fileID: 813861135}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &818341182
 GameObject:
   m_ObjectHideFlags: 0
@@ -29834,6 +29840,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   borderList: []
   _time: 0.5
+  shaderExitMap: {fileID: 4337139725530113457}
 --- !u!1 &1252262069
 GameObject:
   m_ObjectHideFlags: 0
@@ -48762,6 +48769,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 787180970074597158, guid: 6686309f62cf2ee439130173672341cc,
+        type: 3}
+      propertyPath: pioQueGira
+      value: 
+      objectReference: {fileID: 813861139}
     - target: {fileID: 4737015493200210370, guid: 6686309f62cf2ee439130173672341cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -48832,6 +48844,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26a4b9cc8691cdc4ea6b9d1f7122daa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4337139725530113457 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5673936247097707686, guid: 6686309f62cf2ee439130173672341cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 4337139725530113455}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f8ffb8b8bc3787409e288f89dbaf134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &5121321170501940213
