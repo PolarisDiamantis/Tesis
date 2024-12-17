@@ -11,6 +11,16 @@ public class ManagerScene : MonoBehaviour
         SceneManager.LoadScene(nameScene);
     }
 
+    public void ChangeSceneToLevel(string nameScene)
+    {
+        Time.timeScale = 1f;
+        if(ThemeSong.Instance != null)
+        {
+            ThemeSong.DestroyThemeSong();
+        }
+        SceneManager.LoadScene(nameScene);
+    }
+
     public void RechargeScene()
     {
         string currentNameScene = SceneManager.GetActiveScene().name;

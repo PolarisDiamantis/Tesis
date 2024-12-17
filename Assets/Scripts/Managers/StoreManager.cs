@@ -21,8 +21,14 @@ public class StoreManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _priceUI;
     [SerializeField] private TextMeshProUGUI _crystalsUI;
 
+    [SerializeField] private GameObject _leftButton;
+    [SerializeField] private GameObject _rightButton;
+
+
     [Header("Skins")]
     public GameObject[] skins;
+
+
 
     private void Awake()
     {
@@ -105,14 +111,42 @@ public class StoreManager : MonoBehaviour
 
     public void ShowNext()
     {
-        step = (step + 1) % _witchSkins.Length;  // loop back to first skin if at end of array
-        LoadSkinInfo(_witchSkins[step]);
+
+        //step = (step + 1) % _witchSkins.Length;  // loop back to first skin if at end of array
+        if(step + 1 >= _witchSkins.Length)
+        {
+            return;
+        }
+        else
+        {
+            step++;
+            LoadSkinInfo(_witchSkins[step]);
+            if(step >= _witchSkins.Length - 1)
+            {
+                _rightButton.SetActive(false);
+            }
+            _leftButton.SetActive(true);
+        }
     }
 
     public void ShowPrevious()
     {
-        step = (step - 1 + _witchSkins.Length) % _witchSkins.Length;  //loop back to the end if at start
-        LoadSkinInfo(_witchSkins[step]);
+        //step = (step - 1 + _witchSkins.Length) % _witchSkins.Length;  //loop back to the end if at start
+        if(step - 1 < 0)
+        {
+            return;
+        }
+        else
+        {
+            step--;
+            LoadSkinInfo(_witchSkins[step]);
+            if(step <= 0)
+            {
+                _leftButton.SetActive(false);
+            }
+            _rightButton.SetActive(true);
+        }
+        
     }
 
     public void EquipSkin()

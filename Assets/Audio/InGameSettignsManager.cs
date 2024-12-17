@@ -49,28 +49,77 @@ public class InGameSettignsManager : Singleton<InGameSettignsManager>
         _sfx.value = PlayerPrefs.GetFloat(sfxSoundID);
         _sensitivity.value = PlayerPrefs.GetFloat(sensitivityID);
 
-        _mixer.SetFloat("Master", Mathf.Log10(PlayerPrefs.GetFloat(masterSoundID)) * 20);
-        _mixer.SetFloat("Music", Mathf.Log10(PlayerPrefs.GetFloat(musicSoundID)) * 20);
-        _mixer.SetFloat("SFX", Mathf.Log10(PlayerPrefs.GetFloat(sfxSoundID)) * 20);
-         player.OnResponseChange(PlayerPrefs.GetFloat(sensitivityID));
+        if (_master.value <= 0f)
+        {
+            _mixer.SetFloat("Master", -80f);
+        }
+        else
+        {
+            _mixer.SetFloat("Master", Mathf.Log10(PlayerPrefs.GetFloat(masterSoundID)) * 20);
+        }
+
+        //_mixer.SetFloat("Master", Mathf.Log10(PlayerPrefs.GetFloat(masterSoundID)) * 20);
+
+        if (_music.value <= 0f)
+        {
+            _mixer.SetFloat("Music", -80f);
+        }
+        else
+        {
+            _mixer.SetFloat("Music", Mathf.Log10(PlayerPrefs.GetFloat(musicSoundID)) * 20);
+        }
+        //_mixer.SetFloat("Music", Mathf.Log10(PlayerPrefs.GetFloat(musicSoundID)) * 20);
+
+        if (_sfx.value <= 0f)
+        {
+            _mixer.SetFloat("SFX", -80f);
+        }
+        else
+        {
+            _mixer.SetFloat("SFX", Mathf.Log10(PlayerPrefs.GetFloat(sfxSoundID)) * 20);
+        }
+        //_mixer.SetFloat("SFX", Mathf.Log10(PlayerPrefs.GetFloat(sfxSoundID)) * 20);
+
+        player.OnResponseChange(PlayerPrefs.GetFloat(sensitivityID));
     }
 
     public void OnModifyMasterSound(Slider slider)
     {
         PlayerPrefs.SetFloat(masterSoundID, slider.value);
-        _mixer.SetFloat("Master", Mathf.Log10(PlayerPrefs.GetFloat(masterSoundID)) * 20);
+        if (slider.value <= 0f)
+        {
+            _mixer.SetFloat("Master", -80f);
+        }
+        else
+        {
+            _mixer.SetFloat("Master", Mathf.Log10(PlayerPrefs.GetFloat(masterSoundID)) * 20);
+        }
     }
 
     public void OnModifyMusicSound(Slider slider)
     {
         PlayerPrefs.SetFloat(musicSoundID, slider.value);
-        _mixer.SetFloat("Music", Mathf.Log10(PlayerPrefs.GetFloat(musicSoundID)) * 20);
+        if (slider.value <= 0f)
+        {
+            _mixer.SetFloat("Music", -80f);
+        }
+        else
+        {
+            _mixer.SetFloat("Music", Mathf.Log10(PlayerPrefs.GetFloat(musicSoundID)) * 20);
+        }
     }
 
     public void OnModifySFXSound(Slider slider)
     {
         PlayerPrefs.SetFloat(sfxSoundID, slider.value);
-        _mixer.SetFloat("SFX", Mathf.Log10(PlayerPrefs.GetFloat(sensitivityID)) * 20);
+        if (slider.value <= 0f)
+        {
+            _mixer.SetFloat("SFX", -80f);
+        }
+        else
+        {
+            _mixer.SetFloat("SFX", Mathf.Log10(PlayerPrefs.GetFloat(sfxSoundID)) * 20);
+        }
     }
 
     public void OnModifyMouseSensitivity(Slider slider)

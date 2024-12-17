@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028355, g: 0.22571374, b: 0.30692255, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4281,6 +4281,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 811697304}
   m_CullTransparentMesh: 1
+--- !u!1 &852799743
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 852799745}
+  - component: {fileID: 852799744}
+  m_Layer: 0
+  m_Name: SettingsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &852799744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852799743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bea303b734ddea40919375663fa4ccb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterSoundID: masterSoundID
+  musicSoundID: musicSoundID
+  sfxSoundID: sfxSoundID
+  sensitivityID: sensitivityID
+  _master: {fileID: 0}
+  _music: {fileID: 0}
+  _sfx: {fileID: 0}
+  _sensitivity: {fileID: 0}
+  _mixer: {fileID: 24100000, guid: 4f8aa622095c4214f80540f7e4dd409e, type: 2}
+--- !u!4 &852799745
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852799743}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 548.72095, y: 734.63885, z: 315.09805}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &879616246
 GameObject:
   m_ObjectHideFlags: 0
@@ -4699,7 +4752,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1059726669}
         m_TargetAssemblyTypeName: ManagerScene, Assembly-CSharp
-        m_MethodName: ChangeEscene
+        m_MethodName: ChangeSceneToLevel
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9776,7 +9829,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1059726669}
         m_TargetAssemblyTypeName: ManagerScene, Assembly-CSharp
-        m_MethodName: ChangeEscene
+        m_MethodName: ChangeSceneToLevel
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9941,7 +9994,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1059726669}
         m_TargetAssemblyTypeName: ManagerScene, Assembly-CSharp
-        m_MethodName: ChangeEscene
+        m_MethodName: ChangeSceneToLevel
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12129,7 +12182,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1059726669}
         m_TargetAssemblyTypeName: ManagerScene, Assembly-CSharp
-        m_MethodName: ChangeEscene
+        m_MethodName: ChangeSceneToLevel
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12712,8 +12765,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1806453289}
   - component: {fileID: 1806453288}
+  - component: {fileID: 1806453290}
   m_Layer: 0
-  m_Name: Music
+  m_Name: ThemeSong
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12831,6 +12885,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1806453290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806453287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bff2dbd7dfd942c458aba7b4395f5acb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1811411246
 GameObject:
   m_ObjectHideFlags: 0
@@ -13613,7 +13679,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1059726669}
         m_TargetAssemblyTypeName: ManagerScene, Assembly-CSharp
-        m_MethodName: ChangeEscene
+        m_MethodName: ChangeSceneToLevel
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14061,7 +14127,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1059726669}
         m_TargetAssemblyTypeName: ManagerScene, Assembly-CSharp
-        m_MethodName: ChangeEscene
+        m_MethodName: ChangeSceneToLevel
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15850,3 +15916,4 @@ SceneRoots:
   - {fileID: 413691509}
   - {fileID: 2060644990245707869}
   - {fileID: 1806453289}
+  - {fileID: 852799745}
